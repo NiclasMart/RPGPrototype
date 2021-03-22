@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,16 +7,17 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-  [SerializeField] Transform target;
-
   Camera cam;
   NavMeshAgent agent;
+
+  Animator animator;
 
   // Start is called before the first frame update
   void Start()
   {
     agent = GetComponent<NavMeshAgent>();
     cam = Camera.main;
+    animator = GetComponent<Animator>();
   }
 
   private void Update()
@@ -24,6 +26,7 @@ public class Mover : MonoBehaviour
     {
       CalculateNextMovementTarget();
     }
+    SetAnimation();
   }
 
   private void CalculateNextMovementTarget()
@@ -34,5 +37,12 @@ public class Mover : MonoBehaviour
     {
       agent.destination = hit.point;
     }
+  }
+
+  private void SetAnimation()
+  {
+    float currentSpeed = agent.velocity.magnitude;
+    Debug.Log(currentSpeed);
+    animator.SetFloat("ForwardSpeed", currentSpeed);
   }
 }
