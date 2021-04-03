@@ -2,6 +2,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Combat;
 
+
 namespace RPG.Control
 {
   public class PlayerController : MonoBehaviour
@@ -55,11 +56,7 @@ namespace RPG.Control
 
       if (hasHit)
       {
-        if (Input.GetMouseButtonDown(0))
-        {
-          mover.MoveTo(hit.point);
-          fighter.ResetCombatTarget();
-        }
+        if (Input.GetMouseButtonDown(0)) mover.StartMoveAction(hit.point);
         return true;
       }
       return false;
