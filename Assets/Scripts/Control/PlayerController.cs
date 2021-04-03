@@ -19,17 +19,21 @@ namespace RPG.Control
 
     private void Update()
     {
-      UpdateCombat();
-      UpdateMovement();
+      if (UpdateCombat()) return;
+      if (UpdateMovement()) return;
+      print("Nothing to do!");
     }
 
-    private void UpdateCombat()
+    private bool UpdateCombat()
     {
-      if (Input.GetMouseButtonDown(0))
+      Attackable combatTarget = CheckForCombatTarget();
+
+      if (combatTarget)
       {
-        Attackable combatTarget = CheckForCombatTarget();
-        if (combatTarget) fighter.Attack(combatTarget);
+        if (Input.GetMouseButtonDown(0)) fighter.SetCombatTarget(combatTarget);
+        return true;
       }
+      return false;
     }
 
     private Attackable CheckForCombatTarget()
@@ -44,21 +48,21 @@ namespace RPG.Control
       return null;
     }
 
-    private void UpdateMovement()
-    {
-      if (Input.GetMouseButton(0))
-      {
-        CalculateNextMovementPosition();
-      }
-    }
-
-    private void CalculateNextMovementPosition()
+    private bool UpdateMovement()
     {
       RaycastHit hit;
-      if (Physics.Raycast(GetMouseRay(), out hit))
+      bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+      if (hasHit)
       {
-        mover.MoveTo(hit.point);
+        if (Input.GetMouseButtonDown(0))
+        {
+          mover.MoveTo(hit.point);
+          fighter.ResetCombatTarget();
+        }
+        return true;
       }
+      return false;
     }
 
     private Ray GetMouseRay()
