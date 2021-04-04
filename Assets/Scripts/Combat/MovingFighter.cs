@@ -9,23 +9,22 @@ namespace RPG.Combat
   {
     Mover mover;
 
-    public override void Start()
+    protected override void Start()
     {
       base.Start();
       mover = GetComponent<Mover>();
     }
 
-    public override void Attack()
+    protected override void Attack()
     {
-      bool inAttackRange = Vector3.Distance(transform.position, target.transform.position) <= attackRange;
-      if (!inAttackRange)
+      if (!TargetInRange())
       {
-        Vector3 targetDirection = (target.transform.position - transform.position).normalized;
-        Vector3 attackPosition = target.transform.position - targetDirection * attackRange;
-        mover.MoveTo(attackPosition);
+        mover.MoveTo(target.transform.position);
       }
       else
       {
+        mover.Cancel();
+        animator.SetBool("Attack", true);
         print("do damage");
       }
 

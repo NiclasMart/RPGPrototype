@@ -1,5 +1,6 @@
 using UnityEngine;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
@@ -10,15 +11,27 @@ namespace RPG.Combat
 
     protected Transform target;
     protected ActionScheduler scheduler;
+    protected Animator animator;
 
-    public virtual void Start()
+    protected virtual void Start()
     {
       scheduler = GetComponent<ActionScheduler>();
+      animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
       if (target) Attack();
+    }
+
+    protected void PlayAttackAnimation()
+    {
+      animator.SetBool("Attack", true);
+    }
+
+    protected bool TargetInRange()
+    {
+      return Vector3.Distance(transform.position, target.transform.position) < attackRange;
     }
 
     public void SetCombatTarget(Attackable combatTarget)
@@ -27,13 +40,18 @@ namespace RPG.Combat
       target = combatTarget.transform;
     }
 
-    public virtual void Attack()
+    protected virtual void Attack()
     {
-      print("I will take all of your LOOT! YOU dumbass " + target.name);
+      if (TargetInRange())
+      {
+        PlayAttackAnimation();
+        print("I will take all of your LOOT! YOU dumbass " + target.name);
+      }
     }
 
     public void Cancel()
     {
+      animator.SetBool("Attack", false);
       target = null;
     }
   }
