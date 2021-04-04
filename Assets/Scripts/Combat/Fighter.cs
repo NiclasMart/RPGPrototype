@@ -8,6 +8,7 @@ namespace RPG.Combat
   public class Fighter : MonoBehaviour, IAction
   {
     [SerializeField] protected float attackRange = 1f;
+    [SerializeField] protected float timeBetweenAttacks = 1f;
 
     protected Transform target;
     protected ActionScheduler scheduler;
@@ -24,9 +25,19 @@ namespace RPG.Combat
       if (target) Attack();
     }
 
-    protected void PlayAttackAnimation()
+    float attackState = 0f;
+    float lastAttackTime;
+    protected void PlayAttackAnimation(bool shouldPlay)
     {
-      animator.SetBool("Attack", true);
+      if (lastAttackTime + timeBetweenAttacks <= Time.time)
+      {
+        //switch between thw different attack animations
+        animator.SetFloat("attackState", attackState);
+        attackState = (++attackState % 2);
+        //set up animation
+        animator.SetTrigger("attack");
+        lastAttackTime = Time.time;
+      }
     }
 
     protected bool TargetInRange()
@@ -42,17 +53,19 @@ namespace RPG.Combat
 
     protected virtual void Attack()
     {
-      if (TargetInRange())
-      {
-        PlayAttackAnimation();
-        print("I will take all of your LOOT! YOU dumbass " + target.name);
-      }
+      if (TargetInRange()) PlayAttackAnimation(true);
     }
 
     public void Cancel()
     {
-      animator.SetBool("Attack", false);
+      PlayAttackAnimation(false);
       target = null;
+    }
+
+    //animation event (called from)
+    void Hit()
+    {
+      print("do damage");
     }
   }
 }

@@ -24,8 +24,7 @@ namespace RPG.Combat
       else
       {
         mover.Cancel();
-        animator.SetBool("Attack", true);
-        print("do damage");
+        PlayAttackAnimation(true);
       }
 
 

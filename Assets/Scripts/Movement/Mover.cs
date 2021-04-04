@@ -43,7 +43,7 @@ namespace RPG.Movement
     private void UpdateAnimation()
     {
       float currentSpeed = agent.velocity.magnitude;
-      animator.SetFloat("ForwardSpeed", currentSpeed);
+      animator.SetFloat("forwardSpeed", currentSpeed);
     }
   }
 }
