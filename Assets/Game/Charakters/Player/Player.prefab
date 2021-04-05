@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6703701990279290710}
   - component: {fileID: 4257136723309079009}
   - component: {fileID: 8120480861256193248}
+  - component: {fileID: 1614395470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,7 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b07d677b7e7874cbc60e35110b2d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
   attackRange: 2
+  timeBetweenAttacks: 1
 --- !u!195 &4257136723309079009
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -127,6 +130,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1614395470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8312157637148517516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68c099d927751d4085d49a6738f6bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1857633548622274580
 PrefabInstance:
   m_ObjectHideFlags: 0

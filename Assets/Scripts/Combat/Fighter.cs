@@ -7,6 +7,7 @@ namespace RPG.Combat
   [RequireComponent(typeof(ActionScheduler))]
   public class Fighter : MonoBehaviour, IAction
   {
+    [SerializeField] protected float damage;
     [SerializeField] protected float attackRange = 1f;
     [SerializeField] protected float timeBetweenAttacks = 1f;
 
@@ -25,6 +26,29 @@ namespace RPG.Combat
       if (target) Attack();
     }
 
+    public void SetCombatTarget(Attackable combatTarget)
+    {
+      scheduler.StartAction(this);
+      target = combatTarget.transform;
+    }
+
+    public void Cancel()
+    {
+      PlayAttackAnimation(false);
+      target = null;
+    }
+
+    protected virtual void Attack()
+    {
+      if (TargetInRange()) PlayAttackAnimation(true);
+      /*damage is dealt by the animation Hit() event*/
+    }
+
+    protected bool TargetInRange()
+    {
+      return Vector3.Distance(transform.position, target.transform.position) < attackRange;
+    }
+
     float attackState = 0f;
     float lastAttackTime;
     protected void PlayAttackAnimation(bool shouldPlay)
@@ -40,31 +64,10 @@ namespace RPG.Combat
       }
     }
 
-    protected bool TargetInRange()
-    {
-      return Vector3.Distance(transform.position, target.transform.position) < attackRange;
-    }
-
-    public void SetCombatTarget(Attackable combatTarget)
-    {
-      scheduler.StartAction(this);
-      target = combatTarget.transform;
-    }
-
-    protected virtual void Attack()
-    {
-      if (TargetInRange()) PlayAttackAnimation(true);
-    }
-
-    public void Cancel()
-    {
-      PlayAttackAnimation(false);
-      target = null;
-    }
-
-    //animation event (called from)
+    //animation event (called from animator)
     void Hit()
     {
+      target.GetComponent<Health>().ApplyDamage(damage);
       print("do damage");
     }
   }
