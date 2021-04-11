@@ -30,6 +30,7 @@ namespace RPG.Combat
     {
       scheduler.StartAction(this);
       target = combatTarget.transform;
+      animator.ResetTrigger("cancelAttack");
     }
 
     public void Cancel()
@@ -55,7 +56,7 @@ namespace RPG.Combat
 
     protected void AdjustAttackDirection()
     {
-      GetComponent<Transform>().LookAt(target, Vector3.up);
+      transform.LookAt(target, Vector3.up);
     }
 
     float attackState = 0f;
@@ -76,9 +77,12 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Hit()
     {
-      bool targetDies = target.GetComponent<Health>().ApplyDamage(damage);
-      if (targetDies) Cancel();
-      print("do damage");
+      if (target)
+      {
+        bool targetDies = target.GetComponent<Health>().ApplyDamage(damage);
+        if (targetDies) Cancel();
+        print("do damage");
+      }
     }
   }
 }

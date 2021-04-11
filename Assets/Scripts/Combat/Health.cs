@@ -11,6 +11,7 @@ namespace RPG.Combat
     Animator animator;
     float currentHealth;
     bool isDead = false;
+    public bool IsDead => isDead;
 
     private void Start()
     {
@@ -32,13 +33,12 @@ namespace RPG.Combat
     private void HandleDeath()
     {
       if (animator != null) animator.SetTrigger("die");
-      DisableAllColliders();
+      DisableNavAgent();
       isDead = true;
     }
 
-    private void DisableAllColliders()
+    private void DisableNavAgent()
     {
-      if (TryGetComponent(out Collider collider)) collider.enabled = false;
       if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = false;
     }
   }

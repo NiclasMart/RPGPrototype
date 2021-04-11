@@ -43,7 +43,7 @@ namespace RPG.Control
       foreach (RaycastHit hit in hits)
       {
         Attackable target = hit.transform.GetComponent<Attackable>();
-        if (target) return target;
+        if (target && target.CanBeAttacked()) return target;
         else continue;
       }
       return null;
