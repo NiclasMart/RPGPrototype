@@ -34,14 +34,18 @@ namespace RPG.Combat
 
     public void Cancel()
     {
-      PlayAttackAnimation(false);
+      animator.SetTrigger("cancelAttack");
       target = null;
     }
 
     protected virtual void Attack()
     {
-      if (TargetInRange()) PlayAttackAnimation(true);
-      /*damage is dealt by the animation Hit() event*/
+      if (TargetInRange())
+      {
+        PlayAttackAnimation();
+        AdjustAttackDirection();
+        /*damage is dealt by the animation Hit() event*/
+      }
     }
 
     protected bool TargetInRange()
@@ -49,9 +53,14 @@ namespace RPG.Combat
       return Vector3.Distance(transform.position, target.transform.position) < attackRange;
     }
 
+    protected void AdjustAttackDirection()
+    {
+      GetComponent<Transform>().LookAt(target, Vector3.up);
+    }
+
     float attackState = 0f;
     float lastAttackTime;
-    protected void PlayAttackAnimation(bool shouldPlay)
+    protected void PlayAttackAnimation()
     {
       if (lastAttackTime + timeBetweenAttacks <= Time.time)
       {
@@ -67,7 +76,8 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Hit()
     {
-      target.GetComponent<Health>().ApplyDamage(damage);
+      bool targetDies = target.GetComponent<Health>().ApplyDamage(damage);
+      if (targetDies) Cancel();
       print("do damage");
     }
   }
