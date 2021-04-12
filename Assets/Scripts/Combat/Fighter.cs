@@ -1,6 +1,5 @@
 using UnityEngine;
 using RPG.Core;
-using System;
 
 namespace RPG.Combat
 {
@@ -60,7 +59,7 @@ namespace RPG.Combat
     }
 
     float attackState = 0f;
-    float lastAttackTime = Mathf.Infinity;
+    float lastAttackTime = -Mathf.Infinity;
     protected void PlayAttackAnimation()
     {
       if (lastAttackTime + timeBetweenAttacks <= Time.time)

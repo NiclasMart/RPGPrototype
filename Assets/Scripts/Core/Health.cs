@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace RPG.Combat
+namespace RPG.Core
 {
   public class Health : MonoBehaviour
   {
@@ -33,6 +31,7 @@ namespace RPG.Combat
     private void HandleDeath()
     {
       if (animator != null) animator.SetTrigger("die");
+      GetComponent<ActionScheduler>().CancelCurrentAction();
       DisableNavAgent();
       isDead = true;
     }
