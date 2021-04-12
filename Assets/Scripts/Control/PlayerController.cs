@@ -31,7 +31,7 @@ namespace RPG.Control
 
       if (combatTarget)
       {
-        if (Input.GetMouseButtonDown(0)) fighter.SetCombatTarget(combatTarget);
+        if (Input.GetMouseButtonDown(0)) fighter.SetCombatTarget(combatTarget.gameObject);
         return true;
       }
       return false;

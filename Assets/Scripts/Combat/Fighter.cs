@@ -26,7 +26,7 @@ namespace RPG.Combat
       if (target) Attack();
     }
 
-    public void SetCombatTarget(Attackable combatTarget)
+    public void SetCombatTarget(GameObject combatTarget)
     {
       scheduler.StartAction(this);
       target = combatTarget.transform;
@@ -60,7 +60,7 @@ namespace RPG.Combat
     }
 
     float attackState = 0f;
-    float lastAttackTime;
+    float lastAttackTime = Mathf.Infinity;
     protected void PlayAttackAnimation()
     {
       if (lastAttackTime + timeBetweenAttacks <= Time.time)
