@@ -3,6 +3,7 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using System.Collections;
+using System;
 
 namespace RPG.Control
 {
@@ -11,23 +12,31 @@ namespace RPG.Control
     [SerializeField] float chaseDistance;
     [SerializeField] float suspicionTime;
 
+    [Header("Patrol Parameters")]
+    [SerializeField] Path patrolPath;
+    [SerializeField] float checkpointTolerance = 1f;
+
     Fighter fighter;
+    Mover mover;
     Health health;
     GameObject player;
 
     Vector3 guardPosition;
+    int currentWaypoint;
     float lastSeenPlayerTime = -Mathf.Infinity;
 
     private void Awake()
     {
       fighter = GetComponent<Fighter>();
+      mover = GetComponent<Mover>();
       health = GetComponent<Health>();
       player = GameObject.FindWithTag("Player");
 
       guardPosition = transform.position;
+      if (patrolPath != null) currentWaypoint = patrolPath.GetClosestWaypoint(transform.position);
     }
 
-  //RESTRUCTURE: need state storage for performance reason
+    //RESTRUCTURE: need state storage for performance reason
     private void Update()
     {
       if (health.IsDead) return;
@@ -49,7 +58,19 @@ namespace RPG.Control
 
     private void GuardBehaviour()
     {
-      GetComponent<Mover>().MoveTo(guardPosition);
+      Vector3 nextPosition = guardPosition;
+
+      if (patrolPath) nextPosition = FindNextWaypoint();
+
+      mover.MoveTo(nextPosition);
+    }
+
+    private Vector3 FindNextWaypoint()
+    {
+      bool reachedCurrentCheckpoint = Vector3.Distance(transform.position, patrolPath.GetCurrentWaypoint(currentWaypoint)) <= checkpointTolerance;
+
+      if (reachedCurrentCheckpoint) currentWaypoint = (currentWaypoint + 1) % patrolPath.WaypointCount;
+      return patrolPath.GetCurrentWaypoint(currentWaypoint);
     }
 
     private void SuspicionBehaviour()
@@ -74,7 +95,7 @@ namespace RPG.Control
     }
 
     //called by unity
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
       Gizmos.color = Color.blue;
       Gizmos.DrawWireSphere(transform.position, chaseDistance);

@@ -35,6 +35,12 @@ namespace RPG.Movement
       agent.destination = destination;
     }
 
+    public bool ReachedDestination()
+    {
+      if (agent.remainingDistance == 0) return true;
+      else return false;
+    }
+
     public void Cancel()
     {
       agent.destination = transform.position;
