@@ -35,6 +35,11 @@ namespace RPG.Movement
       agent.destination = destination;
     }
 
+    public void SetMovementSpeed(float speed)
+    {
+      agent.speed = Mathf.Abs(speed);
+    }
+
     public bool ReachedDestination()
     {
       if (agent.remainingDistance == 0) return true;

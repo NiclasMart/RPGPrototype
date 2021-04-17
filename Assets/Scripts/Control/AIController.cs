@@ -10,11 +10,14 @@ namespace RPG.Control
   public class AIController : MonoBehaviour
   {
     [SerializeField] float chaseDistance;
+    [SerializeField] float chaseSpeed = 3f;
     [SerializeField] float suspicionTime;
 
     [Header("Patrol Parameters")]
     [SerializeField] Path patrolPath;
+    [SerializeField] float patrolSpeed = 2f;
     [SerializeField] float checkpointTolerance = 1f;
+    [SerializeField] float checkpointDwellTime = 3f;
 
     Fighter fighter;
     Mover mover;
@@ -59,18 +62,30 @@ namespace RPG.Control
     private void GuardBehaviour()
     {
       Vector3 nextPosition = guardPosition;
+      mover.SetMovementSpeed(patrolSpeed);
 
       if (patrolPath) nextPosition = FindNextWaypoint();
 
       mover.MoveTo(nextPosition);
     }
 
+    bool pausePatrolIsActive = false;
     private Vector3 FindNextWaypoint()
     {
       bool reachedCurrentCheckpoint = Vector3.Distance(transform.position, patrolPath.GetCurrentWaypoint(currentWaypoint)) <= checkpointTolerance;
 
-      if (reachedCurrentCheckpoint) currentWaypoint = (currentWaypoint + 1) % patrolPath.WaypointCount;
+      if (reachedCurrentCheckpoint && !pausePatrolIsActive) StartCoroutine(PausePatrol());
+
       return patrolPath.GetCurrentWaypoint(currentWaypoint);
+    }
+
+
+    IEnumerator PausePatrol()
+    {
+      pausePatrolIsActive = true;
+      yield return new WaitForSeconds(checkpointDwellTime);
+      currentWaypoint = (currentWaypoint + 1) % patrolPath.WaypointCount;
+      pausePatrolIsActive = false;
     }
 
     private void SuspicionBehaviour()
@@ -81,6 +96,7 @@ namespace RPG.Control
     private void AttackBehaviour()
     {
       fighter.SetCombatTarget(player);
+      mover.SetMovementSpeed(chaseSpeed);
     }
 
     private bool CheckForAttackabelPlayer()
