@@ -28,5 +28,11 @@ namespace RPG.Combat
         PlayAttackAnimation();
       }
     }
+
+    public override void Cancel()
+    {
+      base.Cancel();
+      mover.Cancel();
+    }
   }
 }

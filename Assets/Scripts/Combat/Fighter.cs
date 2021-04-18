@@ -32,10 +32,11 @@ namespace RPG.Combat
       animator.ResetTrigger("cancelAttack");
     }
 
-    public void Cancel()
+    public virtual void Cancel()
     {
       animator.SetTrigger("cancelAttack");
       target = null;
+      
     }
 
     protected virtual void Attack()
