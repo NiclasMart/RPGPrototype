@@ -29,7 +29,7 @@ namespace RPG.SceneManagement
       if (conectedPortal == null)
       {
         Debug.LogError("Can't find portal index within scene. Please try to ensure that all portal indicies are set up correctly!");
-        yield return null;
+        yield break; 
       }
       UpdatePlayerSpawn(conectedPortal);
 
