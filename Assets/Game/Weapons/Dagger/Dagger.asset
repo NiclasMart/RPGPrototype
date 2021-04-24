@@ -17,3 +17,4 @@ MonoBehaviour:
   weaponDamage: 10
   weaponRange: 1.2
   weaponAttackSpeed: 1.8
+  isRightHanded: 0

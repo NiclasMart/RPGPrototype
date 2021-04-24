@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b07d677b7e7874cbc60e35110b2d92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  attackRange: 1
-  timeBetweenAttacks: 1.5
-  weapon: {fileID: 0}
   rightWeaponHolder: {fileID: 7316862318045654546}
+  leftWeaponHolder: {fileID: 7316862318045580922}
+  defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
+  currentWeapon: {fileID: 0}
 --- !u!114 &5313586947649363864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +169,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &7316862318045580922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 7316862318045456278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7316862318045654546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}

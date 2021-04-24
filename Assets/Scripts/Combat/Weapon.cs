@@ -12,15 +12,18 @@ namespace RPG.Combat
     [SerializeField] float weaponDamage;
     [SerializeField] float weaponRange;
     [SerializeField, Min(0.1f)] float weaponAttackSpeed;
+    [SerializeField] bool isRightHanded = true;
 
     public float Damage { get => weaponDamage; }
     public float AttackRange { get => weaponRange; }
     public float AttackSpeed { get => weaponAttackSpeed; }
 
-    public Weapon Equip(Transform handTransform, Animator animator)
+    public Weapon Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
+      Transform handTransform = isRightHanded ? rightHand : leftHand;
       Spawn(handTransform);
-      if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
+
+     if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
       return this;
     }
 

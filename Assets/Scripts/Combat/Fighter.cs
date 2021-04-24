@@ -8,13 +8,14 @@ namespace RPG.Combat
   public class Fighter : MonoBehaviour, IAction
   {
     [SerializeField] protected Transform rightWeaponHolder;
+    [SerializeField] protected Transform leftWeaponHolder;
     [SerializeField] protected Weapon defaultWeapon;
-    [SerializeField] protected Weapon currentWeapon = null;
-
 
     protected Transform target;
     protected ActionScheduler scheduler;
     protected Animator animator;
+
+    protected Weapon currentWeapon = null;
 
     protected virtual void Start()
     {
@@ -81,7 +82,7 @@ namespace RPG.Combat
     public void EquipWeapon(Weapon weapon)
     {
       Animator animator = GetComponent<Animator>();
-      currentWeapon = weapon.Equip(rightWeaponHolder, animator);
+      currentWeapon = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
 
     }
 
