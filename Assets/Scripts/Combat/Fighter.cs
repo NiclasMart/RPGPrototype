@@ -7,10 +7,8 @@ namespace RPG.Combat
   [RequireComponent(typeof(ActionScheduler))]
   public class Fighter : MonoBehaviour, IAction
   {
-    [SerializeField] protected float damage;
-    [SerializeField] protected float attackRange = 1f;
-    [SerializeField] protected float timeBetweenAttacks = 1f;
     [SerializeField] protected Transform rightWeaponHolder;
+    [SerializeField] protected Weapon defaultWeapon;
     [SerializeField] protected Weapon weapon = null;
 
 
@@ -57,7 +55,7 @@ namespace RPG.Combat
 
     protected bool TargetInRange()
     {
-      return Vector3.Distance(transform.position, target.transform.position) < attackRange;
+      return Vector3.Distance(transform.position, target.transform.position) < weapon.AttackRange;
     }
 
     protected void AdjustAttackDirection()
@@ -69,7 +67,7 @@ namespace RPG.Combat
     float lastAttackTime = -Mathf.Infinity;
     protected void PlayAttackAnimation()
     {
-      if (lastAttackTime + timeBetweenAttacks <= Time.time)
+      if (lastAttackTime + 1 / weapon.AttackSpeed <= Time.time)
       {
         //switch between thw different attack animations
         animator.SetFloat("attackState", attackState);
@@ -82,8 +80,8 @@ namespace RPG.Combat
 
     private void EquipWeapon()
     {
-      if (weapon == null) return;
       Animator animator = GetComponent<Animator>();
+      if (weapon == null) weapon = defaultWeapon;
       weapon.Spawn(rightWeaponHolder, animator);
     }
 
@@ -92,7 +90,7 @@ namespace RPG.Combat
     {
       if (target)
       {
-        bool targetDies = target.GetComponent<Health>().ApplyDamage(damage);
+        bool targetDies = target.GetComponent<Health>().ApplyDamage(weapon.Damage);
         if (targetDies) Cancel();
         print("do damage");
       }
