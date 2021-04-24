@@ -15,6 +15,8 @@ MonoBehaviour:
   damage: 10
   attackRange: 1
   timeBetweenAttacks: 1.5
+  weapon: {fileID: 0}
+  rightWeaponHolder: {fileID: 7316862318045654546}
 --- !u!114 &5313586947649363864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +170,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &7316862318045654546 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+  m_PrefabInstance: {fileID: 7316862318045456278}
+  m_PrefabAsset: {fileID: 0}

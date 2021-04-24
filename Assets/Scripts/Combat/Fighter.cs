@@ -1,5 +1,6 @@
 using UnityEngine;
 using RPG.Core;
+using System;
 
 namespace RPG.Combat
 {
@@ -9,6 +10,8 @@ namespace RPG.Combat
     [SerializeField] protected float damage;
     [SerializeField] protected float attackRange = 1f;
     [SerializeField] protected float timeBetweenAttacks = 1f;
+    [SerializeField] protected GameObject weapon = null;
+    [SerializeField] protected Transform rightWeaponHolder;
 
     protected Transform target;
     protected ActionScheduler scheduler;
@@ -18,6 +21,8 @@ namespace RPG.Combat
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
+
+      EquipWeapon();
     }
 
     protected virtual void Update()
@@ -36,7 +41,7 @@ namespace RPG.Combat
     {
       animator.SetTrigger("cancelAttack");
       target = null;
-      
+
     }
 
     protected virtual void Attack()
@@ -72,6 +77,13 @@ namespace RPG.Combat
         animator.SetTrigger("attack");
         lastAttackTime = Time.time;
       }
+    }
+
+    private void EquipWeapon()
+    {
+      if (weapon == null) return;
+
+      Instantiate(weapon, rightWeaponHolder);
     }
 
     //animation event (called from animator)
