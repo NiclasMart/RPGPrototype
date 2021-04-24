@@ -17,10 +17,16 @@ namespace RPG.Combat
     public float AttackRange { get => weaponRange; }
     public float AttackSpeed { get => weaponAttackSpeed; }
 
-    public void Spawn(Transform handTransform, Animator animator)
+    public Weapon Equip(Transform handTransform, Animator animator)
     {
-      Instantiate(weaponPrefab, handTransform);
-      animator.runtimeAnimatorController = animationOverride;
+      Spawn(handTransform);
+      if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
+      return this;
+    }
+
+    public void Spawn(Transform position)
+    {
+      if (weaponPrefab != null) Instantiate(weaponPrefab, position);
     }
 
 

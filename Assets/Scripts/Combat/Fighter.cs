@@ -9,7 +9,7 @@ namespace RPG.Combat
   {
     [SerializeField] protected Transform rightWeaponHolder;
     [SerializeField] protected Weapon defaultWeapon;
-    [SerializeField] protected Weapon weapon = null;
+    [SerializeField] protected Weapon currentWeapon = null;
 
 
     protected Transform target;
@@ -21,7 +21,7 @@ namespace RPG.Combat
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
 
-      EquipWeapon();
+      EquipWeapon(defaultWeapon);
     }
 
     protected virtual void Update()
@@ -55,7 +55,7 @@ namespace RPG.Combat
 
     protected bool TargetInRange()
     {
-      return Vector3.Distance(transform.position, target.transform.position) < weapon.AttackRange;
+      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.AttackRange;
     }
 
     protected void AdjustAttackDirection()
@@ -67,7 +67,7 @@ namespace RPG.Combat
     float lastAttackTime = -Mathf.Infinity;
     protected void PlayAttackAnimation()
     {
-      if (lastAttackTime + 1 / weapon.AttackSpeed <= Time.time)
+      if (lastAttackTime + 1 / currentWeapon.AttackSpeed <= Time.time)
       {
         //switch between thw different attack animations
         animator.SetFloat("attackState", attackState);
@@ -78,11 +78,11 @@ namespace RPG.Combat
       }
     }
 
-    private void EquipWeapon()
+    public void EquipWeapon(Weapon weapon)
     {
       Animator animator = GetComponent<Animator>();
-      if (weapon == null) weapon = defaultWeapon;
-      weapon.Spawn(rightWeaponHolder, animator);
+      currentWeapon = weapon.Equip(rightWeaponHolder, animator);
+
     }
 
     //animation event (called from animator)
@@ -90,7 +90,7 @@ namespace RPG.Combat
     {
       if (target)
       {
-        bool targetDies = target.GetComponent<Health>().ApplyDamage(weapon.Damage);
+        bool targetDies = target.GetComponent<Health>().ApplyDamage(currentWeapon.Damage);
         if (targetDies) Cancel();
         print("do damage");
       }
