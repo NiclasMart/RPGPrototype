@@ -10,8 +10,9 @@ namespace RPG.Combat
     [SerializeField] protected float damage;
     [SerializeField] protected float attackRange = 1f;
     [SerializeField] protected float timeBetweenAttacks = 1f;
-    [SerializeField] protected GameObject weapon = null;
     [SerializeField] protected Transform rightWeaponHolder;
+    [SerializeField] protected Weapon weapon = null;
+
 
     protected Transform target;
     protected ActionScheduler scheduler;
@@ -82,8 +83,8 @@ namespace RPG.Combat
     private void EquipWeapon()
     {
       if (weapon == null) return;
-
-      Instantiate(weapon, rightWeaponHolder);
+      Animator animator = GetComponent<Animator>();
+      weapon.Spawn(rightWeaponHolder, animator);
     }
 
     //animation event (called from animator)

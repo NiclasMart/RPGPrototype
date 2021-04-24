@@ -3912,6 +3912,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 620621267}
     m_Modifications:
+    - target: {fileID: -2160973897161929420, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+    - target: {fileID: -2160973897161929420, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
+      propertyPath: animationOverride
+      value: 
+      objectReference: {fileID: 22100000, guid: af101b77cc5288b4e93ecabdb2184241, type: 2}
     - target: {fileID: 11518602590351123, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
       propertyPath: m_RootOrder
       value: 1
