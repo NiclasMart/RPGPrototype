@@ -1,3 +1,4 @@
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -15,7 +16,7 @@ namespace RPG.Combat
       return base.Equip(rightHand, leftHand, animator);
     }
 
-    public void LaunchProjectile(Transform target)
+    public void LaunchProjectile(Health target)
     {
       GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnLocation.position, Quaternion.identity);
       if (projectileInstance)

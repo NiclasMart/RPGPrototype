@@ -17,7 +17,7 @@ namespace RPG.Core
       animator = GetComponent<Animator>();
     }
 
-    public bool ApplyDamage(float damage)
+    public void ApplyDamage(float damage)
     {
       currentHealth = Mathf.Max(0, currentHealth - damage);
       if (currentHealth == 0 && !isDead)
@@ -25,7 +25,6 @@ namespace RPG.Core
         HandleDeath();
       }
       print("current Health: " + currentHealth);
-      return isDead;
     }
 
     private void HandleDeath()

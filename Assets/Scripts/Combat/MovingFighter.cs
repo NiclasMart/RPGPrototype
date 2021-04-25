@@ -24,8 +24,7 @@ namespace RPG.Combat
       else
       {
         mover.Cancel();
-        AdjustAttackDirection();
-        PlayAttackAnimation();
+        base.Attack();
       }
     }
 

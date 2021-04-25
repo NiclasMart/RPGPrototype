@@ -11,7 +11,7 @@ namespace RPG.Combat
     [SerializeField] protected Transform leftWeaponHolder;
     [SerializeField] protected Weapon defaultWeapon;
 
-    protected Transform target;
+    protected Health target;
     protected ActionScheduler scheduler;
     protected Animator animator;
 
@@ -27,13 +27,14 @@ namespace RPG.Combat
 
     protected virtual void Update()
     {
+      if (target.IsDead) Cancel();
       if (target) Attack();
     }
 
     public void SetCombatTarget(GameObject combatTarget)
     {
       scheduler.StartAction(this);
-      target = combatTarget.transform;
+      target = combatTarget.GetComponent<Health>();
       animator.ResetTrigger("cancelAttack");
     }
 
@@ -59,7 +60,7 @@ namespace RPG.Combat
     float lastAttackTime = -Mathf.Infinity;
     private bool CanAttack()
     {
-      if (lastAttackTime + 1 / currentWeapon.AttackSpeed <= Time.time)
+      if (lastAttackTime + (1f / currentWeapon.AttackSpeed) <= Time.time)
       {
         lastAttackTime = Time.time;
         return true;
@@ -84,7 +85,7 @@ namespace RPG.Combat
 
     protected void AdjustAttackDirection()
     {
-      transform.LookAt(target, Vector3.up);
+      transform.LookAt(target.transform, Vector3.up);
     }
 
     public void EquipWeapon(Weapon weapon)
@@ -97,22 +98,23 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Hit()
     {
-      if (target)
+      if (target == null) return;
+
+      if (currentWeapon is RangedWeapon)
       {
-        bool targetDies = target.GetComponent<Health>().ApplyDamage(currentWeapon.Damage);
-        if (targetDies) Cancel();
-        print("do damage");
+        RangedWeapon weapon = (RangedWeapon)currentWeapon;
+        weapon.LaunchProjectile(target);
+      }
+      else
+      {
+        target.GetComponent<Health>().ApplyDamage(currentWeapon.Damage);
       }
     }
 
     //animation event (called from animator)
     void Shoot()
     {
-      if (currentWeapon is RangedWeapon)
-      {
-        RangedWeapon weapon = (RangedWeapon)currentWeapon;
-        weapon.LaunchProjectile(target);
-      }
+      Hit();
     }
   }
 }

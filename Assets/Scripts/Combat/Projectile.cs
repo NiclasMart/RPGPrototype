@@ -10,12 +10,12 @@ namespace RPG.Combat
   {
     [SerializeField] float speed = 1f;
 
-    Transform target;
+    Health target;
     float damage;
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
-    public void Initialize(Transform target, float damage)
+    public void Initialize(Health target, float damage)
     {
       this.target = target;
       this.damage = damage;
@@ -23,7 +23,7 @@ namespace RPG.Combat
 
     private void FixedUpdate()
     {
-      if (target == null) return;
+      if (target == null) Destroy(gameObject);
 
       transform.LookAt(AimLocation);
       transform.Translate(Vector3.forward * speed);
@@ -31,8 +31,7 @@ namespace RPG.Combat
 
     private void ApplyDamage()
     {
-      Health health = target.GetComponent<Health>();
-      if (health) health.ApplyDamage(damage);
+      target.ApplyDamage(damage);
       Destroy(gameObject);
     }
 
