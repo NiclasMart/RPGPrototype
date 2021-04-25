@@ -46,12 +46,25 @@ namespace RPG.Combat
 
     protected virtual void Attack()
     {
-      if (TargetInRange())
+      if (CanAttack() && TargetInRange())
       {
         PlayAttackAnimation();
         AdjustAttackDirection();
+
         /*damage is dealt by the animation Hit() event*/
+        /*projectile for Ranged Weapons is launched within the Shoot() event */
       }
+    }
+
+    float lastAttackTime = -Mathf.Infinity;
+    private bool CanAttack()
+    {
+      if (lastAttackTime + 1 / currentWeapon.AttackSpeed <= Time.time)
+      {
+        lastAttackTime = Time.time;
+        return true;
+      }
+      return false;
     }
 
     protected bool TargetInRange()
@@ -59,24 +72,19 @@ namespace RPG.Combat
       return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.AttackRange;
     }
 
+    float attackState = 0f;
+    protected void PlayAttackAnimation()
+    {
+      //switch between thw different attack animations
+      animator.SetFloat("attackState", attackState);
+      attackState = (++attackState % 2);
+      //set up animation
+      animator.SetTrigger("attack");
+    }
+
     protected void AdjustAttackDirection()
     {
       transform.LookAt(target, Vector3.up);
-    }
-
-    float attackState = 0f;
-    float lastAttackTime = -Mathf.Infinity;
-    protected void PlayAttackAnimation()
-    {
-      if (lastAttackTime + 1 / currentWeapon.AttackSpeed <= Time.time)
-      {
-        //switch between thw different attack animations
-        animator.SetFloat("attackState", attackState);
-        attackState = (++attackState % 2);
-        //set up animation
-        animator.SetTrigger("attack");
-        lastAttackTime = Time.time;
-      }
     }
 
     public void EquipWeapon(Weapon weapon)
@@ -94,6 +102,16 @@ namespace RPG.Combat
         bool targetDies = target.GetComponent<Health>().ApplyDamage(currentWeapon.Damage);
         if (targetDies) Cancel();
         print("do damage");
+      }
+    }
+
+    //animation event (called from animator)
+    void Shoot()
+    {
+      if (currentWeapon is RangedWeapon)
+      {
+        RangedWeapon weapon = (RangedWeapon)currentWeapon;
+        weapon.LaunchProjectile(target);
       }
     }
   }
