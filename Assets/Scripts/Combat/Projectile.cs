@@ -10,6 +10,7 @@ namespace RPG.Combat
   {
     [SerializeField] float speed = 1f;
     [SerializeField] float destroyDelay = 0.1f;
+    [SerializeField] bool homing = true;
 
     Health target;
     float damage;
@@ -20,17 +21,24 @@ namespace RPG.Combat
     {
       this.target = target;
       this.damage = damage;
+
+      transform.LookAt(AimLocation);
     }
 
     private void FixedUpdate()
     {
       if (target == null) Destroy(gameObject);
 
-      transform.LookAt(AimLocation);
+      Move();
+    }
+
+    private void Move()
+    {
+      if (homing) transform.LookAt(AimLocation);
       transform.Translate(Vector3.forward * speed);
     }
 
-    private void ApplyDamage()
+    private void Impact()
     {
       target.ApplyDamage(damage);
       Destroy(gameObject, destroyDelay);
@@ -40,7 +48,7 @@ namespace RPG.Combat
     {
       if (other.gameObject == target.gameObject)
       {
-        ApplyDamage();
+        Impact();
       }
     }
   }

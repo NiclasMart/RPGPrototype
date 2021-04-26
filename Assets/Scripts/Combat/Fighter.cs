@@ -27,6 +27,8 @@ namespace RPG.Combat
 
     protected virtual void Update()
     {
+      if (target == null) return;
+
       if (target.IsDead) Cancel();
       if (target) Attack();
     }
@@ -106,7 +108,7 @@ namespace RPG.Combat
       if (currentWeapon is RangedWeapon)
       {
         RangedWeapon weapon = (RangedWeapon)currentWeapon;
-        weapon.LaunchProjectile(target);
+        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target);
       }
       else
       {
@@ -117,6 +119,7 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Shoot()
     {
+      print(transform.name + " shoots");
       Hit();
     }
   }

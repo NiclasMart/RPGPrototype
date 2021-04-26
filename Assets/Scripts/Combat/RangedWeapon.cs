@@ -8,17 +8,10 @@ namespace RPG.Combat
   {
     [SerializeField] GameObject projectilePrefab;
 
-    Transform projectileSpawnLocation;
-
-    public override GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
+    public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
     {
-      projectileSpawnLocation = isRightHanded ? rightHand : leftHand;
-      return base.Equip(rightHand, leftHand, animator);
-    }
-
-    public void LaunchProjectile(Health target)
-    {
-      GameObject projectileInstance = Instantiate(projectilePrefab, projectileSpawnLocation.position, Quaternion.identity);
+      Transform spawnLocation = SelectTransform(rightHand, leftHand);
+      GameObject projectileInstance = Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
       if (projectileInstance)
       {
         projectileInstance.GetComponent<Projectile>().Initialize(target, Damage);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 550740525230493281}
   - component: {fileID: 7194315378461159881}
   m_Layer: 0
-  m_Name: ArrowProjectile
+  m_Name: noramlArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   destroyDelay: 0.06
+  homing: 0
 --- !u!65 &7194315378461159881
 BoxCollider:
   m_ObjectHideFlags: 0

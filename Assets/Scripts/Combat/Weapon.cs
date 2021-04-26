@@ -21,8 +21,7 @@ namespace RPG.Combat
 
     public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
-      Transform handTransform = isRightHanded ? rightHand : leftHand;
-      GameObject spawnedWeapon = Spawn(handTransform);
+      GameObject spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
 
       if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
       return spawnedWeapon;
@@ -32,6 +31,11 @@ namespace RPG.Combat
     {
       if (weaponPrefab != null) return Instantiate(weaponPrefab, position);
       return null;
+    }
+
+    protected Transform SelectTransform(Transform rightHand, Transform leftHand)
+    {
+      return isRightHanded ? rightHand : leftHand;
     }
 
   }
