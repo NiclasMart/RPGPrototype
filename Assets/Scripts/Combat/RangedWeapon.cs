@@ -14,7 +14,7 @@ namespace RPG.Combat
       GameObject projectileInstance = Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
       if (projectileInstance)
       {
-        projectileInstance.GetComponent<Projectile>().Initialize(target, Damage);
+        projectileInstance.GetComponent<Projectile>().Initialize(target, Damage, AttackRange);
       }
     }
   }

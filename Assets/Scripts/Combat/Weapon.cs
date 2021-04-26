@@ -21,10 +21,22 @@ namespace RPG.Combat
 
     public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
+      OverrideAnimator(animator);
       GameObject spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
-
-      if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
       return spawnedWeapon;
+    }
+
+    private void OverrideAnimator(Animator animator)
+    {
+      if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
+      else
+      {
+        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+        if (overrideController != null)
+        {
+          animator.runtimeAnimatorController = animationOverride.runtimeAnimatorController;
+        }
+      }
     }
 
     public GameObject Spawn(Transform position)
