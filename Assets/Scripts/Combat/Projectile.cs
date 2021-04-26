@@ -48,7 +48,7 @@ namespace RPG.Combat
     {
       if (other.gameObject == target.gameObject)
       {
-        Impact();
+        if (!target.IsDead) Impact();
       }
     }
   }

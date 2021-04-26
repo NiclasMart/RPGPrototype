@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   destroyDelay: 0.06
-  homing: 0
+  homing: 1
 --- !u!65 &7194315378461159881
 BoxCollider:
   m_ObjectHideFlags: 0
