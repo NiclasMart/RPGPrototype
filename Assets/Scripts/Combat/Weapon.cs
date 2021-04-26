@@ -12,6 +12,7 @@ namespace RPG.Combat
     [SerializeField] float weaponDamage;
     [SerializeField] float weaponRange;
     [SerializeField, Min(0.1f)] float weaponAttackSpeed;
+    [SerializeField] DamageClass damageType;
     [SerializeField] protected bool isRightHanded = true;
 
     public float Damage { get => weaponDamage; }
