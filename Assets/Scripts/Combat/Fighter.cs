@@ -88,10 +88,13 @@ namespace RPG.Combat
       transform.LookAt(target.transform, Vector3.up);
     }
 
+    GameObject weaponReference;
     public void EquipWeapon(Weapon weapon)
     {
+      if (weaponReference) Destroy(weaponReference);
       Animator animator = GetComponent<Animator>();
-      currentWeapon = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+      weaponReference = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+      currentWeapon = weapon;
 
     }
 

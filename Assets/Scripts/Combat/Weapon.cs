@@ -19,18 +19,19 @@ namespace RPG.Combat
     public float AttackRange { get => weaponRange; }
     public float AttackSpeed { get => weaponAttackSpeed; }
 
-    public virtual Weapon Equip(Transform rightHand, Transform leftHand, Animator animator)
+    public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
       Transform handTransform = isRightHanded ? rightHand : leftHand;
-      Spawn(handTransform);
+      GameObject spawnedWeapon = Spawn(handTransform);
 
       if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
-      return this;
+      return spawnedWeapon;
     }
 
-    public void Spawn(Transform position)
+    public GameObject Spawn(Transform position)
     {
-      if (weaponPrefab != null) Instantiate(weaponPrefab, position);
+      if (weaponPrefab != null) return Instantiate(weaponPrefab, position);
+      return null;
     }
 
   }

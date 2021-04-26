@@ -10,7 +10,7 @@ namespace RPG.Combat
 
     Transform projectileSpawnLocation;
 
-    public override Weapon Equip(Transform rightHand, Transform leftHand, Animator animator)
+    public override GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
       projectileSpawnLocation = isRightHanded ? rightHand : leftHand;
       return base.Equip(rightHand, leftHand, animator);
