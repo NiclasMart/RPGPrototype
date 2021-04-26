@@ -15,7 +15,6 @@ MonoBehaviour:
   rightWeaponHolder: {fileID: 7316862318045654546}
   leftWeaponHolder: {fileID: 7316862318045580922}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
-  currentWeapon: {fileID: 0}
 --- !u!114 &5313586947649363864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,6 +34,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: startHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 5729229490022426749, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Radius
       value: 0.25
