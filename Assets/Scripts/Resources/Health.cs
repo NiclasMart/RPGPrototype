@@ -1,11 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+using RPG.Core;
+using RPG.Stats;
 
-namespace RPG.Core
+namespace RPG.Resources
 {
   public class Health : MonoBehaviour
   {
-    [SerializeField] float startHealth = 100f;
+    BaseStats stats;
     Animator animator;
     float currentHealth;
     bool isDead = false;
@@ -13,8 +15,9 @@ namespace RPG.Core
 
     private void Start()
     {
-      currentHealth = startHealth;
       animator = GetComponent<Animator>();
+      stats = GetComponent<BaseStats>();
+      currentHealth = stats.GetHealth();
     }
 
     public void ApplyDamage(float damage)

@@ -1,6 +1,6 @@
 using UnityEngine;
 using RPG.Core;
-using System;
+using RPG.Resources;
 
 namespace RPG.Combat
 {

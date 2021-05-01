@@ -51,7 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  charakterClass: 0
+  charakterClass: 1
+  progressionSet: {fileID: 11400000, guid: bf9a9bcb3c25ff246948e7fac1f25fdf, type: 2}
 --- !u!114 &8381183209122371111
 MonoBehaviour:
   m_ObjectHideFlags: 0
