@@ -14,8 +14,9 @@ namespace RPG.Combat
     protected Health target;
     protected ActionScheduler scheduler;
     protected Animator animator;
-
     protected Weapon currentWeapon = null;
+
+    public bool HasTarget => target != null;
 
     protected virtual void Start()
     {

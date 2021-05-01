@@ -1,49 +1,57 @@
-﻿using RPG.Core;
+using System;
 using RPG.Resources;
 using RPG.Stats;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace RPG.Display
 {
   public class HealthBar : MonoBehaviour
   {
-    [SerializeField] Slider slider;
-    [SerializeField] Image fill;
-
-    [SerializeField] TextMeshProUGUI currentHealth;
+    [SerializeField] protected Slider slider;
+    [SerializeField] protected Image fill;
+    [SerializeField] protected TextMeshProUGUI currentHealth;
     [SerializeField] TextMeshProUGUI maxHealth;
 
-    BaseStats stats;
-    Health health;
+    [SerializeField] protected Health health;
+    protected BaseStats stats;
 
     private void Start()
     {
-
-      health = PlayerInfo.GetPlayer().GetComponent<Health>();
-      stats = PlayerInfo.GetPlayer().GetComponent<BaseStats>();
-      InitializeHealthBar();
+      if (health) InitializeHealthBar();
+      else gameObject.SetActive(false);
     }
 
     private void Update()
     {
-      UpdateHealthDisplay();
+      if (health) UpdateHealthDisplay();
+    }
+
+    public void SetHealthDisplay(Health health, bool show)
+    {
+      gameObject.SetActive(show);
+      this.health = health;
+
+      if (!health) return;
+      InitializeHealthBar();
     }
 
     private void InitializeHealthBar()
     {
+      stats = health.gameObject.GetComponent<BaseStats>();
       float baseHealth = stats.GetHealth();
       slider.maxValue = baseHealth;
       slider.value = baseHealth;
-      maxHealth.text = Mathf.Floor(baseHealth).ToString();
+      if (maxHealth) maxHealth.text = Mathf.Floor(baseHealth).ToString();
     }
 
-    void UpdateHealthDisplay()
+    protected void UpdateHealthDisplay()
     {
       slider.value = health.CurrentHealth;
       currentHealth.text = Mathf.Floor(health.CurrentHealth).ToString();
     }
-  }
 
+
+  }
 }
