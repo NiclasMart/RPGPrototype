@@ -12,6 +12,7 @@ namespace RPG.Resources
     float currentHealth;
     bool isDead = false;
     public bool IsDead => isDead;
+    public float CurrentHealth => currentHealth;
 
     private void Start()
     {
