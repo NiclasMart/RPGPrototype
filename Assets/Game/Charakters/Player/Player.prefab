@@ -27,6 +27,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862371ee488408b47bfacfd7f62c3104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLifeDisplay: {fileID: 0}
+--- !u!114 &2328792153315349975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4ef0832395afd4a8e2d6e60c09459e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experienceMuliplier: 0.87
 --- !u!1001 &6040211945933950982
 PrefabInstance:
   m_ObjectHideFlags: 0

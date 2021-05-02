@@ -10,14 +10,16 @@ namespace RPG.Combat
     [SerializeField] bool homing = true;
     float maxTravelDistance;
 
+    GameObject source;
     Health target;
     float damage;
     Vector3 startLocation;
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
-    public void Initialize(Health target, float damage, float maxTravelDistance)
+    public void Initialize(Health target, GameObject source, float damage, float maxTravelDistance)
     {
+      this.source = source;
       this.target = target;
       this.damage = damage;
       this.maxTravelDistance = maxTravelDistance;
@@ -47,7 +49,7 @@ namespace RPG.Combat
 
     private void Impact()
     {
-      target.ApplyDamage(damage);
+      target.ApplyDamage(source, damage);
       Destroy(gameObject, destroyDelay);
     }
 

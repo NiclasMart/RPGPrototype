@@ -14,29 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charakterProgression:
   - charakterClass: 0
-    health:
-    - 1000
-    - 1010
-    - 1020
-    damage:
-    - 10
-    - 12
-    - 14
+    health: e8030000f2030000fc030000
+    damage: 0a0000000c0000000e000000
+    experiencePoints: 140000002800000050000000
   - charakterClass: 1
-    health:
-    - 30
-    - 50
-    - 70
-    damage:
-    - 5
-    - 5
-    - 5
+    health: 1e0000003200000046000000
+    damage: 050000000500000005000000
+    experiencePoints: 0a0000000c0000000e000000
   - charakterClass: 2
-    health:
-    - 50
-    - 70
-    - 90
-    damage:
-    - 5
-    - 5
-    - 5
+    health: 32000000460000005a000000
+    damage: 050000000500000005000000
+    experiencePoints: 0f0000001100000013000000

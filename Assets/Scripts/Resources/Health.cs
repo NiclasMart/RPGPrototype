@@ -21,14 +21,24 @@ namespace RPG.Resources
       currentHealth = stats.GetHealth();
     }
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(GameObject instigator, float damage)
     {
       currentHealth = Mathf.Max(0, currentHealth - damage);
       if (currentHealth == 0 && !isDead)
       {
         HandleDeath();
+        EmitExperience(instigator);
       }
-      print("current Health: " + currentHealth);
+    }
+
+    private void EmitExperience(GameObject instigator)
+    {
+      Experience playerExperience = instigator.GetComponent<Experience>();
+      if (playerExperience)
+      {
+        BaseStats stats = GetComponent<BaseStats>();
+        playerExperience.AddExperience(stats.GetExperiencePoints(), stats.Level);
+      }
     }
 
     private void HandleDeath()

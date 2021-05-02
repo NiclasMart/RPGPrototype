@@ -1,6 +1,7 @@
 using UnityEngine;
 using RPG.Core;
 using RPG.Resources;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -109,11 +110,11 @@ namespace RPG.Combat
       if (currentWeapon is RangedWeapon)
       {
         RangedWeapon weapon = (RangedWeapon)currentWeapon;
-        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target);
+        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject);
       }
       else
       {
-        target.GetComponent<Health>().ApplyDamage(currentWeapon.Damage);
+        target.GetComponent<Health>().ApplyDamage(gameObject, currentWeapon.Damage);
       }
     }
 

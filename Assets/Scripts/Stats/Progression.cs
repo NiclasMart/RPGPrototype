@@ -10,18 +10,27 @@ namespace RPG.Stats
     class ProgressionCharacterClass
     {
       public CharakterClass charakterClass;
-      public float[] health;
-      public float[] damage;
+      public int[] health;
+      public int[] damage;
+      public int[] experiencePoints;
     }
 
     [SerializeField] ProgressionCharacterClass[] charakterProgression;
 
-    public float GetHealth(CharakterClass charakterClass, int level)
+    public int GetHealth(CharakterClass charakterClass, int level)
     {
       ProgressionCharacterClass classProgression = GetClassProgression(charakterClass);
       if (classProgression == null) return 0;
-      float health = classProgression.health[level - 1];
+      int health = classProgression.health[level - 1];
       return health;
+    }
+
+    public int GetExperiencePoints(CharakterClass charakterClass, int level)
+    {
+      ProgressionCharacterClass classProgression = GetClassProgression(charakterClass);
+      if (classProgression == null) return 0;
+      int xpPoints = classProgression.experiencePoints[level - 1];
+      return xpPoints;
     }
 
     private ProgressionCharacterClass GetClassProgression(CharakterClass charakterClass)
