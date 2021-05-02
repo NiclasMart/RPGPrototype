@@ -8,7 +8,7 @@ namespace RPG.Control
 {
   public class PlayerController : MonoBehaviour
   {
-    [SerializeField] HealthBar enemyLifeDisplay;
+    [SerializeField] HUDManager hudManager;
     Mover mover;
     Fighter fighter;
     Health health;
@@ -42,22 +42,17 @@ namespace RPG.Control
 
         if (combatTarget != lastTarget)
         {
-          ShowEnemyHealthBar(true, combatTarget);
+          hudManager.SetUpEnemyHealthBar(combatTarget);
           lastTarget = combatTarget;
         }
 
         return true;
       }
 
-      if (!fighter.HasTarget) ShowEnemyHealthBar(false, null);
+      if (!fighter.HasTarget) hudManager.HideEnemyHealthBar();
       lastTarget = combatTarget;
       return false;
 
-    }
-
-    private void ShowEnemyHealthBar(bool show, Health enemyHealthComponent)
-    {
-      enemyLifeDisplay.SetHealthDisplay(enemyHealthComponent, show);
     }
 
     private Health CheckForCombatTarget()
@@ -82,7 +77,7 @@ namespace RPG.Control
         if (Input.GetMouseButton(0))
         {
           mover.StartMoveAction(hit.point);
-          ShowEnemyHealthBar(false, null);
+          hudManager.HideEnemyHealthBar();
         }
         return true;
       }

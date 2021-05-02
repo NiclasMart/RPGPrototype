@@ -2,23 +2,28 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Stats;
+using RPG.Display;
 
 namespace RPG.Resources
 {
-  public class Health : MonoBehaviour
+  public class Health : MonoBehaviour, IDisplayable
   {
-    BaseStats stats;
+    [SerializeField] HUDManager hudManager;
     Animator animator;
+
+    float maxHealth;
     float currentHealth;
     bool isDead = false;
+
     public bool IsDead => isDead;
     public float CurrentHealth => currentHealth;
+    public float MaxHealth => maxHealth;
 
     private void Start()
     {
       animator = GetComponent<Animator>();
-      stats = GetComponent<BaseStats>();
-      currentHealth = stats.GetHealth();
+      currentHealth = maxHealth = GetComponent<BaseStats>().GetHealth();
+      if (hudManager != null) hudManager.SetUpPlayerHealthBar(this);
     }
 
     public void ApplyDamage(GameObject instigator, float damage)
@@ -52,6 +57,16 @@ namespace RPG.Resources
     private void DisableNavAgent()
     {
       if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = false;
+    }
+
+    public float GetCurrentValue()
+    {
+      return currentHealth;
+    }
+
+    public float GetMaxValue()
+    {
+      return maxHealth;
     }
   }
 }

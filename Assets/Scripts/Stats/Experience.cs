@@ -1,12 +1,20 @@
 using System;
+using RPG.Display;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-  public class Experience : MonoBehaviour
+  public class Experience : MonoBehaviour, IDisplayable
   {
     [SerializeField] float experienceMuliplier = 0.87f;
-    public float currentExperiencePoints;
+    float currentExperiencePoints;
+    float maxExperiencePoints;
+
+    private void Start()
+    {
+      FindObjectOfType<HUDManager>().SetUpExperienceBar(this);
+      maxExperiencePoints = GetComponent<BaseStats>().GetExperiencePoints();
+    }
 
     public void AddExperience(int baseXP, int enemyLevel)
     {
@@ -29,15 +37,25 @@ namespace RPG.Stats
           currentExperiencePoints = levelUpXP;
           return;
         }
-        currentExperiencePoints = 0;
         float remainingXP = newXPBalance - levelUpXP;
         CalculateNewXPBalance(stats, remainingXP);
       }
       else
       {
         currentExperiencePoints = newXPBalance;
+        maxExperiencePoints = stats.GetExperiencePoints();
         print("added xp: " + newXPBalance);
       }
+    }
+
+    public float GetCurrentValue()
+    {
+      return currentExperiencePoints;
+    }
+
+    public float GetMaxValue()
+    {
+      return maxExperiencePoints;
     }
   }
 }
