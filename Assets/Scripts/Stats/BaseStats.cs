@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
 {
   public class BaseStats : MonoBehaviour
   {
-    [SerializeField, Range(1, 99)] int level = 1;
+    [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
 
@@ -14,16 +12,19 @@ namespace RPG.Stats
 
     public int GetHealth()
     {
-      return progressionSet.GetHealth(charakterClass, level);
+      return (int)progressionSet.GetStat(Stat.HEALTH, charakterClass, level);
     }
 
-    public int GetExperiencePoints(){
-      return progressionSet.GetExperiencePoints(charakterClass, level);
+    public int GetExperiencePoints()
+    {
+      return (int)progressionSet.GetStat(Stat.EXPERIENCE, charakterClass, level);
     }
 
-    public bool LevelUp(){
+    public bool LevelUp()
+    {
       if (level == 100) return false;
       level++;
+      GetComponent<Health>().LevelUpHealth(this);
       return true;
     }
   }

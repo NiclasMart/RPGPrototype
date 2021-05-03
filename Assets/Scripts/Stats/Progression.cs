@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -10,36 +11,64 @@ namespace RPG.Stats
     class ProgressionCharacterClass
     {
       public CharakterClass charakterClass;
-      public int[] health;
-      public int[] damage;
-      public int[] experiencePoints;
+      public StatList[] stats;
+    }
+
+    [System.Serializable]
+    class StatList
+    {
+      public Stat stat;
+      public float[] values;
     }
 
     [SerializeField] ProgressionCharacterClass[] charakterProgression;
 
-    public int GetHealth(CharakterClass charakterClass, int level)
+    Dictionary<CharakterClass, Dictionary<Stat, float[]>> lookupTable = null;
+
+    public float GetStat(Stat type, CharakterClass charakterClass, int level)
     {
-      ProgressionCharacterClass classProgression = GetClassProgression(charakterClass);
-      if (classProgression == null) return 0;
-      int health = classProgression.health[level - 1];
-      return health;
+      BuildLookupTable();
+
+      Dictionary<Stat, float[]> statsLookup;
+      if (!lookupTable.TryGetValue(charakterClass, out statsLookup))
+      {
+        Debug.LogError("Can't find Progression for " + charakterClass);
+        return 0;
+      }
+
+      float[] valueLevels;
+      if (!statsLookup.TryGetValue(type, out valueLevels))
+      {
+        Debug.LogError("Can't find Stat " + type + " in progression for " + charakterClass);
+        return 0;
+      }
+
+      if (valueLevels.Length < level)
+      {
+        Debug.LogError("Level " + level + " " + type + " in progression for " + charakterClass + " is not implemented");
+        return 0;
+      }
+
+      return valueLevels[level - 1];
     }
 
-    public int GetExperiencePoints(CharakterClass charakterClass, int level)
+    private void BuildLookupTable()
     {
-      ProgressionCharacterClass classProgression = GetClassProgression(charakterClass);
-      if (classProgression == null) return 0;
-      int xpPoints = classProgression.experiencePoints[level - 1];
-      return xpPoints;
-    }
+      if (lookupTable != null) return;
 
-    private ProgressionCharacterClass GetClassProgression(CharakterClass charakterClass)
-    {
+      lookupTable = new Dictionary<CharakterClass, Dictionary<Stat, float[]>>();
+
       foreach (ProgressionCharacterClass charClass in charakterProgression)
       {
-        if (charClass.charakterClass == charakterClass) return charClass;
+        Dictionary<Stat, float[]> statTable = new Dictionary<Stat, float[]>();
+
+        foreach (StatList statList in charClass.stats)
+        {
+          statTable.Add(statList.stat, statList.values);
+        }
+        lookupTable.Add(charClass.charakterClass, statTable);
       }
-      return null;
+
     }
   }
 }

@@ -16,7 +16,7 @@ namespace RPG.Stats
       maxExperiencePoints = GetComponent<BaseStats>().GetExperiencePoints();
     }
 
-    public void AddExperience(int baseXP, int enemyLevel)
+    public void GainExperience(int baseXP, int enemyLevel)
     {
       BaseStats playerStats = GetComponent<BaseStats>();
       int levelDifferenceToEnemy = playerStats.Level - enemyLevel;
@@ -38,6 +38,7 @@ namespace RPG.Stats
           return;
         }
         float remainingXP = newXPBalance - levelUpXP;
+        currentExperiencePoints = 0;
         CalculateNewXPBalance(stats, remainingXP);
       }
       else

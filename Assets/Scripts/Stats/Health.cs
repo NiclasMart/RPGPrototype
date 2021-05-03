@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
-using RPG.Stats;
 using RPG.Display;
 
-namespace RPG.Resources
+namespace RPG.Stats
 {
   public class Health : MonoBehaviour, IDisplayable
   {
+    [SerializeField] float lvlUpHeal = 0.3f;
     [SerializeField] HUDManager hudManager;
     Animator animator;
 
@@ -36,13 +36,31 @@ namespace RPG.Resources
       }
     }
 
+    public void LevelUpHealth(BaseStats stats)
+    {
+      maxHealth = stats.GetHealth();
+      HealPercentage(lvlUpHeal);
+    }
+
+    public void HealAbsolut(int value)
+    {
+      value = Mathf.Abs(value);
+      currentHealth = Mathf.Min(maxHealth, currentHealth + value);
+    }
+
+    public void HealPercentage(float percent)
+    {
+      percent = Mathf.Abs(percent);
+      currentHealth = Mathf.Min(maxHealth, currentHealth += currentHealth * percent);
+    }
+
     private void EmitExperience(GameObject instigator)
     {
       Experience playerExperience = instigator.GetComponent<Experience>();
       if (playerExperience)
       {
         BaseStats stats = GetComponent<BaseStats>();
-        playerExperience.AddExperience(stats.GetExperiencePoints(), stats.Level);
+        playerExperience.GainExperience(stats.GetExperiencePoints(), stats.Level);
       }
     }
 
