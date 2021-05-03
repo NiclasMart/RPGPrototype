@@ -42,14 +42,14 @@ namespace RPG.Control
 
         if (combatTarget != lastTarget)
         {
-          hudManager.SetUpEnemyHealthBar(combatTarget);
+          hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<BaseStats>());
           lastTarget = combatTarget;
         }
 
         return true;
       }
 
-      if (!fighter.HasTarget) hudManager.HideEnemyHealthBar();
+      if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
       lastTarget = combatTarget;
       return false;
 
@@ -77,7 +77,7 @@ namespace RPG.Control
         if (Input.GetMouseButton(0))
         {
           mover.StartMoveAction(hit.point);
-          hudManager.HideEnemyHealthBar();
+          hudManager.SetUpEnemyDisplay(null, null);
         }
         return true;
       }

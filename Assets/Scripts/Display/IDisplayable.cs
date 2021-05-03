@@ -1,8 +1,8 @@
 namespace RPG.Display
 {
-    public interface IDisplayable 
-    {
-        float GetCurrentValue();
-        float GetMaxValue();
-    }
+  public interface IDisplayable
+  {
+    float GetCurrentValue();
+    float GetMaxValue();
+  }
 }

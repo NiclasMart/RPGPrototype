@@ -6,36 +6,35 @@ namespace RPG.Display
 {
   public class HUDManager : MonoBehaviour
   {
+    [Header("Player")]
     [SerializeField] ResourceBar playerLifeBar;
     [SerializeField] ResourceBar experienceBar;
+    [SerializeField] ValueDisplay playerLevel;
+
+    [Header("Enemy")]
     [SerializeField] ResourceBar enemyLifeBar;
-
-
-    private void Start()
-    {
-      enemyLifeBar.SetVisible(false);
-    }
+    [SerializeField] ValueDisplay enemyLevel;
 
     public void SetUpPlayerHealthBar(IDisplayable values)
     {
-      playerLifeBar.ConnectBar(values);
+      playerLifeBar.ConnectElement(values);
     }
 
     public void SetUpExperienceBar(IDisplayable values)
     {
-      experienceBar.ConnectBar(values);
+      experienceBar.ConnectElement(values);
     }
 
-    public void SetUpEnemyHealthBar(IDisplayable values)
+    public void SetUpPlayerLevelDisplay(IDisplayable value)
     {
-      enemyLifeBar.SetVisible(true);
-      enemyLifeBar.ConnectBar(values);
+      playerLevel.ConnectElement(value);
     }
 
-    public void HideEnemyHealthBar()
+    public void SetUpEnemyDisplay(IDisplayable health, IDisplayable level)
     {
-      enemyLifeBar.SetVisible(false);
-      enemyLifeBar.ConnectBar(null);
+      
+      enemyLifeBar.ConnectElement(health);
+      enemyLevel.ConnectElement(level);
     }
   }
 }

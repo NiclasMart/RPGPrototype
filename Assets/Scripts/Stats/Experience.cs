@@ -12,8 +12,8 @@ namespace RPG.Stats
 
     private void Start()
     {
+      maxExperiencePoints = GetComponent<BaseStats>().GetLevelupExperience();
       FindObjectOfType<HUDManager>().SetUpExperienceBar(this);
-      maxExperiencePoints = GetComponent<BaseStats>().GetExperiencePoints();
     }
 
     public void GainExperience(int baseXP, int enemyLevel)
@@ -27,7 +27,7 @@ namespace RPG.Stats
 
     private void CalculateNewXPBalance(BaseStats stats, float gaintXP)
     {
-      int levelUpXP = stats.GetExperiencePoints();
+      int levelUpXP = stats.GetLevelupExperience();
       float newXPBalance = currentExperiencePoints + gaintXP;
 
       if (newXPBalance >= levelUpXP)
@@ -44,7 +44,7 @@ namespace RPG.Stats
       else
       {
         currentExperiencePoints = newXPBalance;
-        maxExperiencePoints = stats.GetExperiencePoints();
+        maxExperiencePoints = stats.GetLevelupExperience();
         print("added xp: " + newXPBalance);
       }
     }

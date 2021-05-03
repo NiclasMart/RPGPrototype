@@ -25,27 +25,15 @@ namespace RPG.Stats
 
     Dictionary<CharakterClass, Dictionary<Stat, float[]>> lookupTable = null;
 
-    public float GetStat(Stat type, CharakterClass charakterClass, int level)
+    public float GetStat(Stat stat, CharakterClass charakterClass, int level)
     {
       BuildLookupTable();
 
-      Dictionary<Stat, float[]> statsLookup;
-      if (!lookupTable.TryGetValue(charakterClass, out statsLookup))
-      {
-        Debug.LogError("Can't find Progression for " + charakterClass);
-        return 0;
-      }
-
-      float[] valueLevels;
-      if (!statsLookup.TryGetValue(type, out valueLevels))
-      {
-        Debug.LogError("Can't find Stat " + type + " in progression for " + charakterClass);
-        return 0;
-      }
+      float[] valueLevels = lookupTable[charakterClass][stat]; 
 
       if (valueLevels.Length < level)
       {
-        Debug.LogError("Level " + level + " " + type + " in progression for " + charakterClass + " is not implemented");
+        Debug.LogError("Level " + level + " " + stat + " in progression for " + charakterClass + " is not implemented");
         return 0;
       }
 

@@ -23,7 +23,7 @@ namespace RPG.Stats
     {
       animator = GetComponent<Animator>();
       currentHealth = maxHealth = GetComponent<BaseStats>().GetHealth();
-      if (hudManager != null) hudManager.SetUpPlayerHealthBar(this);
+      if (hudManager) hudManager.SetUpPlayerHealthBar(this);
     }
 
     public void ApplyDamage(GameObject instigator, float damage)
@@ -60,7 +60,7 @@ namespace RPG.Stats
       if (playerExperience)
       {
         BaseStats stats = GetComponent<BaseStats>();
-        playerExperience.GainExperience(stats.GetExperiencePoints(), stats.Level);
+        playerExperience.GainExperience(stats.GetExperienceReward(), stats.Level);
       }
     }
 

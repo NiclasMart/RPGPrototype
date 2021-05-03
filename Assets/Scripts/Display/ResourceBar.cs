@@ -5,14 +5,12 @@ using UnityEngine.UI;
 
 namespace RPG.Display
 {
-  public class ResourceBar : MonoBehaviour
+  public class ResourceBar : UIElement
   {
     [SerializeField] protected Slider slider;
     [SerializeField] protected Image fill;
     [SerializeField] protected TextMeshProUGUI currentValueDisplay;
     [SerializeField] protected TextMeshProUGUI maxValueDisplay;
-
-    IDisplayable connectedValue = null;
 
     private void Update()
     {
@@ -23,16 +21,6 @@ namespace RPG.Display
     {
       SetFill(connectedValue.GetCurrentValue());
       SetMaxValue(connectedValue.GetMaxValue());
-    }
-
-    public void ConnectBar(IDisplayable value)
-    {
-      connectedValue = value;
-    }
-
-    public void SetVisible(bool visible)
-    {
-      gameObject.SetActive(visible);
     }
 
     protected void SetFill(float value)

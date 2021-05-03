@@ -1,23 +1,35 @@
+using RPG.Display;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-  public class BaseStats : MonoBehaviour
+  public class BaseStats : MonoBehaviour, IDisplayable
   {
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
+    [SerializeField] HUDManager hudManager;
 
     public int Level => level;
+
+    private void Start()
+    {
+      if (hudManager) hudManager.SetUpPlayerLevelDisplay(this);
+    }
 
     public int GetHealth()
     {
       return (int)progressionSet.GetStat(Stat.HEALTH, charakterClass, level);
     }
 
-    public int GetExperiencePoints()
+    public int GetExperienceReward()
     {
-      return (int)progressionSet.GetStat(Stat.EXPERIENCE, charakterClass, level);
+      return (int)progressionSet.GetStat(Stat.EXPERIENCE_REWARD, charakterClass, level);
+    }
+
+    public int GetLevelupExperience()
+    {
+      return (int)progressionSet.GetStat(Stat.LEVELUP_EXPERIENCE, charakterClass, level);
     }
 
     public bool LevelUp()
@@ -26,6 +38,16 @@ namespace RPG.Stats
       level++;
       GetComponent<Health>().LevelUpHealth(this);
       return true;
+    }
+
+    public float GetCurrentValue()
+    {
+      return level;
+    }
+
+    public float GetMaxValue()
+    {
+      return 100;
     }
   }
 }
