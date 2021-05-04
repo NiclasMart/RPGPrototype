@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Display;
+using System;
 
 namespace RPG.Stats
 {
   public class Health : MonoBehaviour, IDisplayable
   {
     [SerializeField] float lvlUpHeal = 0.3f;
-    [SerializeField] HUDManager hudManager;
     Animator animator;
 
     float maxHealth;
@@ -19,11 +19,13 @@ namespace RPG.Stats
     public float CurrentHealth => currentHealth;
     public float MaxHealth => maxHealth;
 
+    public ValueChangeEvent valueChange;
+
     private void Start()
     {
       animator = GetComponent<Animator>();
       currentHealth = maxHealth = GetComponent<BaseStats>().GetHealth();
-      if (hudManager) hudManager.SetUpPlayerHealthBar(this);
+      valueChange.Invoke(this);
     }
 
     public void ApplyDamage(GameObject instigator, float damage)
@@ -34,6 +36,7 @@ namespace RPG.Stats
         HandleDeath();
         EmitExperience(instigator);
       }
+      valueChange.Invoke(this);
     }
 
     public void LevelUpHealth(BaseStats stats)
@@ -46,12 +49,14 @@ namespace RPG.Stats
     {
       value = Mathf.Abs(value);
       currentHealth = Mathf.Min(maxHealth, currentHealth + value);
+      valueChange.Invoke(this);
     }
 
     public void HealPercentage(float percent)
     {
       percent = Mathf.Abs(percent);
       currentHealth = Mathf.Min(maxHealth, currentHealth += currentHealth * percent);
+      valueChange.Invoke(this);
     }
 
     private void EmitExperience(GameObject instigator)

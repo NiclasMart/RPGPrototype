@@ -10,10 +10,12 @@ namespace RPG.Stats
     float currentExperiencePoints;
     float maxExperiencePoints;
 
+    public ValueChangeEvent valueChange;
+
     private void Start()
     {
       maxExperiencePoints = GetComponent<BaseStats>().GetLevelupExperience();
-      FindObjectOfType<HUDManager>().SetUpExperienceBar(this);
+      valueChange.Invoke(this);
     }
 
     public void GainExperience(int baseXP, int enemyLevel)
@@ -23,6 +25,7 @@ namespace RPG.Stats
       float gainedExperience = baseXP * Mathf.Pow(experienceMuliplier, levelDifferenceToEnemy);
 
       CalculateNewXPBalance(playerStats, gainedExperience);
+      valueChange.Invoke(this);
     }
 
     private void CalculateNewXPBalance(BaseStats stats, float gaintXP)

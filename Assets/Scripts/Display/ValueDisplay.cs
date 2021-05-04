@@ -7,14 +7,12 @@ namespace RPG.Display
   public class ValueDisplay : UIElement
   {
     [SerializeField] TextMeshProUGUI valueDisplay;
-    private void Update()
-    {
-      if (connectedValue != null) UpdateValue();
-    }
 
-    private void UpdateValue()
+    public override void UpdateUI(IDisplayable value)
     {
-      valueDisplay.text = connectedValue.GetCurrentValue().ToString();
+      base.UpdateUI(value);
+      if (value == null) return;
+      valueDisplay.text = value.GetCurrentValue().ToString();
     }
   }
 }

@@ -12,15 +12,13 @@ namespace RPG.Display
     [SerializeField] protected TextMeshProUGUI currentValueDisplay;
     [SerializeField] protected TextMeshProUGUI maxValueDisplay;
 
-    private void Update()
+    public override void UpdateUI(IDisplayable value)
     {
-      if (connectedValue != null) UpdateBar();
-    }
+      base.UpdateUI(value);
+      if (value == null) return;
+      SetMaxValue(value.GetMaxValue());
+      SetFill(value.GetCurrentValue());
 
-    public virtual void UpdateBar()
-    {
-      SetFill(connectedValue.GetCurrentValue());
-      SetMaxValue(connectedValue.GetMaxValue());
     }
 
     protected void SetFill(float value)

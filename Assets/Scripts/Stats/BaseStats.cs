@@ -1,5 +1,6 @@
 using RPG.Display;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Stats
 {
@@ -8,13 +9,14 @@ namespace RPG.Stats
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
-    [SerializeField] HUDManager hudManager;
 
     public int Level => level;
 
+    public ValueChangeEvent valueChange;
+
     private void Start()
     {
-      if (hudManager) hudManager.SetUpPlayerLevelDisplay(this);
+      valueChange.Invoke(this);
     }
 
     public int GetHealth()
@@ -37,6 +39,7 @@ namespace RPG.Stats
       if (level == 100) return false;
       level++;
       GetComponent<Health>().LevelUpHealth(this);
+      valueChange.Invoke(this);
       return true;
     }
 
@@ -49,5 +52,6 @@ namespace RPG.Stats
     {
       return 100;
     }
+
   }
 }

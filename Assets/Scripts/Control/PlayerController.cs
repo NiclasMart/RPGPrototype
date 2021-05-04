@@ -8,7 +8,7 @@ namespace RPG.Control
 {
   public class PlayerController : MonoBehaviour
   {
-    [SerializeField] HUDManager hudManager;
+    [SerializeField] EnemyHUD hudManager;
     Mover mover;
     Fighter fighter;
     Health health;

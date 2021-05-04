@@ -4,16 +4,14 @@ namespace RPG.Display
 {
   public class UIElement : MonoBehaviour
   {
-    protected IDisplayable connectedValue = null;
-    public virtual void ConnectElement(IDisplayable value)
+    public virtual void UpdateUI(IDisplayable value)
     {
-      connectedValue = value;
-      SetVisible();
+      SetVisible(value);
     }
 
-    protected virtual void SetVisible()
+    public virtual void SetVisible(IDisplayable value)
     {
-      gameObject.SetActive(connectedValue != null);
+      gameObject.SetActive(value != null);
     }
   }
 }
