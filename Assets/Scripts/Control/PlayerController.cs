@@ -42,7 +42,7 @@ namespace RPG.Control
 
         if (combatTarget != lastTarget)
         {
-          hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<BaseStats>());
+          hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
           lastTarget = combatTarget;
         }
 

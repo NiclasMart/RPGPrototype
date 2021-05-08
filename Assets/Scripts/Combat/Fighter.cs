@@ -1,11 +1,12 @@
 using UnityEngine;
 using RPG.Core;
 using RPG.Stats;
+using System.Collections;
 
 namespace RPG.Combat
 {
   [RequireComponent(typeof(ActionScheduler))]
-  public class Fighter : MonoBehaviour, IAction
+  public class Fighter : MonoBehaviour, IAction, IStatModifier
   {
     [SerializeField] protected Transform rightWeaponHolder;
     [SerializeField] protected Transform leftWeaponHolder;
@@ -45,7 +46,6 @@ namespace RPG.Combat
     {
       animator.SetTrigger("cancelAttack");
       target = null;
-
     }
 
     protected virtual void Attack()
@@ -106,14 +106,15 @@ namespace RPG.Combat
     {
       if (target == null) return;
 
+      float damage = GetComponent<CharacterStats>().GetStat(Stat.DAMAGE);
       if (currentWeapon is RangedWeapon)
       {
         RangedWeapon weapon = (RangedWeapon)currentWeapon;
-        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject);
+        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject, damage);
       }
       else
       {
-        target.GetComponent<Health>().ApplyDamage(gameObject, currentWeapon.Damage);
+        target.GetComponent<Health>().ApplyDamage(gameObject, damage);
       }
     }
 
@@ -122,6 +123,14 @@ namespace RPG.Combat
     {
       print(transform.name + " shoots");
       Hit();
+    }
+
+    public IEnumerable GetAdditiveModifier(Stat stat)
+    {
+      if (stat == Stat.DAMAGE)
+      {
+        yield return currentWeapon.Damage;
+      }
     }
   }
 }

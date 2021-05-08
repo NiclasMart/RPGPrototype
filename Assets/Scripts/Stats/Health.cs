@@ -23,7 +23,7 @@ namespace RPG.Stats
     private void Start()
     {
       animator = GetComponent<Animator>();
-      currentHealth = maxHealth = GetComponent<BaseStats>().GetHealth();
+      currentHealth = maxHealth = GetComponent<CharacterStats>().GetStat(Stat.HEALTH);
       valueChange.Invoke(this);
     }
 
@@ -43,9 +43,9 @@ namespace RPG.Stats
       }
     }
 
-    public void LevelUpHealth(BaseStats stats)
+    public void LevelUpHealth(CharacterStats stats)
     {
-      maxHealth = stats.GetHealth();
+      maxHealth = stats.GetStat(Stat.HEALTH);
       HealPercentage(lvlUpHeal);
     }
 
@@ -68,8 +68,8 @@ namespace RPG.Stats
       Experience playerExperience = instigator.GetComponent<Experience>();
       if (playerExperience)
       {
-        BaseStats stats = GetComponent<BaseStats>();
-        playerExperience.GainExperience(stats.GetExperienceReward(), stats.Level);
+        CharacterStats stats = GetComponent<CharacterStats>();
+        playerExperience.GainExperience((int)stats.GetStat(Stat.EXPERIENCE_REWARD), stats.Level);
       }
     }
 

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   animationOverride: {fileID: 22100000, guid: af101b77cc5288b4e93ecabdb2184241, type: 2}
-  weaponDamage: 20
+  weaponDamage: 12
   weaponRange: 2
   weaponAttackSpeed: 0.75
+  damageType: {fileID: 0}
   isRightHanded: 1
