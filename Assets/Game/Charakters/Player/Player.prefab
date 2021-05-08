@@ -15,19 +15,6 @@ MonoBehaviour:
   rightWeaponHolder: {fileID: 7316862318045654546}
   leftWeaponHolder: {fileID: 7316862318045580922}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
---- !u!114 &5313586947649363864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2344567361568208010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 862371ee488408b47bfacfd7f62c3104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLifeDisplay: {fileID: 0}
 --- !u!114 &2328792153315349975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +28,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceMuliplier: 0.87
+  levelUpParticlePrefab: {fileID: 2769948509372914464, guid: 6f69198eb66969647af475dbfd6227b5, type: 3}
+  valueChange:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5313586947649363864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862371ee488408b47bfacfd7f62c3104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudManager: {fileID: 0}
 --- !u!1001 &6040211945933950982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,6 +107,10 @@ PrefabInstance:
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: useModifiers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: charakterClass

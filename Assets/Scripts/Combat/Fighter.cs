@@ -125,11 +125,19 @@ namespace RPG.Combat
       Hit();
     }
 
-    public IEnumerable GetAdditiveModifier(Stat stat)
+    public IEnumerable GetAdditiveModifiers(Stat stat)
     {
       if (stat == Stat.DAMAGE)
       {
         yield return currentWeapon.Damage;
+      }
+    }
+
+    public IEnumerable GetMultiplicativeModifiers(Stat stat)
+    {
+      if (stat == Stat.DAMAGE)
+      {
+        yield return currentWeapon.DamageMultiplier;
       }
     }
   }

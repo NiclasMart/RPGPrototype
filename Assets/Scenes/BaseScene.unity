@@ -4241,13 +4241,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1157395471639721620, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-      propertyPath: levelUpParticlePrefab
-      value: 
-      objectReference: {fileID: 2769948509372914464, guid: 6f69198eb66969647af475dbfd6227b5, type: 3}
     - target: {fileID: 1233020622933324676, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: level
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.x

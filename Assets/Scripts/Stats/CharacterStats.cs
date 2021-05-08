@@ -10,6 +10,7 @@ namespace RPG.Stats
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
+    [SerializeField] bool useModifiers = false;
 
     public int Level => level;
 
@@ -23,8 +24,9 @@ namespace RPG.Stats
     public float GetStat(Stat stat)
     {
       float baseStat = progressionSet.GetStat(stat, charakterClass, level);
-      float modifiedStat = CalculateModifiers(stat, baseStat);
-      return modifiedStat;
+      float multiplicativeModifiers = 0, additiveModifiers = 0;
+      if (useModifiers) GetModifiers(stat, out multiplicativeModifiers, out additiveModifiers);
+      return baseStat * (1 + multiplicativeModifiers) + additiveModifiers;
     }
 
     public bool LevelUp()
@@ -36,19 +38,23 @@ namespace RPG.Stats
       return true;
     }
 
-    static int counter = 0;
-    private float CalculateModifiers(Stat stat, float modifiedStat)
+    private void GetModifiers(Stat stat, out float multiplicativeModifiers, out float additiveMultipliers)
     {
+      float multModifier = 0, addModifier = 0; 
       foreach (IStatModifier provider in GetComponents<IStatModifier>())
       {
-        counter++;
-        foreach (float modifier in provider.GetAdditiveModifier(stat))
+        foreach (float modifier in provider.GetAdditiveModifiers(stat))
         {
-          modifiedStat += modifier;
+          addModifier += modifier;
+        }
+
+        foreach (float modifier in provider.GetMultiplicativeModifiers(stat))
+        {
+          multModifier += modifier;
         }
       }
-      print("Recalculate: " + counter);
-      return modifiedStat;
+      additiveMultipliers = addModifier;
+      multiplicativeModifiers = multModifier;
     }
 
     public float GetCurrentValue()

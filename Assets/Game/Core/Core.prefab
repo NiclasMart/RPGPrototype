@@ -906,7 +906,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3485343090790446139}
-  m_LocalRotation: {x: 0.50439805, y: 0.000000027652389, z: -0.000000016153185, w: 0.86347127}
+  m_LocalRotation: {x: 0.5043981, y: -0.000000010121479, z: 0.0000000059124807, w: 0.86347127}
   m_LocalPosition: {x: 4.24, y: 17.38, z: -19.779999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2044,15 +2044,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.50439805
+      value: 0.5043981
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000027652389
+      value: -0.000000010121479
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000016153185
+      value: 0.0000000059124807
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2467,6 +2467,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1041248077}
     - target: {fileID: 2328792153315349975, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
+      propertyPath: levelUpParticlePrefab
+      value: 
+      objectReference: {fileID: 2769948509372914464, guid: 6f69198eb66969647af475dbfd6227b5, type: 3}
+    - target: {fileID: 2328792153315349975, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
       propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2497,6 +2501,10 @@ PrefabInstance:
     - target: {fileID: 2344567361568208010, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396755759443792071, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
+      propertyPath: level
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2396755759443792071, guid: 5f7ef4ed4561c7f47a6862e4cd38f653, type: 3}
       propertyPath: hudManager

@@ -4,6 +4,7 @@ namespace RPG.Stats
 {
   public interface IStatModifier
   {
-    IEnumerable GetAdditiveModifier(Stat stat);
+    IEnumerable GetAdditiveModifiers(Stat stat);
+    IEnumerable GetMultiplicativeModifiers(Stat stat);
   }
 }

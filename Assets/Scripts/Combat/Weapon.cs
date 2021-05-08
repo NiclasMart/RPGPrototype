@@ -13,11 +13,13 @@ namespace RPG.Combat
     [SerializeField] float weaponRange;
     [SerializeField, Min(0.1f)] float weaponAttackSpeed;
     [SerializeField] DamageClass damageType;
+    [SerializeField] float damageMultiplier;
     [SerializeField] protected bool isRightHanded = true;
 
     public float Damage { get => weaponDamage; }
     public float AttackRange { get => weaponRange; }
     public float AttackSpeed { get => weaponAttackSpeed; }
+    public float DamageMultiplier { get => damageMultiplier; }
 
     public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {

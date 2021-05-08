@@ -18,4 +18,5 @@ MonoBehaviour:
   weaponRange: 2
   weaponAttackSpeed: 0.75
   damageType: {fileID: 0}
+  damageMultiplier: 0.1
   isRightHanded: 1
