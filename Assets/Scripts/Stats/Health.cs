@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Display;
-using System;
 
 namespace RPG.Stats
 {
@@ -31,12 +30,17 @@ namespace RPG.Stats
     public void ApplyDamage(GameObject instigator, float damage)
     {
       currentHealth = Mathf.Max(0, currentHealth - damage);
+      CheckForDeath(instigator);
+      valueChange.Invoke(this);
+    }
+
+    private void CheckForDeath(GameObject instigator)
+    {
       if (currentHealth == 0 && !isDead)
       {
         HandleDeath();
         EmitExperience(instigator);
       }
-      valueChange.Invoke(this);
     }
 
     public void LevelUpHealth(BaseStats stats)

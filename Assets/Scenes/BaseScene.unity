@@ -2662,17 +2662,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 496924, guid: 653c97bd88b4b084d87714542c43ee5a, type: 3}
   m_PrefabInstance: {fileID: 1104845492}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1162913521 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2009560946530798429, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-  m_PrefabInstance: {fileID: 3485343090397681994}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c804e7a79d7d6a468f5bc2b576c65d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1165325614 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6996082714510884474, guid: 84eb3986b1cc31240b62620dda0c5707, type: 3}
@@ -4248,37 +4237,33 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1233020622933324676, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+    - target: {fileID: 1157395471639721620, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: levelUpParticlePrefab
       value: 
-      objectReference: {fileID: 1162913521}
-    - target: {fileID: 1233020622933324676, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpdateUI
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2769948509372914464, guid: 6f69198eb66969647af475dbfd6227b5, type: 3}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5043981
+      value: 0.50439805
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010121479
+      value: 0.000000027652389
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000059124807
+      value: -0.000000016153185
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5043981
+      value: 0.50439805
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000010121479
+      value: 0.000000027652389
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000059124807
+      value: -0.000000016153185
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090866779288, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_Name
@@ -4336,10 +4321,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6140937821080941819, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54.69995
-      objectReference: {fileID: 0}
     - target: {fileID: 7616259835141721509, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4347,10 +4328,6 @@ PrefabInstance:
     - target: {fileID: 7616259835141721509, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8783086067019807963, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
-      propertyPath: enemyLifeDisplay
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}

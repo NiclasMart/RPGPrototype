@@ -1,6 +1,5 @@
 using RPG.Display;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace RPG.Stats
 {

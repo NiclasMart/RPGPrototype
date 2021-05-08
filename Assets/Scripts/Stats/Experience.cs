@@ -7,6 +7,7 @@ namespace RPG.Stats
   public class Experience : MonoBehaviour, IDisplayable
   {
     [SerializeField] float experienceMuliplier = 0.87f;
+    [SerializeField] GameObject levelUpParticlePrefab;
     float currentExperiencePoints;
     float maxExperiencePoints;
 
@@ -35,11 +36,13 @@ namespace RPG.Stats
 
       if (newXPBalance >= levelUpXP)
       {
-        if (!stats.LevelUp())
+        bool levelUpSuccessful = stats.LevelUp();
+        if (!levelUpSuccessful)
         {
           currentExperiencePoints = levelUpXP;
           return;
         }
+        Instantiate(levelUpParticlePrefab, transform.position, Quaternion.identity);
         float remainingXP = newXPBalance - levelUpXP;
         currentExperiencePoints = 0;
         CalculateNewXPBalance(stats, remainingXP);
