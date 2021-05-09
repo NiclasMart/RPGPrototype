@@ -14,7 +14,7 @@ namespace RPG.Control
     Health health;
     Camera cam;
 
-    private void Start()
+    private void Awake()
     {
       mover = GetComponent<Mover>();
       fighter = GetComponent<Fighter>();

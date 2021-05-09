@@ -20,9 +20,13 @@ namespace RPG.Stats
 
     public ValueChangeEvent valueChange;
 
-    private void Start()
+    private void Awake()
     {
       animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
       currentHealth = maxHealth = GetComponent<CharacterStats>().GetStat(Stat.HEALTH);
       valueChange.Invoke(this);
     }

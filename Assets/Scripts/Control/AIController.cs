@@ -32,10 +32,13 @@ namespace RPG.Control
     {
       fighter = GetComponent<Fighter>();
       mover = GetComponent<Mover>();
-      health = GetComponent<Health>();
-      player = GameObject.FindWithTag("Player");
+      health = GetComponent<Health>(); 
+    }
 
+    private void Start()
+    {
       guardPosition = transform.position;
+      player = PlayerInfo.GetPlayer();
       if (patrolPath != null) currentWaypoint = patrolPath.GetClosestWaypoint(transform.position);
     }
 

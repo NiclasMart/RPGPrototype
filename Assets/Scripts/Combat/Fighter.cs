@@ -19,11 +19,14 @@ namespace RPG.Combat
 
     public bool HasTarget => target != null;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
+    }
 
+    protected virtual void Start()
+    {
       EquipWeapon(defaultWeapon);
     }
 

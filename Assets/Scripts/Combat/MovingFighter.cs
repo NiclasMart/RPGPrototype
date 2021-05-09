@@ -8,9 +8,9 @@ namespace RPG.Combat
   {
     Mover mover;
 
-    protected override void Start()
+    protected override void Awake()
     {
-      base.Start();
+      base.Awake();
       mover = GetComponent<Mover>();
     }
 
