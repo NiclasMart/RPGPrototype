@@ -1,12 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Core
 {
-
-
   public class PlayerCursor : MonoBehaviour
   {
     public enum CursorType
@@ -40,7 +35,6 @@ namespace RPG.Core
     private void Update()
     {
       CheckForTargetable();
-      //OutlineShader
     }
 
     public void SetCursor(CursorType type)
@@ -55,10 +49,10 @@ namespace RPG.Core
       {
         if (cursor.type == type) return cursor;
       }
-      return null;
+      return cursorMap[0];
     }
 
-
+    Targetable lastTarget;
     private void CheckForTargetable()
     {
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
@@ -69,11 +63,37 @@ namespace RPG.Core
         Targetable cursorTarget = hit.transform.GetComponent<Targetable>();
         if (cursorTarget != null)
         {
+          HandleOutline(cursorTarget);
           target = cursorTarget;
           return;
         }
       }
+      DisableOldOutline();
       target = null;
+    }
+
+    private void HandleOutline(Targetable cursorTarget)
+    {
+      if (lastTarget != cursorTarget)
+      {
+        DisableOldOutline();
+
+        //enable new outline
+        var outline = cursorTarget.GetComponent<Outline>();
+        if (outline) outline.enabled = true;
+
+        lastTarget = cursorTarget;
+      }
+    }
+
+    private void DisableOldOutline()
+    {
+      if (!lastTarget) return;
+
+      var oldOutline = lastTarget.GetComponent<Outline>();
+      if (oldOutline) oldOutline.enabled = false;
+
+      lastTarget = null;
     }
 
     private void CheckRaycastHitPoint(RaycastHit[] hits)

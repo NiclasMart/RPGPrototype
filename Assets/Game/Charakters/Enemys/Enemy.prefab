@@ -19,6 +19,18 @@ MonoBehaviour:
   patrolSpeed: 2
   checkpointTolerance: 1
   checkpointDwellTime: 3
+--- !u!114 &2884812285675634289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453889284370974033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8811d2787ae264a917455bcc0611ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3226477437299653647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,18 +46,24 @@ MonoBehaviour:
   rightWeaponHolder: {fileID: 5516469358062515668}
   leftWeaponHolder: {fileID: 5516469358062573014}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
---- !u!114 &2884812285675634289
+--- !u!114 &5715638290212016659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8453889284370974033}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8811d2787ae264a917455bcc0611ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &434747824163283421
 PrefabInstance:
   m_ObjectHideFlags: 0
