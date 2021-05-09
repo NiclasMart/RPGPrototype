@@ -34,7 +34,7 @@ MonoBehaviour:
   rightWeaponHolder: {fileID: 5516469358062515668}
   leftWeaponHolder: {fileID: 5516469358062573014}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
---- !u!114 &4193465121976451513
+--- !u!114 &2884812285675634289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8453889284370974033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4629606d99ef08d458af40493b55e63a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a8811d2787ae264a917455bcc0611ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &434747824163283421

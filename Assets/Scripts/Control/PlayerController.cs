@@ -3,6 +3,7 @@ using RPG.Movement;
 using RPG.Combat;
 using RPG.Stats;
 using RPG.Display;
+using RPG.Core;
 
 namespace RPG.Control
 {
@@ -13,16 +14,22 @@ namespace RPG.Control
     Fighter fighter;
     Health health;
     Camera cam;
+    PlayerCursor playerCursor;
 
     private void Awake()
     {
       mover = GetComponent<Mover>();
       fighter = GetComponent<Fighter>();
       health = GetComponent<Health>();
-      cam = Camera.main;
+      playerCursor = GetComponent<PlayerCursor>();
     }
 
-    private void Update()
+    private void Start()
+    {
+      cam = PlayerInfo.GetMainCamera();
+    }
+
+    private void LateUpdate()
     {
       if (health.IsDead) return;
 
@@ -34,9 +41,12 @@ namespace RPG.Control
     Health lastTarget;
     private bool UpdateCombat()
     {
-      Health combatTarget = CheckForCombatTarget();
+      Health combatTarget = null;
+      Targetable target = playerCursor.Target;
+      if (target) combatTarget = target.GetComponent<Health>();
 
-      if (combatTarget)
+
+      if (combatTarget && !combatTarget.IsDead)
       {
         if (Input.GetMouseButtonDown(0)) fighter.SetCombatTarget(combatTarget.gameObject);
 
@@ -45,7 +55,7 @@ namespace RPG.Control
           hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
           lastTarget = combatTarget;
         }
-
+        playerCursor.SetCursor(PlayerCursor.CursorType.COMBAT);
         return true;
       }
 
@@ -53,35 +63,21 @@ namespace RPG.Control
       lastTarget = combatTarget;
       return false;
 
-    }
 
-    private Health CheckForCombatTarget()
-    {
-      RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-      foreach (RaycastHit hit in hits)
-      {
-        Attackable target = hit.transform.GetComponent<Attackable>();
-        if (target && target.CanBeAttacked()) return target.GetComponent<Health>();
-        else continue;
-      }
-      return null;
     }
 
     private bool UpdateMovement()
     {
-      RaycastHit hit;
-      bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+      if (!playerCursor.hasRaycastHit) return false;
 
-      if (hasHit)
+      Vector3 movePosition = playerCursor.Position;
+      if (Input.GetMouseButton(0))
       {
-        if (Input.GetMouseButton(0))
-        {
-          mover.StartMoveAction(hit.point);
-          hudManager.SetUpEnemyDisplay(null, null);
-        }
-        return true;
+        mover.StartMoveAction(movePosition);
+        hudManager.SetUpEnemyDisplay(null, null);
       }
-      return false;
+      playerCursor.SetCursor(PlayerCursor.CursorType.MOVE);
+      return true;
     }
 
     private Ray GetMouseRay()

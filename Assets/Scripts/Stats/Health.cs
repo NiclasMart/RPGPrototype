@@ -35,9 +35,9 @@ namespace RPG.Stats
 
     private void Start()
     {
-        currentHealth.ForceInit();
-        maxHealth.ForceInit();
-        valueChange.Invoke(this);
+      currentHealth.ForceInit();
+      maxHealth.ForceInit();
+      valueChange.Invoke(this);
     }
 
     public void ApplyDamage(GameObject instigator, float damage)
@@ -90,13 +90,17 @@ namespace RPG.Stats
     {
       if (animator != null) animator.SetTrigger("die");
       GetComponent<ActionScheduler>().CancelCurrentAction();
-      DisableNavAgent();
+      DisableComponents();
       isDead = true;
     }
 
-    private void DisableNavAgent()
+    private void DisableComponents()
     {
       if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = false;
+      foreach (Collider col in GetComponents<Collider>())
+      {
+        col.enabled = false;
+      }
     }
 
     public float GetCurrentValue()
