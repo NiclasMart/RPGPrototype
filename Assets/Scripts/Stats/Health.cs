@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Display;
+using GameDevTV.Utils;
 
 namespace RPG.Stats
 {
@@ -10,37 +11,45 @@ namespace RPG.Stats
     [SerializeField] float lvlUpHeal = 0.3f;
     Animator animator;
 
-    float maxHealth;
-    float currentHealth;
+    LazyValue<float> maxHealth;
+    LazyValue<float> currentHealth;
     bool isDead = false;
 
     public bool IsDead => isDead;
-    public float CurrentHealth => currentHealth;
-    public float MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth.value;
+    public float MaxHealth => maxHealth.value;
 
     public ValueChangeEvent valueChange;
 
     private void Awake()
     {
       animator = GetComponent<Animator>();
+      maxHealth = new LazyValue<float>(GetInitializeHealth);
+      currentHealth = new LazyValue<float>(GetInitializeHealth);
+    }
+
+    private float GetInitializeHealth()
+    {
+      return GetComponent<CharacterStats>().GetStat(Stat.HEALTH);
     }
 
     private void Start()
     {
-      currentHealth = maxHealth = GetComponent<CharacterStats>().GetStat(Stat.HEALTH);
-      valueChange.Invoke(this);
+        currentHealth.ForceInit();
+        maxHealth.ForceInit();
+        valueChange.Invoke(this);
     }
 
     public void ApplyDamage(GameObject instigator, float damage)
     {
-      currentHealth = Mathf.Max(0, currentHealth - damage);
+      currentHealth.value = Mathf.Max(0, currentHealth.value - damage);
       CheckForDeath(instigator);
       valueChange.Invoke(this);
     }
 
     private void CheckForDeath(GameObject instigator)
     {
-      if (currentHealth == 0 && !isDead)
+      if (currentHealth.value == 0 && !isDead)
       {
         HandleDeath();
         EmitExperience(instigator);
@@ -49,21 +58,21 @@ namespace RPG.Stats
 
     public void LevelUpHealth(CharacterStats stats)
     {
-      maxHealth = stats.GetStat(Stat.HEALTH);
+      maxHealth.value = stats.GetStat(Stat.HEALTH);
       HealPercentage(lvlUpHeal);
     }
 
     public void HealAbsolut(int value)
     {
       value = Mathf.Abs(value);
-      currentHealth = Mathf.Min(maxHealth, currentHealth + value);
+      currentHealth.value = Mathf.Min(maxHealth.value, currentHealth.value + value);
       valueChange.Invoke(this);
     }
 
     public void HealPercentage(float percent)
     {
       percent = Mathf.Abs(percent);
-      currentHealth = Mathf.Min(maxHealth, currentHealth += currentHealth * percent);
+      currentHealth.value = Mathf.Min(maxHealth.value, currentHealth.value += currentHealth.value * percent);
       valueChange.Invoke(this);
     }
 
@@ -92,12 +101,12 @@ namespace RPG.Stats
 
     public float GetCurrentValue()
     {
-      return currentHealth;
+      return currentHealth.value;
     }
 
     public float GetMaxValue()
     {
-      return maxHealth;
+      return maxHealth.value;
     }
   }
 }

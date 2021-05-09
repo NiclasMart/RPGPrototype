@@ -37,7 +37,7 @@ namespace RPG.Control
 
     private void Start()
     {
-      guardPosition = transform.position;
+      guardPosition = transform.position; //potential canidate for lazy loading in awake
       player = PlayerInfo.GetPlayer();
       if (patrolPath != null) currentWaypoint = patrolPath.GetClosestWaypoint(transform.position);
     }

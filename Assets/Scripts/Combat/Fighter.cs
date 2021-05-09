@@ -2,6 +2,7 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Stats;
 using System.Collections;
+using GameDevTV.Utils;
 
 namespace RPG.Combat
 {
@@ -15,7 +16,7 @@ namespace RPG.Combat
     protected Health target;
     protected ActionScheduler scheduler;
     protected Animator animator;
-    protected Weapon currentWeapon = null;
+    protected LazyValue<Weapon> currentWeapon;
 
     public bool HasTarget => target != null;
 
@@ -23,11 +24,19 @@ namespace RPG.Combat
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
+
+      currentWeapon = new LazyValue<Weapon>(GetInitializeWeapon);
+    }
+
+    private Weapon GetInitializeWeapon()
+    {
+      SpawnWeapon(defaultWeapon);
+      return defaultWeapon;
     }
 
     protected virtual void Start()
     {
-      EquipWeapon(defaultWeapon);
+      currentWeapon.ForceInit();
     }
 
     protected virtual void Update()
@@ -66,7 +75,7 @@ namespace RPG.Combat
     float lastAttackTime = -Mathf.Infinity;
     private bool CanAttack()
     {
-      if (lastAttackTime + (1f / currentWeapon.AttackSpeed) <= Time.time)
+      if (lastAttackTime + (1f / currentWeapon.value.AttackSpeed) <= Time.time)
       {
         lastAttackTime = Time.time;
         return true;
@@ -76,7 +85,7 @@ namespace RPG.Combat
 
     protected bool TargetInRange()
     {
-      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.AttackRange;
+      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
     }
 
     float attackState = 0f;
@@ -94,14 +103,18 @@ namespace RPG.Combat
       transform.LookAt(target.transform, Vector3.up);
     }
 
-    GameObject weaponReference;
+    GameObject weaponReference = null;
     public void EquipWeapon(Weapon weapon)
     {
       if (weaponReference) Destroy(weaponReference);
+      SpawnWeapon(weapon);
+      currentWeapon.value = weapon;
+    }
+
+    private void SpawnWeapon(Weapon weapon)
+    {
       Animator animator = GetComponent<Animator>();
       weaponReference = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
-      currentWeapon = weapon;
-
     }
 
     //animation event (called from animator)
@@ -110,9 +123,9 @@ namespace RPG.Combat
       if (target == null) return;
 
       float damage = GetComponent<CharacterStats>().GetStat(Stat.DAMAGE);
-      if (currentWeapon is RangedWeapon)
+      if (currentWeapon.value is RangedWeapon)
       {
-        RangedWeapon weapon = (RangedWeapon)currentWeapon;
+        RangedWeapon weapon = (RangedWeapon)currentWeapon.value;
         weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject, damage);
       }
       else
@@ -132,7 +145,7 @@ namespace RPG.Combat
     {
       if (stat == Stat.DAMAGE)
       {
-        yield return currentWeapon.Damage;
+        yield return currentWeapon.value.Damage;
       }
     }
 
@@ -140,7 +153,7 @@ namespace RPG.Combat
     {
       if (stat == Stat.DAMAGE)
       {
-        yield return currentWeapon.DamageMultiplier;
+        yield return currentWeapon.value.DamageMultiplier;
       }
     }
   }

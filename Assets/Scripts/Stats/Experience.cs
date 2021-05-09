@@ -1,4 +1,5 @@
 using System;
+using GameDevTV.Utils;
 using RPG.Display;
 using UnityEngine;
 
@@ -9,13 +10,24 @@ namespace RPG.Stats
     [SerializeField] float experienceMuliplier = 0.87f;
     [SerializeField] GameObject levelUpParticlePrefab;
     float currentExperiencePoints;
-    float maxExperiencePoints;
+    LazyValue<float> maxExperiencePoints;
 
     public ValueChangeEvent valueChange;
 
+
+    private void Awake()
+    {
+      maxExperiencePoints = new LazyValue<float>(GetInitializeXP);
+    }
+
+    private float GetInitializeXP()
+    {
+      return GetComponent<CharacterStats>().GetStat(Stat.LEVELUP_EXPERIENCE);
+    }
+
     private void Start()
     {
-      maxExperiencePoints = GetComponent<CharacterStats>().GetStat(Stat.LEVELUP_EXPERIENCE);
+      maxExperiencePoints.ForceInit();
       valueChange.Invoke(this);
     }
 
@@ -50,7 +62,7 @@ namespace RPG.Stats
       else
       {
         currentExperiencePoints = newXPBalance;
-        maxExperiencePoints = stats.GetStat(Stat.LEVELUP_EXPERIENCE);
+        maxExperiencePoints.value = stats.GetStat(Stat.LEVELUP_EXPERIENCE);
         print("added xp: " + newXPBalance);
       }
     }
@@ -62,7 +74,7 @@ namespace RPG.Stats
 
     public float GetMaxValue()
     {
-      return maxExperiencePoints;
+      return maxExperiencePoints.value;
     }
   }
 }
