@@ -88,13 +88,8 @@ namespace RPG.Combat
       return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
     }
 
-    float attackState = 0f;
     protected void PlayAttackAnimation()
     {
-      //switch between thw different attack animations
-      animator.SetFloat("attackState", attackState);
-      attackState = (++attackState % 2);
-      //set up animation
       animator.SetTrigger("attack");
     }
 
