@@ -16,14 +16,14 @@ namespace RPG.Combat
 
     protected override void Attack()
     {
-      if (!TargetInRange())
-      {
-        mover.MoveTo(target.transform.position);
-      }
-      else
+      if (TargetInRange())
       {
         mover.Cancel();
         base.Attack();
+      }
+      else
+      {
+        mover.MoveTo(target.transform.position);
       }
     }
 

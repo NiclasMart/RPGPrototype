@@ -4,6 +4,7 @@ using RPG.Combat;
 using RPG.Stats;
 using RPG.Display;
 using RPG.Core;
+using RPG.Interaction;
 
 namespace RPG.Control
 {
@@ -12,21 +13,17 @@ namespace RPG.Control
     [SerializeField] EnemyHUD hudManager;
     Mover mover;
     Fighter fighter;
+    Interacter interacter;
     Health health;
-    Camera cam;
     PlayerCursor playerCursor;
 
     private void Awake()
     {
       mover = GetComponent<Mover>();
       fighter = GetComponent<Fighter>();
+      interacter = GetComponent<Interacter>();
       health = GetComponent<Health>();
       playerCursor = GetComponent<PlayerCursor>();
-    }
-
-    private void Start()
-    {
-      cam = PlayerInfo.GetMainCamera();
     }
 
     private void LateUpdate()
@@ -34,9 +31,11 @@ namespace RPG.Control
       if (health.IsDead) return;
 
       if (UpdateCombat()) return;
+      if (UpdateInteraction()) return;
       if (UpdateMovement()) return;
       print("Nothing to do!");
     }
+
 
     Health lastTarget;
     private bool UpdateCombat()
@@ -62,8 +61,20 @@ namespace RPG.Control
       if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
       lastTarget = combatTarget;
       return false;
+    }
 
+    private bool UpdateInteraction()
+    {
+      Pickup interactionTarget = null;
+      Targetable target = playerCursor.Target;
+      if (target) interactionTarget = target.GetComponent<Pickup>();
 
+      if (interactionTarget)
+      {
+        if (Input.GetMouseButtonDown(0)) interacter.SetInteractionTarget(target);
+        return true;
+      }
+      return false;
     }
 
     private bool UpdateMovement()
@@ -78,11 +89,6 @@ namespace RPG.Control
       }
       playerCursor.SetCursor(PlayerCursor.CursorType.MOVE);
       return true;
-    }
-
-    private Ray GetMouseRay()
-    {
-      return cam.ScreenPointToRay(Input.mousePosition);
     }
   }
 }
