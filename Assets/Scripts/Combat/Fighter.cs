@@ -3,27 +3,31 @@ using RPG.Core;
 using RPG.Stats;
 using System.Collections;
 using GameDevTV.Utils;
+using RPG.Movement;
 
 namespace RPG.Combat
 {
-  [RequireComponent(typeof(ActionScheduler))]
+  [RequireComponent(typeof(ActionScheduler), typeof(Mover))]
   public class Fighter : MonoBehaviour, IAction, IStatModifier
   {
-    [SerializeField] protected Transform rightWeaponHolder;
-    [SerializeField] protected Transform leftWeaponHolder;
-    [SerializeField] protected Weapon defaultWeapon;
+    [SerializeField] Transform rightWeaponHolder;
+    [SerializeField] Transform leftWeaponHolder;
+    [SerializeField] Weapon defaultWeapon;
 
-    protected Health target;
-    protected ActionScheduler scheduler;
-    protected Animator animator;
-    protected LazyValue<Weapon> currentWeapon;
+    Mover mover;
+    Health target;
+    ActionScheduler scheduler;
+    Animator animator;
+    LazyValue<Weapon> currentWeapon;
+    [HideInInspector] public bool currentlyAttacking = false;
 
     public bool HasTarget => target != null;
 
-    protected virtual void Awake()
+    void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
+      mover = GetComponent<Mover>();
 
       currentWeapon = new LazyValue<Weapon>(GetInitializeWeapon);
     }
@@ -34,66 +38,71 @@ namespace RPG.Combat
       return defaultWeapon;
     }
 
-    protected virtual void Start()
+    void Start()
     {
       currentWeapon.ForceInit();
     }
 
-    protected virtual void Update()
+    void Update()
     {
       if (target == null) return;
 
       if (target.IsDead) Cancel();
-      if (target) Attack();
+      if (target && !currentlyAttacking) Attack();
     }
 
     public void SetCombatTarget(GameObject combatTarget)
     {
       scheduler.StartAction(this);
       target = combatTarget.GetComponent<Health>();
-      animator.ResetTrigger("cancelAttack");
     }
 
     public virtual void Cancel()
     {
-      animator.SetTrigger("cancelAttack");
+      StopAttacking();
+      mover.Cancel();
       target = null;
     }
 
-    protected virtual void Attack()
+    void StopAttacking()
     {
-      if (CanAttack() && TargetInRange())
-      {
-        PlayAttackAnimation();
-        AdjustAttackDirection();
-
-        /*damage is dealt by the animation Hit() event*/
-        /*projectile for Ranged Weapons is launched within the Shoot() event */
-      }
+      animator.SetTrigger("cancelAttack");
     }
 
-    float lastAttackTime = -Mathf.Infinity;
-    private bool CanAttack()
+    void Attack()
     {
-      if (lastAttackTime + (1f / currentWeapon.value.AttackSpeed) <= Time.time)
+      if (TargetInRange())
       {
-        lastAttackTime = Time.time;
-        return true;
+        StartCoroutine(StartAttacking());
+        mover.Cancel();
       }
-      return false;
+      else
+      {
+        StopAttacking();
+        mover.MoveTo(target.transform.position);
+      }
+
+      /*damage is dealt by the animation Hit() event*/
+      /*projectile for Ranged Weapons is launched within the Shoot() event */
     }
 
-    protected bool TargetInRange()
+
+    IEnumerator StartAttacking()
+    {
+      currentlyAttacking = true;
+      animator.ResetTrigger("cancelAttack");
+      animator.SetTrigger("attack");
+      AdjustAttackDirection();
+      yield return new WaitForSeconds(1 / currentWeapon.value.AttackSpeed);
+      currentlyAttacking = false;
+    }
+
+    bool TargetInRange()
     {
       return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
     }
 
-    protected void PlayAttackAnimation()
-    {
-      animator.SetTrigger("attack");
-    }
-
-    protected void AdjustAttackDirection()
+    void AdjustAttackDirection()
     {
       transform.LookAt(target.transform, Vector3.up);
     }
@@ -125,6 +134,7 @@ namespace RPG.Combat
       }
       else
       {
+        if (!TargetInRange()) return;
         target.GetComponent<Health>().ApplyDamage(gameObject, damage);
       }
     }
@@ -132,7 +142,6 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Shoot()
     {
-      print(transform.name + " shoots");
       Hit();
     }
 
