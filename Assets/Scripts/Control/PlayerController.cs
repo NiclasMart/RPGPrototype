@@ -28,7 +28,12 @@ namespace RPG.Control
 
     private void LateUpdate()
     {
-      if (health.IsDead) return;
+      if (health.IsDead)
+      {
+        playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
+        playerCursor.active = false;
+        return;
+      }
 
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
@@ -72,6 +77,7 @@ namespace RPG.Control
       if (interactionTarget)
       {
         if (Input.GetMouseButtonDown(0)) interacter.SetInteractionTarget(target);
+        playerCursor.SetCursor(PlayerCursor.CursorType.INTERACT);
         return true;
       }
       return false;
@@ -87,7 +93,7 @@ namespace RPG.Control
         mover.StartMoveAction(movePosition);
         hudManager.SetUpEnemyDisplay(null, null);
       }
-      playerCursor.SetCursor(PlayerCursor.CursorType.MOVE);
+      playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
       return true;
     }
   }

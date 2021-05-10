@@ -8,7 +8,7 @@ namespace RPG.Core
     {
       COMBAT,
       INTERACT,
-      MOVE
+      STANDARD
     }
 
     [System.Serializable]
@@ -26,6 +26,7 @@ namespace RPG.Core
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
     [HideInInspector] public bool hasRaycastHit;
+    [HideInInspector] public bool active = true;
 
     private void Start()
     {
@@ -34,6 +35,12 @@ namespace RPG.Core
 
     private void Update()
     {
+      if (!active)
+      {
+        DisableOldOutline();
+        return;
+      }
+
       CheckForTargetable();
     }
 
@@ -56,20 +63,42 @@ namespace RPG.Core
     private void CheckForTargetable()
     {
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-      CheckRaycastHitPoint(hits);
+      SetMovePosition(hits);
 
+      Targetable closestHit = SearchClosestTarget(hits);
+
+      if (closestHit != null)
+      {
+        HandleOutline(closestHit);
+        target = closestHit;
+      }
+      else
+      {
+        DisableOldOutline();
+        target = null;
+      }
+
+    }
+
+    private Targetable SearchClosestTarget(RaycastHit[] hits)
+    {
+      Targetable closestHit = null;
+      float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
         Targetable cursorTarget = hit.transform.GetComponent<Targetable>();
         if (cursorTarget != null)
         {
-          HandleOutline(cursorTarget);
-          target = cursorTarget;
-          return;
+          float distance = Vector3.Distance(hit.point, hit.transform.position);
+          if (distance < closestDistance)
+          {
+            closestHit = cursorTarget;
+            closestDistance = distance;
+          }
         }
       }
-      DisableOldOutline();
-      target = null;
+
+      return closestHit;
     }
 
     private void HandleOutline(Targetable cursorTarget)
@@ -96,7 +125,7 @@ namespace RPG.Core
       lastTarget = null;
     }
 
-    private void CheckRaycastHitPoint(RaycastHit[] hits)
+    private void SetMovePosition(RaycastHit[] hits)
     {
       if (hits.Length != 0)
       {
