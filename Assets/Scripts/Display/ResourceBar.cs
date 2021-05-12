@@ -18,7 +18,6 @@ namespace RPG.Display
       if (value == null) return;
       SetMaxValue(value.GetMaxValue());
       SetFill(value.GetCurrentValue());
-
     }
 
     protected void SetFill(float value)

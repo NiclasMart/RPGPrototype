@@ -14,7 +14,6 @@ namespace RPG.Stats
 
     public ValueChangeEvent valueChange;
 
-
     private void Awake()
     {
       maxExperiencePoints = new LazyValue<float>(GetInitializeXP);
