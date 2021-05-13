@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: ea716cc0809c953438684c79d722c759, type: 2}
     - target: {fileID: 2598928973983661552, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: m_Name
       value: DaggerPickup
@@ -65,16 +69,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2598928973983661566, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: m_Center.x
-      value: -0.09723976
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598928973983661566, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: m_Center.z
-      value: 0.165362
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2598928973983661567, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: ea716cc0809c953438684c79d722c759, type: 2}
+    - target: {fileID: 5226788929267199104, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 8768589260141208777, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: item
       value: 

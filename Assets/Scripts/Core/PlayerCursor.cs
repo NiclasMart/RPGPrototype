@@ -21,7 +21,7 @@ namespace RPG.Core
 
     [SerializeField] CursorMapping[] cursorMap;
     Camera cam;
-    Targetable target;
+    public Targetable target;
     public Targetable Target { get => target; }
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
@@ -86,6 +86,7 @@ namespace RPG.Core
       float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
+        print(hit.transform.name);
         Targetable cursorTarget = hit.transform.GetComponent<Targetable>();
         if (cursorTarget != null)
         {

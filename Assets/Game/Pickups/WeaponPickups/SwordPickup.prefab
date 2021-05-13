@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
     - target: {fileID: 2598928973983661552, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: m_Name
       value: SwordPickup
@@ -59,11 +63,21 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+    - target: {fileID: 5226788929267199104, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.379
+      objectReference: {fileID: 0}
     - target: {fileID: 8768589260141208777, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
-    m_RemovedComponents: []
+    - target: {fileID: 9096757599924778116, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+    m_RemovedComponents:
+    - {fileID: 1583284159727222546, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+    - {fileID: 9096757599924778116, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
 --- !u!4 &6331958125179208216 stripped
 Transform:
