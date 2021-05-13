@@ -65,6 +65,18 @@ MonoBehaviour:
   leftWeaponHolder: {fileID: 5516469358062573014}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
   currentlyAttacking: 0
+--- !u!114 &6636138660249214988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5652740492745052954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4948c10dbf894984fb5004a247c0a289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3594963352247697660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +322,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8086240338624909737, guid: d3662b19ba6961f4c82a7462c215a25a, type: 3}
+    - {fileID: 6822083825005558019, guid: d3662b19ba6961f4c82a7462c215a25a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3662b19ba6961f4c82a7462c215a25a, type: 3}
+--- !u!1 &5652740492745052954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 751715035005715119, guid: d3662b19ba6961f4c82a7462c215a25a, type: 3}
+  m_PrefabInstance: {fileID: 4907851914204352949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3757174095279751194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8086240338624909743, guid: d3662b19ba6961f4c82a7462c215a25a, type: 3}

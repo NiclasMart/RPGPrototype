@@ -86,7 +86,6 @@ namespace RPG.Core
       float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
-        print(hit.transform.name);
         Targetable cursorTarget = hit.transform.GetComponent<Targetable>();
         if (cursorTarget != null)
         {

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
 using UnityEngine;
 
-namespace RPG.Core
+namespace RPG.Display
 {
   public class Billboard : MonoBehaviour
   {
@@ -20,7 +21,7 @@ namespace RPG.Core
       canvas.GetComponent<Canvas>().worldCamera = cam;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
       Vector3 lookDirection = transform.position - cam.transform.position;
       canvas.transform.LookAt(transform.position + lookDirection);
