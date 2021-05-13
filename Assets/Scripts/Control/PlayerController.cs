@@ -42,7 +42,7 @@ namespace RPG.Control
     }
 
 
-    Health lastTarget;
+    Health lastDisplayTarget, lastCombatTarget;
     private bool UpdateCombat()
     {
       Health combatTarget = null;
@@ -50,21 +50,44 @@ namespace RPG.Control
       if (target) combatTarget = target.GetComponent<Health>();
 
 
-      if (combatTarget && !combatTarget.IsDead)
+      if (combatTarget)
       {
-        if (Input.GetMouseButtonDown(0)) fighter.SetCombatTarget(combatTarget.gameObject);
+        if (Input.GetMouseButtonDown(0)) {
+          fighter.SetCombatTarget(combatTarget.gameObject);
+          lastCombatTarget = combatTarget;
+        }
 
-        if (combatTarget != lastTarget)
+        if (combatTarget != lastDisplayTarget)
         {
           hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
-          lastTarget = combatTarget;
+          lastDisplayTarget = combatTarget;
         }
         playerCursor.SetCursor(PlayerCursor.CursorType.COMBAT);
         return true;
       }
 
+      if (lastCombatTarget && lastCombatTarget.IsDead) {
+        if (SearchForNewTarget()) return true;
+      }
+
       if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
-      lastTarget = combatTarget;
+      lastDisplayTarget = combatTarget;
+      return false;
+    }
+
+    bool SearchForNewTarget(){
+      Collider[] hits = Physics.OverlapSphere(transform.position, 1f);
+      foreach (Collider hit in hits)
+      {
+        if (hit.transform.CompareTag("Enemy"))
+        {
+          fighter.SetCombatTarget(hit.gameObject);
+          lastCombatTarget = hit.GetComponent<Health>();
+          hudManager.SetUpEnemyDisplay(lastCombatTarget, hit.GetComponent<CharacterStats>());
+          return true;
+        }
+      }
+      lastCombatTarget = null;
       return false;
     }
 
