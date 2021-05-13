@@ -33,6 +33,23 @@ MonoBehaviour:
   valueChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3233397508736140945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe331c9032211d04db2d70aeb7d2e4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ablilities:
+  - {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
+  - {fileID: -6470863734008212147, guid: 2d288584b358b444aa35999edb7ef417, type: 3}
+  keyMap: 7100000077000000
+  useKeyMap: 1
 --- !u!114 &3244807190163713036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,6 +72,7 @@ MonoBehaviour:
   - type: 1
     icon: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  target: {fileID: 0}
   hasRaycastHit: 0
   active: 1
 --- !u!114 &5313586947649363864

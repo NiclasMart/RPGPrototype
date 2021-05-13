@@ -5,6 +5,7 @@ using RPG.Stats;
 using RPG.Display;
 using RPG.Core;
 using RPG.Interaction;
+using System;
 
 namespace RPG.Control
 {
@@ -16,6 +17,7 @@ namespace RPG.Control
     Interacter interacter;
     Health health;
     PlayerCursor playerCursor;
+    AbilityManager abilityManager;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ namespace RPG.Control
       interacter = GetComponent<Interacter>();
       health = GetComponent<Health>();
       playerCursor = GetComponent<PlayerCursor>();
+      abilityManager = GetComponent<AbilityManager>();
     }
 
     private void LateUpdate()
@@ -34,13 +37,25 @@ namespace RPG.Control
         playerCursor.active = false;
         return;
       }
-
+      if (HandleInputs()) return;
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
       if (UpdateMovement()) return;
       print("Nothing to do!");
     }
 
+    private bool HandleInputs()
+    {
+      foreach (KeyCode key in abilityManager.KeySet)
+      {
+        if (Input.GetKeyDown(key))
+        {
+          abilityManager.CastAbility(key);
+          return true;
+        }
+      }
+      return false;
+    }
 
     Health lastDisplayTarget, lastCombatTarget;
     private bool UpdateCombat()
@@ -52,7 +67,8 @@ namespace RPG.Control
 
       if (combatTarget)
       {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
           fighter.SetCombatTarget(combatTarget.gameObject);
           lastCombatTarget = combatTarget;
         }
@@ -66,7 +82,8 @@ namespace RPG.Control
         return true;
       }
 
-      if (lastCombatTarget && lastCombatTarget.IsDead) {
+      if (lastCombatTarget && lastCombatTarget.IsDead)
+      {
         if (SearchForNewTarget()) return true;
       }
 
@@ -75,7 +92,8 @@ namespace RPG.Control
       return false;
     }
 
-    bool SearchForNewTarget(){
+    bool SearchForNewTarget()
+    {
       Collider[] hits = Physics.OverlapSphere(transform.position, 1f);
       foreach (Collider hit in hits)
       {
