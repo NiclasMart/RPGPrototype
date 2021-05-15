@@ -49,6 +49,7 @@ MonoBehaviour:
   speed: 1
   destroyDelay: 0.06
   homing: 1
+  graphicComponent: {fileID: 8235035503502098606}
 --- !u!65 &7194315378461159881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -260,5 +261,10 @@ PrefabInstance:
 --- !u!4 &8218207833287011258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4750687242688692, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
+  m_PrefabInstance: {fileID: 8222465445365396238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8235035503502098606 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23830724189926304, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
   m_PrefabInstance: {fileID: 8222465445365396238}
   m_PrefabAsset: {fileID: 0}

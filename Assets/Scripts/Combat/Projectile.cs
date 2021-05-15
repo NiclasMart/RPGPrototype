@@ -1,5 +1,7 @@
 using UnityEngine;
 using RPG.Stats;
+using System;
+using System.Collections;
 
 namespace RPG.Combat
 {
@@ -8,13 +10,15 @@ namespace RPG.Combat
     [SerializeField] float speed = 1f;
     [SerializeField] float destroyDelay = 0.1f;
     [SerializeField] bool homing = true;
+    [SerializeField] Renderer graphicComponent;
     float maxTravelDistance;
-
+    float damage;
     GameObject source;
     Health target;
-    Vector3 direction;
-    float damage;
     Vector3 startLocation;
+    ProjectileCast castOrigin;
+
+    bool active = false;
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
@@ -25,24 +29,29 @@ namespace RPG.Combat
       this.target = target;
       transform.LookAt(AimLocation);
     }
-    public void Initialize(Vector3 direction, GameObject source, float damage, float maxTravelDistance)
+    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, float maxTravelDistance)
     {
-      Initialize(source, damage, maxTravelDistance);
 
-      this.direction = direction;
+      transform.position = spawnPosition;
       transform.forward = direction;
+      castOrigin = cast;
+      Initialize(cast.gameObject, damage, maxTravelDistance);
+
     }
 
     void Initialize(GameObject source, float damage, float maxTravelDistance)
     {
+
       this.source = source;
       this.damage = damage;
       this.maxTravelDistance = maxTravelDistance;
       startLocation = transform.position;
+      Enable();
     }
 
     private void FixedUpdate()
     {
+      if (!active) return;
       CheckTravelDistance();
       Move();
     }
@@ -50,7 +59,7 @@ namespace RPG.Combat
     private void CheckTravelDistance()
     {
       float traveldDistance = Vector3.Distance(transform.position, startLocation);
-      if (traveldDistance > 2 * maxTravelDistance) Destroy(gameObject);
+      if (traveldDistance > 2 * maxTravelDistance) HandleDestruction();
     }
 
     private void Move()
@@ -62,13 +71,39 @@ namespace RPG.Combat
     private void Impact()
     {
       target.ApplyDamage(source, damage);
-      Destroy(gameObject, destroyDelay);
+      HandleDestruction();
     }
 
     private void Impact(Health target)
     {
       target.ApplyDamage(source, damage);
-      Destroy(gameObject, destroyDelay);
+      HandleDestruction();
+
+    }
+
+    void HandleDestruction()
+    {
+      if (castOrigin) StartCoroutine(Disable());
+      else Destroy(gameObject, destroyDelay);
+    }
+
+    IEnumerator Disable()
+    {
+      active = false;
+      GetComponent<Collider>().enabled = false;
+      graphicComponent.enabled = false;
+      yield return new WaitForSeconds(GetComponentInChildren<TrailRenderer>().time);
+      gameObject.SetActive(false);
+      castOrigin.RepoolProjectile(this);
+    }
+
+    void Enable()
+    {
+      active = true;
+      GetComponent<Collider>().enabled = true;
+      graphicComponent.enabled = true;
+      gameObject.SetActive(true);
+      transform.GetComponentInChildren<TrailRenderer>().Clear();
     }
 
 
