@@ -7,6 +7,10 @@ namespace RPG.Combat
   public class Ability : MonoBehaviour
   {
     public string name;
-    public virtual void Cast(){}
+    public float baseDamage;
+    public float cooldown;
+    public float range;
+    public DamageClass damageType;
+    public virtual void Cast(Vector3 direction, GameObject source, Transform castPosition) { }
   }
 }

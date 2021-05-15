@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Multiarrow
+  baseDamage: 8
+  cooldown: 0.8
+  range: 20
+  damageType: {fileID: 0}
+  arrowPrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
+  projectileAmount: 5
+  degrees: 120
 --- !u!1001 &2396571310056724169
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ namespace RPG.Combat
 
     GameObject source;
     Health target;
+    Vector3 direction;
     float damage;
     Vector3 startLocation;
 
@@ -19,18 +20,29 @@ namespace RPG.Combat
 
     public void Initialize(Health target, GameObject source, float damage, float maxTravelDistance)
     {
-      this.source = source;
+      Initialize(source, damage, maxTravelDistance);
+
       this.target = target;
+      transform.LookAt(AimLocation);
+    }
+    public void Initialize(Vector3 direction, GameObject source, float damage, float maxTravelDistance)
+    {
+      Initialize(source, damage, maxTravelDistance);
+
+      this.direction = direction;
+      transform.forward = direction;
+    }
+
+    void Initialize(GameObject source, float damage, float maxTravelDistance)
+    {
+      this.source = source;
       this.damage = damage;
       this.maxTravelDistance = maxTravelDistance;
       startLocation = transform.position;
-
-      transform.LookAt(AimLocation);
     }
 
     private void FixedUpdate()
     {
-      if (target == null) Destroy(gameObject);
       CheckTravelDistance();
       Move();
     }
@@ -53,11 +65,26 @@ namespace RPG.Combat
       Destroy(gameObject, destroyDelay);
     }
 
+    private void Impact(Health target)
+    {
+      target.ApplyDamage(source, damage);
+      Destroy(gameObject, destroyDelay);
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
-      if (other.gameObject == target.gameObject)
+      if (target)
       {
-        if (!target.IsDead) Impact();
+        if (other.gameObject == target.gameObject)
+        {
+          if (!target.IsDead) Impact();
+        }
+      }
+      else
+      {
+        Health hitTarget = other.GetComponent<Health>();
+        if (hitTarget) Impact(hitTarget);
       }
     }
   }

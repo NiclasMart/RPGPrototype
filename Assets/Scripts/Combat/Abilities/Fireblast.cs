@@ -6,9 +6,9 @@ namespace RPG.Combat
 {
   public class Fireblast : Ability
   {
-    public override void Cast()
-    {
-      print("Cast: " + base.name);
-    }
+    // public override void Cast()
+    // {
+    //   print("Cast: " + base.name);
+    // }
   }
 }

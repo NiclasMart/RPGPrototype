@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 550740525230493281}
   - component: {fileID: 7194315378461159881}
   m_Layer: 0
-  m_Name: noramlArrow
+  m_Name: homingArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   destroyDelay: 0.06
-  homing: 0
+  homing: 1
 --- !u!65 &7194315378461159881
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60,8 +60,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.13488774, y: 0.10653919, z: 0.9901849}
-  m_Center: {x: -0.0018982515, y: 0.0064106435, z: -0.3630237}
+  m_Size: {x: 0.13488774, y: 0.10653919, z: 0.35}
+  m_Center: {x: -0.0018982515, y: 0.0064106435, z: 0.64}
 --- !u!1 &7327433060595777955
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4750687242688692, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4750687242688692, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
       propertyPath: m_LocalRotation.w

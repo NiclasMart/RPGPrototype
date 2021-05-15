@@ -21,7 +21,7 @@ namespace RPG.Core
 
     [SerializeField] CursorMapping[] cursorMap;
     Camera cam;
-    public Targetable target;
+    Targetable target;
     public Targetable Target { get => target; }
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
