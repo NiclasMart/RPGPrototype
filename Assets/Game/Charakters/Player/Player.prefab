@@ -48,8 +48,9 @@ MonoBehaviour:
   castPosition: {fileID: 4773142253962847870}
   ablilities:
   - {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
+  - {fileID: -7445379525506200165, guid: bf5445928118ab24587fc9274fe9d4df, type: 3}
   - {fileID: -6470863734008212147, guid: 2d288584b358b444aa35999edb7ef417, type: 3}
-  keyMap: 7100000077000000
+  keyMap: 710000007700000065000000
   useKeyMap: 1
 --- !u!114 &3244807190163713036
 MonoBehaviour:
@@ -207,8 +208,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843933104126414864, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7415807985231061362, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}

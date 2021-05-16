@@ -197,8 +197,20 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843933104126414864, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_Height
+      value: 2.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8843933104126414864, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7415807985231061362, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}

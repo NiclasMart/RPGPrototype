@@ -11,6 +11,6 @@ namespace RPG.Combat
     public float cooldown;
     public float range;
     public DamageClass damageType;
-    public virtual void Cast(Vector3 direction, GameObject source, Transform castPosition) { }
+    public virtual void Cast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer) { }
   }
 }

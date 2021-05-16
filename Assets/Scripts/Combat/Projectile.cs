@@ -10,7 +10,7 @@ namespace RPG.Combat
     [SerializeField] float speed = 1f;
     [SerializeField] float destroyDelay = 0.1f;
     [SerializeField] bool homing = true;
-    [SerializeField] Renderer graphicComponent;
+    [SerializeField] GameObject graphicComponent;
     float maxTravelDistance;
     float damage;
     GameObject source;
@@ -91,8 +91,8 @@ namespace RPG.Combat
     {
       active = false;
       GetComponent<Collider>().enabled = false;
-      graphicComponent.enabled = false;
-      yield return new WaitForSeconds(GetComponentInChildren<TrailRenderer>().time);
+      graphicComponent.SetActive(false);
+      yield return new WaitForSeconds(0.4f);
       gameObject.SetActive(false);
       castOrigin.RepoolProjectile(this);
     }
@@ -101,9 +101,10 @@ namespace RPG.Combat
     {
       active = true;
       GetComponent<Collider>().enabled = true;
-      graphicComponent.enabled = true;
+      graphicComponent.SetActive(true);
       gameObject.SetActive(true);
-      transform.GetComponentInChildren<TrailRenderer>().Clear();
+      TrailRenderer trail = transform.GetComponentInChildren<TrailRenderer>();
+      if (trail) trail.Clear();
     }
 
 

@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: homing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 550740525230493281, guid: da82fcea7459fe14883b131742038943, type: 3}
+      propertyPath: graphicComponent
+      value: 
+      objectReference: {fileID: 8234871811579425262}
     - target: {fileID: 2557883204910547545, guid: da82fcea7459fe14883b131742038943, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -61,3 +65,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da82fcea7459fe14883b131742038943, type: 3}
+--- !u!1 &8234871811579425262 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8221872582789395696, guid: da82fcea7459fe14883b131742038943, type: 3}
+  m_PrefabInstance: {fileID: 23030117986911518}
+  m_PrefabAsset: {fileID: 0}

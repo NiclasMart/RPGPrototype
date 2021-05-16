@@ -8,6 +8,7 @@ namespace RPG.Combat
 {
   public class AbilityManager : MonoBehaviour
   {
+    [SerializeField] int collisionLayer;
     [SerializeField] Transform castPosition;
     [SerializeField] List<Ability> ablilities = new List<Ability>();
     [SerializeField] List<KeyCode> keyMap = new List<KeyCode>();
@@ -55,7 +56,7 @@ namespace RPG.Combat
       transform.LookAt(lookPoint, Vector3.up);
       cooldownTable[castedAbility] = Time.time;
 
-      castedAbility.Cast(lookPoint - transform.position, gameObject, castPosition);
+      castedAbility.Cast(lookPoint - transform.position, gameObject, castPosition, collisionLayer);
     }
   }
 }

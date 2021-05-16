@@ -12,20 +12,21 @@ namespace RPG.Combat
 
     public Stack<Projectile> objectPool = new Stack<Projectile>();
 
-    public override void Cast(Vector3 direction, GameObject source, Transform castPosition)
+    public override void Cast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
     {
-      print(objectPool.Count);
-      SpawnArrow(direction, source, castPosition);
+      //middle projectile
+      SpawnArrow(direction, source, castPosition, layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
       for (int i = 1; i <= (projectileAmount - 1) / 2; ++i)
       {
+        //right hand projectiles
         newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * direction;
-        SpawnArrow(newDirection, source, castPosition);
-
+        SpawnArrow(newDirection, source, castPosition, layer);
+        //left hand projectiles
         newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * direction;
-        SpawnArrow(newDirection, source, castPosition);
+        SpawnArrow(newDirection, source, castPosition, layer);
       }
     }
 
@@ -42,10 +43,13 @@ namespace RPG.Combat
       }
     }
 
-    void SpawnArrow(Vector3 direction, GameObject source, Transform castPosition)
+    void SpawnArrow(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
     {
+      print((int)layer);
       direction.y = 0;
-      GetProjectile().Initialize(direction, this, castPosition.position, base.baseDamage, base.range);
+      Projectile projectile = GetProjectile();
+      projectile.gameObject.layer = layer;
+      projectile.Initialize(direction, this, castPosition.position, base.baseDamage, base.range);
     }
 
     Projectile GetProjectile()
