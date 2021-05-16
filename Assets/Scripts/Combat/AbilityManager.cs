@@ -8,7 +8,6 @@ namespace RPG.Combat
 {
   public class AbilityManager : MonoBehaviour
   {
-    [SerializeField] int collisionLayer;
     [SerializeField] Transform castPosition;
     [SerializeField] List<Ability> ablilities = new List<Ability>();
     [SerializeField] List<KeyCode> keyMap = new List<KeyCode>();
@@ -43,7 +42,7 @@ namespace RPG.Combat
       }
     }
 
-    public void CastAbility(KeyCode key)
+    public void CastAbility(KeyCode key, LayerMask collisionLayer)
     {
       int index = keyMap.IndexOf(key);
       if (index == -1) return;

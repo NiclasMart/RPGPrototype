@@ -15,6 +15,7 @@ MonoBehaviour:
   chaseDistance: 5
   chaseSpeed: 4
   suspicionTime: 5
+  collisionLayer: 7
   patrolPath: {fileID: 0}
   patrolSpeed: 2
   checkpointTolerance: 1
@@ -31,6 +32,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8811d2787ae264a917455bcc0611ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3885137025011479965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8453889284370974033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe331c9032211d04db2d70aeb7d2e4c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  castPosition: {fileID: 4910300137510800525}
+  ablilities: []
+  keyMap: 
+  useKeyMap: 0
 --- !u!114 &5715638290212016659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +82,36 @@ MonoBehaviour:
   leftWeaponHolder: {fileID: 5516469358062573014}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
   currentlyAttacking: 0
+--- !u!1 &1666824102311023357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4910300137510800525}
+  m_Layer: 0
+  m_Name: CastLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4910300137510800525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666824102311023357}
+  m_LocalRotation: {x: -0, y: -0.057249367, z: -0, w: 0.9983599}
+  m_LocalPosition: {x: -0.056, y: 1.222, z: 0.413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6193364346553392840}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -6.564, z: 0}
 --- !u!114 &6636138660249214988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8843933104126414864, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Radius
-      value: 0.6
+      value: 0.81
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7415807985231061362, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}

@@ -22,26 +22,26 @@ namespace RPG.Combat
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
-    public void Initialize(Health target, GameObject source, float damage, float maxTravelDistance)
+    public void Initialize(Health target, GameObject source, float damage, float maxTravelDistance, LayerMask collisionLayer)
     {
-      Initialize(source, damage, maxTravelDistance);
+      Initialize(source, damage, maxTravelDistance, collisionLayer);
 
       this.target = target;
       transform.LookAt(AimLocation);
     }
-    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, float maxTravelDistance)
+    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, float maxTravelDistance, LayerMask collisionLayer)
     {
 
       transform.position = spawnPosition;
       transform.forward = direction;
       castOrigin = cast;
-      Initialize(cast.gameObject, damage, maxTravelDistance);
+      Initialize(cast.gameObject, damage, maxTravelDistance, collisionLayer);
 
     }
 
-    void Initialize(GameObject source, float damage, float maxTravelDistance)
+    void Initialize(GameObject source, float damage, float maxTravelDistance, LayerMask collisionLayer)
     {
-
+      gameObject.layer = collisionLayer;
       this.source = source;
       this.damage = damage;
       this.maxTravelDistance = maxTravelDistance;

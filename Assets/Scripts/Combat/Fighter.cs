@@ -18,6 +18,7 @@ namespace RPG.Combat
     Health target;
     ActionScheduler scheduler;
     Animator animator;
+    LayerMask collisionLayer;
     LazyValue<Weapon> currentWeapon;
     [HideInInspector] public bool currentlyAttacking = false;
 
@@ -51,8 +52,9 @@ namespace RPG.Combat
       if (target && !currentlyAttacking) Attack();
     }
 
-    public void SetCombatTarget(GameObject combatTarget)
+    public void SetCombatTarget(GameObject combatTarget, LayerMask layer)
     {
+      collisionLayer = layer;
       scheduler.StartAction(this);
       target = combatTarget.GetComponent<Health>();
     }
@@ -130,7 +132,7 @@ namespace RPG.Combat
       if (currentWeapon.value is RangedWeapon)
       {
         RangedWeapon weapon = (RangedWeapon)currentWeapon.value;
-        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject, damage);
+        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject, collisionLayer, damage);
       }
       else
       {

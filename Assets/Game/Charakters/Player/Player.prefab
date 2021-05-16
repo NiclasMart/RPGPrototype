@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862371ee488408b47bfacfd7f62c3104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionLayer: 9
   hudManager: {fileID: 0}
 --- !u!114 &5878781465536072542
 MonoBehaviour:

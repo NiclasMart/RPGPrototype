@@ -12,6 +12,7 @@ namespace RPG.Control
     [SerializeField] float chaseDistance;
     [SerializeField] float chaseSpeed = 3f;
     [SerializeField] float suspicionTime;
+    [SerializeField] int collisionLayer;
 
     [Header("Patrol Parameters")]
     [SerializeField] Path patrolPath;
@@ -32,7 +33,7 @@ namespace RPG.Control
     {
       fighter = GetComponent<Fighter>();
       mover = GetComponent<Mover>();
-      health = GetComponent<Health>(); 
+      health = GetComponent<Health>();
     }
 
     private void Start()
@@ -98,7 +99,7 @@ namespace RPG.Control
 
     private void AttackBehaviour()
     {
-      fighter.SetCombatTarget(player);
+      fighter.SetCombatTarget(player, collisionLayer);
       mover.SetMovementSpeed(chaseSpeed);
     }
 

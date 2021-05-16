@@ -45,11 +45,9 @@ namespace RPG.Combat
 
     void SpawnArrow(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
     {
-      print((int)layer);
       direction.y = 0;
       Projectile projectile = GetProjectile();
-      projectile.gameObject.layer = layer;
-      projectile.Initialize(direction, this, castPosition.position, base.baseDamage, base.range);
+      projectile.Initialize(direction, this, castPosition.position, base.baseDamage, base.range, layer);
     }
 
     Projectile GetProjectile()

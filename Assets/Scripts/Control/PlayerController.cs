@@ -11,6 +11,7 @@ namespace RPG.Control
 {
   public class PlayerController : MonoBehaviour
   {
+    [SerializeField] int collisionLayer;
     [SerializeField] EnemyHUD hudManager;
     Mover mover;
     Fighter fighter;
@@ -50,7 +51,7 @@ namespace RPG.Control
       {
         if (Input.GetKeyDown(key))
         {
-          abilityManager.CastAbility(key);
+          abilityManager.CastAbility(key, collisionLayer);
           return true;
         }
       }
@@ -69,7 +70,7 @@ namespace RPG.Control
       {
         if (Input.GetMouseButtonDown(0))
         {
-          fighter.SetCombatTarget(combatTarget.gameObject);
+          fighter.SetCombatTarget(combatTarget.gameObject, collisionLayer);
           lastCombatTarget = combatTarget;
         }
 
@@ -99,7 +100,7 @@ namespace RPG.Control
       {
         if (hit.transform.CompareTag("Enemy"))
         {
-          fighter.SetCombatTarget(hit.gameObject);
+          fighter.SetCombatTarget(hit.gameObject, collisionLayer);
           lastCombatTarget = hit.GetComponent<Health>();
           hudManager.SetUpEnemyDisplay(lastCombatTarget, hit.GetComponent<CharacterStats>());
           return true;
