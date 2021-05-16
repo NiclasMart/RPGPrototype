@@ -9,9 +9,9 @@ namespace RPG.Combat
   {
     [SerializeField] float speed = 1f;
     [SerializeField] float destroyDelay = 0.1f;
+    [SerializeField] float maxTravelDistance = 10f;
     [SerializeField] bool homing = true;
     [SerializeField] GameObject graphicComponent;
-    float maxTravelDistance;
     float damage;
     GameObject source;
     Health target;
@@ -22,29 +22,28 @@ namespace RPG.Combat
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
-    public void Initialize(Health target, GameObject source, float damage, float maxTravelDistance, LayerMask collisionLayer)
+    public void Initialize(Health target, GameObject source, float damage, LayerMask collisionLayer)
     {
-      Initialize(source, damage, maxTravelDistance, collisionLayer);
+      Initialize(source, damage, collisionLayer);
 
       this.target = target;
       transform.LookAt(AimLocation);
     }
-    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, float maxTravelDistance, LayerMask collisionLayer)
+    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, LayerMask collisionLayer)
     {
 
       transform.position = spawnPosition;
       transform.forward = direction;
       castOrigin = cast;
-      Initialize(cast.gameObject, damage, maxTravelDistance, collisionLayer);
+      Initialize(cast.gameObject, damage, collisionLayer);
 
     }
 
-    void Initialize(GameObject source, float damage, float maxTravelDistance, LayerMask collisionLayer)
+    void Initialize(GameObject source, float damage, LayerMask collisionLayer)
     {
       gameObject.layer = collisionLayer;
       this.source = source;
       this.damage = damage;
-      this.maxTravelDistance = maxTravelDistance;
       startLocation = transform.position;
       Enable();
     }

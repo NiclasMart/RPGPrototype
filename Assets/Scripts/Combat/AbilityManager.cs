@@ -33,12 +33,11 @@ namespace RPG.Combat
 
     private void Start()
     {
-      if (useKeyMap)
+      if (!useKeyMap) return;
+
+      if (ablilities.Count != keyMap.Count)
       {
-        if (ablilities.Count != keyMap.Count)
-        {
-          Debug.LogError(transform.name + ": Abilitys and Key Map are inconsistent.");
-        }
+        Debug.LogError(transform.name + ": Abilitys and Key Map are inconsistent.");
       }
     }
 

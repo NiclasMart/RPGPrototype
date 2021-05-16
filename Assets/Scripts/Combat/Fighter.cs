@@ -7,29 +7,18 @@ using RPG.Movement;
 
 namespace RPG.Combat
 {
-  [RequireComponent(typeof(ActionScheduler), typeof(Mover))]
-  public class Fighter : MonoBehaviour, IAction, IStatModifier
+
+  public class Fighter : Attacker, IStatModifier
   {
     [SerializeField] Transform rightWeaponHolder;
     [SerializeField] Transform leftWeaponHolder;
     [SerializeField] Weapon defaultWeapon;
 
-    Mover mover;
-    Health target;
-    ActionScheduler scheduler;
-    Animator animator;
-    LayerMask collisionLayer;
     LazyValue<Weapon> currentWeapon;
-    [HideInInspector] public bool currentlyAttacking = false;
 
-    public bool HasTarget => target != null;
-
-    void Awake()
+    protected override void Awake()
     {
-      scheduler = GetComponent<ActionScheduler>();
-      animator = GetComponent<Animator>();
-      mover = GetComponent<Mover>();
-
+      base.Awake();
       currentWeapon = new LazyValue<Weapon>(GetInitializeWeapon);
     }
 
@@ -44,34 +33,7 @@ namespace RPG.Combat
       currentWeapon.ForceInit();
     }
 
-    void Update()
-    {
-      if (target == null) return;
-
-      if (target.IsDead) Cancel();
-      if (target && !currentlyAttacking) Attack();
-    }
-
-    public void SetCombatTarget(GameObject combatTarget, LayerMask layer)
-    {
-      collisionLayer = layer;
-      scheduler.StartAction(this);
-      target = combatTarget.GetComponent<Health>();
-    }
-
-    public virtual void Cancel()
-    {
-      StopAttacking();
-      mover.Cancel();
-      target = null;
-    }
-
-    void StopAttacking()
-    {
-      animator.SetTrigger("cancelAttack");
-    }
-
-    void Attack()
+    public override void Attack()
     {
       if (TargetInRange())
       {
@@ -88,6 +50,10 @@ namespace RPG.Combat
       /*projectile for Ranged Weapons is launched within the Shoot() event */
     }
 
+    bool TargetInRange()
+    {
+      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
+    }
 
     IEnumerator StartAttacking()
     {
@@ -97,16 +63,6 @@ namespace RPG.Combat
       AdjustAttackDirection();
       yield return new WaitForSeconds(1 / currentWeapon.value.AttackSpeed);
       currentlyAttacking = false;
-    }
-
-    bool TargetInRange()
-    {
-      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
-    }
-
-    void AdjustAttackDirection()
-    {
-      transform.LookAt(target.transform, Vector3.up);
     }
 
     GameObject weaponReference = null;

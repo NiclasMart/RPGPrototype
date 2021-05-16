@@ -20,7 +20,7 @@ namespace RPG.Control
     [SerializeField] float checkpointTolerance = 1f;
     [SerializeField] float checkpointDwellTime = 3f;
 
-    Fighter fighter;
+    Attacker attacker;
     Mover mover;
     Health health;
     GameObject player;
@@ -31,7 +31,7 @@ namespace RPG.Control
 
     private void Awake()
     {
-      fighter = GetComponent<Fighter>();
+      attacker = GetComponent<Attacker>();
       mover = GetComponent<Mover>();
       health = GetComponent<Health>();
     }
@@ -99,7 +99,7 @@ namespace RPG.Control
 
     private void AttackBehaviour()
     {
-      fighter.SetCombatTarget(player, collisionLayer);
+      attacker.SetCombatTarget(player, collisionLayer);
       mover.SetMovementSpeed(chaseSpeed);
     }
 

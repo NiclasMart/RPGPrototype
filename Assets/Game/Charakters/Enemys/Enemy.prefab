@@ -32,22 +32,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8811d2787ae264a917455bcc0611ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3885137025011479965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8453889284370974033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe331c9032211d04db2d70aeb7d2e4c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castPosition: {fileID: 4910300137510800525}
-  ablilities: []
-  keyMap: 
-  useKeyMap: 0
 --- !u!114 &5715638290212016659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,10 +62,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c291c138f9eb6d1438cb62611ddbb36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyAttacking: 0
   rightWeaponHolder: {fileID: 5516469358062515668}
   leftWeaponHolder: {fileID: 5516469358062573014}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
-  currentlyAttacking: 0
 --- !u!1 &1666824102311023357
 GameObject:
   m_ObjectHideFlags: 0
