@@ -13,7 +13,7 @@ namespace RPG.Combat
 
     private void Start()
     {
-      ability.OverrideAnimations(GetComponent<Animator>(), "Attack");
+      AnimationHandler.OverrideAnimations(GetComponent<Animator>(), ability.animationClip, "Attack");
     }
 
     public override void Attack()

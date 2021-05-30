@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Dagger
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 7855749314461686537, guid: e690660a79075a343b261d896a89b397, type: 3}
-  animationOverride: {fileID: 22100000, guid: f17d3e85b3532854fbaec65b39aeacba, type: 2}
+  animation: {fileID: 7400000, guid: 6225a58c8d4165e42b647612da98e223, type: 3}
   weaponDamage: 10
   weaponRange: 1.2
   weaponAttackSpeed: 1.8
+  damageType: {fileID: 0}
+  damageMultiplier: 0
   isRightHanded: 0

@@ -44,7 +44,7 @@ namespace RPG.Combat
 
       for (int i = 0; i < ablilities.Count; i++)
       {
-        ablilities[i].OverrideAnimations(animator, "Cast" + (i + 1));
+        AnimationHandler.OverrideAnimations(animator, ablilities[i].animationClip, "Cast" + (i + 1));
       }
     }
 

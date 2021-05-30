@@ -6,7 +6,7 @@ namespace RPG.Combat
   public class Weapon : ScriptableObject
   {
     [SerializeField] GameObject weaponPrefab;
-    [SerializeField] AnimatorOverrideController animationOverride;
+    [SerializeField] AnimationClip animation;
 
     [Header("Weapon Parameters")]
     [SerializeField] float weaponDamage;
@@ -23,22 +23,9 @@ namespace RPG.Combat
 
     public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
-      OverrideAnimator(animator);
+      AnimationHandler.OverrideAnimations(animator, animation, "Attack");
       GameObject spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
       return spawnedWeapon;
-    }
-
-    private void OverrideAnimator(Animator animator)
-    {
-      // if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
-      // else
-      // {
-      //   var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
-      //   if (overrideController != null)
-      //   {
-      //     animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
-      //   }
-      // }
     }
 
     public GameObject Spawn(Transform position)
