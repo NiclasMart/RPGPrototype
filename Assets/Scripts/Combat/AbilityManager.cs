@@ -48,21 +48,32 @@ namespace RPG.Combat
       }
     }
 
+    Ability castedAbility;
     public void CastAbility(KeyCode key, LayerMask collisionLayer)
     {
       int index = keyMap.IndexOf(key);
       if (index == -1) return;
 
-      Ability castedAbility = ablilities[index];
+      castedAbility = ablilities[index];
       if (cooldownTable[castedAbility] + castedAbility.cooldown > Time.time) return;
 
-      scheduler.CancelCurrentAction();
+      //set direction of character
       Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
       transform.LookAt(lookPoint, Vector3.up);
-      cooldownTable[castedAbility] = Time.time;
+      transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
 
-      castedAbility.Cast(lookPoint - transform.position, gameObject, castPosition, collisionLayer);
+      //prepare cast and start animation
+      scheduler.CancelCurrentAction();
+      castedAbility.PrepareCast(lookPoint - transform.position, gameObject, castPosition, collisionLayer);
+      cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast" + (index + 1));
+
+      /* ability cast is triggert by animation event CastAction() */
+    }
+
+    void CastAction()
+    {
+      castedAbility.CastAction();
     }
   }
 }

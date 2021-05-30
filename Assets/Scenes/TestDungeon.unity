@@ -5591,6 +5591,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage
       objectReference: {fileID: 0}
+    - target: {fileID: 5941795045827790089, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7195050316044060992, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
       propertyPath: ability
       value: 
@@ -11464,11 +11468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000007428606
+      value: 0.0000000074286093
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000043394324
+      value: -0.0000000043394346
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11484,11 +11488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000007428606
+      value: 0.0000000074286093
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000043394324
+      value: -0.0000000043394346
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090866779288, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_Name

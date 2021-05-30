@@ -17,7 +17,8 @@ MonoBehaviour:
   cooldown: 1.5
   range: 3
   damageType: {fileID: 0}
-  animationClip: {fileID: 7400000, guid: 431be525a743d9a44bd889d99f039ec6, type: 3}
+  animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
+  animationRotationOffset: 60
   projectilePrefab: {fileID: 158369935145786950, guid: 6201f1448d71b494c93cb58a7f93ad0a, type: 3}
   projectileAmount: 3
   degrees: 120

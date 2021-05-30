@@ -41,7 +41,7 @@ namespace RPG.Combat
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
       AdjustAttackDirection();
-      ability.Cast(transform.forward, gameObject, castPosition, collisionLayer);
+      ability.PrepareCast(transform.forward, gameObject, castPosition, collisionLayer);
       yield return new WaitForSeconds(1 / ability.cooldown);
       currentlyAttacking = false;
     }

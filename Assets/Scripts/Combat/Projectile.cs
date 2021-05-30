@@ -109,6 +109,7 @@ namespace RPG.Combat
 
     private void OnTriggerEnter(Collider other)
     {
+      print("arrowHitTarget");
       if (target)
       {
         if (other.gameObject == target.gameObject)

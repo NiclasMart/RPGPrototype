@@ -13,6 +13,30 @@ namespace RPG.Combat
     public float range;
     public DamageClass damageType;
     public AnimationClip animationClip;
-    public virtual void Cast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer) { }
+    public float animationRotationOffset;
+
+    protected CastData data;
+    protected class CastData
+    {
+      public Vector3 direction;
+      public GameObject source;
+      public Transform castPosition;
+      public LayerMask layer;
+      public CastData(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+      {
+        this.direction = direction;
+        this.source = source;
+        this.castPosition = castPosition;
+        this.layer = layer;
+      }
+    }
+
+    public void PrepareCast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+    {
+      print("create new Data");
+      data = new CastData(direction, source, castPosition, layer);
+    }
+
+    public virtual void CastAction() { }
   }
 }
