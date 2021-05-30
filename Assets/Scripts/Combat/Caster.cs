@@ -40,10 +40,15 @@ namespace RPG.Combat
       currentlyAttacking = true;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      AdjustAttackDirection();
-      ability.PrepareCast(transform.forward, gameObject, castPosition, collisionLayer);
-      yield return new WaitForSeconds(1 / ability.cooldown);
+      AdjustAttackDirection(ability.animationRotationOffset);
+      ability.PrepareCast(target.transform.position - transform.position, gameObject, castPosition, collisionLayer);
+      yield return new WaitForSeconds(ability.cooldown);
       currentlyAttacking = false;
+    }
+
+    void CastAction()
+    {
+      ability.CastAction();
     }
   }
 }

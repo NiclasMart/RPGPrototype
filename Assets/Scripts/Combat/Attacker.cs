@@ -51,6 +51,12 @@ namespace RPG.Combat
       transform.LookAt(target.transform, Vector3.up);
     }
 
+    protected void AdjustAttackDirection(float offset)
+    {
+      transform.LookAt(target.transform, Vector3.up);
+      transform.Rotate(Vector3.up * offset);
+    }
+
     public virtual void Cancel()
     {
       StopAttacking();
