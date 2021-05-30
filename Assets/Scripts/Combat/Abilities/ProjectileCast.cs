@@ -6,7 +6,7 @@ namespace RPG.Combat
 {
   public class ProjectileCast : Ability
   {
-    [SerializeField] GameObject arrowPrefab;
+    [SerializeField] GameObject projectilePrefab;
     [SerializeField] int projectileAmount;
     [SerializeField] int degrees;
 
@@ -15,7 +15,7 @@ namespace RPG.Combat
     public override void Cast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
     {
       //middle projectile
-      SpawnArrow(direction, source, castPosition, layer);
+      SpawnProjectile(direction, source, castPosition, layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
@@ -23,10 +23,10 @@ namespace RPG.Combat
       {
         //right hand projectiles
         newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * direction;
-        SpawnArrow(newDirection, source, castPosition, layer);
+        SpawnProjectile(newDirection, source, castPosition, layer);
         //left hand projectiles
         newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * direction;
-        SpawnArrow(newDirection, source, castPosition, layer);
+        SpawnProjectile(newDirection, source, castPosition, layer);
       }
     }
 
@@ -43,7 +43,7 @@ namespace RPG.Combat
       }
     }
 
-    void SpawnArrow(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+    void SpawnProjectile(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
     {
       direction.y = 0;
       Projectile projectile = GetProjectile();
@@ -53,7 +53,7 @@ namespace RPG.Combat
     Projectile GetProjectile()
     {
       Projectile projectile;
-      if (objectPool.Count == 0) projectile = Instantiate(arrowPrefab, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
+      if (objectPool.Count == 0) projectile = Instantiate(projectilePrefab, Vector3.zero, Quaternion.identity).GetComponent<Projectile>();
       else projectile = objectPool.Pop();
 
       return projectile;

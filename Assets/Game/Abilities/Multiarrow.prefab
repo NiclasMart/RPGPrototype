@@ -18,7 +18,7 @@ MonoBehaviour:
   range: 20
   damageType: {fileID: 0}
   animationClip: {fileID: 7400000, guid: 27eda9f3f990c6840a532a06a17f6e15, type: 3}
-  arrowPrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
+  projectilePrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
   projectileAmount: 5
   degrees: 120
 --- !u!1001 &2396571310056724169
