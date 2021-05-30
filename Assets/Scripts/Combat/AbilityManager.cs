@@ -16,10 +16,12 @@ namespace RPG.Combat
 
     Dictionary<Ability, float> cooldownTable = new Dictionary<Ability, float>();
     ActionScheduler scheduler;
+    Animator animator;
 
     private void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
+      animator = GetComponent<Animator>();
       FillCooldownTable();
     }
 
@@ -39,6 +41,11 @@ namespace RPG.Combat
       {
         Debug.LogError(transform.name + ": Abilitys and Key Map are inconsistent.");
       }
+
+      for (int i = 0; i < ablilities.Count; i++)
+      {
+        ablilities[i].OverrideAnimations(animator, "Cast" + (i + 1));
+      }
     }
 
     public void CastAbility(KeyCode key, LayerMask collisionLayer)
@@ -55,6 +62,7 @@ namespace RPG.Combat
       cooldownTable[castedAbility] = Time.time;
 
       castedAbility.Cast(lookPoint - transform.position, gameObject, castPosition, collisionLayer);
+      animator.SetTrigger("cast" + (index + 1));
     }
   }
 }

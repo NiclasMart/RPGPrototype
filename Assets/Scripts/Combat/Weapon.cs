@@ -30,15 +30,15 @@ namespace RPG.Combat
 
     private void OverrideAnimator(Animator animator)
     {
-      if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
-      else
-      {
-        var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
-        if (overrideController != null)
-        {
-          animator.runtimeAnimatorController = animationOverride.runtimeAnimatorController;
-        }
-      }
+      // if (animationOverride != null) animator.runtimeAnimatorController = animationOverride;
+      // else
+      // {
+      //   var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+      //   if (overrideController != null)
+      //   {
+      //     animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
+      //   }
+      // }
     }
 
     public GameObject Spawn(Transform position)

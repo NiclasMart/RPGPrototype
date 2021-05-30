@@ -11,6 +11,11 @@ namespace RPG.Combat
     [SerializeField] Ability ability;
     [SerializeField] Transform castPosition;
 
+    private void Start()
+    {
+      ability.OverrideAnimations(GetComponent<Animator>(), "Attack");
+    }
+
     public override void Attack()
     {
       if (TargetInRange())
