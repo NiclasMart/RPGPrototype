@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MgicBallCast
   baseDamage: 10
-  cooldown: 1.5
+  cooldown: 2
   range: 3
   damageType: {fileID: 0}
   animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}

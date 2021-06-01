@@ -30,6 +30,10 @@ PrefabInstance:
       propertyPath: chaseDistance
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5299266759320848800, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+      propertyPath: m_Radius
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 5516469358059102598, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

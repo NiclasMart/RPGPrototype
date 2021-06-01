@@ -49,7 +49,7 @@ namespace RPG.Control
     {
       foreach (KeyCode key in abilityManager.KeySet)
       {
-        if (Input.GetKeyDown(key))
+        if (Input.GetKey(key))
         {
           abilityManager.CastAbility(key, collisionLayer);
           return true;

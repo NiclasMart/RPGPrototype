@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
 using UnityEditor.Animations;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-  public class Ability : MonoBehaviour
+  public class Ability : MonoBehaviour, IAction
   {
     public string name;
     public float baseDamage;
@@ -14,6 +15,7 @@ namespace RPG.Combat
     public DamageClass damageType;
     public AnimationClip animationClip;
     public float animationRotationOffset;
+    Animator animator;
 
     protected CastData data;
     protected class CastData
@@ -31,12 +33,14 @@ namespace RPG.Combat
       }
     }
 
-    public void PrepareCast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+    public void PrepareCast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer, Animator animator)
     {
-      print("create new Data");
       data = new CastData(direction, source, castPosition, layer);
+      this.animator = animator;
     }
 
     public virtual void CastAction() { }
+
+    public void Cancel() { }
   }
 }

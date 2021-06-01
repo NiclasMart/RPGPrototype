@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Multiarrow
   baseDamage: 8
-  cooldown: 0.8
+  cooldown: 1.5
   range: 20
   damageType: {fileID: 0}
-  animationClip: {fileID: 7400000, guid: 27eda9f3f990c6840a532a06a17f6e15, type: 3}
+  animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
+  animationRotationOffset: 60
   projectilePrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
   projectileAmount: 5
   degrees: 120

@@ -27,6 +27,7 @@ namespace RPG.Combat
           {
             //if animatin state motion is blend tree, copy animation without check (blend tree montions cant be changed at the moment)
             Motion m = state.state.motion;
+            if (m == null) continue;
             if (m is BlendTree)
             {
               BlendTree tree = m as BlendTree;
@@ -54,6 +55,7 @@ namespace RPG.Combat
           foreach (var state in layers[0].stateMachine.states)
           {
             Motion m = state.state.motion;
+            if (m == null) continue;
             if (m is BlendTree)
             {
               BlendTree tree = m as BlendTree;
@@ -84,6 +86,11 @@ namespace RPG.Combat
         aoc.ApplyOverrides(anims);
         animator.runtimeAnimatorController = aoc;
       }
+    }
+
+    public static void StopAllAbilityAnimations(Animator animator)
+    {
+        
     }
   }
 }

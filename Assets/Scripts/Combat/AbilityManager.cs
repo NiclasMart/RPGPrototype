@@ -30,6 +30,10 @@ namespace RPG.Combat
       foreach (Ability ability in ablilities)
       {
         cooldownTable.Add(ability, -ability.cooldown);
+        if (ability.cooldown < ability.animationClip.length)
+        {
+          Debug.LogError("ERROR: Ability cooldown from " + name + " needs to be longer than animation clip length!");
+        }
       }
     }
 
@@ -63,9 +67,10 @@ namespace RPG.Combat
       transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
 
       //prepare cast and start animation
-      scheduler.CancelCurrentAction();
-      castedAbility.PrepareCast(lookPoint - transform.position, gameObject, castPosition, collisionLayer);
+      scheduler.StartAction(castedAbility);
+      castedAbility.PrepareCast(lookPoint - transform.position, gameObject, castPosition, collisionLayer, animator);
       cooldownTable[castedAbility] = Time.time;
+      animator.SetTrigger("cast");
       animator.SetTrigger("cast" + (index + 1));
 
       /* ability cast is triggert by animation event CastAction() */
