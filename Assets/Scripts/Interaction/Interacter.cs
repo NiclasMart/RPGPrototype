@@ -44,12 +44,12 @@ namespace RPG.Interaction
 
     private void InteractWithPickup()
     {
-      Pickup item = interactionTarget.GetComponent<Pickup>();
+      Pickup pickup = interactionTarget.GetComponent<Pickup>();
 
-      if (inventory.CheckCapacity(item.weight))
+      if (inventory.CheckCapacity(pickup.item.weight))
       {
-        inventory.AddItem(item);
-        item.Take();
+        inventory.AddItem(pickup.item);
+        pickup.Take();
       }
     }
 

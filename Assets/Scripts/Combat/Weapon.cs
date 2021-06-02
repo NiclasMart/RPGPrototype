@@ -1,9 +1,10 @@
+using RPG.Interaction;
 using UnityEngine;
 
 namespace RPG.Combat
 {
   [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Create New Weapon", order = 0)]
-  public class Weapon : ScriptableObject
+  public class Weapon : Item
   {
     [SerializeField] GameObject weaponPrefab;
     [SerializeField] AnimationClip animation;

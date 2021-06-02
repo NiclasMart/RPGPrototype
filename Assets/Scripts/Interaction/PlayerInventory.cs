@@ -10,18 +10,31 @@ namespace RPG.Interaction
     [SerializeField] InventoryDisplay display;
     [SerializeField] float capacity = 100f;
     float currentCapacity;
-    List<Pickup> items = new List<Pickup>();
+    public List<Item> items = new List<Item>();
 
-    public void AddItem(Pickup item)
+    public void AddItem(Item item)
     {
       items.Add(item);
       RecalculateCapacity(item.weight);
-      display.AddNewItemToDisplay(item.icon);
+      display.AddNewItemToDisplay(item.icon, item.ID);
     }
 
     public bool CheckCapacity(float weight)
     {
       return currentCapacity + weight <= capacity;
+    }
+
+    public void DeleteItem()
+    {
+      print("delete");
+      string itemId = display.currentlySelectedSlot.slottedItemID;
+      foreach (var item in items)
+      {
+        if (item.ID != itemId) continue;
+        items.Remove(item);
+        break;
+      }
+      display.DeleteSelectedItem();
     }
 
     void RecalculateCapacity(float weight)

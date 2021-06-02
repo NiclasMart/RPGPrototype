@@ -7,6 +7,7 @@ namespace RPG.Display
   {
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
+    [HideInInspector] public string slottedItemID { get; private set; }
     InventoryDisplay inventory;
     Color stdColor;
 
@@ -15,9 +16,10 @@ namespace RPG.Display
       stdColor = selectable.GetComponent<Image>().color;
     }
 
-    public void Initialize(Sprite sprite, InventoryDisplay inventory)
+    public void Initialize(Sprite sprite, string itemID, InventoryDisplay inventory)
     {
       SetIcon(sprite);
+      slottedItemID = itemID;
       this.inventory = inventory;
     }
 

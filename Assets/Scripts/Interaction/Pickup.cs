@@ -1,13 +1,16 @@
 using UnityEngine;
-using RPG.Combat;
+
 
 namespace RPG.Interaction
 {
   public class Pickup : MonoBehaviour
   {
-    [SerializeField] Weapon item;
-    public Sprite icon;
-    public float weight;
+    public Item item;
+
+    private void OnEnable() 
+    {
+      item.CreateID();
+    }
 
     public void Take(/*GameObject player*/)
     {

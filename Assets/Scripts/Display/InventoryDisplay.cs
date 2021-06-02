@@ -9,12 +9,12 @@ namespace RPG.Display
     [SerializeField] ItemDisplaySlot itemSlot;
     [SerializeField] RectTransform list;
     [SerializeField] TextMeshProUGUI capacityDisplay;
-    ItemDisplaySlot currentlySelectedSlot = null;
+    [HideInInspector] public ItemDisplaySlot currentlySelectedSlot {get; private set;}
 
-    public void AddNewItemToDisplay(Sprite sprite)
+    public void AddNewItemToDisplay(Sprite sprite, string itemID)
     {
       ItemDisplaySlot slot = Instantiate(itemSlot, list);
-      slot.Initialize(sprite, this);
+      slot.Initialize(sprite, itemID, this);
     }
 
     public void UpdateCapacityDisplay(float currentValue, float maxValue)
