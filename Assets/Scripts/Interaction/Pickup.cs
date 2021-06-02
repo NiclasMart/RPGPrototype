@@ -6,7 +6,8 @@ namespace RPG.Interaction
   public class Pickup : MonoBehaviour
   {
     [SerializeField] Weapon item;
-    public Sprite icon => item.uiIcon;
+    public Sprite icon;
+    public float weight;
 
     public void Take(/*GameObject player*/)
     {

@@ -27,9 +27,8 @@ namespace RPG.Interaction
       if (TargetInRange())
       {
         mover.Cancel();
-        Pickup item = interactionTarget.GetComponent<Pickup>();//.Take(gameObject);
-        inventory.AddItem(item);
-        item.Take();
+        InteractWithPickup();
+        Cancel();
       }
       else
       {
@@ -41,6 +40,17 @@ namespace RPG.Interaction
     {
       scheduler.StartAction(this);
       interactionTarget = target;
+    }
+
+    private void InteractWithPickup()
+    {
+      Pickup item = interactionTarget.GetComponent<Pickup>();
+
+      if (inventory.CheckCapacity(item.weight))
+      {
+        inventory.AddItem(item);
+        item.Take();
+      }
     }
 
     private bool TargetInRange()

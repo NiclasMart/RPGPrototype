@@ -8,9 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f2bc388aefa15764d95c287ab58d1a94, type: 3}
+    - target: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 0b17820f309950342a43e6a62af68f28, type: 2}
+    - target: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
+      propertyPath: weight
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2598928973983661552, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
       propertyPath: m_Name
       value: BowPickup
