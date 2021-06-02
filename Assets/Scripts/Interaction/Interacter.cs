@@ -7,6 +7,7 @@ namespace RPG.Interaction
   public class Interacter : MonoBehaviour, IAction
   {
     [SerializeField] float interactionDistance = 1f;
+    PlayerInventory inventory;
     Targetable interactionTarget = null;
 
     ActionScheduler scheduler;
@@ -16,6 +17,7 @@ namespace RPG.Interaction
     {
       scheduler = GetComponent<ActionScheduler>();
       mover = GetComponent<Mover>();
+      inventory = GetComponent<PlayerInventory>();
     }
 
     private void Update()
@@ -25,7 +27,9 @@ namespace RPG.Interaction
       if (TargetInRange())
       {
         mover.Cancel();
-        interactionTarget.GetComponent<Pickup>().Take(gameObject);
+        Pickup item = interactionTarget.GetComponent<Pickup>();//.Take(gameObject);
+        inventory.AddItem(item);
+        item.Take();
       }
       else
       {

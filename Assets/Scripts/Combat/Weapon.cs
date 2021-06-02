@@ -7,7 +7,7 @@ namespace RPG.Combat
   {
     [SerializeField] GameObject weaponPrefab;
     [SerializeField] AnimationClip animation;
-    [SerializeField] Sprite uiIcon;
+    public Sprite uiIcon;
 
     [Header("Weapon Parameters")]
     [SerializeField] float weaponDamage;
