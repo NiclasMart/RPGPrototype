@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 8581517286537546858, guid: 44057ed6fb8e45746a43c1fe85a98d6c, type: 3}
   animation: {fileID: 7400000, guid: 24d693751e9fd0b42ba8f9595d8b5f5e, type: 3}
+  uiIcon: {fileID: 21300000, guid: f2bc388aefa15764d95c287ab58d1a94, type: 3}
   weaponDamage: 6
   weaponRange: 10
   weaponAttackSpeed: 0.9
