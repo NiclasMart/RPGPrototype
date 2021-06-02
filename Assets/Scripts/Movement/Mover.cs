@@ -4,7 +4,7 @@ using RPG.Core;
 
 namespace RPG.Movement
 {
-  [RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(ActionScheduler))]
+  [RequireComponent(typeof(NavMeshAgent), typeof(ActionScheduler))]
   public class Mover : MonoBehaviour, IAction
   {
 
@@ -15,7 +15,7 @@ namespace RPG.Movement
     private void Awake()
     {
       agent = GetComponent<NavMeshAgent>();
-      animator = GetComponent<Animator>();
+      animator = GetComponentInChildren<Animator>();
       scheduler = GetComponent<ActionScheduler>();
     }
 

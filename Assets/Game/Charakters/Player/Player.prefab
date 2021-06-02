@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c291c138f9eb6d1438cb62611ddbb36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentlyAttacking: 0
   rightWeaponHolder: {fileID: 7316862318045654546}
   leftWeaponHolder: {fileID: 7316862318045580922}
   defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
-  currentlyAttacking: 0
 --- !u!114 &2328792153315349975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7415807985231061362, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
 --- !u!1 &2344567361568208010 stripped
 GameObject:
@@ -288,11 +288,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: db49f0fdd9de034479bcf77070f1e56e, type: 2}
     - target: {fileID: 13707166, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3f6fc0cf5e5d31c458bc74ede87cb8ae, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9505156, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
 --- !u!4 &7316862318045580922 stripped
 Transform:

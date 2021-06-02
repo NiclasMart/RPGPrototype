@@ -21,8 +21,19 @@ namespace RPG.Combat
     private void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
-      animator = GetComponent<Animator>();
+      animator = GetComponentInChildren<Animator>();
+      InstanciateAbilities();
       FillCooldownTable();
+    }
+
+    private void InstanciateAbilities()
+    {
+      List<Ability> abilityInstances = new List<Ability>();
+      foreach (var ability in ablilities)
+      {
+        abilityInstances.Add(Instantiate(ability, transform));
+      }
+      ablilities = abilityInstances;
     }
 
     private void FillCooldownTable()
@@ -68,7 +79,7 @@ namespace RPG.Combat
 
       //prepare cast and start animation
       scheduler.StartAction(castedAbility);
-      castedAbility.PrepareCast(lookPoint - transform.position, gameObject, castPosition, collisionLayer, animator);
+      castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer, animator);
       cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
       animator.SetTrigger("cast" + (index + 1));

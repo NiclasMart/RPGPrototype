@@ -14,18 +14,19 @@ namespace RPG.Combat
 
     public override void CastAction()
     {
+      Vector3 direction = data.lookPoint - transform.position;
       //middle projectile
-      SpawnProjectile(data.direction, data.source, data.castPosition, data.layer);
+      SpawnProjectile(direction, data.source, data.castPosition, data.layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
       for (int i = 1; i <= (projectileAmount - 1) / 2; ++i)
       {
         //right hand projectiles
-        newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * data.direction;
+        newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * direction;
         SpawnProjectile(newDirection, data.source, data.castPosition, data.layer);
         //left hand projectiles
-        newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * data.direction;
+        newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * direction;
         SpawnProjectile(newDirection, data.source, data.castPosition, data.layer);
       }
     }

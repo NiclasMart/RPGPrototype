@@ -14,6 +14,7 @@ namespace RPG.Combat
     private void Start()
     {
       AnimationHandler.OverrideAnimations(GetComponent<Animator>(), ability.animationClip, "Attack");
+      Instantiate(ability.gameObject, transform);
     }
 
     public override void Attack()

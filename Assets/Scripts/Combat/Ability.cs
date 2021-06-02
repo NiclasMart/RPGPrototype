@@ -15,28 +15,31 @@ namespace RPG.Combat
     public DamageClass damageType;
     public AnimationClip animationClip;
     public float animationRotationOffset;
+    public bool castImmediately = false;
     Animator animator;
 
     protected CastData data;
     protected class CastData
     {
-      public Vector3 direction;
+      public Vector3 lookPoint;
       public GameObject source;
       public Transform castPosition;
       public LayerMask layer;
-      public CastData(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+      public CastData(Vector3 lookPoint, GameObject source, Transform castPosition, LayerMask layer)
       {
-        this.direction = direction;
+        this.lookPoint = lookPoint;
         this.source = source;
         this.castPosition = castPosition;
         this.layer = layer;
       }
     }
 
-    public void PrepareCast(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer, Animator animator)
+    public void PrepareCast(Vector3 lookPoint, GameObject source, Transform castPosition, LayerMask layer, Animator animator)
     {
-      data = new CastData(direction, source, castPosition, layer);
+      data = new CastData(lookPoint, source, castPosition, layer);
       this.animator = animator;
+
+      if (castImmediately) CastAction();
     }
 
     public virtual void CastAction() { }

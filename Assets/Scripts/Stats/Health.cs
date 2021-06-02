@@ -24,7 +24,7 @@ namespace RPG.Stats
 
     private void Awake()
     {
-      animator = GetComponent<Animator>();
+      animator = GetComponentInChildren<Animator>();
       maxHealth = new LazyValue<float>(GetInitializeHealth);
       currentHealth = new LazyValue<float>(GetInitializeHealth);
     }
