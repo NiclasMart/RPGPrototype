@@ -21,8 +21,8 @@ namespace RPG.Core
 
     [SerializeField] CursorMapping[] cursorMap;
     Camera cam;
-    IInteractable target;
-    public IInteractable Target { get => target; }
+    IInteraction target;
+    public IInteraction Target { get => target; }
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
     [HideInInspector] public bool hasRaycastHit;
@@ -65,13 +65,13 @@ namespace RPG.Core
       return cursorMap[0];
     }
 
-    IInteractable lastTarget;
+    IInteraction lastTarget;
     private void CheckForTargetable()
     {
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
       SetMovePosition(hits);
 
-      IInteractable closestHit = SearchClosestTarget(hits);
+      IInteraction closestHit = SearchClosestTarget(hits);
 
       if (closestHit != null)
       {
@@ -88,13 +88,13 @@ namespace RPG.Core
 
     }
 
-    private IInteractable SearchClosestTarget(RaycastHit[] hits)
+    private IInteraction SearchClosestTarget(RaycastHit[] hits)
     {
-      IInteractable closestHit = null;
+      IInteraction closestHit = null;
       float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
-        IInteractable cursorTarget = hit.transform.GetComponent<IInteractable>();
+        IInteraction cursorTarget = hit.transform.GetComponent<IInteraction>();
         if (cursorTarget != null)
         {
           float distance = Vector3.Distance(hit.point, hit.transform.position);
@@ -109,7 +109,7 @@ namespace RPG.Core
       return closestHit;
     }
 
-    private void HandleOutline(IInteractable cursorTarget)
+    private void HandleOutline(IInteraction cursorTarget)
     {
       if (lastTarget != cursorTarget)
       {

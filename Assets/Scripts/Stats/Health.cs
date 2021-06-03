@@ -7,7 +7,7 @@ using System;
 
 namespace RPG.Stats
 {
-  public class Health : MonoBehaviour, IDisplayable
+  public class Health : MonoBehaviour, IDisplayable, IInteraction
   {
     [SerializeField] float lvlUpHeal = 0.3f;
     Animator animator;
@@ -112,6 +112,13 @@ namespace RPG.Stats
     public float GetMaxValue()
     {
       return maxHealth.value;
+    }
+
+    public void Interact(GameObject interacter){ }
+
+    public GameObject GetGameObject()
+    {
+      return gameObject;
     }
   }
 }

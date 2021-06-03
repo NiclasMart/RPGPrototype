@@ -62,7 +62,7 @@ namespace RPG.Control
     private bool UpdateCombat()
     {
       Health combatTarget = null;
-      IInteractable target = playerCursor.Target;
+      IInteraction target = playerCursor.Target;
       if (target != null) combatTarget = target.GetGameObject().GetComponent<Health>();
 
 
@@ -112,9 +112,9 @@ namespace RPG.Control
 
     private bool UpdateInteraction()
     {
-      Pickup interactionTarget = null;
-      IInteractable target = playerCursor.Target;
-      if (target != null) interactionTarget = target.GetGameObject().GetComponent<Pickup>();
+      Interactable interactionTarget = null;
+      IInteraction target = playerCursor.Target;
+      if (target != null) interactionTarget = target.GetGameObject().GetComponent<Interactable>();
 
       if (interactionTarget)
       {

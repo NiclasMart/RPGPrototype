@@ -8,7 +8,7 @@ namespace RPG.Interaction
   {
     [SerializeField] float interactionDistance = 1f;
     PlayerInventory inventory;
-    IInteractable interactionTarget = null;
+    IInteraction interactionTarget = null;
 
     ActionScheduler scheduler;
     Mover mover;
@@ -27,6 +27,7 @@ namespace RPG.Interaction
       if (TargetInRange())
       {
         mover.Cancel();
+        print("call interact");
         interactionTarget.Interact(gameObject);
         Cancel();
       }
@@ -36,7 +37,7 @@ namespace RPG.Interaction
       }
     }
 
-    public void SetInteractionTarget(IInteractable target)
+    public void SetInteractionTarget(IInteraction target)
     {
       scheduler.StartAction(this);
       interactionTarget = target;

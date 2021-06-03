@@ -12,6 +12,8 @@ namespace RPG.Movement
     Animator animator;
     ActionScheduler scheduler;
 
+    public bool IsMoving => agent.destination != null;
+
     private void Awake()
     {
       agent = GetComponent<NavMeshAgent>();

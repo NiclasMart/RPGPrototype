@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Interaction
 {
-  public class Pickup : MonoBehaviour, IInteractable
+  public class Pickup : Interactable
   {
     public Item item;
 
@@ -21,7 +21,7 @@ namespace RPG.Interaction
       print("resetTarget");
     }
 
-    public void Interact(GameObject interacter)
+    public override void Interact(GameObject interacter)
     {
       PlayerInventory inventory = interacter.GetComponent<PlayerInventory>();
       if (!inventory) return;
@@ -35,11 +35,6 @@ namespace RPG.Interaction
       {
         //show full effect
       }
-    }
-
-    public GameObject GetGameObject()
-    {
-      return gameObject;
     }
   }
 }
