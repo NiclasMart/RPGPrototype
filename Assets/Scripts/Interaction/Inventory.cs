@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RPG.Interaction
 {
-  public class PlayerInventory : MonoBehaviour
+  public class Inventory : MonoBehaviour
   {
     [SerializeField] InventoryDisplay display;
     [SerializeField] float capacity = 100f;
@@ -19,6 +19,14 @@ namespace RPG.Interaction
       display.AddNewItemToDisplay(item.icon, item.ID);
     }
 
+    public void AddItems(List<Item> items)
+    {
+      foreach (var item in items)
+      {
+        AddItem(item);
+      }
+    }
+
     public bool CheckCapacity(float weight)
     {
       return currentCapacity + weight <= capacity;
@@ -26,7 +34,6 @@ namespace RPG.Interaction
 
     public void DeleteItem()
     {
-      print("delete");
       string itemId = display.currentlySelectedSlot.slottedItemID;
       foreach (var item in items)
       {
@@ -35,6 +42,12 @@ namespace RPG.Interaction
         break;
       }
       display.DeleteSelectedItem();
+    }
+
+    public void DeleteAllItems()
+    {
+      items = new List<Item>();
+      display.Clear();
     }
 
     void RecalculateCapacity(float weight)

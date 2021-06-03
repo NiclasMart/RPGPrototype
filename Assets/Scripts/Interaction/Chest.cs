@@ -12,6 +12,7 @@ namespace RPG.Interaction
     [SerializeField] GameObject UI;
     [SerializeField] float openDistance = 2f;
     GameObject player;
+    List<Item> items = new List<Item>();
     bool uiActive = false;
 
     private void Start()
@@ -23,6 +24,12 @@ namespace RPG.Interaction
     private void Update()
     {
       if (uiActive && !PlayerInRange()) ToggleUI();
+    }
+
+    public void AddItems(List<Item> newItems)
+    {
+      //use maybe concart for keeping old list and highlighting new Items
+        items.AddRange(newItems);
     }
 
     private bool PlayerInRange()

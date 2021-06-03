@@ -6,23 +6,10 @@ namespace RPG.Display
 {
   public class InventoryDisplay : MonoBehaviour
   {
-    [SerializeField] KeyCode displayButton = KeyCode.I;
     [SerializeField] ItemDisplaySlot itemSlot;
     [SerializeField] RectTransform list;
     [SerializeField] TextMeshProUGUI capacityDisplay;
     [HideInInspector] public ItemDisplaySlot currentlySelectedSlot { get; private set; }
-
-    bool displayActive = false;
-
-    private void Awake()
-    {
-      transform.GetChild(0).gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-      ToggleDisplay();
-    }
 
     public void AddNewItemToDisplay(Sprite sprite, string itemID)
     {
@@ -32,6 +19,7 @@ namespace RPG.Display
 
     public void UpdateCapacityDisplay(float currentValue, float maxValue)
     {
+      if (!capacityDisplay) return;
       string value = string.Concat(currentValue + "/" + maxValue);
       capacityDisplay.text = value;
     }
@@ -48,12 +36,12 @@ namespace RPG.Display
       Destroy(currentlySelectedSlot.gameObject);
     }
 
-    private void ToggleDisplay()
+    public void Clear()
     {
-      if (Input.GetKeyDown(displayButton))
+      foreach (Transform slot in list.transform)
       {
-        displayActive = !displayActive;
-        transform.GetChild(0).gameObject.SetActive(displayActive);
+        if (slot == transform) continue;
+        Destroy(slot.gameObject);
       }
     }
   }
