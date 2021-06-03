@@ -1,21 +1,45 @@
+using RPG.Core;
 using UnityEngine;
 
 
 namespace RPG.Interaction
 {
-  public class Pickup : MonoBehaviour
+  public class Pickup : MonoBehaviour, IInteractable
   {
     public Item item;
 
-    private void OnEnable() 
+    private void OnEnable()
     {
       item.CreateID();
     }
 
-    public void Take(/*GameObject player*/)
+    public void Take()
     {
       //player.GetComponent<Fighter>().EquipWeapon(item);
       Destroy(gameObject);
+      PlayerInfo.GetPlayerCursor().ResetTarget();
+      print("resetTarget");
+    }
+
+    public void Interact(GameObject interacter)
+    {
+      PlayerInventory inventory = interacter.GetComponent<PlayerInventory>();
+      if (!inventory) return;
+
+      if (inventory.CheckCapacity(item.weight))
+      {
+        inventory.AddItem(item);
+        Take();
+      }
+      else
+      {
+        //show full effect
+      }
+    }
+
+    public GameObject GetGameObject()
+    {
+      return gameObject;
     }
   }
 }

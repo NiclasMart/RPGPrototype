@@ -8,6 +8,7 @@ namespace RPG.Core
   {
     static GameObject player;
     static Camera mainCamera;
+    static PlayerCursor playerCursor;
 
     private void Awake()
     {
@@ -15,6 +16,8 @@ namespace RPG.Core
       if (!player) Debug.LogError("PlayerInfo: Can't find Player!");
       mainCamera = Camera.main;
       if (!mainCamera) Debug.LogError("PlayerInfo: Can't find Camera!");
+      playerCursor = player.GetComponent<PlayerCursor>();
+      if (!playerCursor) Debug.LogError("PlayerInfo: Can't find Player Cursor!");
     }
 
     public static GameObject GetPlayer()
@@ -25,6 +28,11 @@ namespace RPG.Core
     public static Camera GetMainCamera()
     {
       return mainCamera;
+    }
+
+    public static PlayerCursor GetPlayerCursor()
+    {
+      return playerCursor;
     }
   }
 }

@@ -21,8 +21,8 @@ namespace RPG.Core
 
     [SerializeField] CursorMapping[] cursorMap;
     Camera cam;
-    Targetable target;
-    public Targetable Target { get => target; }
+    IInteractable target;
+    public IInteractable Target { get => target; }
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
     [HideInInspector] public bool hasRaycastHit;
@@ -50,6 +50,12 @@ namespace RPG.Core
       Cursor.SetCursor(cursor.icon, cursor.hotspot, CursorMode.Auto);
     }
 
+    public void ResetTarget()
+    {
+      if (lastTarget == target) lastTarget = null;
+      target = null;
+    }
+
     private CursorMapping GetCursorMapping(CursorType type)
     {
       foreach (CursorMapping cursor in cursorMap)
@@ -59,18 +65,20 @@ namespace RPG.Core
       return cursorMap[0];
     }
 
-    Targetable lastTarget;
+    IInteractable lastTarget;
     private void CheckForTargetable()
     {
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
       SetMovePosition(hits);
 
-      Targetable closestHit = SearchClosestTarget(hits);
+      IInteractable closestHit = SearchClosestTarget(hits);
 
       if (closestHit != null)
       {
         HandleOutline(closestHit);
+        lastTarget = closestHit;
         target = closestHit;
+        print("find Target ");
       }
       else
       {
@@ -80,13 +88,13 @@ namespace RPG.Core
 
     }
 
-    private Targetable SearchClosestTarget(RaycastHit[] hits)
+    private IInteractable SearchClosestTarget(RaycastHit[] hits)
     {
-      Targetable closestHit = null;
+      IInteractable closestHit = null;
       float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
-        Targetable cursorTarget = hit.transform.GetComponent<Targetable>();
+        IInteractable cursorTarget = hit.transform.GetComponent<IInteractable>();
         if (cursorTarget != null)
         {
           float distance = Vector3.Distance(hit.point, hit.transform.position);
@@ -101,25 +109,23 @@ namespace RPG.Core
       return closestHit;
     }
 
-    private void HandleOutline(Targetable cursorTarget)
+    private void HandleOutline(IInteractable cursorTarget)
     {
       if (lastTarget != cursorTarget)
       {
         DisableOldOutline();
 
         //enable new outline
-        var outline = cursorTarget.GetComponent<Outline>();
+        var outline = cursorTarget.GetGameObject().GetComponent<Outline>();
         if (outline) outline.enabled = true;
-
-        lastTarget = cursorTarget;
       }
     }
 
     private void DisableOldOutline()
     {
-      if (!lastTarget) return;
+      if (lastTarget == null) return;
 
-      var oldOutline = lastTarget.GetComponent<Outline>();
+      var oldOutline = lastTarget.GetGameObject().GetComponent<Outline>();
       if (oldOutline) oldOutline.enabled = false;
 
       lastTarget = null;

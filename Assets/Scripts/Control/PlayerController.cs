@@ -42,7 +42,7 @@ namespace RPG.Control
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
       if (UpdateMovement()) return;
-      print("Nothing to do!");
+      //print("Nothing to do!");
     }
 
     private bool HandleInputs()
@@ -62,8 +62,8 @@ namespace RPG.Control
     private bool UpdateCombat()
     {
       Health combatTarget = null;
-      Targetable target = playerCursor.Target;
-      if (target) combatTarget = target.GetComponent<Health>();
+      IInteractable target = playerCursor.Target;
+      if (target != null) combatTarget = target.GetGameObject().GetComponent<Health>();
 
 
       if (combatTarget)
@@ -113,8 +113,8 @@ namespace RPG.Control
     private bool UpdateInteraction()
     {
       Pickup interactionTarget = null;
-      Targetable target = playerCursor.Target;
-      if (target) interactionTarget = target.GetComponent<Pickup>();
+      IInteractable target = playerCursor.Target;
+      if (target != null) interactionTarget = target.GetGameObject().GetComponent<Pickup>();
 
       if (interactionTarget)
       {

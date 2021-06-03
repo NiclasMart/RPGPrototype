@@ -8,7 +8,7 @@ namespace RPG.Interaction
   {
     [SerializeField] float interactionDistance = 1f;
     PlayerInventory inventory;
-    Targetable interactionTarget = null;
+    IInteractable interactionTarget = null;
 
     ActionScheduler scheduler;
     Mover mover;
@@ -22,40 +22,41 @@ namespace RPG.Interaction
 
     private void Update()
     {
-      if (!interactionTarget) return;
+      if (interactionTarget == null) return;
 
       if (TargetInRange())
       {
         mover.Cancel();
-        InteractWithPickup();
+        interactionTarget.Interact(gameObject);
         Cancel();
       }
       else
       {
-        mover.MoveTo(interactionTarget.transform.position);
+        mover.MoveTo(interactionTarget.GetGameObject().transform.position);
       }
     }
 
-    public void SetInteractionTarget(Targetable target)
+    public void SetInteractionTarget(IInteractable target)
     {
       scheduler.StartAction(this);
       interactionTarget = target;
     }
 
-    private void InteractWithPickup()
+    private void Interact()
     {
-      Pickup pickup = interactionTarget.GetComponent<Pickup>();
+      // Pickup pickup = interactionTarget.GetGameObject().GetComponent<Pickup>();
 
-      if (inventory.CheckCapacity(pickup.item.weight))
-      {
-        inventory.AddItem(pickup.item);
-        pickup.Take();
-      }
+      // if (inventory.CheckCapacity(pickup.item.weight))
+      // {
+      //   inventory.AddItem(pickup.item);
+      //   pickup.Take();
+      // }
+
     }
 
     private bool TargetInRange()
     {
-      return Vector3.Distance(transform.position, interactionTarget.transform.position) <= interactionDistance;
+      return Vector3.Distance(transform.position, interactionTarget.GetGameObject().transform.position) <= interactionDistance;
     }
     public void Cancel()
     {
