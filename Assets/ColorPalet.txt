@@ -1,0 +1,2 @@
+Border: 576168
+Inside: 7F8F98
