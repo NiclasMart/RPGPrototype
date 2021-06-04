@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
-using System;
-using RPG.Movement;
+
 
 namespace RPG.Interaction
 {
-  public class Chest : Interactable
+  public class UIActivator : Interactable
   {
     [SerializeField] GameObject UI;
     [SerializeField] float openDistance = 2f;
     GameObject player;
-    List<Item> items = new List<Item>();
+    
     bool uiActive = false;
 
     private void Start()
@@ -24,12 +23,6 @@ namespace RPG.Interaction
     private void Update()
     {
       if (uiActive && !PlayerInRange()) ToggleUI();
-    }
-
-    public void AddItems(List<Item> newItems)
-    {
-      //use maybe concart for keeping old list and highlighting new Items
-        items.AddRange(newItems);
     }
 
     private bool PlayerInRange()
@@ -45,10 +38,7 @@ namespace RPG.Interaction
 
     public override void Interact(GameObject interacter)
     {
-      print("called");
       ToggleUI();
     }
-
-
   }
 }
