@@ -32,10 +32,10 @@ RectTransform:
   m_Father: {fileID: 67133940718142100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 25.395557, y: -0.1238}
-  m_SizeDelta: {x: 56.7315, y: 56.7315}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0.0000076293945}
+  m_SizeDelta: {x: 9.105, y: 9.1768}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4585341564644937227
 CanvasRenderer:
@@ -879,7 +879,7 @@ GameObject:
   - component: {fileID: 2357623640837572439}
   - component: {fileID: 4519941484462133172}
   m_Layer: 5
-  m_Name: Image (9)
+  m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
