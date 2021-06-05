@@ -6,10 +6,10 @@ namespace RPG.Interaction
 {
   public class Interacter : MonoBehaviour, IAction
   {
+    public Inventory inventory;
     [SerializeField] float interactionDistance = 1f;
-    Inventory inventory;
-    IInteraction interactionTarget = null;
 
+    IInteraction interactionTarget = null;
     ActionScheduler scheduler;
     Mover mover;
 
@@ -17,7 +17,6 @@ namespace RPG.Interaction
     {
       scheduler = GetComponent<ActionScheduler>();
       mover = GetComponent<Mover>();
-      inventory = GetComponent<Inventory>();
     }
 
     private void Update()
@@ -27,7 +26,6 @@ namespace RPG.Interaction
       if (TargetInRange())
       {
         mover.Cancel();
-        print("call interact");
         interactionTarget.Interact(gameObject);
         Cancel();
       }

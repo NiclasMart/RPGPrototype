@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &5239729964919581352
+--- !u!114 &2646287082299645171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4061763967555933499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2250c19f41736964b9827de828bc9a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d5fcc327a794b4a8c7617008dd1425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot: {fileID: 974844700371306091, guid: a39b2fa265adbcd4c934bb1d52dfceda, type: 3}
+  capacity: 100
+  itemSlot: {fileID: 949720183118887052, guid: a39b2fa265adbcd4c934bb1d52dfceda, type: 3}
   list: {fileID: 7406317448618033828}
   capacityDisplay: {fileID: 0}
+  itemSlots: []
 --- !u!1001 &526049476359578746
 PrefabInstance:
   m_ObjectHideFlags: 0

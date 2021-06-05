@@ -1,22 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
-using RPG.Display;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 namespace RPG.Interaction
 {
   public class Inventory : MonoBehaviour
   {
-    [SerializeField] InventoryDisplay display;
     [SerializeField] float capacity = 100f;
+
+    [Header("UI Specifications")]
+    [SerializeField] ItemSlot itemSlot;
+    [SerializeField] RectTransform list;
+    [SerializeField] TextMeshProUGUI capacityDisplay;
+
     float currentCapacity;
-    public List<Item> items = new List<Item>();
+    [HideInInspector] public ItemSlot currentlySelectedItem { get; private set; }
+    [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
+
+    public List<Item> GetItemList()
+    {
+      List<Item> itemList = new List<Item>();
+      foreach (ItemSlot slot in itemSlots)
+      {
+        itemList.Add(slot.item);
+      }
+      return itemList;
+    }
 
     public void AddItem(Item item)
     {
-      items.Add(item);
+      ItemSlot slot = Instantiate(itemSlot, list);
+      slot.Initialize(item, this);
+      itemSlots.Add(slot);
       RecalculateCapacity(item.weight);
-      display.AddNewItemToDisplay(item.icon, item.ID);
     }
 
     public void AddItems(List<Item> items)
@@ -27,33 +44,51 @@ namespace RPG.Interaction
       }
     }
 
+    public void DeleteSelectedItem()
+    {
+      if (!currentlySelectedItem) return;
+      itemSlots.Remove(currentlySelectedItem);
+      Destroy(currentlySelectedItem.gameObject);
+      currentlySelectedItem = null;
+    }
+
+    public void DeleteAllItems()
+    {
+      itemSlots = new List<ItemSlot>();
+      Clear();
+    }
+
+    public void SelectSlot(ItemSlot slot)
+    {
+      if (currentlySelectedItem) currentlySelectedItem.Deselect();
+      currentlySelectedItem = slot;
+    }
+
     public bool CheckCapacity(float weight)
     {
       return currentCapacity + weight <= capacity;
     }
 
-    public void DeleteItem()
+    void Clear()
     {
-      string itemId = display.currentlySelectedSlot.slottedItemID;
-      foreach (var item in items)
+      foreach (Transform slot in list.transform)
       {
-        if (item.ID != itemId) continue;
-        items.Remove(item);
-        break;
+        if (slot == transform) continue;
+        Destroy(slot.gameObject);
       }
-      display.DeleteSelectedItem();
-    }
-
-    public void DeleteAllItems()
-    {
-      items = new List<Item>();
-      display.Clear();
     }
 
     void RecalculateCapacity(float weight)
     {
       currentCapacity += weight;
-      display.UpdateCapacityDisplay(currentCapacity, capacity);
+      UpdateCapacityDisplay(currentCapacity, capacity);
+    }
+
+    void UpdateCapacityDisplay(float currentValue, float maxValue)
+    {
+      if (!capacityDisplay) return;
+      string value = string.Concat(currentValue + "/" + maxValue);
+      capacityDisplay.text = value;
     }
   }
 }

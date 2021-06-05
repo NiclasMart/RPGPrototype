@@ -420,8 +420,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3235172688288284765}
-        m_TargetAssemblyTypeName: RPG.Display.ItemDisplaySlot, Assembly-CSharp
+      - m_Target: {fileID: 3192182447112732346}
+        m_TargetAssemblyTypeName: RPG.Interaction.ItemSlot, Assembly-CSharp
         m_MethodName: Select
         m_Mode: 1
         m_Arguments:
@@ -666,7 +666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5869035206881880007}
-  - component: {fileID: 3235172688288284765}
+  - component: {fileID: 3192182447112732346}
   m_Layer: 5
   m_Name: ItemSlot
   m_TagString: Untagged
@@ -703,7 +703,7 @@ RectTransform:
   m_AnchoredPosition: {x: 273.09998, y: -793.99835}
   m_SizeDelta: {x: 451.9, y: 77.6333}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3235172688288284765
+--- !u!114 &3192182447112732346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -712,7 +712,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5869035206881880006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67170ff99b29a454b88de0e95d1ab9c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c79f251e18d4c241b8a679d2f4b2ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   iconSlot: {fileID: 4519941484462133172}

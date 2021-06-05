@@ -1160,7 +1160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 448496506412250887}
-  - component: {fileID: 1181955211}
+  - component: {fileID: 6466004122569155611}
   - component: {fileID: 2537152472133986481}
   m_Layer: 5
   m_Name: Inventory
@@ -1189,7 +1189,7 @@ RectTransform:
   m_AnchoredPosition: {x: 41, y: -185}
   m_SizeDelta: {x: 477.69995, y: 471.8}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &1181955211
+--- !u!114 &6466004122569155611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1198,12 +1198,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 448496506412250886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2250c19f41736964b9827de828bc9a74, type: 3}
+  m_Script: {fileID: 11500000, guid: 79d5fcc327a794b4a8c7617008dd1425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSlot: {fileID: 3235172688288284765, guid: 8ec0bb4b88b0c8d4c9eb3a9d3c54ad8b, type: 3}
+  capacity: 100
+  itemSlot: {fileID: 3192182447112732346, guid: 8ec0bb4b88b0c8d4c9eb3a9d3c54ad8b, type: 3}
   list: {fileID: 1092360467}
   capacityDisplay: {fileID: 3000501528646061336}
+  itemSlots: []
 --- !u!114 &2537152472133986481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,9 +2092,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RPG.Interaction.PlayerInventory, Assembly-CSharp
-        m_MethodName: DeleteItem
+      - m_Target: {fileID: 6466004122569155611}
+        m_TargetAssemblyTypeName: RPG.Interaction.Inventory, Assembly-CSharp
+        m_MethodName: DeleteSelectedItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

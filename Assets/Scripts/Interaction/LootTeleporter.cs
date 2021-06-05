@@ -9,9 +9,9 @@ namespace RPG.Interaction
     [SerializeField] Inventory connectedReciever;
     public override void Interact(GameObject interacter)
     {
-      Inventory playerInventory = interacter.GetComponent<Inventory>();
+      Inventory playerInventory = interacter.GetComponent<Interacter>().inventory;
       connectedReciever.DeleteAllItems();
-      connectedReciever.AddItems(playerInventory.items);
+      connectedReciever.AddItems(playerInventory.GetItemList());
       playerInventory.DeleteAllItems();
     }
   }

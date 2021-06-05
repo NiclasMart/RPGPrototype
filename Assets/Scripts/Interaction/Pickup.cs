@@ -23,7 +23,7 @@ namespace RPG.Interaction
 
     public override void Interact(GameObject interacter)
     {
-      Inventory inventory = interacter.GetComponent<Inventory>();
+      Inventory inventory = interacter.GetComponent<Interacter>().inventory;
       if (!inventory) return;
 
       if (inventory.CheckCapacity(item.weight))
