@@ -7,6 +7,7 @@ namespace RPG.Interaction
   public class Interacter : MonoBehaviour, IAction
   {
     public Inventory inventory;
+    public Inventory mainInventory;
     [SerializeField] float interactionDistance = 1f;
 
     IInteraction interactionTarget = null;

@@ -9,15 +9,17 @@ namespace RPG.Interaction
   public class UIActivator : Interactable
   {
     [SerializeField] GameObject UI;
+    public GameObject connectedUI => UI;
     [SerializeField] float openDistance = 2f;
+
     GameObject player;
-    
+    public GameObject Interacter => player;
+
     bool uiActive = false;
 
     private void Start()
     {
       UI.SetActive(false);
-      player = PlayerInfo.GetPlayer();
     }
 
     private void Update()
@@ -38,6 +40,7 @@ namespace RPG.Interaction
 
     public override void Interact(GameObject interacter)
     {
+      player = interacter;
       ToggleUI();
     }
   }

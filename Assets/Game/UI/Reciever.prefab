@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4144451064831497908, guid: f1d471f1e25952d4898ed14ed6495a1e, type: 3}
       propertyPath: m_Name
-      value: Button (1)
+      value: Sell
       objectReference: {fileID: 0}
     - target: {fileID: 4223760274004648322, guid: f1d471f1e25952d4898ed14ed6495a1e, type: 3}
       propertyPath: m_Pivot.x
@@ -267,7 +267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4144451064831497908, guid: f1d471f1e25952d4898ed14ed6495a1e, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: Take
       objectReference: {fileID: 0}
     - target: {fileID: 4223760274004648322, guid: f1d471f1e25952d4898ed14ed6495a1e, type: 3}
       propertyPath: m_Pivot.x

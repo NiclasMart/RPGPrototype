@@ -359,7 +359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000014305115}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 478, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1092360471
@@ -1161,7 +1161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 448496506412250887}
   - component: {fileID: 6466004122569155611}
-  - component: {fileID: 2537152472133986481}
+  - component: {fileID: 6937660383234138936}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -1206,7 +1206,7 @@ MonoBehaviour:
   list: {fileID: 1092360467}
   capacityDisplay: {fileID: 3000501528646061336}
   itemSlots: []
---- !u!114 &2537152472133986481
+--- !u!114 &6937660383234138936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 448496506412250886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25fcd8ef1c020264a9c17c2845b138c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 30c2081d74dbc1d4ba5388d1600d32a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayButton: 105
