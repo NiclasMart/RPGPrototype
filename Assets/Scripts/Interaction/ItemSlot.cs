@@ -19,25 +19,26 @@ namespace RPG.Interaction
 
     public void Initialize(Item item, Inventory inventory)
     {
-      SetIcon(item.icon);
+      SetIcon(item);
       this.item = item;
       this.inventory = inventory;
     }
 
-    public void Select()
+    public virtual void Select()
     {
       SetColor(selectable.colors.highlightedColor);
       inventory.SelectSlot(this);
     }
 
-    public void Deselect()
+    public virtual void Deselect()
     {
       SetColor(stdColor);
     }
 
-    void SetIcon(Sprite icon)
+    void SetIcon(Item item)
     {
-      iconSlot.sprite = icon;
+      if (!item) return;
+      iconSlot.sprite = item.icon;
     }
 
     void SetColor(Color color)

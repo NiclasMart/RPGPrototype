@@ -6,15 +6,15 @@ namespace RPG.Interaction
 {
   public class Receiver : MonoBehaviour
   {
-    Inventory storage;
+    SimpleInventory storage;
     void Awake()
     {
-      storage = GetComponent<UIActivator>().connectedUI.GetComponent<Inventory>();
+      storage = GetComponent<UIActivator>().connectedUI.GetComponent<SimpleInventory>();
     }
 
     public void TakeAllItems()
     {
-      Inventory inventory = GetComponent<UIActivator>().Interacter.GetComponent<Interacter>().mainInventory;
+      PlayerInventory inventory = GetComponent<UIActivator>().Interacter.GetComponent<Interacter>().mainInventory;
       inventory.AddItems(storage.GetItemList());
       storage.DeleteAllItems();
     }

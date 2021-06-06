@@ -6,10 +6,10 @@ namespace RPG.Interaction
 {
   public class LootTeleporter : Interactable
   {
-    [SerializeField] Inventory connectedReciever;
+    [SerializeField] SimpleInventory connectedReciever;
     public override void Interact(GameObject interacter)
     {
-      Inventory playerInventory = interacter.GetComponent<Interacter>().inventory;
+      SimpleInventory playerInventory = interacter.GetComponent<Interacter>().inventory;
       connectedReciever.DeleteAllItems();
       connectedReciever.AddItems(playerInventory.GetItemList());
       playerInventory.DeleteAllItems();

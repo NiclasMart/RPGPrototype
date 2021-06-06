@@ -8,6 +8,7 @@ namespace RPG.Interaction
     string itemID = null;
     public Sprite icon;
     public float weight;
+    public ItemType itemType;
 
     public string ID => itemID;
 
