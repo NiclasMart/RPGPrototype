@@ -49,6 +49,7 @@ namespace RPG.Interaction
     public void DeleteSelectedItem()
     {
       if (!selectedSlot) return;
+      RecalculateCapacity(-selectedSlot.item.weight);
       itemSlots.Remove(selectedSlot);
       Destroy(selectedSlot.gameObject);
       selectedSlot = null;
