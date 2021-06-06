@@ -1,3 +1,4 @@
+using System;
 using RPG.Display;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,9 @@ namespace RPG.Interaction
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
     [HideInInspector] public Item item { get; private set; }
-    Inventory inventory;
+    protected Inventory inventory;
     Color stdColor;
+
 
     private void Awake()
     {
@@ -26,7 +28,14 @@ namespace RPG.Interaction
 
     public virtual void Select()
     {
-      if (inventory.selectedSlot == this) return;
+      //handle second click
+      if (inventory.selectedSlot == this)
+      {
+        SimpleInventory simpleInventory = inventory as SimpleInventory;
+        if (simpleInventory) simpleInventory.onSecondClick.Invoke(inventory.selectedSlot.item);
+        return;
+      }
+
       SetColor(selectable.colors.highlightedColor);
       inventory.SelectSlot(this);
     }
@@ -36,7 +45,7 @@ namespace RPG.Interaction
       SetColor(stdColor);
     }
 
-    void SetIcon(Item item)
+    protected void SetIcon(Item item)
     {
       if (!item) return;
       iconSlot.sprite = item.icon;

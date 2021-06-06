@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System;
 
 namespace RPG.Interaction
 {
@@ -15,8 +16,9 @@ namespace RPG.Interaction
     [SerializeField] TextMeshProUGUI capacityDisplay;
 
     float currentCapacity;
-    
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
+
+    public Action<Item> onSecondClick = (item) => { };
 
     public List<Item> GetItemList()
     {
