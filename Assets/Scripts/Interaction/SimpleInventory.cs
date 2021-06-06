@@ -15,7 +15,7 @@ namespace RPG.Interaction
     [SerializeField] TextMeshProUGUI capacityDisplay;
 
     float currentCapacity;
-    [HideInInspector] public ItemSlot currentlySelectedItem { get; private set; }
+    
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public List<Item> GetItemList()
@@ -46,10 +46,10 @@ namespace RPG.Interaction
 
     public void DeleteSelectedItem()
     {
-      if (!currentlySelectedItem) return;
-      itemSlots.Remove(currentlySelectedItem);
-      Destroy(currentlySelectedItem.gameObject);
-      currentlySelectedItem = null;
+      if (!selectedSlot) return;
+      itemSlots.Remove(selectedSlot);
+      Destroy(selectedSlot.gameObject);
+      selectedSlot = null;
     }
 
     public void DeleteAllItems()
@@ -60,8 +60,8 @@ namespace RPG.Interaction
 
     public override void SelectSlot(ItemSlot slot)
     {
-      if (currentlySelectedItem) currentlySelectedItem.Deselect();
-      currentlySelectedItem = slot;
+      if (selectedSlot) selectedSlot.Deselect();
+      selectedSlot = slot;
     }
 
     public bool CheckCapacity(float weight)

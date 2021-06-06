@@ -17,7 +17,6 @@ namespace RPG.Interaction
       public SimpleInventory inventory;
     }
     Dictionary<ItemType, SimpleInventory> sortDictionary = new Dictionary<ItemType, SimpleInventory>();
-    EquipmentSlot selectedEquipmentSlot = null;
 
     private void Awake()
     {
@@ -39,8 +38,8 @@ namespace RPG.Interaction
       EquipmentSlot equipSlot = slot as EquipmentSlot;
       if (!equipSlot) return;
 
-      if (selectedEquipmentSlot) selectedEquipmentSlot.Deselect();
-      selectedEquipmentSlot = equipSlot;
+      if (selectedSlot) selectedSlot.Deselect();
+      selectedSlot = equipSlot;
     }
 
     private void BuildDictionary()
@@ -59,7 +58,7 @@ namespace RPG.Interaction
         slot.connectedInventory.gameObject.SetActive(false);
       }
       defaultSelectedSlot.connectedInventory.gameObject.SetActive(true);
-      selectedEquipmentSlot = defaultSelectedSlot;
+      selectedSlot = defaultSelectedSlot;
     }
   }
 }

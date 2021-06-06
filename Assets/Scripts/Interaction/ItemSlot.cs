@@ -26,6 +26,7 @@ namespace RPG.Interaction
 
     public virtual void Select()
     {
+      if (inventory.selectedSlot == this) return;
       SetColor(selectable.colors.highlightedColor);
       inventory.SelectSlot(this);
     }
