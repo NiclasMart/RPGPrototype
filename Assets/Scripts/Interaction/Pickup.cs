@@ -6,7 +6,7 @@ namespace RPG.Interaction
 {
   public class Pickup : Interactable
   {
-    public Item item;
+    public GenericItem item;
 
     private void OnEnable()
     {

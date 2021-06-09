@@ -2,22 +2,32 @@ using UnityEngine;
 
 namespace RPG.Interaction
 {
-  [CreateAssetMenu(fileName = "Item", menuName = "RPGPrototype/Item", order = 0)]
-  public class Item : ScriptableObject
+  public class Item : MonoBehaviour
   {
-    string itemID = null;
+    string baseResourcePath = "ItemSprites/";
     public Sprite icon;
     public float weight;
     public ItemType itemType;
 
-    public string ID => itemID;
-
-    public void CreateID()
+    [System.Serializable]
+    struct SaveData
     {
-      if (string.IsNullOrWhiteSpace(itemID))
-      {
-        itemID = System.Guid.NewGuid().ToString();
-      }
+      public string sprite;
+      public ItemType type;
+    }
+
+    public object GetSaveData()
+    {
+      SaveData data = new SaveData();
+      data.sprite = baseResourcePath + icon.name;
+      data.type = itemType;
+      return data;
+    }
+
+    public static void CreateItemFromData(object data)
+    {
+      SaveData saveData = (SaveData)data;
+
     }
   }
 }

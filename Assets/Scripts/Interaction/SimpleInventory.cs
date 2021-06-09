@@ -3,10 +3,11 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using RPG.Saving;
 
 namespace RPG.Interaction
 {
-  public class SimpleInventory : Inventory
+  public class SimpleInventory : Inventory, ISaveable
   {
     [SerializeField] float capacity = 100f;
 
@@ -18,11 +19,11 @@ namespace RPG.Interaction
     float currentCapacity;
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
-    public Action<Item> onSecondClick = (item) => { };
+    public Action<GenericItem> onSecondClick = (item) => { };
 
-    public List<Item> GetItemList()
+    public List<GenericItem> GetItemList()
     {
-      List<Item> itemList = new List<Item>();
+      List<GenericItem> itemList = new List<GenericItem>();
       foreach (ItemSlot slot in itemSlots)
       {
         itemList.Add(slot.item);
@@ -30,7 +31,7 @@ namespace RPG.Interaction
       return itemList;
     }
 
-    public void AddItem(Item item)
+    public void AddItem(GenericItem item)
     {
       ItemSlot slot = Instantiate(itemSlot, list);
       slot.Initialize(item, this);
@@ -38,7 +39,7 @@ namespace RPG.Interaction
       RecalculateCapacity(item.weight);
     }
 
-    public void AddItems(List<Item> items)
+    public void AddItems(List<GenericItem> items)
     {
       foreach (var item in items)
       {
@@ -92,6 +93,26 @@ namespace RPG.Interaction
       if (!capacityDisplay) return;
       string value = string.Concat(currentValue + "/" + maxValue);
       capacityDisplay.text = value;
+    }
+
+    public object CaptureSaveData()
+    {
+      List<object> saveData = new List<object>();
+      foreach (ItemSlot slot in itemSlots)
+      {
+        //saveData.Add(slot.item.GetSaveData());
+      }
+      return saveData;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      List<object> saveData = (List<object>)data;
+
+      foreach (object obj in saveData)
+      {
+
+      }
     }
   }
 }
