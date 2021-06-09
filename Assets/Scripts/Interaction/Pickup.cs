@@ -1,3 +1,4 @@
+using System.Collections;
 using RPG.Core;
 using UnityEngine;
 
@@ -13,9 +14,8 @@ namespace RPG.Interaction
       this.item = item;
       GameObject itemObject = Instantiate(item.itemObject, transform);
       Transform child = itemObject.transform.GetChild(0);
-      child.rotation = Quaternion.identity;
-      child.localPosition = Vector3.zero;
       itemObject.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
+      StartCoroutine(EnableOutline());
     }
 
     public void Take()
@@ -40,6 +40,12 @@ namespace RPG.Interaction
       {
         //show full effect
       }
+    }
+
+    IEnumerator EnableOutline()
+    {
+      yield return new WaitForEndOfFrame();
+      GetComponent<Outline>().Initialize();
     }
   }
 }

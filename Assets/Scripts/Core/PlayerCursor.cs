@@ -78,7 +78,6 @@ namespace RPG.Core
         HandleOutline(closestHit);
         lastTarget = closestHit;
         target = closestHit;
-        print("find Target ");
       }
       else
       {
