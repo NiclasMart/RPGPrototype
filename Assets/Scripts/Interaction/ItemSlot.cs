@@ -9,7 +9,7 @@ namespace RPG.Interaction
   {
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
-    [HideInInspector] public GenericItem item { get; private set; }
+    [HideInInspector] public Item item { get; private set; }
     protected Inventory inventory;
     Color stdColor;
 
@@ -19,7 +19,7 @@ namespace RPG.Interaction
       stdColor = selectable.GetComponent<Image>().color;
     }
 
-    public void Initialize(GenericItem item, Inventory inventory)
+    public void Initialize(Item item, Inventory inventory)
     {
       SetIcon(item);
       this.item = item;
@@ -45,7 +45,7 @@ namespace RPG.Interaction
       SetColor(stdColor);
     }
 
-    protected void SetIcon(GenericItem item)
+    protected void SetIcon(Item item)
     {
       if (!item) return;
       iconSlot.sprite = item.icon;

@@ -38,7 +38,7 @@ namespace RPG.Interaction
       connectedInventory.gameObject.SetActive(false);
     }
 
-    public void EquipGear(GenericItem item)
+    public void EquipGear(Item item)
     {
       SetIcon(item);
     }

@@ -6,11 +6,11 @@ namespace RPG.Interaction
 {
   public class Pickup : Interactable
   {
-    public GenericItem item;
+    public Item item;
 
     private void OnEnable()
     {
-      item.CreateID();
+      //item.CreateID();
     }
 
     public void Take()

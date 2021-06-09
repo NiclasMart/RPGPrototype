@@ -19,11 +19,11 @@ namespace RPG.Interaction
     float currentCapacity;
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
-    public Action<GenericItem> onSecondClick = (item) => { };
+    public Action<Item> onSecondClick = (item) => { };
 
-    public List<GenericItem> GetItemList()
+    public List<Item> GetItemList()
     {
-      List<GenericItem> itemList = new List<GenericItem>();
+      List<Item> itemList = new List<Item>();
       foreach (ItemSlot slot in itemSlots)
       {
         itemList.Add(slot.item);
@@ -31,7 +31,7 @@ namespace RPG.Interaction
       return itemList;
     }
 
-    public void AddItem(GenericItem item)
+    public void AddItem(Item item)
     {
       ItemSlot slot = Instantiate(itemSlot, list);
       slot.Initialize(item, this);
@@ -39,7 +39,7 @@ namespace RPG.Interaction
       RecalculateCapacity(item.weight);
     }
 
-    public void AddItems(List<GenericItem> items)
+    public void AddItems(List<Item> items)
     {
       foreach (var item in items)
       {

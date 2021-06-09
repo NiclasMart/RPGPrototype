@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Display;
 using GameDevTV.Utils;
 using System;
+using RPG.Interaction;
 
 namespace RPG.Stats
 {
@@ -91,6 +92,7 @@ namespace RPG.Stats
     {
       if (animator != null) animator.SetTrigger("die");
       GetComponent<ActionScheduler>().CancelCurrentAction();
+      GetComponent<LootGenerator>()?.DropLoot();
       DisableComponents();
       isDead = true;
     }
@@ -114,7 +116,7 @@ namespace RPG.Stats
       return maxHealth.value;
     }
 
-    public void Interact(GameObject interacter){ }
+    public void Interact(GameObject interacter) { }
 
     public GameObject GetGameObject()
     {

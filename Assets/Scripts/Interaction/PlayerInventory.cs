@@ -24,9 +24,9 @@ namespace RPG.Interaction
       InitializeSlots();
     }
 
-    public void AddItems(List<GenericItem> items)
+    public void AddItems(List<Item> items)
     {
-      foreach (GenericItem item in items)
+      foreach (Item item in items)
       {
         SimpleInventory inventory = sortDictionary[item.itemType];
         inventory.AddItem(item);
