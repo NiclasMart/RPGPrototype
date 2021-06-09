@@ -2075,7 +2075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &333371531
 Transform:
   m_ObjectHideFlags: 0
@@ -8516,10 +8516,6 @@ MonoBehaviour:
   itemPool:
   - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
     probability: 0.6
-  - item: {fileID: 11400000, guid: ea716cc0809c953438684c79d722c759, type: 2}
-    probability: 0.3
-  - item: {fileID: 11400000, guid: c32a4cde5caddb34e8a5a5283435eeb6, type: 2}
-    probability: 0.6
 --- !u!1001 &1386021342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13208,19 +13204,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000074286093
+      value: -0.000000007428606
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000043394346
+      value: 0.0000000043394324
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000074286093
+      value: -0.000000007428606
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000043394346
+      value: 0.0000000043394324
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090866779288, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_Name

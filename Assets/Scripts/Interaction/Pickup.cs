@@ -8,9 +8,14 @@ namespace RPG.Interaction
   {
     public Item item;
 
-    private void OnEnable()
+    public void Initialize(Item item)
     {
-      //item.CreateID();
+      this.item = item;
+      GameObject itemObject = Instantiate(item.itemObject, transform);
+      Transform child = itemObject.transform.GetChild(0);
+      child.rotation = Quaternion.identity;
+      child.localPosition = Vector3.zero;
+      itemObject.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
     }
 
     public void Take()

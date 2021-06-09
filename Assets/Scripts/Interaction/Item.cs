@@ -2,10 +2,11 @@ using UnityEngine;
 
 namespace RPG.Interaction
 {
-  public class Item : MonoBehaviour
+  public class Item
   {
     string baseResourcePath;
     public Sprite icon;
+    public GameObject itemObject;
     public float weight;
     public ItemType itemType;
     public ItemStatModifier modifierType;
@@ -19,20 +20,22 @@ namespace RPG.Interaction
     }
 
 
-    public static Item Create(GenericItem baseItem)
-    {
-      GameObject gameObject = new GameObject("Pickup");
-      Item item = gameObject.AddComponent<Item>();
-      item.Initialize(baseItem);
-      return item;
-    }
+    // public Item Create(GenericItem baseItem)
+    // {
+    //   // GameObject gameObject = new GameObject("Pickup");
+    //   // Item item = gameObject.AddComponent<Item>();
 
-    public void Initialize(GenericItem baseItem)
+    //   item.Initialize(baseItem);
+    //   return item;
+    // }
+
+    public Item(GenericItem baseItem)
     {
       this.icon = baseItem.icon;
       this.weight = baseItem.weight;
       this.itemType = baseItem.itemType;
       this.baseResourcePath = baseItem.baseResourcePath;
+      this.itemObject = baseItem.itemObject;
     }
 
     public object GetSaveData()

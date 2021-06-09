@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace RPG.Interaction
 {
-  public class WeaponItem : Item
-  {
-      
-  }
+  // public class WeaponItem : Item
+  // {
+
+  // }
 }

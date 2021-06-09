@@ -58,6 +58,7 @@ namespace RPG.Interaction
       foreach (var drop in drops)
       {
         Pickup pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
+        pickup.Initialize(drop);
       }
     }
 
@@ -72,7 +73,7 @@ namespace RPG.Interaction
       {
         if (Random.Range(0, 1f) >= dropProb) continue;
         Item item = GetItemFromLootPool();
-        if (item) drops.Add(item);
+        if (item != null) drops.Add(item);
       }
 
       return drops;
@@ -85,7 +86,7 @@ namespace RPG.Interaction
       foreach (var drop in itemPool)
       {
         if (rand > drop.probability) continue;
-        Item newItem = Item.Create(drop.item);
+        Item newItem = new Item(drop.item);
         return newItem;
       }
       return null;

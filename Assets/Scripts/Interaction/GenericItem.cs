@@ -7,6 +7,7 @@ namespace RPG.Interaction
   {
     public string baseResourcePath = "ItemSprites/";
     public Sprite icon;
+    public GameObject itemObject;
     public float weight;
     public ItemType itemType;
 

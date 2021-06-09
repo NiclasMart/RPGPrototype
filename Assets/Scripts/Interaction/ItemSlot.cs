@@ -47,7 +47,7 @@ namespace RPG.Interaction
 
     protected void SetIcon(Item item)
     {
-      if (!item) return;
+      if (item == null) return;
       iconSlot.sprite = item.icon;
     }
 
