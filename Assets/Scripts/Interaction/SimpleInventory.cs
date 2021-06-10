@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections.Generic;
 using System;
 using RPG.Saving;
+using RPG.Items;
 
 namespace RPG.Interaction
 {

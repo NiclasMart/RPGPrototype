@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RPG.Interaction
+namespace RPG.Items
 {
   public class Item
   {

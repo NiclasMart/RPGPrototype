@@ -1,7 +1,7 @@
 namespace RPG.Interaction
 {
-    class WeaponStatModifier : ItemStatModifier
-    {
+    // class WeaponStatModifier : ItemStatModifier
+    // {
         
-    }
+    // }
 }

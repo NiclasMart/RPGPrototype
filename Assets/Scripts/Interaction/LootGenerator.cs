@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Interaction
+namespace RPG.Items
 {
   public class LootGenerator : MonoBehaviour
   {
@@ -26,6 +26,12 @@ namespace RPG.Interaction
       NoramlizeList();
     }
 
+    public void DropLoot()
+    {
+      List<Item> drops = GenerateLoot();
+      EjectLoot(drops);
+    }
+
     private void NoramlizeList()
     {
       float totalProbability = 0;
@@ -44,13 +50,6 @@ namespace RPG.Interaction
       }
 
       itemPool.Sort((x, y) => x.probability.CompareTo(y.probability));
-
-    }
-
-    public void DropLoot()
-    {
-      List<Item> drops = GenerateLoot();
-      EjectLoot(drops);
     }
 
     private void EjectLoot(List<Item> drops)
@@ -72,24 +71,50 @@ namespace RPG.Interaction
       for (int i = 0; i < maxDropAmount; i++)
       {
         if (Random.Range(0, 1f) >= dropProb) continue;
-        Item item = GetItemFromLootPool();
+
+        Item item = GenerateItem();
         if (item != null) drops.Add(item);
+
+        dropProb -= (chanceReductionPerDrop * dropProb);
       }
 
       return drops;
     }
 
-    private Item GetItemFromLootPool()
+    private Item GenerateItem()
+    {
+      Item baseItem = GetBaseItem();
+
+      //if (baseItem as ModifiableItem != null) ModifyBaseItem(baseItem as ModifiableItem);
+      return baseItem;
+    }
+
+    private Item GetBaseItem()
     {
       float rand = Random.Range(0, 1f);
 
       foreach (var drop in itemPool)
       {
         if (rand > drop.probability) continue;
+
+        if (drop.item.modifiable)
+        {
+          ModifiableItem modItem = new ModifiableItem(drop.item);
+          ModifyBaseItem(modItem, drop.item);
+          return modItem;
+        }
+
         Item newItem = new Item(drop.item);
         return newItem;
       }
       return null;
+    }
+
+    private void ModifyBaseItem(ModifiableItem item, GenericItem baseItem)
+    {
+      ItemStatModifier modifier = baseItem.modifiers[0];
+      item.AddModifier(modifier);
+
     }
   }
 }

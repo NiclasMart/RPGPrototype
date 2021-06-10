@@ -1,6 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Interaction
+namespace RPG.Items
 {
   [CreateAssetMenu(fileName = "Item", menuName = "RPGPrototype/Item", order = 0)]
   public class GenericItem : ScriptableObject
@@ -10,17 +12,7 @@ namespace RPG.Interaction
     public GameObject itemObject;
     public float weight;
     public ItemType itemType;
-
-    // string itemID = null;
-
-    // public string ID => itemID;
-
-    // public void CreateID()
-    // {
-    //   if (string.IsNullOrWhiteSpace(itemID))
-    //   {
-    //     itemID = System.Guid.NewGuid().ToString();
-    //   }
-    // }
+    public bool modifiable = false;
+    public List<ItemStatModifier> modifiers = new List<ItemStatModifier>();
   }
 }

@@ -3,8 +3,7 @@ using UnityEngine.AI;
 using RPG.Core;
 using RPG.Display;
 using GameDevTV.Utils;
-using System;
-using RPG.Interaction;
+using RPG.Items;
 
 namespace RPG.Stats
 {

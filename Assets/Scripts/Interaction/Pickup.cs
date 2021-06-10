@@ -1,9 +1,10 @@
 using System.Collections;
 using RPG.Core;
+using RPG.Interaction;
 using UnityEngine;
 
 
-namespace RPG.Interaction
+namespace RPG.Items
 {
   public class Pickup : Interactable
   {

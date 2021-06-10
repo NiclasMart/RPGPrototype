@@ -2,6 +2,7 @@ using System;
 using RPG.Display;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Items;
 
 namespace RPG.Interaction
 {
