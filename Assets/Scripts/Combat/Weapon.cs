@@ -1,27 +1,34 @@
-using RPG.Interaction;
 using RPG.Items;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-  [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Create New Weapon", order = 0)]
-  public class Weapon : GenericItem
+  public class Weapon : ModifiableItem
   {
-    [SerializeField] GameObject weaponPrefab;
-    [SerializeField] AnimationClip animation;
+    private AnimationClip animation;
+    private float damage;
+    private float range;
+    private float attackSpeed;
+    private DamageClass damageType;
+    private float damageMultiplier;
+    private protected bool isRightHanded = true;
 
-    [Header("Weapon Parameters")]
-    [SerializeField] float weaponDamage;
-    [SerializeField] float weaponRange;
-    [SerializeField, Min(0.1f)] float weaponAttackSpeed;
-    [SerializeField] DamageClass damageType;
-    [SerializeField] float damageMultiplier;
-    [SerializeField] protected bool isRightHanded = true;
-
-    public float Damage { get => weaponDamage; }
-    public float AttackRange { get => weaponRange; }
-    public float AttackSpeed { get => weaponAttackSpeed; }
+    public float Damage { get => damage; }
+    public float AttackRange { get => range; }
+    public float AttackSpeed { get => attackSpeed; }
     public float DamageMultiplier { get => damageMultiplier; }
+
+    public Weapon(GenericItem baseItem) : base(baseItem)
+    {
+      GenericWeapon baseWeapon = baseItem as GenericWeapon;
+      animation = baseWeapon.animation;
+      damage = baseWeapon.GetDamage;
+      range = baseWeapon.weaponRange;
+      attackSpeed = baseWeapon.GetAttackspeed;
+      damageType = baseWeapon.damageType;
+      damageMultiplier = baseWeapon.damageMultiplier;
+      isRightHanded = baseWeapon.isRightHanded;
+    }
 
     public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
@@ -32,7 +39,7 @@ namespace RPG.Combat
 
     public GameObject Spawn(Transform position)
     {
-      if (weaponPrefab != null) return Instantiate(weaponPrefab, position);
+      if (itemObject != null) return MonoBehaviour.Instantiate(itemObject, position);
       return null;
     }
 
@@ -40,6 +47,8 @@ namespace RPG.Combat
     {
       return isRightHanded ? rightHand : leftHand;
     }
+
+
 
   }
 }

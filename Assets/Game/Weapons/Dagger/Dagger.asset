@@ -17,11 +17,12 @@ MonoBehaviour:
   itemObject: {fileID: 7855749314461686537, guid: e690660a79075a343b261d896a89b397, type: 3}
   weight: 5
   itemType: 0
-  weaponPrefab: {fileID: 7855749314461686537, guid: e690660a79075a343b261d896a89b397, type: 3}
+  modifiable: 0
+  modifiers: []
   animation: {fileID: 7400000, guid: 6225a58c8d4165e42b647612da98e223, type: 3}
-  weaponDamage: 10
+  weaponDamage: {x: 5, y: 7}
+  weaponAttackSpeed: {x: 1.1, y: 1.3}
   weaponRange: 1.2
-  weaponAttackSpeed: 1.8
   damageType: {fileID: 0}
   damageMultiplier: 0
   isRightHanded: 0

@@ -12,7 +12,7 @@ namespace RPG.Combat
   {
     [SerializeField] Transform rightWeaponHolder;
     [SerializeField] Transform leftWeaponHolder;
-    [SerializeField] Weapon defaultWeapon;
+    [SerializeField] GenericWeapon defaultWeapon;
 
     LazyValue<Weapon> currentWeapon;
 
@@ -24,8 +24,9 @@ namespace RPG.Combat
 
     private Weapon GetInitializeWeapon()
     {
-      SpawnWeapon(defaultWeapon);
-      return defaultWeapon;
+      Weapon weapon = defaultWeapon.GenerateItem() as Weapon;
+      SpawnWeapon(weapon);
+      return weapon;
     }
 
     void Start()

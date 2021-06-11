@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
+  baseResourcePath: ItemSprites/
+  icon: {fileID: 0}
+  itemObject: {fileID: 0}
+  weight: 0
+  itemType: 0
+  modifiable: 0
+  modifiers: []
   animation: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
-  weaponDamage: 2
+  weaponDamage: {x: 2, y: 2}
+  weaponAttackSpeed: {x: 1, y: 1}
   weaponRange: 1
-  weaponAttackSpeed: 2
   damageType: {fileID: 0}
   damageMultiplier: 0
   isRightHanded: 1

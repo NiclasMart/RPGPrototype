@@ -39,7 +39,6 @@ namespace RPG.Items
     public static void CreateItemFromData(object data)
     {
       SaveData saveData = (SaveData)data;
-
     }
   }
 }

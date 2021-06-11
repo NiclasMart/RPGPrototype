@@ -1,17 +1,23 @@
-using UnityEngine;
+using RPG.Items;
 using RPG.Stats;
+using UnityEngine;
 
 namespace RPG.Combat
 {
-  [CreateAssetMenu(fileName = "RangedWeapon", menuName = "Weapons/Create New RangedWeapon", order = 0)]
   public class RangedWeapon : Weapon
   {
-    [SerializeField] GameObject projectilePrefab;
+    GameObject projectilePrefab;
+
+    public RangedWeapon(GenericItem baseItem) : base(baseItem) 
+    {
+      GenericRangedWeapon genericWeapon = baseItem as GenericRangedWeapon;
+      projectilePrefab = genericWeapon.projectilePrefab;
+    }
 
     public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject source, LayerMask layer, float damage)
     {
       Transform spawnLocation = SelectTransform(rightHand, leftHand);
-      GameObject projectileInstance = Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
+      GameObject projectileInstance = MonoBehaviour.Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
       if (projectileInstance)
       {
         projectileInstance.GetComponent<Projectile>().Initialize(target, source, damage, layer);

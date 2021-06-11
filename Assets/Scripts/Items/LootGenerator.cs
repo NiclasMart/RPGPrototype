@@ -90,7 +90,7 @@ namespace RPG.Items
 
         Item newItem;
         if (drop.item.modifiable) newItem = ModifyBaseItem(drop.item);
-        else newItem = new Item(drop.item);
+        else newItem = drop.item.GenerateItem();
 
         return newItem;
       }
@@ -100,7 +100,7 @@ namespace RPG.Items
 
     private Item ModifyBaseItem(GenericItem baseItem)
     {
-      ModifiableItem item = new ModifiableItem(baseItem);
+      ModifiableItem item = baseItem.GenerateItem() as ModifiableItem;
       ItemStatModifier modifier = baseItem.modifiers[0];
       item.AddModifier(modifier);
       return item;

@@ -14,5 +14,10 @@ namespace RPG.Items
     public ItemType itemType;
     public bool modifiable = false;
     public List<ItemStatModifier> modifiers = new List<ItemStatModifier>();
+
+    public virtual Item GenerateItem()
+    {
+      return new Item(this);
+    }
   }
 }
