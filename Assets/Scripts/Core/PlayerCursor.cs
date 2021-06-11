@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Core
 {
@@ -68,6 +69,13 @@ namespace RPG.Core
     IInteraction lastTarget;
     private void CheckForTargetable()
     {
+      if (EventSystem.current.IsPointerOverGameObject())
+      {
+        SetCursor(CursorType.STANDARD);
+        hasRaycastHit = false;
+        return;
+      }
+
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
       SetMovePosition(hits);
 
@@ -93,6 +101,8 @@ namespace RPG.Core
       float closestDistance = Mathf.Infinity;
       foreach (RaycastHit hit in hits)
       {
+        if (hit.transform.CompareTag("Player")) continue;
+
         IInteraction cursorTarget = hit.transform.GetComponent<IInteraction>();
         if (cursorTarget != null)
         {

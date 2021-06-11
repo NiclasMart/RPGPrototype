@@ -17,6 +17,9 @@ MonoBehaviour:
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 15
   itemType: 0
+  modifiable: 1
+  modifiers:
+  - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
   weaponPrefab: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   animation: {fileID: 7400000, guid: 58f2909dff975b54c8395d479180996e, type: 3}
   weaponDamage: 12
