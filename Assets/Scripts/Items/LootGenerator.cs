@@ -77,19 +77,10 @@ namespace RPG.Items
 
         dropProb -= (chanceReductionPerDrop * dropProb);
       }
-
       return drops;
     }
 
     private Item GenerateItem()
-    {
-      Item baseItem = GetBaseItem();
-
-      //if (baseItem as ModifiableItem != null) ModifyBaseItem(baseItem as ModifiableItem);
-      return baseItem;
-    }
-
-    private Item GetBaseItem()
     {
       float rand = Random.Range(0, 1f);
 
@@ -97,24 +88,22 @@ namespace RPG.Items
       {
         if (rand > drop.probability) continue;
 
-        if (drop.item.modifiable)
-        {
-          ModifiableItem modItem = new ModifiableItem(drop.item);
-          ModifyBaseItem(modItem, drop.item);
-          return modItem;
-        }
+        Item newItem;
+        if (drop.item.modifiable) newItem = ModifyBaseItem(drop.item);
+        else newItem = new Item(drop.item);
 
-        Item newItem = new Item(drop.item);
         return newItem;
       }
       return null;
     }
 
-    private void ModifyBaseItem(ModifiableItem item, GenericItem baseItem)
+
+    private Item ModifyBaseItem(GenericItem baseItem)
     {
+      ModifiableItem item = new ModifiableItem(baseItem);
       ItemStatModifier modifier = baseItem.modifiers[0];
       item.AddModifier(modifier);
-
+      return item;
     }
   }
 }

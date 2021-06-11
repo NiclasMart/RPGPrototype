@@ -19,16 +19,6 @@ namespace RPG.Items
       public ItemType type;
     }
 
-
-    // public Item Create(GenericItem baseItem)
-    // {
-    //   // GameObject gameObject = new GameObject("Pickup");
-    //   // Item item = gameObject.AddComponent<Item>();
-
-    //   item.Initialize(baseItem);
-    //   return item;
-    // }
-
     public Item(GenericItem baseItem)
     {
       this.icon = baseItem.icon;

@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using RPG.Items;
 using UltEvents;
-using UnityEngine;
 
 
 namespace RPG.Items
