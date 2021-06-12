@@ -58,8 +58,6 @@ namespace RPG.Interaction
         slot.Initialize(null, this);
         slot.connectedInventory.gameObject.SetActive(false);
       }
-      defaultSelectedSlot.connectedInventory.gameObject.SetActive(true);
-      selectedSlot = defaultSelectedSlot;
     }
   }
 }

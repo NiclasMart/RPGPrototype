@@ -10,16 +10,18 @@ namespace RPG.Interaction
   public class EquipmentSlot : ItemSlot
   {
     public SimpleInventory connectedInventory;
+    GearChanger gearChanger;
 
     private void Awake()
     {
       GetComponent<Button>().onClick.AddListener(Select);
+      gearChanger = FindObjectOfType<GearChanger>();
     }
 
     public override void Select()
     {
       base.Select();
-      connectedInventory.onSecondClick += EquipGear;
+      connectedInventory.onSecondClick += SetGear;
       connectedInventory.gameObject.SetActive(true);
     }
 
@@ -35,13 +37,14 @@ namespace RPG.Interaction
     public override void Deselect()
     {
       base.Deselect();
-      connectedInventory.onSecondClick -= EquipGear;
+      connectedInventory.onSecondClick -= SetGear;
       connectedInventory.gameObject.SetActive(false);
     }
 
-    public void EquipGear(Item item)
+    public void SetGear(Item item)
     {
       SetIcon(item);
+      gearChanger.EquipGear(item);
     }
   }
 }

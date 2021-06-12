@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad299c0a559bdc41908be9065b1cb90, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  name: Bow
   baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: f2bc388aefa15764d95c287ab58d1a94, type: 3}
   itemObject: {fileID: 0}
