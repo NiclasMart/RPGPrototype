@@ -76,6 +76,18 @@ MonoBehaviour:
     hotspot: {x: 0, y: 0}
   hasRaycastHit: 0
   active: 1
+--- !u!114 &5010675236939357073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476d38b09bb47084ebffc55f22dbb620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5313586947649363864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,18 +117,6 @@ MonoBehaviour:
   inventory: {fileID: 0}
   mainInventory: {fileID: 0}
   interactionDistance: 1.5
---- !u!114 &5010675236939357073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2344567361568208010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476d38b09bb47084ebffc55f22dbb620, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6989325294484852301
 GameObject:
   m_ObjectHideFlags: 0

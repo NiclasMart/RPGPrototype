@@ -13,18 +13,17 @@ namespace RPG.Items
     public void Initialize(Item item)
     {
       this.item = item;
-      GameObject itemObject = Instantiate(item.itemObject, transform);
-      Transform child = itemObject.transform.GetChild(0);
+      GameObject itemObject = Instantiate(item.itemObject.transform.GetChild(0).gameObject, transform);
+      itemObject.transform.rotation = Quaternion.identity;
+      itemObject.transform.localPosition = Vector3.zero;
       itemObject.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
       StartCoroutine(EnableOutline());
     }
 
     public void Take()
     {
-      //player.GetComponent<Fighter>().EquipWeapon(item);
       Destroy(gameObject);
       PlayerInfo.GetPlayerCursor().ResetTarget();
-      print("resetTarget");
     }
 
     public override void Interact(GameObject interacter)
