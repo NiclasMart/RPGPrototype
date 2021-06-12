@@ -7,6 +7,7 @@ namespace RPG.Items
   [CreateAssetMenu(fileName = "Item", menuName = "RPGPrototype/Item", order = 0)]
   public class GenericItem : ScriptableObject
   {
+    public string name;
     public string baseResourcePath = "ItemSprites/";
     public Sprite icon;
     public GameObject itemObject;

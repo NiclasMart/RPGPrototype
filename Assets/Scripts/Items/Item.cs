@@ -4,6 +4,7 @@ namespace RPG.Items
 {
   public class Item
   {
+    string name;
     string baseResourcePath;
     public Sprite icon;
     public GameObject itemObject;
@@ -21,11 +22,27 @@ namespace RPG.Items
 
     public Item(GenericItem baseItem)
     {
+      this.name = baseItem.name;
       this.icon = baseItem.icon;
       this.weight = baseItem.weight;
       this.itemType = baseItem.itemType;
       this.baseResourcePath = baseItem.baseResourcePath;
       this.itemObject = baseItem.itemObject;
+    }
+
+    public virtual string GetTitleText()
+    {
+      return name;
+    }
+
+    public virtual string GetMainStatText()
+    {
+      return "";
+    }
+
+    public virtual string GetSideStatText()
+    {
+      return "";
     }
 
     public object GetSaveData()

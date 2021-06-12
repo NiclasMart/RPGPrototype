@@ -43,6 +43,16 @@ namespace RPG.Combat
       return null;
     }
 
+    public override string GetMainStatText()
+    {
+      return $"{damage.ToString("F2")} Attack damage";
+    }
+
+    public override string GetSideStatText()
+    {
+      return $"{attackSpeed.ToString("F2")} Attack Speed";
+    }
+
     protected Transform SelectTransform(Transform rightHand, Transform leftHand)
     {
       return isRightHanded ? rightHand : leftHand;

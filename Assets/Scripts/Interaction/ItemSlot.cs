@@ -3,6 +3,7 @@ using RPG.Display;
 using UnityEngine;
 using UnityEngine.UI;
 using RPG.Items;
+using TMPro;
 
 namespace RPG.Interaction
 {
@@ -10,6 +11,7 @@ namespace RPG.Interaction
   {
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
+    [SerializeField] TextMeshProUGUI titleText, mainStatText, sideStatsText;
     [HideInInspector] public Item item { get; private set; }
     protected Inventory inventory;
     Color stdColor;
@@ -23,6 +25,7 @@ namespace RPG.Interaction
     public void Initialize(Item item, Inventory inventory)
     {
       SetIcon(item);
+      SetText(item);
       this.item = item;
       this.inventory = inventory;
     }
@@ -50,6 +53,15 @@ namespace RPG.Interaction
     {
       if (item == null) return;
       iconSlot.sprite = item.icon;
+    }
+
+    void SetText(Item item)
+    {
+      if (!titleText) return;
+
+      titleText.text = item.GetTitleText();
+      mainStatText.text = item.GetMainStatText();
+      sideStatsText.text = item.GetSideStatText();
     }
 
     void SetColor(Color color)
