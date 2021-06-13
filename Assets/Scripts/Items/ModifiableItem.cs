@@ -19,6 +19,11 @@ namespace RPG.Items
         effect += baseModifier.effect.Invoke;
         effect.Invoke();
       }
+
+      public string GetDisplayText()
+      {
+        return display.Replace("*", value.ToString());
+      }
     }
 
     public List<Modifier> modifiers = new List<Modifier>();

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Items
@@ -11,9 +12,7 @@ namespace RPG.Items
     [SerializeField, Range(0, 1f)] float dropChance = 0.3f;
     [SerializeField, Min(0)] int maxDropAmount = 1;
     [SerializeField, Range(0, 1)] float chanceReductionPerDrop = 0;
-
     [SerializeField] Pickup pickupPrefab;
-
     [SerializeField] List<Drop> itemPool = new List<Drop>();
 
     [System.Serializable]
@@ -26,6 +25,7 @@ namespace RPG.Items
     private void Awake()
     {
       NoramlizeList();
+      BuildDropProbabilityTable();
     }
 
     public void DropLoot()
@@ -99,13 +99,47 @@ namespace RPG.Items
       return null;
     }
 
+    float normalDropLimit, rareDropLimit, epicDropLimit, modifierProbability;
+    private void BuildDropProbabilityTable()
+    {
+      GlobalParameters param = PlayerInfo.GetGlobalParameters();
+      normalDropLimit = param.normalDropRate;
+      rareDropLimit = normalDropLimit + param.rareDropRate;
+      epicDropLimit = rareDropLimit + param.epicDropRate;
+
+      modifierProbability = param.modifierProbability;
+    }
+
 
     private Item ModifyBaseItem(GenericItem baseItem)
     {
       ModifiableItem item = baseItem.GenerateItem() as ModifiableItem;
-      ItemStatModifier modifier = baseItem.modifiers[0];
-      item.AddModifier(modifier);
+
+      int modifierCount = ClaculateAmountOfModifiers();
+      List<int> indexCache = new List<int>();
+      for (int i = 0; i < modifierCount; i++)
+      {
+        int index;
+        do index = Random.Range(0, baseItem.modifiers.Count);
+        while (indexCache.Contains(index));
+        ItemStatModifier modifier = baseItem.modifiers[index];
+
+        item.AddModifier(modifier);
+      }
+
+      //if rare modifie modifiers
+      //add epic and unique effect
+
       return item;
+    }
+
+    private int ClaculateAmountOfModifiers()
+    {
+      float rand = Random.Range(0, 1f);
+
+      if (rand < (modifierProbability * modifierProbability)) return 3;
+      if (rand < modifierProbability) return 2;
+      return 1;
     }
   }
 }

@@ -9,6 +9,7 @@ namespace RPG.Core
     static GameObject player;
     static Camera mainCamera;
     static PlayerCursor playerCursor;
+    static GlobalParameters globalParameters;
 
     private void Awake()
     {
@@ -18,6 +19,8 @@ namespace RPG.Core
       if (!mainCamera) Debug.LogError("PlayerInfo: Can't find Camera!");
       playerCursor = player.GetComponent<PlayerCursor>();
       if (!playerCursor) Debug.LogError("PlayerInfo: Can't find Player Cursor!");
+      globalParameters = GetComponent<GlobalParameters>();
+      if (!playerCursor) Debug.LogError("PlayerInfo: Can't find Global Parameters!");
     }
 
     public static GameObject GetPlayer()
@@ -33,6 +36,11 @@ namespace RPG.Core
     public static PlayerCursor GetPlayerCursor()
     {
       return playerCursor;
+    }
+
+    public static GlobalParameters GetGlobalParameters()
+    {
+      return globalParameters;
     }
   }
 }
