@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using RPG.Display;
 using RPG.Items;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace RPG.Interaction
@@ -25,15 +22,6 @@ namespace RPG.Interaction
       connectedInventory.gameObject.SetActive(true);
     }
 
-    //needed ?
-    private bool AlreadySelected()
-    {
-      EquipmentSlot selectedSlot = inventory.selectedSlot as EquipmentSlot;
-      if (!selectedSlot) return false;
-      if (selectedSlot != this) return false;
-      return true;
-    }
-
     public override void Deselect()
     {
       base.Deselect();
@@ -45,6 +33,15 @@ namespace RPG.Interaction
     {
       SetIcon(item);
       gearChanger.EquipGear(item);
+    }
+
+    //needed ?
+    private bool AlreadySelected()
+    {
+      EquipmentSlot selectedSlot = inventory.selectedSlot as EquipmentSlot;
+      if (!selectedSlot) return false;
+      if (selectedSlot != this) return false;
+      return true;
     }
   }
 }

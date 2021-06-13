@@ -15,11 +15,14 @@ namespace RPG.Interaction
     [HideInInspector] public Item item { get; private set; }
     protected Inventory inventory;
     Color stdColor;
+    ModifierDisplay modifierDisplay;
 
 
     private void Awake()
     {
+      print("slot called");
       stdColor = selectable.GetComponent<Image>().color;
+      modifierDisplay = FindObjectOfType<ModifierDisplay>();
     }
 
     public void Initialize(Item item, Inventory inventory)
@@ -47,6 +50,12 @@ namespace RPG.Interaction
     public virtual void Deselect()
     {
       SetColor(stdColor);
+    }
+
+    public void ToggleItemModifiers(bool show)
+    {
+      if (show) modifierDisplay.ShowModifiers(item);
+      else modifierDisplay.HideModifiers();
     }
 
     protected void SetIcon(Item item)

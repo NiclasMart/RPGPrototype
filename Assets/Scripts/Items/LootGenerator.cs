@@ -5,6 +5,8 @@ namespace RPG.Items
 {
   public class LootGenerator : MonoBehaviour
   {
+    const float _dropSpread = 0.5f;
+
     [Header("Parameter")]
     [SerializeField, Range(0, 1f)] float dropChance = 0.3f;
     [SerializeField, Min(0)] int maxDropAmount = 1;

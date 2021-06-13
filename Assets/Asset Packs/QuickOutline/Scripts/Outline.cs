@@ -224,7 +224,6 @@ public class Outline : MonoBehaviour
 
       // Store smooth normals in UV3
       meshFilter.sharedMesh.SetUVs(3, smoothNormals);
-      print("called");
     }
 
     // Clear UV3 on skinned mesh renderers
