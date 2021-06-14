@@ -114,7 +114,50 @@ namespace RPG.Items
     private Item ModifyBaseItem(GenericItem baseItem)
     {
       ModifiableItem item = baseItem.GenerateItem() as ModifiableItem;
+      AddBaseModifiers(baseItem, item);
 
+      //SetRarity()
+      SetItemRarity(item);
+
+      return item;
+    }
+
+    private void SetItemRarity(ModifiableItem item)
+    {
+      float rand = Random.Range(0, 1f);
+      //normal 
+      if (rand < normalDropLimit)
+      {
+        item.rarity = Rank.Normal;
+        return;
+      }
+
+      //rare+
+      foreach (var modifier in item.modifiers)
+      {
+        modifier.value *= 1 + PlayerInfo.GetGlobalParameters().rareValueImprovement;
+      }
+      if (rand < rareDropLimit)
+      {
+        item.rarity = Rank.Rare;
+        return;
+      }
+
+      //epic+
+      item.AddEpicModifier();
+      if (rand < epicDropLimit)
+      {
+        item.rarity = Rank.Epic;
+        return;
+      }
+
+      //unique
+      item.AddUniqueModifier();
+      item.rarity = Rank.Legendary;
+    }
+
+    private void AddBaseModifiers(GenericItem baseItem, ModifiableItem item)
+    {
       int modifierCount = ClaculateAmountOfModifiers();
       List<int> indexCache = new List<int>();
       for (int i = 0; i < modifierCount; i++)
@@ -126,11 +169,6 @@ namespace RPG.Items
 
         item.AddModifier(modifier);
       }
-
-      //if rare modifie modifiers
-      //add epic and unique effect
-
-      return item;
     }
 
     private int ClaculateAmountOfModifiers()

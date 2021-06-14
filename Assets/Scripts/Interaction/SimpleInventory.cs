@@ -22,6 +22,7 @@ namespace RPG.Interaction
 
     public Action<Item> onSecondClick = (item) => { };
 
+
     public List<Item> GetItemList()
     {
       List<Item> itemList = new List<Item>();

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using RPG.Items;
 using TMPro;
+using System.Collections.Generic;
 
 namespace RPG.Interaction
 {
@@ -14,23 +15,22 @@ namespace RPG.Interaction
     [SerializeField] TextMeshProUGUI titleText, mainStatText, sideStatsText;
     [HideInInspector] public Item item { get; private set; }
     protected Inventory inventory;
-    Color stdColor;
+    Color defaultColor;
     ModifierDisplay modifierDisplay;
 
 
     private void Awake()
     {
-      print("slot called");
-      stdColor = selectable.GetComponent<Image>().color;
+      defaultColor = selectable.GetComponent<Image>().color;
       modifierDisplay = FindObjectOfType<ModifierDisplay>();
     }
 
     public void Initialize(Item item, Inventory inventory)
     {
-      SetIcon(item);
-      SetText(item);
       this.item = item;
       this.inventory = inventory;
+      SetIcon(item);
+      SetText(item);
     }
 
     public virtual void Select()
@@ -49,7 +49,7 @@ namespace RPG.Interaction
 
     public virtual void Deselect()
     {
-      SetColor(stdColor);
+      SetColor(defaultColor);
     }
 
     public void ToggleItemModifiers(bool show)
@@ -61,7 +61,8 @@ namespace RPG.Interaction
     protected void SetIcon(Item item)
     {
       if (item == null) return;
-      iconSlot.sprite = item.icon;
+      iconSlot.transform.GetChild(0).GetComponent<Image>().sprite = item.icon;
+      iconSlot.color = inventory.GetRarityColor(item.rarity);
     }
 
     void SetText(Item item)
@@ -77,6 +78,5 @@ namespace RPG.Interaction
     {
       selectable.GetComponent<Image>().color = color;
     }
-
   }
 }

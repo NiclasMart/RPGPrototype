@@ -5,6 +5,7 @@ namespace RPG.Items
   public class Item
   {
     string name;
+    public Rank rarity;
     string baseResourcePath;
     public Sprite icon;
     public GameObject itemObject;

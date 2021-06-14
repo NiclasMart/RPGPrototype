@@ -8,7 +8,7 @@ namespace RPG.Items
   {
     public class Modifier
     {
-      public int value;
+      public float value;
       public string display;
       public UltEvent effect;
 
@@ -32,6 +32,16 @@ namespace RPG.Items
     public void AddModifier(ItemStatModifier newModifier)
     {
       modifiers.Add(new Modifier(newModifier));
+    }
+
+    public void AddEpicModifier()
+    {
+
+    }
+
+    public void AddUniqueModifier()
+    {
+      
     }
   }
 }

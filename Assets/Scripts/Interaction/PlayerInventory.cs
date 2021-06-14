@@ -19,7 +19,7 @@ namespace RPG.Interaction
     }
     Dictionary<ItemType, SimpleInventory> sortDictionary = new Dictionary<ItemType, SimpleInventory>();
 
-    private void Awake()
+    private void Start()
     {
       BuildDictionary();
       InitializeSlots();
@@ -47,8 +47,15 @@ namespace RPG.Interaction
     {
       foreach (SortCategory category in sortingTable)
       {
+        InitializeInventory(category.inventory);
         sortDictionary.Add(category.itemType, category.inventory);
       }
+    }
+
+    private static void InitializeInventory(Inventory inventory)
+    {
+      inventory.InitializeColorParameters();
+      inventory.gameObject.SetActive(false);
     }
 
     private void InitializeSlots()

@@ -1,2 +1,7 @@
 Border: 576168
 Inside: 7F8F98
+
+normal: BCBCBC
+rare: 419649
+epic: 914EA4
+legendary: CB6E2B
