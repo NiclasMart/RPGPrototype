@@ -10,7 +10,7 @@ namespace RPG.Items
   {
     public Item item;
 
-    public void Initialize(Item item)
+    public void Spawn(Item item)
     {
       this.item = item;
       GameObject itemObject = Instantiate(item.itemObject.transform.GetChild(0).gameObject, transform);

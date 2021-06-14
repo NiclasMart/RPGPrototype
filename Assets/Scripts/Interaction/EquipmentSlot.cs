@@ -17,14 +17,13 @@ namespace RPG.Interaction
 
     public override void Select()
     {
-      base.Select();
+      inventory.SelectSlot(this);
       connectedInventory.onSecondClick += SetGear;
       connectedInventory.gameObject.SetActive(true);
     }
 
     public override void Deselect()
     {
-      base.Deselect();
       connectedInventory.onSecondClick -= SetGear;
       connectedInventory.gameObject.SetActive(false);
     }
@@ -33,15 +32,6 @@ namespace RPG.Interaction
     {
       SetIcon(item);
       gearChanger.EquipGear(item);
-    }
-
-    //needed ?
-    private bool AlreadySelected()
-    {
-      EquipmentSlot selectedSlot = inventory.selectedSlot as EquipmentSlot;
-      if (!selectedSlot) return false;
-      if (selectedSlot != this) return false;
-      return true;
     }
   }
 }

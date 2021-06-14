@@ -59,7 +59,7 @@ namespace RPG.Items
       foreach (var drop in drops)
       {
         Pickup pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
-        pickup.Initialize(drop);
+        pickup.Spawn(drop);
       }
     }
 
