@@ -26,9 +26,14 @@ namespace RPG.Display
       ModifiableItem modItem = item as ModifiableItem;
       if (modItem == null) return;
 
-      SetText(modItem);
       transform.position = Input.mousePosition;
+      SetText(modItem);
       SetDisplay(true);
+    }
+
+    public void HideModifiers()
+    {
+      SetDisplay(false);
     }
 
     private void SetText(ModifiableItem modItem)
@@ -38,12 +43,6 @@ namespace RPG.Display
       {
         display.text += modifier.GetDisplayText() + "\n";
       }
-    }
-
-    public void HideModifiers()
-    {
-      Debug.Log("Hide Modifiers");
-      SetDisplay(false);
     }
 
     private void SetDisplay(bool active)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Items;
 using UnityEngine;
 
 namespace RPG.Interaction
@@ -10,6 +11,7 @@ namespace RPG.Interaction
     void Awake()
     {
       storage = GetComponent<UIActivator>().connectedUI.GetComponent<SimpleInventory>();
+      storage.onSecondClick += TakeSelectedItem;
     }
 
     public void TakeAllItems()
@@ -17,6 +19,13 @@ namespace RPG.Interaction
       PlayerInventory inventory = GetComponent<UIActivator>().Interacter.GetComponent<Interacter>().mainInventory;
       inventory.AddItems(storage.GetItemList());
       storage.DeleteAllItems();
+    }
+
+    public void TakeSelectedItem(Item selectedItem)
+    {
+      PlayerInventory inventory = GetComponent<UIActivator>().Interacter.GetComponent<Interacter>().mainInventory;
+      inventory.AddItem(selectedItem);
+      storage.DeleteSelectedItem();
     }
   }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using RPG.Saving;
 using RPG.Items;
+using UltEvents;
 
 namespace RPG.Interaction
 {

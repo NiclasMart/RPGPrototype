@@ -25,12 +25,17 @@ namespace RPG.Interaction
       InitializeSlots();
     }
 
+    public void AddItem(Item item)
+    {
+      SimpleInventory inventory = sortDictionary[item.itemType];
+      inventory.AddItem(item);
+    }
+
     public void AddItems(List<Item> items)
     {
       foreach (Item item in items)
       {
-        SimpleInventory inventory = sortDictionary[item.itemType];
-        inventory.AddItem(item);
+        AddItem(item);
       }
     }
 
