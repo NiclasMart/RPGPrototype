@@ -22,9 +22,9 @@ namespace RPG.Combat
     {
       GenericWeapon baseWeapon = baseItem as GenericWeapon;
       animation = baseWeapon.animation;
-      damage = baseWeapon.GetDamage;
+      damage = baseWeapon.GetDamage();
       range = baseWeapon.weaponRange;
-      attackSpeed = baseWeapon.GetAttackspeed;
+      attackSpeed = baseWeapon.GetAttackspeed();
       damageType = baseWeapon.damageType;
       damageMultiplier = baseWeapon.damageMultiplier;
       isRightHanded = baseWeapon.isRightHanded;
@@ -45,12 +45,7 @@ namespace RPG.Combat
 
     public override string GetMainStatText()
     {
-      return $"{damage.ToString("F2")} Attack damage";
-    }
-
-    public override string GetSideStatText()
-    {
-      return $"{attackSpeed.ToString("F2")} Attack Speed";
+      return $"{damage.ToString("F2")} Attack damage \n{attackSpeed.ToString("F2")} Attack Speed";
     }
 
     protected Transform SelectTransform(Transform rightHand, Transform leftHand)

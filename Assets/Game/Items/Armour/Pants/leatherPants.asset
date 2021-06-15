@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
+  m_Name: leatherPants
+  m_EditorClassIdentifier: 
+  name: Leather Pants
+  baseResourcePath: ItemSprites/
+  icon: {fileID: 21300000, guid: 7c487959e49b9e447a29431caf3fdc77, type: 3}
+  itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+  weight: 3
+  itemType: 5
+  modifiable: 1
+  normalModifiers:
+  - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
+  - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
+  - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  epicModifiers:
+  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
+  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
+  legendaryModifiers:
+  - {fileID: 11400000, guid: 248cf38e2c9529a4196eb6253a693be2, type: 2}
+  armour: {x: 4, y: 6}
+  magicResistance: {x: 6, y: 8}

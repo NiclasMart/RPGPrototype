@@ -41,11 +41,6 @@ namespace RPG.Items
       return "";
     }
 
-    public virtual string GetSideStatText()
-    {
-      return "";
-    }
-
     public object GetSaveData()
     {
       SaveData data = new SaveData();

@@ -12,7 +12,7 @@ namespace RPG.Interaction
   {
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
-    [SerializeField] TextMeshProUGUI titleText, mainStatText, sideStatsText;
+    [SerializeField] TextMeshProUGUI titleText, mainStatText;
     [HideInInspector] public Item item { get; private set; }
     protected Inventory inventory;
     Color defaultColor;
@@ -71,7 +71,6 @@ namespace RPG.Interaction
 
       titleText.text = item.GetTitleText();
       mainStatText.text = item.GetMainStatText();
-      sideStatsText.text = item.GetSideStatText();
     }
 
     void SetColor(Color color)

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: FlatHealthModifier
+  m_Name: N_FlatAmourModifier
   m_EditorClassIdentifier: 
   rank: 0
-  displayText: + * Health
-  min: 20
-  max: 50
+  displayText: + * Amour
+  min: 5
+  max: 10
   effect:
     _PersistentCalls: []

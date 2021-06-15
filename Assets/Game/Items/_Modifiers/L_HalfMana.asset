@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: PercentageDamageModifier
+  m_Name: L_HalfMana
   m_EditorClassIdentifier: 
-  rank: 2
-  displayText: Increase damage by *%
-  min: 5
-  max: 10
+  rank: 3
+  displayText: After attacking, mana consumption of the next ability is reduced by
+    *%
+  min: 40
+  max: 50
   effect:
     _PersistentCalls: []

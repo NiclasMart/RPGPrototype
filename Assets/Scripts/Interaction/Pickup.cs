@@ -13,11 +13,20 @@ namespace RPG.Items
     public void Spawn(Item item)
     {
       this.item = item;
-      GameObject itemObject = Instantiate(item.itemObject.transform.GetChild(0).gameObject, transform);
-      itemObject.transform.rotation = Quaternion.identity;
-      itemObject.transform.localPosition = Vector3.zero;
-      itemObject.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
+
+      GameObject dropedItem = InstanciateDropedItem(item);
+      dropedItem.transform.rotation = Quaternion.identity;
+      dropedItem.transform.localPosition = Vector3.zero;
+      dropedItem.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
       StartCoroutine(EnableOutline());
+    }
+
+    private GameObject InstanciateDropedItem(Item item)
+    {
+      bool hasChild = item.itemObject.transform.childCount != 0;
+      GameObject itemObject = hasChild ? item.itemObject.transform.GetChild(0).gameObject : item.itemObject;
+      GameObject dropedItem = Instantiate(itemObject, transform);
+      return dropedItem;
     }
 
     public void Take()

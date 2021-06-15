@@ -12,7 +12,7 @@ namespace RPG.Items
     Legendary
   }
 
-  [CreateAssetMenu(fileName = "ItemStatModifier", menuName = "RPGPrototype/ItemStatModifier", order = 0)]
+  [CreateAssetMenu(fileName = "ItemStatModifier", menuName = "Items/Create New ItemStatModifier", order = 0)]
   public class ItemStatModifier : ScriptableObject
   {
     public Rank rank;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Items
 {
-  [CreateAssetMenu(fileName = "Item", menuName = "RPGPrototype/Item", order = 0)]
+  [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
   public class GenericItem : ScriptableObject
   {
     public string name;

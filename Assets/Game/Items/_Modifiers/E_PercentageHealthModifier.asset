@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: FlatAmourModifier
+  m_Name: E_PercentageHealthModifier
   m_EditorClassIdentifier: 
-  rank: 0
-  displayText: + * Amour
+  rank: 2
+  displayText: Increase health by *%
   min: 5
   max: 10
   effect:

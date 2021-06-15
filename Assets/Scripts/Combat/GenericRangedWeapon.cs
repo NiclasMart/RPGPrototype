@@ -4,7 +4,7 @@ using RPG.Items;
 
 namespace RPG.Combat
 {
-  [CreateAssetMenu(fileName = "GenericRangedWeapon", menuName = "Weapons/Create New GenericRangedWeapon", order = 0)]
+  [CreateAssetMenu(fileName = "GenericRangedWeapon", menuName = "Items/Weapons/Create New GenericRangedWeapon", order = 0)]
   public class GenericRangedWeapon : GenericWeapon
   {
     public GameObject projectilePrefab;

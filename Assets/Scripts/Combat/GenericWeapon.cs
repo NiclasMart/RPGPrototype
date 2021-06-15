@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
-  [CreateAssetMenu(fileName = "GenericWeapon", menuName = "Weapons/Create New GenericWeapon", order = 0)]
+  [CreateAssetMenu(fileName = "GenericWeapon", menuName = "Items/Weapons/Create New GenericWeapon", order = 0)]
   public class GenericWeapon : GenericItem
   {
     public AnimationClip animation;
@@ -22,8 +22,8 @@ namespace RPG.Combat
       return new Weapon(this);
     }
 
-    public float GetDamage => Random.Range(weaponDamage.x, weaponDamage.y);
-    public float GetAttackspeed => Random.Range(weaponAttackSpeed.x, weaponAttackSpeed.y);
+    public float GetDamage(){ return Random.Range(weaponDamage.x, weaponDamage.y); }
+    public float GetAttackspeed(){ return Random.Range(weaponAttackSpeed.x, weaponAttackSpeed.y); }
 
   }
 }
