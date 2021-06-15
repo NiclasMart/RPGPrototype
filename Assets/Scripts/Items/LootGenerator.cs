@@ -117,12 +117,12 @@ namespace RPG.Items
       AddBaseModifiers(baseItem, item);
 
       //SetRarity()
-      SetItemRarity(item);
+      SetItemRarity(baseItem, item);
 
       return item;
     }
 
-    private void SetItemRarity(ModifiableItem item)
+    private void SetItemRarity(GenericItem baseItem, ModifiableItem item)
     {
       float rand = Random.Range(0, 1f);
       //normal 
@@ -144,7 +144,7 @@ namespace RPG.Items
       }
 
       //epic+
-      item.AddEpicModifier();
+      item.AddModifier(baseItem.epicModifiers[Random.Range(0, baseItem.epicModifiers.Count)]);
       if (rand < epicDropLimit)
       {
         item.rarity = Rank.Epic;
@@ -152,26 +152,27 @@ namespace RPG.Items
       }
 
       //unique
-      item.AddUniqueModifier();
+      item.AddModifier(baseItem.legendaryModifiers[Random.Range(0, baseItem.legendaryModifiers.Count)]);
       item.rarity = Rank.Legendary;
     }
 
     private void AddBaseModifiers(GenericItem baseItem, ModifiableItem item)
     {
-      int modifierCount = ClaculateAmountOfModifiers();
+      int modifierCount = CalculateAmountOfModifiers();
       List<int> indexCache = new List<int>();
       for (int i = 0; i < modifierCount; i++)
       {
         int index;
-        do index = Random.Range(0, baseItem.modifiers.Count);
+        do index = Random.Range(0, baseItem.normalModifiers.Count);
         while (indexCache.Contains(index));
-        ItemStatModifier modifier = baseItem.modifiers[index];
+        indexCache.Add(index);
+        ItemStatModifier modifier = baseItem.normalModifiers[index];
 
         item.AddModifier(modifier);
       }
     }
 
-    private int ClaculateAmountOfModifiers()
+    private int CalculateAmountOfModifiers()
     {
       float rand = Random.Range(0, 1f);
 

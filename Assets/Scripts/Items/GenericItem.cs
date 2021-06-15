@@ -14,7 +14,9 @@ namespace RPG.Items
     public float weight;
     public ItemType itemType;
     public bool modifiable = false;
-    public List<ItemStatModifier> modifiers = new List<ItemStatModifier>();
+    public List<ItemStatModifier> normalModifiers = new List<ItemStatModifier>();
+    public List<ItemStatModifier> epicModifiers = new List<ItemStatModifier>();
+    public List<ItemStatModifier> legendaryModifiers = new List<ItemStatModifier>();
 
     public virtual Item GenerateItem()
     {

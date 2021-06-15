@@ -2,18 +2,22 @@ using RPG.Items;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using RPG.Core;
+using System;
 
 namespace RPG.Display
 {
   public class ModifierDisplay : MonoBehaviour
   {
+    [SerializeField] TextMeshProUGUI textField;
     CanvasGroup graficComponent;
-    TextMeshProUGUI display;
+    Transform panel;
+    Color epicCol, legendaryCol;
 
     private void Awake()
     {
       graficComponent = GetComponent<CanvasGroup>();
-      display = GetComponentInChildren<TextMeshProUGUI>();
+      panel = transform.GetChild(0);
     }
 
     private void Start()
@@ -27,8 +31,18 @@ namespace RPG.Display
       if (modItem == null) return;
 
       transform.position = Input.mousePosition;
+      ClearDisplay();
       SetText(modItem);
       SetDisplay(true);
+    }
+
+    private void ClearDisplay()
+    {
+      foreach (var field in panel.GetComponentsInChildren<TextMeshProUGUI>())
+      {
+        field.text = "";
+        field.color = Color.white;
+      }
     }
 
     public void HideModifiers()
@@ -38,10 +52,14 @@ namespace RPG.Display
 
     private void SetText(ModifiableItem modItem)
     {
-      display.text = "";
-      foreach (var modifier in modItem.modifiers)
+      TextMeshProUGUI[] fields = panel.GetComponentsInChildren<TextMeshProUGUI>();
+      for (int i = 0; i < modItem.modifiers.Count; i++)
       {
-        display.text += modifier.GetDisplayText() + "\n";
+        ModifiableItem.Modifier modifier = modItem.modifiers[i];
+        fields[i].text = modifier.GetDisplayText();
+
+        if (modifier.rarity == Rank.Epic) fields[i].color = PlayerInfo.GetGlobalParameters().epic;
+        else if (modifier.rarity == Rank.Legendary) fields[i].color = PlayerInfo.GetGlobalParameters().legendary;
       }
     }
 
