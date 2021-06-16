@@ -17,4 +17,25 @@ MonoBehaviour:
   min: 5
   max: 10
   effect:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: RPG.Items.Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null.AddPercentDamage
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: RPG.Items.ModifyTable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: 
+        _X: 5
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}

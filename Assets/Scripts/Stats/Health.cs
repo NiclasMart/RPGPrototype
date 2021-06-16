@@ -27,11 +27,12 @@ namespace RPG.Stats
       animator = GetComponentInChildren<Animator>();
       maxHealth = new LazyValue<float>(GetInitializeHealth);
       currentHealth = new LazyValue<float>(GetInitializeHealth);
+      PlayerInfo.GetPlayer().GetComponent<CharacterStats>().statsChange += UpdateMaxHealth;
     }
 
     private float GetInitializeHealth()
     {
-      return GetComponent<CharacterStats>().GetStat(Stat.HEALTH);
+      return GetComponent<CharacterStats>().GetStat(Stat.Health);
     }
 
     private void Start()
@@ -59,7 +60,7 @@ namespace RPG.Stats
 
     public void LevelUpHealth(CharacterStats stats)
     {
-      maxHealth.value = stats.GetStat(Stat.HEALTH);
+      maxHealth.value = stats.GetStat(Stat.Health);
       HealPercentage(lvlUpHeal);
     }
 
@@ -77,13 +78,19 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
+    private void UpdateMaxHealth(CharacterStats stats)
+    {
+      maxHealth.value = stats.GetStat(Stat.Health);
+      valueChange.Invoke(this);
+    }
+
     private void EmitExperience(GameObject instigator)
     {
       Experience playerExperience = instigator.GetComponent<Experience>();
       if (playerExperience)
       {
         CharacterStats stats = GetComponent<CharacterStats>();
-        playerExperience.GainExperience((int)stats.GetStat(Stat.EXPERIENCE_REWARD), stats.Level);
+        playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level);
       }
     }
 

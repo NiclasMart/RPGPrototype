@@ -21,7 +21,7 @@ namespace RPG.Stats
 
     private float GetInitializeXP()
     {
-      return GetComponent<CharacterStats>().GetStat(Stat.LEVELUP_EXPERIENCE);
+      return GetComponent<CharacterStats>().GetStat(Stat.Experience);
     }
 
     private void Start()
@@ -42,7 +42,7 @@ namespace RPG.Stats
 
     private void CalculateNewXPBalance(CharacterStats stats, float gaintXP)
     {
-      float levelUpXP = stats.GetStat(Stat.LEVELUP_EXPERIENCE);
+      float levelUpXP = stats.GetStat(Stat.Experience);
       float newXPBalance = currentExperiencePoints + gaintXP;
 
       if (newXPBalance >= levelUpXP)
@@ -61,7 +61,7 @@ namespace RPG.Stats
       else
       {
         currentExperiencePoints = newXPBalance;
-        maxExperiencePoints.value = stats.GetStat(Stat.LEVELUP_EXPERIENCE);
+        maxExperiencePoints.value = stats.GetStat(Stat.Experience);
         print("added xp: " + newXPBalance);
       }
     }

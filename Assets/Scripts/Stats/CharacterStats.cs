@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using RPG.Display;
+using RPG.Items;
+using UltEvents;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -13,8 +16,15 @@ namespace RPG.Stats
     [SerializeField] bool useModifiers = false;
 
     public int Level => level;
-
     public ValueChangeEvent valueChange;
+    [HideInInspector] public UltEvent<CharacterStats> statsChange;
+
+    Dictionary<Stat, float> activeStats;
+
+    private void Awake()
+    {
+      RecalculateStats(new ModifyTable());
+    }
 
     private void Start()
     {
@@ -23,10 +33,28 @@ namespace RPG.Stats
 
     public float GetStat(Stat stat)
     {
-      float baseStat = progressionSet.GetStat(stat, charakterClass, level);
-      float multiplicativeModifiers = 0, additiveModifiers = 0;
-      if (useModifiers) GetModifiers(stat, out multiplicativeModifiers, out additiveModifiers);
-      return baseStat * (1 + multiplicativeModifiers) + additiveModifiers;
+      return activeStats[stat];
+    }
+
+    public void RecalculateStats(ModifyTable modifierTable)
+    {
+      activeStats = new Dictionary<Stat, float>();
+
+      //health
+      float baseStat = progressionSet.GetStat(Stat.Health, charakterClass, level);
+      activeStats.Add(Stat.Health, modifierTable.ModifyHealth(baseStat));
+      //armour
+      baseStat = progressionSet.GetStat(Stat.Armour, charakterClass, level);
+      activeStats.Add(Stat.Armour, modifierTable.ModifyArmour(baseStat));
+      //damage
+      baseStat = progressionSet.GetStat(Stat.Damage, charakterClass, level);
+      activeStats.Add(Stat.Damage, modifierTable.ModifyDamage(baseStat));
+      //experience
+      baseStat = progressionSet.GetStat(Stat.Experience, charakterClass, level);
+      activeStats.Add(Stat.Experience, baseStat);
+
+      statsChange.Invoke(this);
+      //more
     }
 
     public bool LevelUp()
@@ -40,7 +68,7 @@ namespace RPG.Stats
 
     private void GetModifiers(Stat stat, out float multiplicativeModifiers, out float additiveMultipliers)
     {
-      float multModifier = 0, addModifier = 0; 
+      float multModifier = 0, addModifier = 0;
       foreach (IStatModifier provider in GetComponents<IStatModifier>())
       {
         foreach (float modifier in provider.GetAdditiveModifiers(stat))
@@ -57,6 +85,7 @@ namespace RPG.Stats
       multiplicativeModifiers = multModifier;
     }
 
+    //gets level
     public float GetCurrentValue()
     {
       return level;

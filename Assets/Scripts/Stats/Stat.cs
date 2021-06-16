@@ -2,9 +2,12 @@ namespace RPG.Stats
 {
   public enum Stat
   {
-    HEALTH,
-    DAMAGE,
-    EXPERIENCE_REWARD,
-    LEVELUP_EXPERIENCE
+    Health,
+    Damage,
+    Armour,
+    // MagicResi,
+    // Stamina,
+    // MovementSpeed,
+    Experience
   }
 }

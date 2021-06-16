@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
 using RPG.Items;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Interaction
@@ -61,6 +63,7 @@ namespace RPG.Interaction
           modifier.effect.Invoke(table, modifier.value);
         }
       }
+      PlayerInfo.GetPlayer().GetComponent<CharacterStats>().RecalculateStats(table);
     }
 
     private void BuildDictionary()

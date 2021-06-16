@@ -8028,6 +8028,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6034278285708779844, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
+      propertyPath: charakterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7195050316044060992, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
       propertyPath: ability
       value: 

@@ -85,7 +85,7 @@ namespace RPG.Combat
     {
       if (target == null) return;
 
-      float damage = GetComponent<CharacterStats>().GetStat(Stat.DAMAGE);
+      float damage = GetComponent<CharacterStats>().GetStat(Stat.Damage);
       if (currentWeapon.value is RangedWeapon)
       {
         RangedWeapon weapon = (RangedWeapon)currentWeapon.value;
@@ -106,7 +106,7 @@ namespace RPG.Combat
 
     public IEnumerable GetAdditiveModifiers(Stat stat)
     {
-      if (stat == Stat.DAMAGE)
+      if (stat == Stat.Damage)
       {
         yield return currentWeapon.value.Damage;
       }
@@ -114,7 +114,7 @@ namespace RPG.Combat
 
     public IEnumerable GetMultiplicativeModifiers(Stat stat)
     {
-      if (stat == Stat.DAMAGE)
+      if (stat == Stat.Damage)
       {
         yield return currentWeapon.value.DamageMultiplier;
       }
