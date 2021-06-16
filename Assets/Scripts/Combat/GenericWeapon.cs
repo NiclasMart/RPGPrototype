@@ -14,7 +14,6 @@ namespace RPG.Combat
     [Min(0.1f)] public Vector2 weaponAttackSpeed;
     public float weaponRange;
     public DamageClass damageType;
-    public float damageMultiplier;
     public bool isRightHanded = true;
 
     public override Item GenerateItem()

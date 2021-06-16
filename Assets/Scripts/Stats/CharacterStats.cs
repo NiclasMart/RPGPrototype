@@ -66,25 +66,6 @@ namespace RPG.Stats
       return true;
     }
 
-    private void GetModifiers(Stat stat, out float multiplicativeModifiers, out float additiveMultipliers)
-    {
-      float multModifier = 0, addModifier = 0;
-      foreach (IStatModifier provider in GetComponents<IStatModifier>())
-      {
-        foreach (float modifier in provider.GetAdditiveModifiers(stat))
-        {
-          addModifier += modifier;
-        }
-
-        foreach (float modifier in provider.GetMultiplicativeModifiers(stat))
-        {
-          multModifier += modifier;
-        }
-      }
-      additiveMultipliers = addModifier;
-      multiplicativeModifiers = multModifier;
-    }
-
     //gets level
     public float GetCurrentValue()
     {

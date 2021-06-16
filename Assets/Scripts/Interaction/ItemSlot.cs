@@ -19,7 +19,7 @@ namespace RPG.Interaction
     ModifierDisplay modifierDisplay;
 
 
-    protected void Awake()
+    protected virtual void Awake()
     {
       defaultColor = selectable.GetComponent<Image>().color;
       modifierDisplay = FindObjectOfType<ModifierDisplay>();

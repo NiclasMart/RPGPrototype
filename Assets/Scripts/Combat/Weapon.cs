@@ -10,13 +10,11 @@ namespace RPG.Combat
     private float range;
     private float attackSpeed;
     private DamageClass damageType;
-    private float damageMultiplier;
     private protected bool isRightHanded = true;
 
     public float Damage { get => damage; }
     public float AttackRange { get => range; }
     public float AttackSpeed { get => attackSpeed; }
-    public float DamageMultiplier { get => damageMultiplier; }
 
     public Weapon(GenericItem baseItem) : base(baseItem)
     {
@@ -26,7 +24,6 @@ namespace RPG.Combat
       range = baseWeapon.weaponRange;
       attackSpeed = baseWeapon.GetAttackspeed();
       damageType = baseWeapon.damageType;
-      damageMultiplier = baseWeapon.damageMultiplier;
       isRightHanded = baseWeapon.isRightHanded;
     }
 
@@ -53,7 +50,11 @@ namespace RPG.Combat
       return isRightHanded ? rightHand : leftHand;
     }
 
-
+    public override void GetStats(ModifyTable stats)
+    {
+      stats.damageFlat += damage;
+      stats.attackSpeed += attackSpeed;
+    }
 
   }
 }

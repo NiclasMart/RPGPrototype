@@ -4,9 +4,11 @@ namespace RPG.Items
   {
     public float healthFlat, healthPercent;
     public float armourFlat, armourPercent;
+    public float magicResiFlat, magicResiPercent;
     public float damageFlat, damagePercent;
     public float staminaFlat, staminaPercent;
     public float movementSpeed;
+    public float attackSpeed;
 
     public float ModifyHealth(float baseStat)
     {

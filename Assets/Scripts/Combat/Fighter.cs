@@ -8,7 +8,7 @@ using RPG.Movement;
 namespace RPG.Combat
 {
 
-  public class Fighter : Attacker, IStatModifier
+  public class Fighter : Attacker
   {
     [SerializeField] Transform rightWeaponHolder;
     [SerializeField] Transform leftWeaponHolder;
@@ -102,22 +102,6 @@ namespace RPG.Combat
     void Shoot()
     {
       Hit();
-    }
-
-    public IEnumerable GetAdditiveModifiers(Stat stat)
-    {
-      if (stat == Stat.Damage)
-      {
-        yield return currentWeapon.value.Damage;
-      }
-    }
-
-    public IEnumerable GetMultiplicativeModifiers(Stat stat)
-    {
-      if (stat == Stat.Damage)
-      {
-        yield return currentWeapon.value.DamageMultiplier;
-      }
-    }
+    }  
   }
 }

@@ -20,5 +20,11 @@ namespace RPG.Combat
     {
       return $"{armour.ToString("F2")} Armour \n{magicResistance.ToString("F2")} Magic Resistance";
     }
+
+    public override void GetStats(ModifyTable stats)
+    {
+      stats.armourFlat += armour;
+      stats.magicResiFlat += magicResistance;
+    }
   }
 }

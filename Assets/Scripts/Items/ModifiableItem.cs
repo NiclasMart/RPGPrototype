@@ -34,5 +34,7 @@ namespace RPG.Items
     {
       modifiers.Add(new Modifier(newModifier));
     }
+
+    public virtual void GetStats(ModifyTable stats) { }
   }
 }

@@ -58,12 +58,19 @@ namespace RPG.Interaction
       {
         ModifiableItem modItem = slot.item as ModifiableItem;
         if (modItem == null) continue;
-        foreach (var modifier in modItem.modifiers)
-        {
-          modifier.effect.Invoke(table, modifier.value);
-        }
+
+        GetModifiersFromItem(table, modItem);
       }
       PlayerInfo.GetPlayer().GetComponent<CharacterStats>().RecalculateStats(table);
+    }
+
+    private static void GetModifiersFromItem(ModifyTable table, ModifiableItem modItem)
+    {
+      modItem.GetStats(table);
+      foreach (var modifier in modItem.modifiers)
+      {
+        modifier.effect.Invoke(table, modifier.value);
+      }
     }
 
     private void BuildDictionary()

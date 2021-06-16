@@ -10,7 +10,7 @@ namespace RPG.Interaction
     PlayerInventory playerInventory;
     GearChanger gearChanger;
 
-    private void Awake()
+    protected override void Awake()
     {
       base.Awake();
       GetComponent<Button>().onClick.AddListener(Select);
