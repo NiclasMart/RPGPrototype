@@ -8,8 +8,8 @@ namespace RPG.Interaction
 {
   public class PlayerInventory : Inventory
   {
-    [SerializeField] SortCategory[] sortingTable;
     [SerializeField] EquipmentSlot defaultSelectedSlot;
+    [SerializeField] SortCategory[] sortingTable;
 
     [System.Serializable]
     class SortCategory
@@ -39,6 +39,7 @@ namespace RPG.Interaction
       }
     }
 
+
     public override void SelectSlot(ItemSlot slot)
     {
       EquipmentSlot equipSlot = slot as EquipmentSlot;
@@ -46,6 +47,20 @@ namespace RPG.Interaction
 
       if (selectedSlot) selectedSlot.Deselect();
       selectedSlot = equipSlot;
+    }
+
+    public void RecalculateModifiers()
+    {
+      ModifyTable table = new ModifyTable();
+      foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
+      {
+        ModifiableItem modItem = slot.item as ModifiableItem;
+        if (modItem == null) continue;
+        foreach (var modifier in modItem.modifiers)
+        {
+          modifier.effect.Invoke(table, modifier.value);
+        }
+      }
     }
 
     private void BuildDictionary()

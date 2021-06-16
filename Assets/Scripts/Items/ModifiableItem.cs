@@ -11,15 +11,14 @@ namespace RPG.Items
       public float value;
       public string display;
       public Rank rarity;
-      public UltEvent effect;
+      public UltEvent<ModifyTable, float> effect;
 
       public Modifier(ItemStatModifier baseModifier)
       {
         value = baseModifier.GetRandomValue();
         display = baseModifier.displayText;
         rarity = baseModifier.rank;
-        effect += baseModifier.effect.Invoke;
-        effect.Invoke();
+        effect += baseModifier.effect.InvokeX<ModifyTable, float>;
       }
 
       public string GetDisplayText()

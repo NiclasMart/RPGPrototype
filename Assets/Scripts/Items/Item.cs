@@ -11,7 +11,6 @@ namespace RPG.Items
     public GameObject itemObject;
     public float weight;
     public ItemType itemType;
-    public ItemStatModifier modifierType;
 
 
     [System.Serializable]

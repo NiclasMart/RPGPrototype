@@ -13,7 +13,7 @@ namespace RPG.Interaction
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
     [SerializeField] TextMeshProUGUI titleText, mainStatText;
-    [HideInInspector] public Item item { get; private set; }
+    [HideInInspector] public Item item { get; protected set; }
     protected Inventory inventory;
     Color defaultColor;
     ModifierDisplay modifierDisplay;

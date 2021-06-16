@@ -7,12 +7,14 @@ namespace RPG.Interaction
   public class EquipmentSlot : ItemSlot
   {
     public SimpleInventory connectedInventory;
+    PlayerInventory playerInventory;
     GearChanger gearChanger;
 
     private void Awake()
     {
       GetComponent<Button>().onClick.AddListener(Select);
       gearChanger = FindObjectOfType<GearChanger>();
+      playerInventory = FindObjectOfType<PlayerInventory>();
     }
 
     public override void Select()
@@ -32,6 +34,8 @@ namespace RPG.Interaction
     {
       SetIcon(item);
       gearChanger.EquipGear(item);
+      this.item = item;
+      playerInventory.RecalculateModifiers();
     }
   }
 }
