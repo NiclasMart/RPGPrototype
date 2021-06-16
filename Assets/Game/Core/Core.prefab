@@ -617,6 +617,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64778947b3f33d548a11b8a048f13954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textField: {fileID: 0}
+  canvasRect: {fileID: 8364488506076983511}
 --- !u!1 &1741077839038109034
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +907,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3485343090790446139}
-  m_LocalRotation: {x: 0.50439805, y: 0.0000000074286093, z: -0.0000000043394346, w: 0.86347127}
+  m_LocalRotation: {x: 0.50439805, y: -0.000000007428606, z: 0.0000000043394324, w: 0.86347127}
   m_LocalPosition: {x: 0.5, y: 17.38, z: -14.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1062,6 +1064,12 @@ MonoBehaviour:
   rareDropRate: 0.18
   epicDropRate: 0.06
   uniqueDropRate: 0.02
+  modifierProbability: 0.35
+  rareValueImprovement: 0.3
+  normal: {r: 0, g: 0, b: 0, a: 0}
+  rare: {r: 0, g: 0, b: 0, a: 0}
+  epic: {r: 0, g: 0, b: 0, a: 0}
+  legendary: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3485343091035548627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,11 +2076,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000074286093
+      value: -0.000000007428606
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000043394346
+      value: 0.0000000043394324
       objectReference: {fileID: 0}
     - target: {fileID: 4123191655350451926, guid: 56836fcbc57235944a1ea581bad606ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2657,7 +2665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 844415025, guid: 9bdca86163244d942909974186de4f35, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 887440415, guid: 9bdca86163244d942909974186de4f35, type: 3}
       propertyPath: m_TagString

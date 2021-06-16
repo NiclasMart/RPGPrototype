@@ -667,13 +667,13 @@ TextureImporter:
       name: Bars_Unity_20
       rect:
         serializedVersion: 2
-        x: 1500
-        y: 12
-        width: 185
-        height: 253
+        x: 1502
+        y: 18
+        width: 177
+        height: 245
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 22, y: 26, z: 24, w: 23}
+      border: {x: 18, y: 18, z: 17, w: 17}
       outline: []
       physicsShape: []
       tessellationDetail: 0

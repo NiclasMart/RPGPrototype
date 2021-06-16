@@ -9,7 +9,7 @@ namespace RPG.Display
 {
   public class ModifierDisplay : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI textField;
+    [SerializeField] RectTransform canvasRect;
     CanvasGroup graficComponent;
     Transform panel;
     Color epicCol, legendaryCol;
@@ -30,10 +30,19 @@ namespace RPG.Display
       ModifiableItem modItem = item as ModifiableItem;
       if (modItem == null) return;
 
-      transform.position = Input.mousePosition;
+      SetPosition();
+
       ClearDisplay();
       SetText(modItem);
       SetDisplay(true);
+    }
+
+    private void SetPosition()
+    {
+      if (Input.mousePosition.x > canvasRect.rect.width / 2) transform.position = Input.mousePosition - new Vector3(GetComponent<RectTransform>().rect.width, 0, 0);
+      else transform.position = Input.mousePosition;
+
+      print(Input.mousePosition.x);
     }
 
     private void ClearDisplay()
