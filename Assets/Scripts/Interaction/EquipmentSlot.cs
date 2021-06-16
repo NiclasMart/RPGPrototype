@@ -12,6 +12,7 @@ namespace RPG.Interaction
 
     private void Awake()
     {
+      base.Awake();
       GetComponent<Button>().onClick.AddListener(Select);
       gearChanger = FindObjectOfType<GearChanger>();
       playerInventory = FindObjectOfType<PlayerInventory>();
