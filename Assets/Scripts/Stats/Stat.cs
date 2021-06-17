@@ -5,9 +5,17 @@ namespace RPG.Stats
     Health,
     Damage,
     Armour,
+    Experience,
+    Stamina,
+    MovementSpeed,
+    // CritChance,
+    // CritMultiplier,
     // MagicResi,
-    // Stamina,
-    // MovementSpeed,
-    Experience
+
+    // CooldownReduction,
+    // MagicDamage,
+    // 
+    // ExperienceGainMultiplier,
+
   }
 }

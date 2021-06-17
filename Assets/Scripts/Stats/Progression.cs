@@ -29,7 +29,9 @@ namespace RPG.Stats
     {
       BuildLookupTable();
 
-      float[] valueLevels = lookupTable[charakterClass][stat]; 
+      Dictionary<Stat, float[]> characterTable = lookupTable[charakterClass];
+      float[] valueLevels;
+      if (!characterTable.TryGetValue(stat, out valueLevels)) return 0;
 
       if (valueLevels.Length < level)
       {

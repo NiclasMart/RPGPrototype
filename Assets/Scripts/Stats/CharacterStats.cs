@@ -14,6 +14,7 @@ namespace RPG.Stats
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
     [SerializeField] bool useModifiers = false;
+    [SerializeField] StatsDisplay statsDisplay;
 
     public int Level => level;
     public ValueChangeEvent valueChange;
@@ -36,25 +37,27 @@ namespace RPG.Stats
       return activeStats[stat];
     }
 
+
     public void RecalculateStats(ModifyTable modifierTable)
     {
       activeStats = new Dictionary<Stat, float>();
 
-      //health
-      float baseStat = progressionSet.GetStat(Stat.Health, charakterClass, level);
-      activeStats.Add(Stat.Health, modifierTable.ModifyHealth(baseStat));
-      //armour
-      baseStat = progressionSet.GetStat(Stat.Armour, charakterClass, level);
-      activeStats.Add(Stat.Armour, modifierTable.ModifyArmour(baseStat));
-      //damage
-      baseStat = progressionSet.GetStat(Stat.Damage, charakterClass, level);
-      activeStats.Add(Stat.Damage, modifierTable.ModifyDamage(baseStat));
-      //experience
-      baseStat = progressionSet.GetStat(Stat.Experience, charakterClass, level);
-      activeStats.Add(Stat.Experience, baseStat);
+      CalculateStat(Stat.Health, modifierTable.ModifyHealth);
+      CalculateStat(Stat.Damage, modifierTable.ModifyDamage);
+      CalculateStat(Stat.Armour, modifierTable.ModifyArmour);
+      CalculateStat(Stat.MovementSpeed, modifierTable.ModifyMovementSpeed);
+      CalculateStat(Stat.Stamina, modifierTable.ModifyStamina);
 
+      activeStats.Add(Stat.Experience, progressionSet.GetStat(Stat.Experience, charakterClass, level));
       statsChange.Invoke(this);
-      //more
+    }
+
+    private void CalculateStat(Stat stat, Func<float, float> ModifyStat)
+    {
+      float baseStat = progressionSet.GetStat(stat, charakterClass, level);
+      float modifiedStat = ModifyStat(baseStat);
+      activeStats.Add(stat, modifiedStat);
+      if (statsDisplay) statsDisplay.DisplayStat(stat, modifiedStat);
     }
 
     public bool LevelUp()

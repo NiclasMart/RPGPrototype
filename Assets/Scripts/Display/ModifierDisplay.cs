@@ -41,8 +41,6 @@ namespace RPG.Display
     {
       if (Input.mousePosition.x > canvasRect.rect.width / 2) transform.position = Input.mousePosition - new Vector3(GetComponent<RectTransform>().rect.width, 0, 0);
       else transform.position = Input.mousePosition;
-
-      print(Input.mousePosition.x);
     }
 
     private void ClearDisplay()
