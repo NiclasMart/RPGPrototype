@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using RPG.Core;
 using UltEvents;
-
+using UnityEngine;
 
 namespace RPG.Items
 {
@@ -24,6 +25,17 @@ namespace RPG.Items
       public string GetDisplayText()
       {
         return display.Replace("*", value.ToString());
+      }
+    }
+
+    public static Color GetRarityColor(Rank rarity)
+    {
+      switch (rarity)
+      {
+        case Rank.Rare: return PlayerInfo.GetGlobalParameters().rare;
+        case Rank.Epic: return PlayerInfo.GetGlobalParameters().epic;
+        case Rank.Legendary: return PlayerInfo.GetGlobalParameters().legendary;
+        default: return PlayerInfo.GetGlobalParameters().normal;
       }
     }
 

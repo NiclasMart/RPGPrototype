@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2865853426447531350}
   - component: {fileID: 4120863851770876830}
   m_Layer: 5
-  m_Name: MainStats
+  m_Name: HeadInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 7296458764915565788}
   - component: {fileID: 8066976625834699019}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: 'Sword
 
 '
   m_isRightToLeft: 0
@@ -165,13 +165,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 14
   m_fontSizeMax: 14.9
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 9126832059019424498}
   - component: {fileID: 2641130540804883549}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: mainStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,6 +349,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '- test 1aaaaa
 
+    -asfasf
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -376,8 +378,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 14
@@ -388,7 +390,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -28.8
+  m_lineSpacing: 17
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -483,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -619,7 +621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -755,7 +757,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -891,7 +893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -1027,7 +1029,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '- test 1aaaaa
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -1108,7 +1110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7422410832031504764}
   - component: {fileID: 7422410832031504766}
-  - component: {fileID: 7422410832031504765}
+  - component: {fileID: 6461834463986731777}
   m_Layer: 5
   m_Name: Modifiers
   m_TagString: Untagged
@@ -1148,7 +1150,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7422410832031504755}
   m_CullTransparentMesh: 1
---- !u!114 &7422410832031504765
+--- !u!114 &6461834463986731777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1157,21 +1159,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7422410832031504755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 11
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 430, y: 28.8}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 1
-  m_ConstraintCount: 1
+  m_Spacing: 8
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &8299427046483088738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76922cbaf299cb64f9cfbe78571dd463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainStats: {fileID: 3201505154522057668}
+  title: {fileID: 8066976625834699019}
+  mainStats: {fileID: 2641130540804883549}
   modifiers: {fileID: 7422410832031504764}
   icon: {fileID: 4391570970636860695}
 --- !u!1001 &3755967834948493559
