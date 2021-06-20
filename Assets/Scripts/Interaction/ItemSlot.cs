@@ -52,13 +52,13 @@ namespace RPG.Interaction
       SetColor(defaultColor);
     }
 
-    public void ToggleItemModifiers(bool show)
-    {
-      if (item == null) return;
+    // public void ToggleItemModifiers(bool show)
+    // {
+    //   if (item == null) return;
 
-      if (show) modifierDisplay.ShowModifiers(item);
-      else modifierDisplay.HideModifiers();
-    }
+    //   if (show) modifierDisplay.ShowModifiers(item);
+    //   else modifierDisplay.HideModifiers();
+    // }
 
     protected void SetIcon(Item item)
     {

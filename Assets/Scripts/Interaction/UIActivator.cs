@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Core;
-
+using UltEvents;
 
 namespace RPG.Interaction
 {
@@ -11,6 +11,7 @@ namespace RPG.Interaction
     [SerializeField] GameObject UI;
     public GameObject connectedUI => UI;
     [SerializeField] float openDistance = 2f;
+    [SerializeField] UltEvent openAction, closeAction;
 
     GameObject player;
     public GameObject Interacter => player;
@@ -36,6 +37,9 @@ namespace RPG.Interaction
     {
       uiActive = !uiActive;
       UI.SetActive(uiActive);
+
+      if (uiActive) openAction.Invoke();
+      else closeAction.Invoke();
     }
 
     public override void Interact(GameObject interacter)
