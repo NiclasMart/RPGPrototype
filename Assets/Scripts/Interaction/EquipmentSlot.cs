@@ -6,6 +6,7 @@ namespace RPG.Interaction
 {
   public class EquipmentSlot : ItemSlot
   {
+    public ItemType equipmentType;
     public SimpleInventory connectedInventory;
     PlayerInventory playerInventory;
     GearChanger gearChanger;

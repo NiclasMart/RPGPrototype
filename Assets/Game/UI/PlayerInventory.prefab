@@ -413,7 +413,6 @@ GameObject:
   - component: {fileID: 1164913114551795186}
   - component: {fileID: 1162788816906831114}
   - component: {fileID: 1985904026184760617}
-  - component: {fileID: 2717137957637750330}
   m_Layer: 5
   m_Name: Holder
   m_TagString: UI
@@ -475,33 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedSlot: {fileID: 0}
-  defaultSelectedSlot: {fileID: 0}
-  sortingTable:
-  - itemType: 0
-    inventory: {fileID: 3732194235428388646}
-  - itemType: 1
-    inventory: {fileID: 8287649291161238504}
-  - itemType: 2
-    inventory: {fileID: 6913812521010094761}
-  - itemType: 3
-    inventory: {fileID: 18129099744964868}
-  - itemType: 4
-    inventory: {fileID: 8525681191115548468}
-  - itemType: 5
-    inventory: {fileID: 3117780045217919728}
---- !u!114 &2717137957637750330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382985641683251642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c2081d74dbc1d4ba5388d1600d32a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayButton: 105
+  defaultSelectedSlot: {fileID: 6521536792687108085}
 --- !u!1 &1440802214282670494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1964,6 +1937,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayButton: 105
+  openAction:
+    _PersistentCalls: []
+  closeAction:
+    _PersistentCalls: []
 --- !u!1 &5562280343170892809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,6 +3318,10 @@ PrefabInstance:
       value: EquipmentSlot_Pants
       objectReference: {fileID: 0}
     - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+      propertyPath: equipmentType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: connectedInventory
       value: 
       objectReference: {fileID: 3117780045217919728}
@@ -3994,9 +3975,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
---- !u!1 &6553239428115726271 stripped
+--- !u!1 &5322252886860583445 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4612416760648268433, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5994045760072308539, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
   m_PrefabInstance: {fileID: 1941983899321402670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2547896688719476580 stripped
@@ -4004,14 +3985,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4154749433207075402, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
   m_PrefabInstance: {fileID: 1941983899321402670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6553239428115726271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4612416760648268433, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
+  m_PrefabInstance: {fileID: 1941983899321402670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1016581066109771093 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1506681703459510395, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
-  m_PrefabInstance: {fileID: 1941983899321402670}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5322252886860583445 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5994045760072308539, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
   m_PrefabInstance: {fileID: 1941983899321402670}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2873582360415012260
@@ -4146,6 +4127,10 @@ PrefabInstance:
     - target: {fileID: 1804507650023908700, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: m_Name
       value: EquipmentSlot_Boots
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+      propertyPath: equipmentType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: connectedInventory
@@ -4516,6 +4501,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3748593266241870578, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
   m_PrefabInstance: {fileID: 5010980916560426046}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6521536792687108085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+  m_PrefabInstance: {fileID: 5010980916560426046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eed6e8c95552f347b722e730c3de6bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5484721038873698692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4526,6 +4522,10 @@ PrefabInstance:
     - target: {fileID: 1804507650023908700, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: m_Name
       value: EquipmentSlot_Gloves
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+      propertyPath: equipmentType
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: connectedInventory
@@ -4638,6 +4638,10 @@ PrefabInstance:
       value: EquipmentSlot_Helmet
       objectReference: {fileID: 0}
     - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+      propertyPath: equipmentType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: connectedInventory
       value: 
       objectReference: {fileID: 18129099744964868}
@@ -4746,6 +4750,10 @@ PrefabInstance:
     - target: {fileID: 1804507650023908700, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: m_Name
       value: EquipmentSlot_Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+      propertyPath: equipmentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2237079213483568075, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
       propertyPath: connectedInventory

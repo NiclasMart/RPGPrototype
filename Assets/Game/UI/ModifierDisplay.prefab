@@ -127,6 +127,8 @@ MonoBehaviour:
   panels:
   - {fileID: 1683244412852042}
   - {fileID: 921750643368090107}
+  canvasRect: {fileID: 0}
+  panelBackground: {fileID: 0}
 --- !u!1 &5556668778867873248
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +169,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4124613354836923633}
     m_Modifications:
+    - target: {fileID: 190683508500361271, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.70000076
+      objectReference: {fileID: 0}
     - target: {fileID: 1940374615730385865, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -434,6 +440,18 @@ PrefabInstance:
     - target: {fileID: 8299427046483088738, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
       propertyPath: m_Name
       value: FirstChoise
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742076194824643578, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742076194824643578, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8742076194824643578, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2083033982177417793, guid: a1d91301f3818f8489ec6c00c996a2b4, type: 3}

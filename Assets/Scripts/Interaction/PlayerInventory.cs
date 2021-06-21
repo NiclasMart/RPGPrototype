@@ -11,25 +11,24 @@ namespace RPG.Interaction
   public class PlayerInventory : Inventory
   {
     [SerializeField] EquipmentSlot defaultSelectedSlot;
-    [SerializeField] SortCategory[] sortingTable;
+    // [SerializeField] SortCategory[] sortingTable;
 
-    [System.Serializable]
-    class SortCategory
-    {
-      public ItemType itemType;
-      public SimpleInventory inventory;
-    }
-    Dictionary<ItemType, SimpleInventory> sortDictionary = new Dictionary<ItemType, SimpleInventory>();
+    // [System.Serializable]
+    // class SortCategory
+    // {
+    //   public ItemType itemType;
+    //   public SimpleInventory inventory;
+    // }
+    Dictionary<ItemType, EquipmentSlot> equipmentDictionary = new Dictionary<ItemType, EquipmentSlot>();
 
-    private void Start()
+    private void Awake() 
     {
-      BuildDictionary();
-      InitializeSlots();
+      Initialize();  
     }
 
     public void AddItem(Item item)
     {
-      SimpleInventory inventory = sortDictionary[item.itemType];
+      SimpleInventory inventory = equipmentDictionary[item.itemType].connectedInventory;
       inventory.AddItem(item);
     }
 
@@ -41,7 +40,6 @@ namespace RPG.Interaction
       }
     }
 
-
     public override void SelectSlot(ItemSlot slot)
     {
       EquipmentSlot equipSlot = slot as EquipmentSlot;
@@ -49,6 +47,12 @@ namespace RPG.Interaction
 
       if (selectedSlot) selectedSlot.Deselect();
       selectedSlot = equipSlot;
+    }
+
+    public Item GetEquipedItem(ItemType type)
+    {
+      if (equipmentDictionary.ContainsKey(type)) return equipmentDictionary[type].item;
+      else return null;
     }
 
     public void RecalculateModifiers()
@@ -73,12 +77,17 @@ namespace RPG.Interaction
       }
     }
 
-    private void BuildDictionary()
+    private void Initialize()
     {
-      foreach (SortCategory category in sortingTable)
+      foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
       {
-        InitializeInventory(category.inventory);
-        sortDictionary.Add(category.itemType, category.inventory);
+        //initialize inventorys
+        InitializeInventory(slot.connectedInventory);
+        equipmentDictionary.Add(slot.equipmentType, slot);
+
+        //initialize slots
+        slot.Initialize(null, this);
+        slot.connectedInventory.gameObject.SetActive(false);
       }
     }
 
@@ -86,15 +95,6 @@ namespace RPG.Interaction
     {
       inventory.InitializeColorParameters();
       inventory.gameObject.SetActive(false);
-    }
-
-    private void InitializeSlots()
-    {
-      foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
-      {
-        slot.Initialize(null, this);
-        slot.connectedInventory.gameObject.SetActive(false);
-      }
     }
   }
 }

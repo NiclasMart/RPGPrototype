@@ -9,7 +9,7 @@ namespace RPG.Display
     [SerializeField] UltEvent openAction, closeAction;
     bool displayActive = false;
 
-    private void Awake()
+    private void Start()
     {
       transform.GetChild(0).gameObject.SetActive(false);
     }

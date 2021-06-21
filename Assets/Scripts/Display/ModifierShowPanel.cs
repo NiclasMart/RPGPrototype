@@ -9,27 +9,37 @@ namespace RPG.Display
   {
     [SerializeField] TextMeshProUGUI title, mainStats;
     [SerializeField] Transform modifiers;
-    [SerializeField] Image icon;
-    Color epicCol, legendaryCol;
+    [SerializeField] Image iconSlot;
+    Color epicCol, legendaryCol, defaultSlotCol;
+    Image icon;
 
-    public void DisplayModifiers(ModifiableItem item)
+    private void Awake()
+    {
+      defaultSlotCol = iconSlot.color;
+      icon = iconSlot.transform.GetChild(0).GetComponent<Image>();
+      Clear();
+    }
+
+    public void DisplayItem(ModifiableItem item)
     {
       Clear();
+      if (item == null) return;
 
-      title.color = ModifiableItem.GetRarityColor(item.rarity);
-      title.text = item.GetTitleText();
+      DisplayMainInfo(item);
+      DisplayModifiers(item);
+    }
 
-      mainStats.color = ModifiableItem.GetRarityColor(Rank.Normal);
-      mainStats.text = item.GetMainStatText();
-
-      TextMeshProUGUI[] fields = modifiers.GetComponentsInChildren<TextMeshProUGUI>();
-      for (int i = 0; i < item.modifiers.Count; i++)
+    public void Clear()
+    {
+      title.text = "";
+      mainStats.text = "";
+      foreach (var display in modifiers.GetComponentsInChildren<TextMeshProUGUI>())
       {
-        ModifiableItem.Modifier modifier = item.modifiers[i];
-        fields[i].text = modifier.GetDisplayText();
-
-        fields[i].color = ModifiableItem.GetRarityColor(modifier.rarity);
+        display.text = "";
       }
+
+      iconSlot.color = defaultSlotCol;
+      icon.sprite = null;
     }
 
     public void SetActive(bool active)
@@ -37,14 +47,28 @@ namespace RPG.Display
       gameObject.SetActive(active);
     }
 
-    public void Clear()
+    private void DisplayMainInfo(ModifiableItem item)
     {
-      foreach (var display in modifiers.GetComponentsInChildren<TextMeshProUGUI>())
+      title.color = ModifiableItem.GetRarityColor(item.rarity);
+      title.text = item.GetTitleText();
+
+      mainStats.color = ModifiableItem.GetRarityColor(Rank.Normal);
+      mainStats.text = item.GetMainStatText();
+
+      print("set color");
+      iconSlot.color = ModifiableItem.GetRarityColor(item.rarity);
+      icon.sprite = item.icon;
+    }
+
+    private void DisplayModifiers(ModifiableItem item)
+    {
+      TextMeshProUGUI[] fields = modifiers.GetComponentsInChildren<TextMeshProUGUI>();
+      for (int i = 0; i < item.modifiers.Count; i++)
       {
-        display.text = "";
+        ModifiableItem.Modifier modifier = item.modifiers[i];
+        fields[i].text = modifier.GetDisplayText();
+        fields[i].color = ModifiableItem.GetRarityColor(modifier.rarity);
       }
-
-
     }
   }
 }

@@ -1,10 +1,8 @@
 using RPG.Items;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using RPG.Core;
-using System;
 using System.Collections.Generic;
+using RPG.Interaction;
 
 namespace RPG.Display
 {
@@ -13,10 +11,16 @@ namespace RPG.Display
     [SerializeField] List<ModifierShowPanel> panels = new List<ModifierShowPanel>();
     [SerializeField] RectTransform canvasRect;
     [SerializeField] Image panelBackground;
+    PlayerInventory inventory;
 
     int activeConnections = 0;
     bool compareModeIsActive = false;
     Vector3 panelStartPosition;
+
+    private void Awake()
+    {
+      inventory = FindObjectOfType<PlayerInventory>();
+    }
 
     private void Start()
     {
@@ -49,15 +53,17 @@ namespace RPG.Display
       ModifiableItem modItem = item as ModifiableItem;
       if (modItem == null) return;
 
-
-      //ClearDisplay();
-      //SetText(modItem);
-      if (!compareModeIsActive)
+      if (compareModeIsActive)
+      {
+        ModifiableItem equipedItem = inventory.GetEquipedItem(item.itemType) as ModifiableItem;
+        panels[0].DisplayItem(equipedItem);
+      }
+      else
       {
         panels[1].SetActive(true);
         SetPosition();
-        panels[1].DisplayModifiers(modItem);
       }
+      panels[1].DisplayItem(modItem);
     }
 
     private void SetPosition()
@@ -66,35 +72,16 @@ namespace RPG.Display
       else panels[1].transform.position = Input.mousePosition;
     }
 
-    private void ClearDisplay()
-    {
-      // foreach (ModifierShowPanel panel in panels)
-      // {
-      //   if (!panel.isActiveAndEnabled) continue;
-
-      //   for
-      //   field.text = "";
-      //   field.color = Color.white;
-      // }
-    }
 
     public void HideModifiers()
     {
-      if (compareModeIsActive) return;
-      panels[1].gameObject.SetActive(false);
-    }
-
-    private void SetText(ModifierShowPanel panel, ModifiableItem modItem)
-    {
-      TextMeshProUGUI[] fields = panel.GetComponentsInChildren<TextMeshProUGUI>();
-      for (int i = 0; i < modItem.modifiers.Count; i++)
+      if (compareModeIsActive)
       {
-        ModifiableItem.Modifier modifier = modItem.modifiers[i];
-        fields[i].text = modifier.GetDisplayText();
-
-        if (modifier.rarity == Rank.Epic) fields[i].color = PlayerInfo.GetGlobalParameters().epic;
-        else if (modifier.rarity == Rank.Legendary) fields[i].color = PlayerInfo.GetGlobalParameters().legendary;
+        panels[0].Clear();
+        panels[1].Clear();
+        return;
       }
+      panels[1].gameObject.SetActive(false);
     }
 
     public void RegisterMenu()
