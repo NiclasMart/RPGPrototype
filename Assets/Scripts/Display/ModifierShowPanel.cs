@@ -23,7 +23,11 @@ namespace RPG.Display
     public void DisplayItem(ModifiableItem item)
     {
       Clear();
-      if (item == null) return;
+      if (item == null)
+      {
+        title.text = "No Gear Equiped!";
+        return;
+      }
 
       DisplayMainInfo(item);
       DisplayModifiers(item);
@@ -31,15 +35,8 @@ namespace RPG.Display
 
     public void Clear()
     {
-      title.text = "";
-      mainStats.text = "";
-      foreach (var display in modifiers.GetComponentsInChildren<TextMeshProUGUI>())
-      {
-        display.text = "";
-      }
-
-      iconSlot.color = defaultSlotCol;
-      icon.sprite = null;
+      ClearText();
+      SetIcon(null, defaultSlotCol);
     }
 
     public void SetActive(bool active)
@@ -55,9 +52,7 @@ namespace RPG.Display
       mainStats.color = ModifiableItem.GetRarityColor(Rank.Normal);
       mainStats.text = item.GetMainStatText();
 
-      print("set color");
-      iconSlot.color = ModifiableItem.GetRarityColor(item.rarity);
-      icon.sprite = item.icon;
+      SetIcon(item.icon, ModifiableItem.GetRarityColor(item.rarity));
     }
 
     private void DisplayModifiers(ModifiableItem item)
@@ -68,6 +63,22 @@ namespace RPG.Display
         ModifiableItem.Modifier modifier = item.modifiers[i];
         fields[i].text = modifier.GetDisplayText();
         fields[i].color = ModifiableItem.GetRarityColor(modifier.rarity);
+      }
+    }
+
+    private void SetIcon(Sprite itemSprite, Color rarity)
+    {
+      iconSlot.color = rarity;
+      icon.sprite = itemSprite;
+    }
+
+    private void ClearText()
+    {
+      title.text = "";
+      mainStats.text = "";
+      foreach (var display in modifiers.GetComponentsInChildren<TextMeshProUGUI>())
+      {
+        display.text = "";
       }
     }
   }

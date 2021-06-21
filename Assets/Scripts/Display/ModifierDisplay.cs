@@ -10,7 +10,7 @@ namespace RPG.Display
   {
     [SerializeField] List<ModifierShowPanel> panels = new List<ModifierShowPanel>();
     [SerializeField] RectTransform canvasRect;
-    [SerializeField] Image panelBackground;
+    [SerializeField] Image panelBackground, arrow;
     PlayerInventory inventory;
 
     int activeConnections = 0;
@@ -99,9 +99,10 @@ namespace RPG.Display
     public void SetUIActive(bool active)
     {
       panelBackground.gameObject.SetActive(active);
+      arrow.gameObject.SetActive(active);
       foreach (var panel in panels)
       {
-        panel.SetActive(active);
+        panel.gameObject.SetActive(active);
       }
     }
 

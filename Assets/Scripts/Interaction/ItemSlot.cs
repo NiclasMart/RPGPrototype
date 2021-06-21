@@ -64,7 +64,7 @@ namespace RPG.Interaction
     {
       if (item == null) return;
       iconSlot.transform.GetChild(0).GetComponent<Image>().sprite = item.icon;
-      iconSlot.color = inventory.GetRarityColor(item.rarity);
+      iconSlot.color = ModifiableItem.GetRarityColor(item.rarity);
     }
 
     void SetText(Item item)
