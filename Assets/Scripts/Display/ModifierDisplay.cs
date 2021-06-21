@@ -68,8 +68,9 @@ namespace RPG.Display
 
     private void SetPosition()
     {
-      if (Input.mousePosition.x > canvasRect.rect.width / 2) panels[1].transform.position = Input.mousePosition - new Vector3(GetComponent<RectTransform>().rect.width, 0, 0);
-      else panels[1].transform.position = Input.mousePosition;
+      panels[1].transform.position = Input.mousePosition;
+      // if (Input.mousePosition.x > canvasRect.rect.width / 2) panels[1].transform.position = Input.mousePosition - new Vector3(panels[1].GetComponent<RectTransform>().rect.width, 0, 0);
+      // else panels[1].transform.position = Input.mousePosition;
     }
 
 
