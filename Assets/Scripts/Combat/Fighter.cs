@@ -2,38 +2,25 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Stats;
 using System.Collections;
-using GameDevTV.Utils;
-using RPG.Movement;
+using RPG.Items;
 
 namespace RPG.Combat
 {
 
   public class Fighter : Attacker
   {
-    [SerializeField] Transform rightWeaponHolder;
-    [SerializeField] Transform leftWeaponHolder;
-    [SerializeField] GenericWeapon defaultWeapon;
+    public GenericWeapon defaultWeapon;
+    [SerializeField] Transform rightWeaponHolder, leftWeaponHolder;
 
-    LazyValue<Weapon> currentWeapon;
+    CharacterStats stats;
+    EquipedWeapon equipedWeapon;
 
     protected override void Awake()
     {
       base.Awake();
-      currentWeapon = new LazyValue<Weapon>(GetInitializeWeapon);
+      stats = GetComponent<CharacterStats>();
+      InitializeWeapon();
     }
-
-    private Weapon GetInitializeWeapon()
-    {
-      Weapon weapon = defaultWeapon.GenerateItem() as Weapon;
-      SpawnWeapon(weapon);
-      return weapon;
-    }
-
-    void Start()
-    {
-      currentWeapon.ForceInit();
-    }
-
     public override void Attack()
     {
       if (TargetInRange())
@@ -51,9 +38,19 @@ namespace RPG.Combat
       /*projectile for Ranged Weapons is launched within the Shoot() event */
     }
 
+    private void InitializeWeapon()
+    {
+      if (!defaultWeapon) return;
+
+      Animator animator = GetComponent<Animator>();
+      Weapon weapon = defaultWeapon.GenerateItem() as Weapon;
+      equipedWeapon = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+    }
+
+
     bool TargetInRange()
     {
-      return Vector3.Distance(transform.position, target.transform.position) < currentWeapon.value.AttackRange;
+      return Vector3.Distance(transform.position, target.transform.position) < stats.GetStat(Stat.AttackRange);
     }
 
     IEnumerator StartAttacking()
@@ -62,22 +59,8 @@ namespace RPG.Combat
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
       AdjustAttackDirection();
-      yield return new WaitForSeconds(1 / currentWeapon.value.AttackSpeed);
+      yield return new WaitForSeconds(1 / stats.GetStat(Stat.AttackSpeed));
       currentlyAttacking = false;
-    }
-
-    GameObject weaponReference = null;
-    public void EquipWeapon(Weapon weapon)
-    {
-      if (weaponReference) Destroy(weaponReference);
-      SpawnWeapon(weapon);
-      currentWeapon.value = weapon;
-    }
-
-    private void SpawnWeapon(Weapon weapon)
-    {
-      Animator animator = GetComponent<Animator>();
-      weaponReference = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
     }
 
     //animation event (called from animator)
@@ -86,22 +69,14 @@ namespace RPG.Combat
       if (target == null) return;
 
       float damage = GetComponent<CharacterStats>().GetStat(Stat.Damage);
-      if (currentWeapon.value is RangedWeapon)
-      {
-        RangedWeapon weapon = (RangedWeapon)currentWeapon.value;
-        weapon.LaunchProjectile(rightWeaponHolder, leftWeaponHolder, target, gameObject, collisionLayer, damage);
-      }
-      else
-      {
-        if (!TargetInRange()) return;
-        target.GetComponent<Health>().ApplyDamage(gameObject, damage);
-      }
+
+      equipedWeapon.Attack(target, gameObject, collisionLayer, damage);
     }
 
     //animation event (called from animator)
     void Shoot()
     {
       Hit();
-    }  
+    }
   }
 }

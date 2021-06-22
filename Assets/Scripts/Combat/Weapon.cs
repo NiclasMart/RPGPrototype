@@ -12,10 +12,6 @@ namespace RPG.Combat
     private DamageClass damageType;
     private protected bool isRightHanded = true;
 
-    public float Damage { get => damage; }
-    public float AttackRange { get => range; }
-    public float AttackSpeed { get => attackSpeed; }
-
     public Weapon(GenericItem baseItem) : base(baseItem)
     {
       GenericWeapon baseWeapon = baseItem as GenericWeapon;
@@ -27,16 +23,22 @@ namespace RPG.Combat
       isRightHanded = baseWeapon.isRightHanded;
     }
 
-    public virtual GameObject Equip(Transform rightHand, Transform leftHand, Animator animator)
+    public EquipedWeapon Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
       AnimationHandler.OverrideAnimations(animator, animation, "Attack");
-      GameObject spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
+      EquipedWeapon spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
       return spawnedWeapon;
     }
 
-    public GameObject Spawn(Transform position)
+    public virtual EquipedWeapon Spawn(Transform position)
     {
-      if (itemObject != null) return MonoBehaviour.Instantiate(itemObject, position);
+      if (itemObject != null)
+      {
+        GameObject newWeapon = MonoBehaviour.Instantiate(itemObject, position);
+        EquipedWeapon equipedWeapon = newWeapon.AddComponent<EquipedWeapon>();
+        equipedWeapon.Initialize(position, this);
+        return equipedWeapon;
+      }
       return null;
     }
 
@@ -54,6 +56,7 @@ namespace RPG.Combat
     {
       stats.damageFlat += damage;
       stats.attackSpeed += attackSpeed;
+      stats.attackRange += range;
     }
 
   }

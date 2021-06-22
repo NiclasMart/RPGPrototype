@@ -55,9 +55,12 @@ MonoBehaviour:
   charakterClass: 1
   progressionSet: {fileID: 11400000, guid: bf9a9bcb3c25ff246948e7fac1f25fdf, type: 2}
   useModifiers: 0
+  statsDisplay: {fileID: 0}
   valueChange:
     m_PersistentCalls:
       m_Calls: []
+  statsChange:
+    _PersistentCalls: []
 --- !u!114 &8381183209122371111
 MonoBehaviour:
   m_ObjectHideFlags: 0

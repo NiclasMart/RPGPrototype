@@ -8,20 +8,22 @@ namespace RPG.Combat
   {
     GameObject projectilePrefab;
 
-    public RangedWeapon(GenericItem baseItem) : base(baseItem) 
+    public RangedWeapon(GenericItem baseItem) : base(baseItem)
     {
       GenericRangedWeapon genericWeapon = baseItem as GenericRangedWeapon;
       projectilePrefab = genericWeapon.projectilePrefab;
     }
 
-    public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target, GameObject source, LayerMask layer, float damage)
+    public override EquipedWeapon Spawn(Transform position)
     {
-      Transform spawnLocation = SelectTransform(rightHand, leftHand);
-      GameObject projectileInstance = MonoBehaviour.Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
-      if (projectileInstance)
+      if (itemObject != null)
       {
-        projectileInstance.GetComponent<Projectile>().Initialize(target, source, damage, layer);
+        GameObject newWeapon = MonoBehaviour.Instantiate(itemObject, position);
+        EquipedRangedWeapon equipedWeapon = newWeapon.AddComponent<EquipedRangedWeapon>();
+        equipedWeapon.Initialize(position, this, projectilePrefab);
+        return equipedWeapon;
       }
+      return null;
     }
   }
 }

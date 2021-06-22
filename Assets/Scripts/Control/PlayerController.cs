@@ -38,6 +38,7 @@ namespace RPG.Control
         playerCursor.active = false;
         return;
       }
+      
       if (HandleInputs()) return;
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
@@ -68,7 +69,7 @@ namespace RPG.Control
 
       if (combatTarget)
       {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
           fighter.SetCombatTarget(combatTarget.gameObject, collisionLayer);
           lastCombatTarget = combatTarget;
@@ -83,12 +84,12 @@ namespace RPG.Control
         return true;
       }
 
-      if (lastCombatTarget && lastCombatTarget.IsDead)
-      {
-        if (SearchForNewTarget()) return true;
-      }
+      // if (lastCombatTarget && lastCombatTarget.IsDead)
+      // {
+      //   if (SearchForNewTarget()) return true;
+      // }
 
-      if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
+      //if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
       lastDisplayTarget = combatTarget;
       return false;
     }

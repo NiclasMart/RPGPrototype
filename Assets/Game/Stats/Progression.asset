@@ -63,3 +63,29 @@ MonoBehaviour:
       values:
       - 20
       - 22
+  - charakterClass: 1
+    stats:
+    - stat: 0
+      values:
+      - 50
+      - 60
+    - stat: 2
+      values:
+      - 40
+      - 50
+    - stat: 1
+      values:
+      - 20
+      - 22
+    - stat: 3
+      values:
+      - 20
+      - 22
+    - stat: 6
+      values:
+      - 1
+      - 1
+    - stat: 7
+      values:
+      - 1
+      - 1

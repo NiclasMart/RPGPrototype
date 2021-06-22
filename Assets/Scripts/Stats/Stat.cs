@@ -8,6 +8,8 @@ namespace RPG.Stats
     Experience,
     Stamina,
     MovementSpeed,
+    AttackSpeed,
+    AttackRange,
     // CritChance,
     // CritMultiplier,
     // MagicResi,

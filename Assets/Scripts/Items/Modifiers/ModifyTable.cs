@@ -9,6 +9,7 @@ namespace RPG.Items
     public float staminaFlat, staminaPercent;
     public float movementSpeed;
     public float attackSpeed;
+    public float attackRange;
 
     public float ModifyHealth(float baseStat)
     {
@@ -33,6 +34,16 @@ namespace RPG.Items
     public float ModifyMovementSpeed(float baseStat)
     {
       return (1 + movementSpeed / 100) * baseStat;
+    }
+
+    public float GetAttackSpeed(float baseStat)
+    {
+      return attackSpeed + baseStat;
+    }
+
+    public float GetAttackRange(float baseStat)
+    {
+      return baseStat + attackRange;
     }
   }
 }

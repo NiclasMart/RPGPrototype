@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyAttacking: 0
+  defaultWeapon: {fileID: 0}
   rightWeaponHolder: {fileID: 5516469358062515668}
   leftWeaponHolder: {fileID: 5516469358062573014}
-  defaultWeapon: {fileID: 11400000, guid: db640f5835e02a94ea0a0f01b4dacbe9, type: 2}
 --- !u!1 &1666824102311023357
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +168,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4880956305802271720, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: leftWeaponHolder
+      value: 
+      objectReference: {fileID: 5516469358062573014}
+    - target: {fileID: 4880956305802271720, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: rightWeaponHolder
+      value: 
+      objectReference: {fileID: 5516469358062515668}
     - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: startHealth
       value: 50

@@ -10,20 +10,11 @@ namespace RPG.Interaction
 {
   public class PlayerInventory : Inventory
   {
-    [SerializeField] EquipmentSlot defaultSelectedSlot;
-    // [SerializeField] SortCategory[] sortingTable;
-
-    // [System.Serializable]
-    // class SortCategory
-    // {
-    //   public ItemType itemType;
-    //   public SimpleInventory inventory;
-    // }
     Dictionary<ItemType, EquipmentSlot> equipmentDictionary = new Dictionary<ItemType, EquipmentSlot>();
 
-    private void Awake() 
+    private void Awake()
     {
-      Initialize();  
+      Initialize();
     }
 
     public void AddItem(Item item)
@@ -89,6 +80,10 @@ namespace RPG.Interaction
         slot.Initialize(null, this);
         slot.connectedInventory.gameObject.SetActive(false);
       }
+
+      //equip default weapon
+      GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().defaultWeapon;
+      if (defaultWeapon) equipmentDictionary[ItemType.Weapon].SetGear(defaultWeapon.GenerateItem());
     }
 
     private static void InitializeInventory(Inventory inventory)

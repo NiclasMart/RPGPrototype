@@ -47,6 +47,8 @@ namespace RPG.Stats
       CalculateStat(Stat.Armour, modifierTable.ModifyArmour);
       CalculateStat(Stat.MovementSpeed, modifierTable.ModifyMovementSpeed);
       CalculateStat(Stat.Stamina, modifierTable.ModifyStamina);
+      CalculateStat(Stat.AttackSpeed, modifierTable.GetAttackSpeed);
+      CalculateStat(Stat.AttackRange, modifierTable.GetAttackRange);
 
       activeStats.Add(Stat.Experience, progressionSet.GetStat(Stat.Experience, charakterClass, level));
       statsChange.Invoke(this);
