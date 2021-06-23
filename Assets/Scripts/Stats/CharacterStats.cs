@@ -21,11 +21,6 @@ namespace RPG.Stats
 
     Dictionary<Stat, float> activeStats;
 
-    private void Awake()
-    {
-      RecalculateStats(new ModifyTable());
-    }
-
     private void Start()
     {
       valueChange.Invoke(this);

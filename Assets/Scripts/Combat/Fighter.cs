@@ -45,8 +45,16 @@ namespace RPG.Combat
       Animator animator = GetComponent<Animator>();
       Weapon weapon = defaultWeapon.GenerateItem() as Weapon;
       equipedWeapon = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+
+      CalculateInitialStats(weapon);
     }
 
+    private void CalculateInitialStats(Weapon weapon)
+    {
+      ModifyTable statTable = new ModifyTable();
+      weapon.GetStats(statTable);
+      GetComponent<CharacterStats>().RecalculateStats(statTable);
+    }
 
     bool TargetInRange()
     {

@@ -114,7 +114,6 @@ namespace RPG.Combat
 
       if (target)
       {
-        //homing
         if (other.gameObject == target.gameObject)
         {
           if (!target.IsDead) Impact();
@@ -122,7 +121,6 @@ namespace RPG.Combat
       }
       else
       {
-        //non homing
         Health hitTarget = other.GetComponent<Health>();
         if (hitTarget) Impact(hitTarget);
       }
