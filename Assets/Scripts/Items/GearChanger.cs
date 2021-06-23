@@ -11,7 +11,6 @@ namespace RPG.Items
     [SerializeField] Transform rightWeaponHolder;
     [SerializeField] Transform leftWeaponHolder;
     public GenericWeapon defaultWeapon;
-    EquipedWeapon currentWeapon;
 
     public void EquipGear(Item item)
     {
@@ -22,7 +21,7 @@ namespace RPG.Items
     public void EquipWeapon(Weapon weapon)
     {
       if (weaponReference) Destroy(weaponReference);
-      currentWeapon = InitializeWeapon(weapon);
+      GetComponent<PlayerFighter>().currentWeapon = InitializeWeapon(weapon);
     }
 
     private EquipedWeapon InitializeWeapon(Weapon weapon)

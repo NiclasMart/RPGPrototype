@@ -14,20 +14,24 @@ namespace RPG.Control
     [SerializeField] int collisionLayer;
     [SerializeField] EnemyHUD hudManager;
     Mover mover;
-    Fighter fighter;
+    PlayerFighter fighter;
     Interacter interacter;
     Health health;
     PlayerCursor playerCursor;
     AbilityManager abilityManager;
+    Animator animator;
+    ActionScheduler scheduler;
 
     private void Awake()
     {
       mover = GetComponent<Mover>();
-      fighter = GetComponent<Fighter>();
+      fighter = GetComponent<PlayerFighter>();
       interacter = GetComponent<Interacter>();
       health = GetComponent<Health>();
       playerCursor = GetComponent<PlayerCursor>();
       abilityManager = GetComponent<AbilityManager>();
+      animator = GetComponent<Animator>();
+      scheduler = GetComponent<ActionScheduler>();
     }
 
     private void LateUpdate()
@@ -38,7 +42,7 @@ namespace RPG.Control
         playerCursor.active = false;
         return;
       }
-      
+
       if (HandleInputs()) return;
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
@@ -62,27 +66,33 @@ namespace RPG.Control
     Health lastDisplayTarget, lastCombatTarget;
     private bool UpdateCombat()
     {
-      Health combatTarget = null;
-      IInteraction target = playerCursor.Target;
-      if (target != null) combatTarget = target.GetGameObject().GetComponent<Health>();
-
-
-      if (combatTarget)
+      if (Input.GetMouseButton(1))
       {
-        if (Input.GetMouseButtonDown(1))
-        {
-          fighter.SetCombatTarget(combatTarget.gameObject, collisionLayer);
-          lastCombatTarget = combatTarget;
-        }
+        fighter.Attack(animator, scheduler, playerCursor);
 
-        if (combatTarget != lastDisplayTarget)
-        {
-          hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
-          lastDisplayTarget = combatTarget;
-        }
-        playerCursor.SetCursor(PlayerCursor.CursorType.COMBAT);
         return true;
       }
+      // Health combatTarget = null;
+      // IInteraction target = playerCursor.Target;
+      // if (target != null) combatTarget = target.GetGameObject().GetComponent<Health>();
+
+
+      // if (combatTarget)
+      // {
+      //   if (Input.GetMouseButtonDown(1))
+      //   {
+      //     fighter.SetCombatTarget(combatTarget.gameObject, collisionLayer);
+      //     lastCombatTarget = combatTarget;
+      //   }
+
+      //   if (combatTarget != lastDisplayTarget)
+      //   {
+      //     hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
+      //     lastDisplayTarget = combatTarget;
+      //   }
+      //   playerCursor.SetCursor(PlayerCursor.CursorType.COMBAT);
+      //   return true;
+      // }
 
       // if (lastCombatTarget && lastCombatTarget.IsDead)
       // {
@@ -90,26 +100,26 @@ namespace RPG.Control
       // }
 
       //if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
-      lastDisplayTarget = combatTarget;
+      // lastDisplayTarget = combatTarget;
       return false;
     }
 
-    bool SearchForNewTarget()
-    {
-      Collider[] hits = Physics.OverlapSphere(transform.position, 1f);
-      foreach (Collider hit in hits)
-      {
-        if (hit.transform.CompareTag("Enemy"))
-        {
-          fighter.SetCombatTarget(hit.gameObject, collisionLayer);
-          lastCombatTarget = hit.GetComponent<Health>();
-          hudManager.SetUpEnemyDisplay(lastCombatTarget, hit.GetComponent<CharacterStats>());
-          return true;
-        }
-      }
-      lastCombatTarget = null;
-      return false;
-    }
+    // bool SearchForNewTarget()
+    // {
+    //   Collider[] hits = Physics.OverlapSphere(transform.position, 1f);
+    //   foreach (Collider hit in hits)
+    //   {
+    //     if (hit.transform.CompareTag("Enemy"))
+    //     {
+    //       fighter.SetCombatTarget(hit.gameObject, collisionLayer);
+    //       lastCombatTarget = hit.GetComponent<Health>();
+    //       hudManager.SetUpEnemyDisplay(lastCombatTarget, hit.GetComponent<CharacterStats>());
+    //       return true;
+    //     }
+    //   }
+    //   lastCombatTarget = null;
+    //   return false;
+    // }
 
     private bool UpdateInteraction()
     {

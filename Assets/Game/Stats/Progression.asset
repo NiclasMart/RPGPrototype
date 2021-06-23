@@ -49,28 +49,6 @@ MonoBehaviour:
       values:
       - 15
       - 18
-  - charakterClass: 2
-    stats:
-    - stat: 0
-      values:
-      - 50
-      - 60
-    - stat: 2
-      values:
-      - 40
-      - 50
-    - stat: 1
-      values:
-      - 20
-      - 22
-    - stat: 6
-      values:
-      - 0.8
-      - 0.8
-    - stat: 7
-      values:
-      - 5
-      - 5
   - charakterClass: 1
     stats:
     - stat: 0
@@ -89,11 +67,21 @@ MonoBehaviour:
       values:
       - 20
       - 22
-    - stat: 6
+  - charakterClass: 2
+    stats:
+    - stat: 0
       values:
-      - 1
-      - 1
-    - stat: 7
+      - 50
+      - 60
+    - stat: 2
       values:
-      - 1
-      - 1
+      - 40
+      - 50
+    - stat: 1
+      values:
+      - 20
+      - 22
+    - stat: 3
+      values:
+      - 20
+      - 22
