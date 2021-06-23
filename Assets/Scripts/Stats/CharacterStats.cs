@@ -13,7 +13,6 @@ namespace RPG.Stats
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
-    [SerializeField] bool useModifiers = false;
     [SerializeField] StatsDisplay statsDisplay;
 
     public int Level => level;

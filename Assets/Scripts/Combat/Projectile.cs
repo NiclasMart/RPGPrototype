@@ -71,13 +71,14 @@ namespace RPG.Combat
     {
       target.ApplyDamage(source, damage);
       HandleDestruction();
+      active = false;
     }
 
-    private void Impact(Health target)
+    private void Impact(Health hitTarget)
     {
-      target.ApplyDamage(source, damage);
+      hitTarget.ApplyDamage(source, damage);
       HandleDestruction();
-
+      active = false;
     }
 
     void HandleDestruction()
@@ -109,9 +110,11 @@ namespace RPG.Combat
 
     private void OnTriggerEnter(Collider other)
     {
-      print("arrowHitTarget");
+      if (!active) return;
+
       if (target)
       {
+        //homing
         if (other.gameObject == target.gameObject)
         {
           if (!target.IsDead) Impact();
@@ -119,6 +122,7 @@ namespace RPG.Combat
       }
       else
       {
+        //non homing
         Health hitTarget = other.GetComponent<Health>();
         if (hitTarget) Impact(hitTarget);
       }

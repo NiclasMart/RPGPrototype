@@ -63,6 +63,14 @@ MonoBehaviour:
       values:
       - 20
       - 22
+    - stat: 6
+      values:
+      - 0.8
+      - 0.8
+    - stat: 7
+      values:
+      - 5
+      - 5
   - charakterClass: 1
     stats:
     - stat: 0
