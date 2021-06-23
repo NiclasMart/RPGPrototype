@@ -26,28 +26,6 @@ namespace RPG.Combat
       FillCooldownTable();
     }
 
-    private void InstanciateAbilities()
-    {
-      List<Ability> abilityInstances = new List<Ability>();
-      foreach (var ability in ablilities)
-      {
-        abilityInstances.Add(Instantiate(ability, transform));
-      }
-      ablilities = abilityInstances;
-    }
-
-    private void FillCooldownTable()
-    {
-      foreach (Ability ability in ablilities)
-      {
-        cooldownTable.Add(ability, -ability.cooldown);
-        if (ability.cooldown < ability.animationClip.length)
-        {
-          Debug.LogError("ERROR: Ability cooldown from " + name + " needs to be longer than animation clip length!");
-        }
-      }
-    }
-
     private void Start()
     {
       if (!useKeyMap) return;
@@ -72,10 +50,7 @@ namespace RPG.Combat
       castedAbility = ablilities[index];
       if (cooldownTable[castedAbility] + castedAbility.cooldown > Time.time) return;
 
-      //set direction of character
-      Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
-      transform.LookAt(lookPoint, Vector3.up);
-      transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
+      Vector3 lookPoint = RotateCharacter();
 
       //prepare cast and start animation
       scheduler.StartAction(castedAbility);
@@ -85,6 +60,36 @@ namespace RPG.Combat
       animator.SetTrigger("cast" + (index + 1));
 
       /* ability cast is triggert by animation event CastAction() */
+    }
+
+    private Vector3 RotateCharacter()
+    {
+      Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
+      transform.LookAt(lookPoint, Vector3.up);
+      transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
+      return lookPoint;
+    }
+
+    private void InstanciateAbilities()
+    {
+      List<Ability> abilityInstances = new List<Ability>();
+      foreach (var ability in ablilities)
+      {
+        abilityInstances.Add(Instantiate(ability, transform));
+      }
+      ablilities = abilityInstances;
+    }
+
+    private void FillCooldownTable()
+    {
+      foreach (Ability ability in ablilities)
+      {
+        cooldownTable.Add(ability, -ability.cooldown);
+        if (ability.cooldown < ability.animationClip.length)
+        {
+          Debug.LogError("ERROR: Ability cooldown from " + name + " needs to be longer than animation clip length!");
+        }
+      }
     }
 
     void CastAction()

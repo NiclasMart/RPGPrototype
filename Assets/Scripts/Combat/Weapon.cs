@@ -58,6 +58,5 @@ namespace RPG.Combat
       stats.attackSpeed += attackSpeed;
       stats.attackRange += range;
     }
-
   }
 }
