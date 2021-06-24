@@ -68,58 +68,13 @@ namespace RPG.Control
     {
       if (Input.GetMouseButton(1))
       {
-        fighter.Attack(animator, scheduler, playerCursor);
+        mover.AdjustDirection(playerCursor.Position);
+        fighter.Attack(scheduler, playerCursor);
 
         return true;
       }
-      // Health combatTarget = null;
-      // IInteraction target = playerCursor.Target;
-      // if (target != null) combatTarget = target.GetGameObject().GetComponent<Health>();
-
-
-      // if (combatTarget)
-      // {
-      //   if (Input.GetMouseButtonDown(1))
-      //   {
-      //     fighter.SetCombatTarget(combatTarget.gameObject, collisionLayer);
-      //     lastCombatTarget = combatTarget;
-      //   }
-
-      //   if (combatTarget != lastDisplayTarget)
-      //   {
-      //     hudManager.SetUpEnemyDisplay(combatTarget, combatTarget.GetComponent<CharacterStats>());
-      //     lastDisplayTarget = combatTarget;
-      //   }
-      //   playerCursor.SetCursor(PlayerCursor.CursorType.COMBAT);
-      //   return true;
-      // }
-
-      // if (lastCombatTarget && lastCombatTarget.IsDead)
-      // {
-      //   if (SearchForNewTarget()) return true;
-      // }
-
-      //if (!fighter.HasTarget) hudManager.SetUpEnemyDisplay(null, null);
-      // lastDisplayTarget = combatTarget;
       return false;
     }
-
-    // bool SearchForNewTarget()
-    // {
-    //   Collider[] hits = Physics.OverlapSphere(transform.position, 1f);
-    //   foreach (Collider hit in hits)
-    //   {
-    //     if (hit.transform.CompareTag("Enemy"))
-    //     {
-    //       fighter.SetCombatTarget(hit.gameObject, collisionLayer);
-    //       lastCombatTarget = hit.GetComponent<Health>();
-    //       hudManager.SetUpEnemyDisplay(lastCombatTarget, hit.GetComponent<CharacterStats>());
-    //       return true;
-    //     }
-    //   }
-    //   lastCombatTarget = null;
-    //   return false;
-    // }
 
     private bool UpdateInteraction()
     {

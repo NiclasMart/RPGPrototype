@@ -48,6 +48,12 @@ namespace RPG.Movement
       else return false;
     }
 
+    public void AdjustDirection(Vector3 lookPoint)
+    {
+      lookPoint.y = transform.position.y;
+      transform.LookAt(lookPoint);
+    }
+
     public void Cancel()
     {
       agent.destination = transform.position;

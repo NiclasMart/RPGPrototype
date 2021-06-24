@@ -11,7 +11,8 @@ namespace RPG.Combat
     [HideInInspector] public EquipedWeapon currentWeapon;
     PlayerInventory inventory;
     CharacterStats stats;
-    
+    Animator animator;
+
     float lastAttackTime;
 
 
@@ -19,9 +20,10 @@ namespace RPG.Combat
     {
       inventory = GetComponent<PlayerInventory>();
       stats = GetComponent<CharacterStats>();
+      animator = GetComponent<Animator>();
     }
 
-    public void Attack(Animator animator, ActionScheduler scheduler, PlayerCursor cursor)
+    public void Attack(ActionScheduler scheduler, PlayerCursor cursor)
     {
       float timePerAttack = 1 / stats.GetStat(Stat.AttackSpeed);
       if (Time.time < lastAttackTime + timePerAttack) return;
@@ -30,18 +32,12 @@ namespace RPG.Combat
       scheduler.StartAction(this);
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      AdjustAttackDirection(cursor.Position);
-    }
-
-
-    void AdjustAttackDirection(Vector3 lookPoint)
-    {
-      transform.forward = lookPoint - transform.position;
+      currentWeapon.hitArea.AdjustDirection();
     }
 
     public void Cancel()
     {
-      Debug.Log("CancelAttack");
+      animator.SetTrigger("cancelAttack");
     }
 
     void Hit()

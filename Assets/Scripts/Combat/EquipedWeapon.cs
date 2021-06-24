@@ -9,15 +9,15 @@ namespace RPG.Combat
   {
     public Weapon baseItem;
     protected Transform handPosition;
+    public TargetDetector hitArea;
 
-    TargetDetector hitArea;
     public void Initialize(Transform position, GameObject hitArea, Weapon baseItem)
     {
       handPosition = position;
 
       Transform player = PlayerInfo.GetPlayer().transform;
-      GameObject area = Instantiate(hitArea, player.position + player.forward, hitArea.transform.rotation, player);
-      this.hitArea = area.GetComponent<TargetDetector>();
+      GameObject area = Instantiate(hitArea, player.position, hitArea.transform.rotation, player);
+      this.hitArea = area.GetComponentInChildren<TargetDetector>();
     }
 
     //enemy fighter 
