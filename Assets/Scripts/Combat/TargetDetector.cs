@@ -9,13 +9,27 @@ namespace RPG.Combat
 {
   public class TargetDetector : MonoBehaviour
   {
+    MeshRenderer graphicComponent;
     List<Health> targets = new List<Health>();
     public List<Health> TargetsInArea => targets;
 
+    public bool locked = false;
+
+    private void Awake()
+    {
+      graphicComponent = GetComponentInChildren<MeshRenderer>();
+      graphicComponent.enabled = false;
+    }
+
+    private void Update()
+    {
+      if (Input.GetKey(KeyCode.Space)) graphicComponent.enabled = true;
+      else graphicComponent.enabled = false;
+    }
 
     private void FixedUpdate()
     {
-      AdjustDirection();
+      if (!locked) AdjustDirection();
     }
 
     public void AdjustDirection()

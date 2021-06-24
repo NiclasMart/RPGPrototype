@@ -33,6 +33,7 @@ namespace RPG.Combat
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
       currentWeapon.hitArea.AdjustDirection();
+      currentWeapon.DamageAreaLockState(true);
     }
 
     public void Cancel()
@@ -49,6 +50,11 @@ namespace RPG.Combat
       {
         target.ApplyDamage(gameObject, damage);
       }
+    }
+
+    void FinishedAttack()
+    {
+      currentWeapon.DamageAreaLockState(false);
     }
   }
 }

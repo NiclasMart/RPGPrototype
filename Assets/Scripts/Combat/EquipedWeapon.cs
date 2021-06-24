@@ -32,11 +32,9 @@ namespace RPG.Combat
       return hitArea.TargetsInArea;
     }
 
-    private void OnDrawGizmos()
+    public void DamageAreaLockState(bool locked)
     {
-      Gizmos.color = Color.red;
-      Transform player = PlayerInfo.GetPlayer().transform;
-      Gizmos.DrawWireSphere(player.position + player.forward, 1f);
+      hitArea.locked = locked;
     }
   }
 }

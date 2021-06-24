@@ -86,5 +86,7 @@ namespace RPG.Combat
     {
       Hit();
     }
+
+    void FinishedAttack() { }
   }
 }
