@@ -9,10 +9,15 @@ namespace RPG.Combat
   {
     public Weapon baseItem;
     protected Transform handPosition;
-    public void Initialize(Transform position, Weapon baseItem)
+
+    TargetDetector hitArea;
+    public void Initialize(Transform position, GameObject hitArea, Weapon baseItem)
     {
       handPosition = position;
-      this.baseItem = baseItem;
+
+      Transform player = PlayerInfo.GetPlayer().transform;
+      GameObject area = Instantiate(hitArea, player.position + player.forward, hitArea.transform.rotation, player);
+      this.hitArea = area.GetComponent<TargetDetector>();
     }
 
     //enemy fighter 
@@ -24,18 +29,7 @@ namespace RPG.Combat
     //player fighter
     public List<Health> GetHitTargets(Vector3 position, Vector3 direction, LayerMask layer)
     {
-      RaycastHit[] hits = Physics.SphereCastAll(position + direction, 0.5f, direction, 0);
-      List<Health> targets = new List<Health>();
-
-      foreach (var hit in hits)
-      {
-        Health validTarget = hit.transform.GetComponent<Health>();
-        if (validTarget && !targets.Contains(validTarget))
-        {
-          targets.Add(validTarget);
-        }
-      }
-      return targets;
+      return hitArea.TargetsInArea;
     }
 
     private void OnDrawGizmos()

@@ -13,6 +13,7 @@ namespace RPG.Combat
     public Vector2 weaponDamage;
     [Min(0.1f)] public Vector2 weaponAttackSpeed;
     public float weaponRange;
+    public GameObject hitArea;
     public DamageClass damageType;
     public bool isRightHanded = true;
 
@@ -21,8 +22,8 @@ namespace RPG.Combat
       return new Weapon(this);
     }
 
-    public float GetDamage(){ return Random.Range(weaponDamage.x, weaponDamage.y); }
-    public float GetAttackspeed(){ return Random.Range(weaponAttackSpeed.x, weaponAttackSpeed.y); }
+    public float GetDamage() { return Random.Range(weaponDamage.x, weaponDamage.y); }
+    public float GetAttackspeed() { return Random.Range(weaponAttackSpeed.x, weaponAttackSpeed.y); }
 
   }
 }

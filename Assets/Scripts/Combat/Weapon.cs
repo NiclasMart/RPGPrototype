@@ -9,6 +9,7 @@ namespace RPG.Combat
     private float damage;
     private float range;
     private float attackSpeed;
+    private GameObject hitArea;
     private DamageClass damageType;
     private protected bool isRightHanded = true;
 
@@ -21,6 +22,7 @@ namespace RPG.Combat
       attackSpeed = baseWeapon.GetAttackspeed();
       damageType = baseWeapon.damageType;
       isRightHanded = baseWeapon.isRightHanded;
+      hitArea = baseWeapon.hitArea;
     }
 
     public EquipedWeapon Equip(Transform rightHand, Transform leftHand, Animator animator)
@@ -36,7 +38,7 @@ namespace RPG.Combat
       {
         GameObject newWeapon = MonoBehaviour.Instantiate(itemObject, position);
         EquipedWeapon equipedWeapon = newWeapon.AddComponent<EquipedWeapon>();
-        equipedWeapon.Initialize(position, this);
+        equipedWeapon.Initialize(position, hitArea, this);
         return equipedWeapon;
       }
       return null;

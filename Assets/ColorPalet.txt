@@ -5,3 +5,5 @@ normal: BCBCBC
 rare: 419649
 epic: 914EA4
 legendary: CB6E2B
+
+(gci -include *.cs -recurse | select-string .).Count
