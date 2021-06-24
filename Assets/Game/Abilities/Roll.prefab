@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Roll
   baseDamage: 0
-  cooldown: 3
+  cooldown: 1.5
   range: 0
   damageType: {fileID: 0}
-  animationClip: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 9b8a7fdff048e864bb2c9a3fa5728e22, type: 2}
   animationRotationOffset: 0
   castImmediately: 1
-  moveDistance: 3
-  time: 1.5
+  moveDistance: 4
+  time: 0.5
 --- !u!1001 &5412008089170994410
 PrefabInstance:
   m_ObjectHideFlags: 0
