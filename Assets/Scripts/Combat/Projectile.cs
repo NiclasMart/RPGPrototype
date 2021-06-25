@@ -22,13 +22,14 @@ namespace RPG.Combat
 
     Vector3 AimLocation => target.GetComponent<Collider>().bounds.center;
 
-    public void Initialize(Health target, GameObject source, float damage, LayerMask collisionLayer)
+    //arrow projectile
+    public void Initialize(Vector3 direction, GameObject source, float damage, LayerMask collisionLayer)
     {
       Initialize(source, damage, collisionLayer);
-
-      this.target = target;
-      transform.LookAt(AimLocation);
+      transform.forward = direction;
     }
+
+    //ability projectile
     public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, LayerMask collisionLayer)
     {
 

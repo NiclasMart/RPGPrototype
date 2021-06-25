@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Items;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -40,6 +41,13 @@ namespace RPG.Combat
       this.animator = animator;
 
       if (castImmediately) CastAction();
+    }
+
+    public void GetStats(ModifyTable stats)
+    {
+      stats.damageFlat = baseDamage;
+      stats.attackSpeed = 1 / cooldown;
+      stats.attackRange = range;
     }
 
     public virtual void CastAction() { }

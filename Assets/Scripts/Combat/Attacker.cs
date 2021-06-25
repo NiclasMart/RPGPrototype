@@ -9,58 +9,53 @@ namespace RPG.Combat
   [RequireComponent(typeof(ActionScheduler), typeof(Mover))]
   public class Attacker : MonoBehaviour, IAction
   {
-    protected Mover mover;
     protected Health target;
     protected ActionScheduler scheduler;
     protected Animator animator;
+    protected CharacterStats stats;
     protected LayerMask collisionLayer;
-    [HideInInspector] public bool currentlyAttacking = false;
+    [HideInInspector] public bool isAttacking = false;
     public bool HasTarget => target != null;
+
+    float lastAttackTime = Mathf.NegativeInfinity;
 
     protected virtual void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponent<Animator>();
-      mover = GetComponent<Mover>();
+      stats = GetComponent<CharacterStats>();
+      Initialize();
     }
 
-    void Update()
-    {
-      if (target == null) return;
+    protected virtual void Initialize() { }
 
-      if (target.IsDead && !currentlyAttacking) Cancel();
-      if (target && !currentlyAttacking) Attack();
-    }
-
-    public void Attack(Health combatTarget, LayerMask layer)
+    public virtual void Attack(Health combatTarget, LayerMask layer)
     {
-      collisionLayer = layer;
       scheduler.StartAction(this);
+      
+      if (lastAttackTime + (1 / stats.GetStat(Stat.AttackSpeed)) > Time.time) return;
+      lastAttackTime = Time.time;
+
+      collisionLayer = layer;
       target = combatTarget;
+      StartCoroutine(StartAttacking());
     }
 
-    public virtual void Attack() { }
+    protected virtual IEnumerator StartAttacking()
+    {
+      yield return null;
+    }
+
 
     protected void StopAttacking()
     {
       animator.SetTrigger("cancelAttack");
     }
 
-    protected void AdjustAttackDirection()
-    {
-      transform.LookAt(target.transform, Vector3.up);
-    }
-
-    protected void AdjustAttackDirection(float offset)
-    {
-      transform.LookAt(target.transform, Vector3.up);
-      transform.Rotate(Vector3.up * offset);
-    }
 
     public virtual void Cancel()
     {
       StopAttacking();
-      mover.Cancel();
       target = null;
     }
   }

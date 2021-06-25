@@ -56,6 +56,7 @@ namespace RPG.Movement
 
     public void Cancel()
     {
+      Debug.Log("CancelMovement");
       agent.destination = transform.position;
     }
 

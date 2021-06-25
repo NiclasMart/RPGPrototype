@@ -12,33 +12,10 @@ namespace RPG.Combat
     public GenericWeapon defaultWeapon;
     [SerializeField] Transform rightWeaponHolder, leftWeaponHolder;
 
-    CharacterStats stats;
     EquipedWeapon equipedWeapon;
 
-    protected override void Awake()
-    {
-      base.Awake();
-      stats = GetComponent<CharacterStats>();
-      InitializeWeapon();
-    }
-    public override void Attack()
-    {
-      if (TargetInRange())
-      {
-        StartCoroutine(StartAttacking());
-        mover.Cancel();
-      }
-      else
-      {
-        StopAttacking();
-        mover.MoveTo(target.transform.position);
-      }
 
-      /*damage is dealt by the animation Hit() event*/
-      /*projectile for Ranged Weapons is launched within the Shoot() event */
-    }
-
-    private void InitializeWeapon()
+    protected override void Initialize()
     {
       if (!defaultWeapon) return;
 
@@ -56,19 +33,14 @@ namespace RPG.Combat
       GetComponent<CharacterStats>().RecalculateStats(statTable);
     }
 
-    bool TargetInRange()
+    protected override IEnumerator StartAttacking()
     {
-      return Vector3.Distance(transform.position, target.transform.position) < stats.GetStat(Stat.AttackRange);
-    }
-
-    IEnumerator StartAttacking()
-    {
-      currentlyAttacking = true;
+      isAttacking = true;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      AdjustAttackDirection();
-      yield return new WaitForSeconds(1 / stats.GetStat(Stat.AttackSpeed));
-      currentlyAttacking = false;
+      yield return new WaitForSeconds(equipedWeapon.baseItem.animationClip.length);
+      isAttacking = false;
+      scheduler.CancelCurrentAction();
     }
 
     //animation event (called from animator)
@@ -78,7 +50,7 @@ namespace RPG.Combat
 
       float damage = GetComponent<CharacterStats>().GetStat(Stat.Damage);
 
-      equipedWeapon.Attack(target, gameObject, collisionLayer, damage);
+      equipedWeapon.WeaponAction(target, gameObject, collisionLayer, damage);
     }
 
     //animation event (called from animator)

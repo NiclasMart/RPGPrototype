@@ -5,7 +5,7 @@ namespace RPG.Combat
 {
   public class Weapon : ModifiableItem
   {
-    private AnimationClip animation;
+    public AnimationClip animationClip;
     private float damage;
     private float range;
     private float attackSpeed;
@@ -16,7 +16,7 @@ namespace RPG.Combat
     public Weapon(GenericItem baseItem) : base(baseItem)
     {
       GenericWeapon baseWeapon = baseItem as GenericWeapon;
-      animation = baseWeapon.animation;
+      animationClip = baseWeapon.animation;
       damage = baseWeapon.GetDamage();
       range = baseWeapon.weaponRange;
       attackSpeed = baseWeapon.GetAttackspeed();
@@ -27,7 +27,7 @@ namespace RPG.Combat
 
     public EquipedWeapon Equip(Transform rightHand, Transform leftHand, Animator animator)
     {
-      AnimationHandler.OverrideAnimations(animator, animation, "Attack");
+      AnimationHandler.OverrideAnimations(animator, animationClip, "Attack");
       EquipedWeapon spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
       return spawnedWeapon;
     }

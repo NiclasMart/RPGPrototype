@@ -1,5 +1,6 @@
 using System.Collections;
 using RPG.Core;
+using RPG.Items;
 using RPG.Movement;
 using RPG.Stats;
 using UnityEngine;
@@ -14,37 +15,30 @@ namespace RPG.Combat
     private void Start()
     {
       AnimationHandler.OverrideAnimations(GetComponent<Animator>(), ability.animationClip, "Attack");
-      Instantiate(ability.gameObject, transform);
     }
 
-    public override void Attack()
+    protected override void Initialize()
     {
-      if (TargetInRange())
-      {
-        StartCoroutine(StartAttacking());
-        mover.Cancel();
-      }
-      else
-      {
-        StopAttacking();
-        mover.MoveTo(target.transform.position);
-      }
+      Ability baseAbility = Instantiate(ability, transform);
+      CalculateInitialStats(baseAbility);
     }
 
-    bool TargetInRange()
+    private void CalculateInitialStats(Ability ability)
     {
-      return Vector3.Distance(transform.position, target.transform.position) < ability.range;
+      ModifyTable statTable = new ModifyTable();
+      ability.GetStats(statTable);
+      GetComponent<CharacterStats>().RecalculateStats(statTable);
     }
 
-    IEnumerator StartAttacking()
+    protected override IEnumerator StartAttacking()
     {
-      currentlyAttacking = true;
+      isAttacking = true;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      AdjustAttackDirection(ability.animationRotationOffset);
       ability.PrepareCast(target.transform.position - transform.position, gameObject, castPosition, collisionLayer, animator);
-      yield return new WaitForSeconds(ability.cooldown);
-      currentlyAttacking = false;
+      yield return new WaitForSeconds(ability.animationClip.length);
+      isAttacking = false;
+      scheduler.CancelCurrentAction();
     }
 
     void CastAction()

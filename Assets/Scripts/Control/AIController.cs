@@ -8,8 +8,17 @@ using System;
 
 namespace RPG.Control
 {
+  enum BehaviourState
+  {
+    Idle,
+    Attack,
+    Chase
+  }
+
   public class AIController : MonoBehaviour
   {
+    const float stateChangeCooldown = 0.5f;
+
     [SerializeField] float visionRange;
     [SerializeField] float chaseSpeed = 3f;
     [SerializeField] int collisionLayer;
@@ -21,6 +30,8 @@ namespace RPG.Control
     CharacterStats stats;
 
     Vector3 guardPosition;
+    float lastStateChange = Mathf.NegativeInfinity;
+    BehaviourState lastBehaviour = BehaviourState.Idle;
 
     private void Awake()
     {
@@ -39,11 +50,12 @@ namespace RPG.Control
     private void Update()
     {
       if ((health.IsDead)) return;
+      if (attacker.isAttacking) return;
 
       float playerDistance = Vector3.Distance(player.transform.position, transform.position);
 
       if (CheckForPlayerInVisionRange(playerDistance)) AggressionBehaviour(playerDistance);
-      else IdeleBehavior();
+      else IdleBehavior();
     }
 
     private bool CheckForPlayerInVisionRange(float playerDistance)
@@ -61,18 +73,35 @@ namespace RPG.Control
 
     private void ChasePlayer()
     {
+      if (!CheckIfStateIsAllowed(BehaviourState.Chase)) return;
+
       mover.SetMovementSpeed(chaseSpeed);
-      mover.MoveTo(player.transform.position);
+      mover.StartMoveAction(player.transform.position);
+    }
+
+    private bool CheckIfStateIsAllowed(BehaviourState state)
+    {
+      if (lastBehaviour == state) return true;
+
+      if (lastStateChange + stateChangeCooldown > Time.time) return false;
+
+      lastStateChange = Time.time;
+      lastBehaviour = state;
+      return true;
     }
 
     private void AttackBehaviour(float playerDistance)
     {
+      if (!CheckIfStateIsAllowed(BehaviourState.Attack)) return;
+
       attacker.Attack(player, collisionLayer);
     }
 
-    private void IdeleBehavior()
+    private void IdleBehavior()
     {
-      mover.MoveTo(guardPosition);
+      if (!CheckIfStateIsAllowed(BehaviourState.Idle)) return;
+
+      mover.MoveTo(transform.position);
     }
 
     //called by unity

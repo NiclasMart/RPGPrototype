@@ -14,6 +14,7 @@ namespace RPG.Combat
     public void Initialize(Transform position, GameObject hitArea, Weapon baseItem)
     {
       handPosition = position;
+      this.baseItem = baseItem;
 
       Transform player = PlayerInfo.GetPlayer().transform;
       GameObject area = Instantiate(hitArea, player.position, hitArea.transform.rotation, player);
@@ -21,7 +22,7 @@ namespace RPG.Combat
     }
 
     //enemy fighter 
-    public virtual void Attack(Health health, GameObject source, LayerMask layer, float damage)
+    public virtual void WeaponAction(Health health, GameObject source, LayerMask layer, float damage)
     {
       health.ApplyDamage(source, damage);
     }
