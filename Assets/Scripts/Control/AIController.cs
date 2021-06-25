@@ -4,121 +4,82 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Stats;
+using System;
 
 namespace RPG.Control
 {
   public class AIController : MonoBehaviour
   {
-    [SerializeField] float chaseDistance;
+    [SerializeField] float visionRange;
     [SerializeField] float chaseSpeed = 3f;
-    [SerializeField] float suspicionTime;
     [SerializeField] int collisionLayer;
-
-    [Header("Patrol Parameters")]
-    [SerializeField] Path patrolPath;
-    [SerializeField] float patrolSpeed = 2f;
-    [SerializeField] float checkpointTolerance = 1f;
-    [SerializeField] float checkpointDwellTime = 3f;
 
     Attacker attacker;
     Mover mover;
     Health health;
-    GameObject player;
+    Health player;
+    CharacterStats stats;
 
     Vector3 guardPosition;
-    int currentWaypoint;
-    float lastSeenPlayerTime = -Mathf.Infinity;
 
     private void Awake()
     {
       attacker = GetComponent<Attacker>();
       mover = GetComponent<Mover>();
       health = GetComponent<Health>();
+      stats = GetComponent<CharacterStats>();
     }
 
     private void Start()
     {
-      guardPosition = transform.position; //potential canidate for lazy loading in awake
-      player = PlayerInfo.GetPlayer();
-      if (patrolPath != null) currentWaypoint = patrolPath.GetClosestWaypoint(transform.position);
+      guardPosition = transform.position;
+      player = PlayerInfo.GetPlayer().GetComponent<Health>();
     }
 
-    //RESTRUCTURE: need state storage for performance reason
     private void Update()
     {
-      if (health.IsDead) return;
+      if ((health.IsDead)) return;
 
-      if (CheckForAttackabelPlayer())
-      {
-        lastSeenPlayerTime = Time.time;
-        AttackBehaviour();
-      }
-      else if (lastSeenPlayerTime + suspicionTime > Time.time)
-      {
-        SuspicionBehaviour();
-      }
-      else
-      {
-        GuardBehaviour();
-      }
+      float playerDistance = Vector3.Distance(player.transform.position, transform.position);
+
+      if (CheckForPlayerInVisionRange(playerDistance)) AggressionBehaviour(playerDistance);
+      else IdeleBehavior();
     }
 
-    private void GuardBehaviour()
+    private bool CheckForPlayerInVisionRange(float playerDistance)
     {
-      Vector3 nextPosition = guardPosition;
-      mover.SetMovementSpeed(patrolSpeed);
+      if (player.IsDead) return false;
 
-      if (patrolPath) nextPosition = FindNextWaypoint();
-
-      mover.MoveTo(nextPosition);
+      return playerDistance <= visionRange;
     }
 
-    bool pausePatrolIsActive = false;
-    private Vector3 FindNextWaypoint()
+    private void AggressionBehaviour(float playerDistance)
     {
-      bool reachedCurrentCheckpoint = Vector3.Distance(transform.position, patrolPath.GetCurrentWaypoint(currentWaypoint)) <= checkpointTolerance;
-
-      if (reachedCurrentCheckpoint && !pausePatrolIsActive) StartCoroutine(PausePatrol());
-
-      return patrolPath.GetCurrentWaypoint(currentWaypoint);
+      if (playerDistance > stats.GetStat(Stat.AttackRange)) ChasePlayer();
+      else AttackBehaviour(playerDistance);
     }
 
-
-    IEnumerator PausePatrol()
+    private void ChasePlayer()
     {
-      pausePatrolIsActive = true;
-      yield return new WaitForSeconds(checkpointDwellTime);
-      currentWaypoint = (currentWaypoint + 1) % patrolPath.WaypointCount;
-      pausePatrolIsActive = false;
-    }
-
-    private void SuspicionBehaviour()
-    {
-      GetComponent<ActionScheduler>().CancelCurrentAction();
-    }
-
-    private void AttackBehaviour()
-    {
-      attacker.SetCombatTarget(player, collisionLayer);
       mover.SetMovementSpeed(chaseSpeed);
+      mover.MoveTo(player.transform.position);
     }
 
-    private bool CheckForAttackabelPlayer()
+    private void AttackBehaviour(float playerDistance)
     {
-      if (player == null) return false;
+      attacker.Attack(player, collisionLayer);
+    }
 
-      bool playerInRange = Vector3.Distance(player.transform.position, transform.position) <= chaseDistance;
-      bool playerIsAlive = !player.GetComponent<Health>().IsDead;
-
-      if (playerInRange && playerIsAlive) return true;
-      else return false;
+    private void IdeleBehavior()
+    {
+      mover.MoveTo(guardPosition);
     }
 
     //called by unity
     private void OnDrawGizmosSelected()
     {
       Gizmos.color = Color.blue;
-      Gizmos.DrawWireSphere(transform.position, chaseDistance);
+      Gizmos.DrawWireSphere(transform.position, visionRange);
     }
   }
 }

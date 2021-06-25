@@ -47,7 +47,6 @@ namespace RPG.Control
       if (UpdateCombat()) return;
       if (UpdateInteraction()) return;
       if (UpdateMovement()) return;
-      //print("Nothing to do!");
     }
 
     private bool HandleInputs()
@@ -63,7 +62,6 @@ namespace RPG.Control
       return false;
     }
 
-    Health lastDisplayTarget, lastCombatTarget;
     private bool UpdateCombat()
     {
       if (Input.GetMouseButton(1))

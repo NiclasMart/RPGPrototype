@@ -10,7 +10,6 @@ namespace RPG.Combat
   {
     public float moveDistance;
     public float time;
-    Vector3 currentPosition, goalPosition;
 
     public override void CastAction()
     {
@@ -19,15 +18,22 @@ namespace RPG.Combat
 
     IEnumerator MoveTest()
     {
+      Vector3 direction = GetDashDirection();
+
+      NavMeshAgent agent = transform.parent.GetComponent<NavMeshAgent>();
+      agent.destination = data.source.transform.position + direction * moveDistance;
+      float defaultSpeed = agent.speed;
+      agent.speed = defaultSpeed * 2;
+      yield return new WaitForSeconds(time);
+      agent.speed = defaultSpeed;
+    }
+
+    private Vector3 GetDashDirection()
+    {
       Vector3 cursorPoint = PlayerInfo.GetPlayerCursor().Position;
       cursorPoint.y = data.source.transform.position.y;
       Vector3 direction = Vector3.Normalize(cursorPoint - data.source.transform.position);
-
-      transform.parent.GetComponent<NavMeshAgent>().destination = data.source.transform.position + direction * moveDistance;
-      float defaultSpeed = transform.parent.GetComponent<NavMeshAgent>().speed;
-      transform.parent.GetComponent<NavMeshAgent>().speed = defaultSpeed * 2;
-      yield return new WaitForSeconds(time);
-      transform.parent.GetComponent<NavMeshAgent>().speed = defaultSpeed;
+      return direction;
     }
   }
 }

@@ -32,11 +32,11 @@ namespace RPG.Combat
       if (target && !currentlyAttacking) Attack();
     }
 
-    public void SetCombatTarget(GameObject combatTarget, LayerMask layer)
+    public void Attack(Health combatTarget, LayerMask layer)
     {
       collisionLayer = layer;
       scheduler.StartAction(this);
-      target = combatTarget.GetComponent<Health>();
+      target = combatTarget;
     }
 
     public virtual void Attack() { }
