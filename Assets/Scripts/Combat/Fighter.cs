@@ -11,6 +11,7 @@ namespace RPG.Combat
   {
     public GenericWeapon defaultWeapon;
     [SerializeField] Transform rightWeaponHolder, leftWeaponHolder;
+    
 
     EquipedWeapon equipedWeapon;
 
