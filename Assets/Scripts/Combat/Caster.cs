@@ -33,10 +33,12 @@ namespace RPG.Combat
     protected override IEnumerator StartAttacking()
     {
       isAttacking = true;
+      animator.speed = animationSpeed;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
       ability.PrepareCast(target.transform.position - transform.position, gameObject, castPosition, collisionLayer, animator);
-      yield return new WaitForSeconds(ability.animationClip.length);
+      yield return new WaitForSeconds(ability.animationClip.length * (1 / animationSpeed));
+      animator.speed = 1f;
       isAttacking = false;
       scheduler.CancelCurrentAction();
     }

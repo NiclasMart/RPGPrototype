@@ -10,7 +10,8 @@ namespace RPG.Combat
   public class Attacker : MonoBehaviour, IAction
   {
     [SerializeField] float attackSpeedMuliplier = 0.4f;
-    
+    [SerializeField] protected float animationSpeed = 0.5f;
+
     protected Health target;
     protected ActionScheduler scheduler;
     protected Animator animator;

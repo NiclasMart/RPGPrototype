@@ -11,7 +11,7 @@ namespace RPG.Combat
   {
     public GenericWeapon defaultWeapon;
     [SerializeField] Transform rightWeaponHolder, leftWeaponHolder;
-    
+
 
     EquipedWeapon equipedWeapon;
 
@@ -37,9 +37,11 @@ namespace RPG.Combat
     protected override IEnumerator StartAttacking()
     {
       isAttacking = true;
+      animator.speed = animationSpeed;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      yield return new WaitForSeconds(equipedWeapon.baseItem.animationClip.length);
+      yield return new WaitForSeconds(equipedWeapon.baseItem.animationClip.length * (1 / animationSpeed));
+      animator.speed = 1f;
       isAttacking = false;
       scheduler.CancelCurrentAction();
     }
