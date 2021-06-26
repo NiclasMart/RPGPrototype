@@ -6,7 +6,7 @@ namespace RPG.Combat
   public class Weapon : ModifiableItem
   {
     public AnimationClip animationClip;
-    private float damage;
+    public float damage;
     private float range;
     private float attackSpeed;
     private GameObject hitArea;

@@ -53,10 +53,14 @@ namespace RPG.Combat
     void Hit()
     {
       List<Health> targets = currentWeapon.GetHitTargets(transform.position, transform.forward, gameObject.layer);
-      float damage = stats.GetStat(Stat.Damage);
 
       foreach (var target in targets)
       {
+        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>());
+
+        //if deleted change damage in weapon to private
+        Debug.Log("Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);
+
         target.ApplyDamage(gameObject, damage);
       }
     }
