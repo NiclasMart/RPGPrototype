@@ -11,14 +11,18 @@ namespace RPG.Combat
     protected Transform handPosition;
     public TargetDetector hitArea;
 
-    public void Initialize(Transform position, GameObject hitArea, Weapon baseItem)
+    public void Initialize(Transform carrier, Transform position, GameObject hitArea, Weapon baseItem)
     {
       handPosition = position;
       this.baseItem = baseItem;
+      SetHitArea(carrier, hitArea);
+    }
 
-      Transform player = PlayerInfo.GetPlayer().transform;
-      GameObject area = Instantiate(hitArea, player.position, hitArea.transform.rotation, player);
+    private void SetHitArea(Transform carrier, GameObject hitArea)
+    {
+      GameObject area = Instantiate(hitArea, carrier.position, hitArea.transform.rotation, carrier);
       this.hitArea = area.GetComponentInChildren<TargetDetector>();
+      this.hitArea.Initialize(carrier.tag);
     }
 
     //enemy fighter 

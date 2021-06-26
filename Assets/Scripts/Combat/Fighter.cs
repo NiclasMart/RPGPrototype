@@ -22,7 +22,7 @@ namespace RPG.Combat
 
       Animator animator = GetComponent<Animator>();
       Weapon weapon = defaultWeapon.GenerateItem() as Weapon;
-      equipedWeapon = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+      equipedWeapon = weapon.Equip(transform, rightWeaponHolder, leftWeaponHolder, animator);
 
       CalculateInitialStats(weapon);
     }

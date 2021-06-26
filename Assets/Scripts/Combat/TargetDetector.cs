@@ -9,6 +9,7 @@ namespace RPG.Combat
 {
   public class TargetDetector : MonoBehaviour
   {
+    string avoidTag;
     MeshRenderer graphicComponent;
     List<Health> targets = new List<Health>();
     public List<Health> TargetsInArea => targets;
@@ -21,34 +22,35 @@ namespace RPG.Combat
       graphicComponent.enabled = false;
     }
 
-    private void Update()
+    public void Initialize(string tag)
     {
-      if (Input.GetKey(KeyCode.Space)) graphicComponent.enabled = true;
-      else graphicComponent.enabled = false;
+      avoidTag = tag;
     }
 
-    private void FixedUpdate()
+    public void Toggle(bool show)
     {
-      if (!locked) AdjustDirection();
+      graphicComponent.enabled = show;
     }
 
-    public void AdjustDirection()
+    public void AdjustDirection(Vector3 lookPoint)
     {
-      Vector3 lookPoint = PlayerInfo.GetPlayerCursor().Position;
+      if (locked) return;
+
       lookPoint.y = transform.position.y;
       transform.LookAt(lookPoint);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-      if (other.tag == "Player") return;
+      if (other.CompareTag(avoidTag)) return;
+
       Health target = other.GetComponent<Health>();
       if (target && !targets.Contains(target)) targets.Add(target);
     }
 
     private void OnTriggerExit(Collider other)
     {
-      if (other.tag == "Player") return;
+      if (other.CompareTag(avoidTag)) return;
 
       Health target = other.GetComponent<Health>();
       if (target) targets.Remove(target);

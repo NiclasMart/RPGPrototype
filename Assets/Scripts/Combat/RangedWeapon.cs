@@ -14,7 +14,7 @@ namespace RPG.Combat
       projectilePrefab = genericWeapon.projectilePrefab;
     }
 
-    public override EquipedWeapon Spawn(Transform position)
+    public override EquipedWeapon Spawn(Transform carriere, Transform position)
     {
       if (itemObject != null)
       {

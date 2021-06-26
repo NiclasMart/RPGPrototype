@@ -25,20 +25,20 @@ namespace RPG.Combat
       hitArea = baseWeapon.hitArea;
     }
 
-    public EquipedWeapon Equip(Transform rightHand, Transform leftHand, Animator animator)
+    public EquipedWeapon Equip(Transform carrier, Transform rightHand, Transform leftHand, Animator animator)
     {
       AnimationHandler.OverrideAnimations(animator, animationClip, "Attack");
-      EquipedWeapon spawnedWeapon = Spawn(SelectTransform(rightHand, leftHand));
+      EquipedWeapon spawnedWeapon = Spawn(carrier, SelectTransform(rightHand, leftHand));
       return spawnedWeapon;
     }
 
-    public virtual EquipedWeapon Spawn(Transform position)
+    public virtual EquipedWeapon Spawn(Transform carrier, Transform position)
     {
       if (itemObject != null)
       {
         GameObject newWeapon = MonoBehaviour.Instantiate(itemObject, position);
         EquipedWeapon equipedWeapon = newWeapon.AddComponent<EquipedWeapon>();
-        equipedWeapon.Initialize(position, hitArea, this);
+        equipedWeapon.Initialize(carrier, position, hitArea, this);
         return equipedWeapon;
       }
       return null;

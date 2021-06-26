@@ -27,7 +27,7 @@ namespace RPG.Items
     private EquipedWeapon InitializeWeapon(Weapon weapon)
     {
       Animator animator = GetComponent<Animator>();
-      weaponReference = weapon.Equip(rightWeaponHolder, leftWeaponHolder, animator);
+      weaponReference = weapon.Equip(transform, rightWeaponHolder, leftWeaponHolder, animator);
       return weaponReference;
     }
   }

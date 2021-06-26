@@ -12,6 +12,7 @@ namespace RPG.Combat
     PlayerInventory inventory;
     CharacterStats stats;
     Animator animator;
+    PlayerCursor cursor;
 
     float lastAttackTime;
 
@@ -21,6 +22,13 @@ namespace RPG.Combat
       inventory = GetComponent<PlayerInventory>();
       stats = GetComponent<CharacterStats>();
       animator = GetComponent<Animator>();
+      cursor = GetComponent<PlayerCursor>();
+    }
+
+    private void Update()
+    {
+      if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position);
+      currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
     }
 
     public void Attack(ActionScheduler scheduler, PlayerCursor cursor)
@@ -32,7 +40,7 @@ namespace RPG.Combat
       scheduler.StartAction(this);
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      currentWeapon.hitArea.AdjustDirection();
+      currentWeapon.hitArea.AdjustDirection(cursor.Position);
       currentWeapon.DamageAreaLockState(true);
     }
 
