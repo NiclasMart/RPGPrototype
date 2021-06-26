@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Stats;
 using System.Collections;
 using RPG.Items;
+using UnityEngine.AI;
 
 namespace RPG.Combat
 {
@@ -35,6 +36,8 @@ namespace RPG.Combat
     protected override IEnumerator StartAttacking()
     {
       isAttacking = true;
+      NavMeshAgent agent = GetComponent<NavMeshAgent>();
+      agent.enabled = false;
 
       equipedWeapon.hitArea.Toggle(true);
       equipedWeapon.hitArea.AdjustDirection(transform.forward);
@@ -47,6 +50,8 @@ namespace RPG.Combat
       animator.speed = 1f;
       equipedWeapon.hitArea.Toggle(false);
 
+      agent.enabled = true;
+
       scheduler.CancelCurrentAction();
       isAttacking = false;
     }
@@ -55,6 +60,7 @@ namespace RPG.Combat
     void Hit()
     {
       if (equipedWeapon.hitArea.TargetsInArea.Count == 0) return;
+      if (!target) return;
 
       float damage = GetComponent<CharacterStats>().GetStat(Stat.Damage);
 

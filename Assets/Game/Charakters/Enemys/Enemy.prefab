@@ -12,14 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe61a0e5691c5f43be328695af962bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseDistance: 5
+  visionRange: 0
   chaseSpeed: 4
-  suspicionTime: 5
   collisionLayer: 7
-  patrolPath: {fileID: 0}
-  patrolSpeed: 2
-  checkpointTolerance: 1
-  checkpointDwellTime: 3
 --- !u!114 &5715638290212016659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c291c138f9eb6d1438cb62611ddbb36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentlyAttacking: 0
+  attackSpeedMuliplier: 0.4
+  animationSpeed: 0.5
+  isAttacking: 0
   defaultWeapon: {fileID: 0}
   rightWeaponHolder: {fileID: 5516469358062515668}
   leftWeaponHolder: {fileID: 5516469358062573014}
@@ -166,6 +163,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4257136723309079009, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4257136723309079009, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4880956305802271720, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
