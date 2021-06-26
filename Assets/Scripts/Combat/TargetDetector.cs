@@ -32,12 +32,12 @@ namespace RPG.Combat
       graphicComponent.enabled = show;
     }
 
-    public void AdjustDirection(Vector3 lookPoint)
+    public void AdjustDirection(Vector3 lookDirection)
     {
       if (locked) return;
 
-      lookPoint.y = transform.position.y;
-      transform.LookAt(lookPoint);
+      lookDirection.y = transform.position.y;
+      transform.LookAt(transform.position + lookDirection);
     }
 
     private void OnTriggerEnter(Collider other)

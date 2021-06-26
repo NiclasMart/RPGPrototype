@@ -27,7 +27,7 @@ namespace RPG.Combat
 
     private void Update()
     {
-      if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position);
+      if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
       currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
     }
 
@@ -40,7 +40,8 @@ namespace RPG.Combat
       scheduler.StartAction(this);
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      currentWeapon.hitArea.AdjustDirection(cursor.Position);
+
+      currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
       currentWeapon.DamageAreaLockState(true);
     }
 
