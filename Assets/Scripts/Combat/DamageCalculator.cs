@@ -25,9 +25,22 @@ namespace RPG.Combat
       float multiplierForLog = levelDifference < 0 ? 1 / levelDamageMultiplier : levelDamageMultiplier;
       Debug.Log("Damage after level: " + damage + " (Multiplier: " + multiplierForLog + ")");
 
+      return damage;
+    }
+
+    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, out bool isCrit)
+    {
+      float damage = CalculatePhysicalDamage(attacker, defender);
+
+      //crit calculation
+      isCrit = (attacker.GetStat(Stat.CritChance) / 100f) > Random.value;
+      if (isCrit) damage *= (attacker.GetStat(Stat.CritDamage) / 100);
+
+      Debug.Log("Critical Strike: " + isCrit + " (new damage: " + damage + ")");
 
       return damage;
-
     }
+
+
   }
 }

@@ -10,8 +10,8 @@ namespace RPG.Stats
     MovementSpeed,
     AttackSpeed,
     AttackRange,
-    // CritChance,
-    // CritMultiplier,
+    CritChance,
+    CritDamage,
     // MagicResi,
 
     // CooldownReduction,

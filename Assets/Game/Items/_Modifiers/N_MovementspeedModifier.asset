@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: N_MovementspeedModifier
   m_EditorClassIdentifier: 
   rank: 0
-  displayText: + * Movementspeed
+  displayText: + * % Movementspeed
   min: 5
   max: 7
   effect:

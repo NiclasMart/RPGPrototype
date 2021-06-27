@@ -12,7 +12,7 @@ namespace RPG.Display
 
     public void SetStatDisplay(float value)
     {
-      GetComponent<TextMeshProUGUI>().text = format.Replace("*", value.ToString());
+      GetComponent<TextMeshProUGUI>().text = format.Replace("*", value.ToString("F2"));
     }
   }
 }
