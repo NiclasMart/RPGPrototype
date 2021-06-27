@@ -20,8 +20,10 @@ namespace RPG.Display
 
     private void BuildSlotDictionary()
     {
-      foreach (var slot in GetComponentsInChildren<StatSlot>())
+      
+      foreach (var slot in GetComponentsInChildren<StatSlot>(true))
       {
+        Debug.Log("Build");
         if (slots.ContainsKey(slot.stat)) continue;
         slots.Add(slot.stat, slot);
       }

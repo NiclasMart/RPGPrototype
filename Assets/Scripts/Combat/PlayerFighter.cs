@@ -56,10 +56,12 @@ namespace RPG.Combat
 
       foreach (var target in targets)
       {
+        Debug.Log("----------------");
         float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>());
 
         //if deleted change damage in weapon to private
-        Debug.Log("Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);
+        Debug.Log("Player Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);
+        Debug.Log("----------------");
 
         target.ApplyDamage(gameObject, damage);
       }
