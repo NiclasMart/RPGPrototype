@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
+using RPG.Stats;
 
 namespace RPG.Movement
 {
@@ -19,6 +20,13 @@ namespace RPG.Movement
       agent = GetComponent<NavMeshAgent>();
       animator = GetComponentInChildren<Animator>();
       scheduler = GetComponent<ActionScheduler>();
+
+      GetComponent<CharacterStats>().statsChange += UpdateMovementSpeed;
+    }
+
+    private void Start()
+    {
+      SetMovementSpeed(GetComponent<CharacterStats>().GetStat(Stat.MovementSpeed));
     }
 
     private void Update()
@@ -52,6 +60,12 @@ namespace RPG.Movement
     {
       lookPoint.y = transform.position.y;
       transform.LookAt(lookPoint);
+    }
+
+    public void UpdateMovementSpeed(CharacterStats stats)
+    {
+      Debug.Log("Update Movementspeed: " + stats.GetStat(Stat.MovementSpeed));
+      SetMovementSpeed(stats.GetStat(Stat.MovementSpeed));
     }
 
     public void Cancel()

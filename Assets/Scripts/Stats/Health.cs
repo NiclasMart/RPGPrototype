@@ -27,6 +27,7 @@ namespace RPG.Stats
       animator = GetComponentInChildren<Animator>();
       maxHealth = new LazyValue<float>(GetInitializeHealth);
       currentHealth = new LazyValue<float>(GetInitializeHealth);
+
       GetComponent<CharacterStats>().statsChange += UpdateMaxHealth;
     }
 
