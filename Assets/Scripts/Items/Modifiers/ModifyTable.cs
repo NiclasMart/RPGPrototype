@@ -24,7 +24,7 @@ namespace RPG.Items
 
     public float ModifyDamage(float baseStat)
     {
-      return (1 + damagePercent / 100) * baseStat + damageFlat;
+      return (1 + damagePercent / 100) * (baseStat + damageFlat);
     }
 
     public float ModifyStamina(float baseStat)

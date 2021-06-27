@@ -48,5 +48,16 @@ namespace RPG.Items
     {
       modifyTable.movementSpeed += value;
     }
+
+    public static void AddCriticalDamage(ModifyTable modifyTable, float value)
+    {
+      modifyTable.critDamageFlat += value;
+    }
+
+    public static void AddCriticalChance(ModifyTable modifyTable, float value)
+    {
+      modifyTable.critChanceFlat += value;
+    }
+    
   }
 }
