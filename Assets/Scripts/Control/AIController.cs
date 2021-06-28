@@ -79,6 +79,7 @@ namespace RPG.Control
       mover.StartMoveAction(player.transform.position);
     }
 
+    //insures that the states change not to fast so that the enemy flickers between different states
     private bool CheckIfStateIsAllowed(BehaviourState state)
     {
       if (lastBehaviour == state) return true;
@@ -94,6 +95,7 @@ namespace RPG.Control
     {
       if (!CheckIfStateIsAllowed(BehaviourState.Attack)) return;
 
+      mover.AdjustDirection(player.transform.position);
       attacker.Attack(player, collisionLayer);
     }
 
