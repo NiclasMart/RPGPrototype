@@ -82,6 +82,7 @@ namespace RPG.Stats
     private void UpdateMaxHealth(CharacterStats stats)
     {
       maxHealth.value = stats.GetStat(Stat.Health);
+      currentHealth.value = maxHealth.value;
       valueChange.Invoke(this);
     }
 

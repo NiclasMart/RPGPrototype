@@ -64,6 +64,13 @@ MonoBehaviour:
       - 150
       - 150
       - 150
+    - stat: 4
+      values:
+      - 100
+      - 100
+      - 100
+      - 100
+      - 100
   - charakterClass: 3
     stats:
     - stat: 0

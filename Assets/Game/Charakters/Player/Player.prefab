@@ -14,7 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightWeaponHolder: {fileID: 7316862318045654546}
   leftWeaponHolder: {fileID: 7316862318045580922}
-  defaultWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+--- !u!114 &2009059569429678762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ddfcb68e420c044bc6cb4d1cf67f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 0}
 --- !u!114 &2328792153315349975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31,7 +44,19 @@ MonoBehaviour:
   levelUpParticlePrefab: {fileID: 2769948509372914464, guid: 6f69198eb66969647af475dbfd6227b5, type: 3}
   valueChange:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RPG.Display.ResourceBar, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3233397508736140945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,7 +73,7 @@ MonoBehaviour:
   ablilities:
   - {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
   - {fileID: -7445379525506200165, guid: bf5445928118ab24587fc9274fe9d4df, type: 3}
-  - {fileID: -6470863734008212147, guid: 2d288584b358b444aa35999edb7ef417, type: 3}
+  - {fileID: 940044159290701119, guid: 43bb66db8a8cf3448b7f140053cd4727, type: 3}
   keyMap: 710000007700000065000000
   useKeyMap: 1
 --- !u!114 &3244807190163713036
@@ -104,7 +129,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   mainInventory: {fileID: 0}
   interactionDistance: 1.5
---- !u!114 &2009059569429678762
+--- !u!114 &6279647435927853522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,9 +138,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2344567361568208010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23ddfcb68e420c044bc6cb4d1cf67f23, type: 3}
+  m_Script: {fileID: 11500000, guid: b29c3aa3b9650174e95c7f2b112809d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6989325294484852301
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +205,26 @@ PrefabInstance:
       propertyPath: startHealth
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Display.ResourceBar, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085885280480157945, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5729229490022426749, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Radius
       value: 0.25
@@ -179,7 +239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -187,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -195,15 +255,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6051651356668870421, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -218,12 +278,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: useModifiers
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: charakterClass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Display.ValueDisplay, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255617537605238977, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: valueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Name
