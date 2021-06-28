@@ -7,7 +7,6 @@ namespace RPG.Display
 {
   public class ResourceBar : UIElement
   {
-    [SerializeField] protected Slider slider;
     [SerializeField] protected Image fill;
     [SerializeField] protected TextMeshProUGUI currentValueDisplay;
     [SerializeField] protected TextMeshProUGUI maxValueDisplay;
@@ -16,20 +15,25 @@ namespace RPG.Display
     {
       base.UpdateUI(value);
       if (value == null) return;
-      SetMaxValue(value.GetMaxValue());
-      SetFill(value.GetCurrentValue());
+      float normalizedValue = NormalizeValue(value);
+      SetTextDisplay(value);
+      SetFill(normalizedValue);
     }
 
     protected void SetFill(float value)
     {
-      slider.value = value;
-      if (currentValueDisplay) currentValueDisplay.text = FormatValue(value);
+      fill.fillAmount = value;
     }
 
-    protected void SetMaxValue(float value)
+    protected void SetTextDisplay(IDisplayable value)
     {
-      slider.maxValue = value;
-      if (maxValueDisplay) maxValueDisplay.text = FormatValue(value);
+      if (maxValueDisplay) maxValueDisplay.text = FormatValue(value.GetMaxValue());
+      if (currentValueDisplay) currentValueDisplay.text = FormatValue(value.GetCurrentValue());
+    }
+
+    private float NormalizeValue(IDisplayable value)
+    {
+      return Mathf.InverseLerp(0, value.GetMaxValue(), value.GetCurrentValue());
     }
 
     private string FormatValue(float value)

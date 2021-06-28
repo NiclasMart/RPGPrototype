@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5036961837790373592}
   - component: {fileID: 4857301511852822624}
   - component: {fileID: 4218077398388662008}
-  - component: {fileID: 6636138660249214988}
   m_Layer: 5
   m_Name: OverHeadLifeBar
   m_TagString: Untagged
@@ -114,18 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4948c10dbf894984fb5004a247c0a289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6636138660249214988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751715035005715119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4948c10dbf894984fb5004a247c0a289, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3594963352247697660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83653eb17c02a904a994ffcb4eefe0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1840418951937169413}
   fill: {fileID: 1840418952548627264}
   currentValueDisplay: {fileID: 0}
   maxValueDisplay: {fileID: 0}
@@ -378,17 +364,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7637654260077696164, guid: 6969fcf1c84a1a645b87e1266ae89fb2, type: 3}
   m_PrefabInstance: {fileID: 1857311172076897548}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1840418951937169413 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 21398568684133641, guid: 6969fcf1c84a1a645b87e1266ae89fb2, type: 3}
-  m_PrefabInstance: {fileID: 1857311172076897548}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1840418952548627264 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 21398570637506124, guid: 6969fcf1c84a1a645b87e1266ae89fb2, type: 3}
