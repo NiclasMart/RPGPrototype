@@ -8,6 +8,7 @@ namespace RPG.Items
     public float damageFlat, damagePercent;
     public float staminaFlat, staminaPercent;
     public float critChanceFlat, critDamageFlat;
+    public float staminaPerSecond;
     public float movementSpeed;
     public float attackSpeed;
     public float attackRange;
@@ -55,6 +56,11 @@ namespace RPG.Items
     public float ModifyCritDamage(float baseStat)
     {
       return baseStat + critDamageFlat;
+    }
+
+    public float ModifyStaminaRegeneration(float baseStat)
+    {
+      return baseStat + staminaPerSecond;
     }
   }
 }

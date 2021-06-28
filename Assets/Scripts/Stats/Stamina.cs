@@ -1,3 +1,4 @@
+using System;
 using GameDevTV.Utils;
 using RPG.Display;
 using UnityEngine;
@@ -6,8 +7,11 @@ namespace RPG.Stats
 {
   public class Stamina : MonoBehaviour, IDisplayable
   {
+    [SerializeField] float regenerationTickTime = 0.5f;
     LazyValue<float> maxStamina;
     LazyValue<float> currentStamina;
+
+    CharacterStats stats;
 
     public ValueChangeEvent valueChange;
 
@@ -16,7 +20,8 @@ namespace RPG.Stats
       maxStamina = new LazyValue<float>(GetInitializeStamina);
       currentStamina = new LazyValue<float>(GetInitializeStamina);
 
-      GetComponent<CharacterStats>().statsChange += UpdateMaxStamina;
+      stats = GetComponent<CharacterStats>();
+      stats.statsChange += UpdateMaxStamina;
     }
 
     private void Start()
@@ -24,6 +29,11 @@ namespace RPG.Stats
       maxStamina.ForceInit();
       currentStamina.ForceInit();
       valueChange.Invoke(this);
+    }
+
+    private void Update()
+    {
+      RegenerateStamina();
     }
 
     public bool UseStamina(float neededStamina)
@@ -42,6 +52,18 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
+    float lastRegenTick = Mathf.NegativeInfinity;
+    private void RegenerateStamina()
+    {
+      if (currentStamina.value >= maxStamina.value) return;
+      if (lastRegenTick + regenerationTickTime > Time.time) return;
+
+      lastRegenTick = Time.time;
+      float regenRate = stats.GetStat(Stat.StaminaRegeneration);
+      currentStamina.value = Mathf.Min(maxStamina.value, currentStamina.value + regenRate * regenerationTickTime);
+      valueChange.Invoke(this);
+    }
+
     private bool CheckStamina(float amount)
     {
       return amount <= currentStamina.value;
@@ -49,7 +71,7 @@ namespace RPG.Stats
 
     private float GetInitializeStamina()
     {
-      return GetComponent<CharacterStats>().GetStat(Stat.Stamina);
+      return stats.GetStat(Stat.Stamina);
     }
 
 

@@ -45,6 +45,7 @@ namespace RPG.Stats
       CalculateStat(Stat.AttackRange, modifierTable.GetAttackRange);
       CalculateStat(Stat.CritChance, modifierTable.ModifyCritChance);
       CalculateStat(Stat.CritDamage, modifierTable.ModifyCritDamage);
+      CalculateStat(Stat.StaminaRegeneration, modifierTable.ModifyStaminaRegeneration);
 
       activeStats.Add(Stat.Experience, progressionSet.GetStat(Stat.Experience, charakterClass, level));
       statsChange.Invoke(this);

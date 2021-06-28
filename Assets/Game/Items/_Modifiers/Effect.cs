@@ -58,6 +58,10 @@ namespace RPG.Items
     {
       modifyTable.critChanceFlat += value;
     }
-    
+    public static void AddStaminaRegeneration(ModifyTable modifyTable, float value)
+    {
+      modifyTable.staminaPerSecond += value;
+    }
+
   }
 }
