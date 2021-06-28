@@ -11,6 +11,7 @@ namespace RPG.Combat
 
     [Header("Weapon Parameters")]
     public Vector2 weaponDamage;
+    public float weaponStaminaConsumption;
     [Min(0.1f)] public Vector2 weaponAttackSpeed;
     public float weaponRange;
     public GameObject hitArea;

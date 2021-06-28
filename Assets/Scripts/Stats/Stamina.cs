@@ -19,6 +19,13 @@ namespace RPG.Stats
       GetComponent<CharacterStats>().statsChange += UpdateMaxStamina;
     }
 
+    private void Start()
+    {
+      maxStamina.ForceInit();
+      currentStamina.ForceInit();
+      valueChange.Invoke(this);
+    }
+
     public bool UseStamina(float neededStamina)
     {
       if (!CheckStamina(neededStamina)) return false;

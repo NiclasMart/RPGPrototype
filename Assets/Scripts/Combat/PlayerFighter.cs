@@ -13,6 +13,7 @@ namespace RPG.Combat
     CharacterStats stats;
     Animator animator;
     PlayerCursor cursor;
+    Stamina stamina;
 
     float lastAttackTime;
 
@@ -23,6 +24,7 @@ namespace RPG.Combat
       stats = GetComponent<CharacterStats>();
       animator = GetComponent<Animator>();
       cursor = GetComponent<PlayerCursor>();
+      stamina = GetComponent<Stamina>();
     }
 
     private void Update()
@@ -35,6 +37,7 @@ namespace RPG.Combat
     {
       float timePerAttack = 1 / stats.GetStat(Stat.AttackSpeed);
       if (Time.time < lastAttackTime + timePerAttack) return;
+      if (!stamina.UseStamina(currentWeapon.baseItem.staminaUse)) return;
 
       lastAttackTime = Time.time;
       scheduler.StartAction(this);

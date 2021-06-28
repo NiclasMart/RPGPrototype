@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
+using RPG.Movement;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -17,11 +18,13 @@ namespace RPG.Combat
     Dictionary<Ability, float> cooldownTable = new Dictionary<Ability, float>();
     ActionScheduler scheduler;
     Animator animator;
+    Mover mover;
 
     private void Awake()
     {
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponentInChildren<Animator>();
+      mover = GetComponent<Mover>();
       InstanciateAbilities();
       FillCooldownTable();
     }
@@ -50,14 +53,16 @@ namespace RPG.Combat
       castedAbility = ablilities[index];
       if (cooldownTable[castedAbility] + castedAbility.cooldown > Time.time) return;
 
-      Vector3 lookPoint = RotateCharacter();
+      Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
 
-      //prepare cast and start animation
+      //prepare cast and check if its valid 
       castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer, animator);
       if (!castedAbility.CastIsValid()) return;
-      if (castedAbility.castImmediately) castedAbility.CastAction();
 
       scheduler.StartAction(castedAbility);
+      if (castedAbility.castImmediately) castedAbility.CastAction();
+      RotateCharacter(lookPoint);
+
       cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
       animator.SetTrigger("cast" + (index + 1));
@@ -65,12 +70,10 @@ namespace RPG.Combat
       /* ability cast is triggert by animation event CastAction() */
     }
 
-    private Vector3 RotateCharacter()
+    private void RotateCharacter(Vector3 lookPoint)
     {
-      Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
-      transform.LookAt(lookPoint, Vector3.up);
+      mover.AdjustDirection(lookPoint);
       transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
-      return lookPoint;
     }
 
     private void InstanciateAbilities()

@@ -7,6 +7,7 @@ namespace RPG.Combat
   {
     public AnimationClip animationClip;
     public float damage;
+    public float staminaUse;
     private float range;
     private float attackSpeed;
     private GameObject hitArea;
@@ -23,6 +24,7 @@ namespace RPG.Combat
       damageType = baseWeapon.damageType;
       isRightHanded = baseWeapon.isRightHanded;
       hitArea = baseWeapon.hitArea;
+      staminaUse = baseWeapon.weaponStaminaConsumption;
     }
 
     public EquipedWeapon Equip(Transform carrier, Transform rightHand, Transform leftHand, Animator animator)
