@@ -53,8 +53,11 @@ namespace RPG.Combat
       Vector3 lookPoint = RotateCharacter();
 
       //prepare cast and start animation
-      scheduler.StartAction(castedAbility);
       castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer, animator);
+      if (!castedAbility.CastIsValid()) return;
+      if (castedAbility.castImmediately) castedAbility.CastAction();
+
+      scheduler.StartAction(castedAbility);
       cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
       animator.SetTrigger("cast" + (index + 1));

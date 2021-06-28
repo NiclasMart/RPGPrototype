@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,13 +10,20 @@ namespace RPG.Combat
   {
     public float moveDistance;
     public float time;
+    public float staminaConsumption;
+
+    public override bool CastIsValid()
+    {
+      Stamina stamina = data.source.GetComponent<Stamina>();
+      return stamina.UseStamina(staminaConsumption);
+    }
 
     public override void CastAction()
     {
-      StartCoroutine(MoveTest());
+      StartCoroutine(Dash());
     }
 
-    IEnumerator MoveTest()
+    IEnumerator Dash()
     {
       Vector3 direction = GetDashDirection();
 
@@ -24,7 +31,9 @@ namespace RPG.Combat
       agent.destination = data.source.transform.position + direction * moveDistance;
       float defaultSpeed = agent.speed;
       agent.speed = defaultSpeed * 2;
+
       yield return new WaitForSeconds(time);
+
       agent.speed = defaultSpeed;
     }
 

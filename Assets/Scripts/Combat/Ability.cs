@@ -39,8 +39,6 @@ namespace RPG.Combat
     {
       data = new CastData(lookPoint, source, castPosition, layer);
       this.animator = animator;
-
-      if (castImmediately) CastAction();
     }
 
     public void GetStats(ModifyTable stats)
@@ -49,6 +47,8 @@ namespace RPG.Combat
       stats.attackSpeed = 1 / cooldown;
       stats.attackRange = range;
     }
+
+    public virtual bool CastIsValid() { return true; }
 
     public virtual void CastAction() { }
 
