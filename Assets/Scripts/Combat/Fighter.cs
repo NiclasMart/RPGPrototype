@@ -17,7 +17,10 @@ namespace RPG.Combat
 
     protected override void Initialize()
     {
-      if (!defaultWeapon) return;
+      if (!defaultWeapon)
+      {
+        defaultWeapon = Resources.Load("Prefabs/Unarmed") as GenericWeapon;
+      }
 
       Animator animator = GetComponent<Animator>();
       Weapon weapon = defaultWeapon.GenerateItem() as Weapon;

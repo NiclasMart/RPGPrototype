@@ -82,7 +82,7 @@ namespace RPG.Interaction
       }
 
       //equip default weapon
-      GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().defaultWeapon;
+      GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
       if (defaultWeapon) equipmentDictionary[ItemType.Weapon].SetGear(defaultWeapon.GenerateItem());
       else RecalculateModifiers();
     }

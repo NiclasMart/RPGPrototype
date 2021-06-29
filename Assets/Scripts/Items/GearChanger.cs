@@ -10,7 +10,13 @@ namespace RPG.Items
     [Header("Weapon")]
     [SerializeField] Transform rightWeaponHolder;
     [SerializeField] Transform leftWeaponHolder;
-    public GenericWeapon defaultWeapon;
+    [SerializeField] GenericWeapon defaultWeapon;
+
+    public GenericWeapon GetDefaultWeapon()
+    {
+      if (defaultWeapon) return defaultWeapon;
+      else return Resources.Load("Prefabs/Unarmed") as GenericWeapon;
+    }
 
     public void EquipGear(Item item)
     {

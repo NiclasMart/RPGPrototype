@@ -17,11 +17,11 @@ MonoBehaviour:
     stats:
     - stat: 0
       values:
-      - 1000
-      - 1010
-      - 1010
-      - 1010
-      - 1010
+      - 100
+      - 102
+      - 104
+      - 106
+      - 107
     - stat: 3
       values:
       - 100
