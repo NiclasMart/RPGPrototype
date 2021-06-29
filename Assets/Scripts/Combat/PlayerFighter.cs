@@ -14,6 +14,7 @@ namespace RPG.Combat
     Animator animator;
     PlayerCursor cursor;
     Stamina stamina;
+    AttackColdownDisplay cooldownDisplay;
 
     float lastAttackTime = Mathf.NegativeInfinity;
 
@@ -25,11 +26,13 @@ namespace RPG.Combat
       animator = GetComponent<Animator>();
       cursor = GetComponent<PlayerCursor>();
       stamina = GetComponent<Stamina>();
+      cooldownDisplay = FindObjectOfType<AttackColdownDisplay>();
     }
 
     private void Update()
     {
       if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
+      cooldownDisplay.UpdateCooldown(lastAttackTime, stats.GetStat(Stat.AttackSpeed));
       currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
     }
 

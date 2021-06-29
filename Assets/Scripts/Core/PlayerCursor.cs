@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace RPG.Core
 {
@@ -17,12 +19,13 @@ namespace RPG.Core
     {
       public CursorType type;
       public Texture2D icon;
-      public Vector2 hotspot;
     }
 
+    [SerializeField] RawImage cursor;
     [SerializeField] CursorMapping[] cursorMap;
     Camera cam;
     IInteraction target;
+    public CursorType currentState = CursorType.STANDARD;
     public IInteraction Target { get => target; }
     Vector3 hitPosition;
     public Vector3 Position { get => hitPosition; }
@@ -31,6 +34,7 @@ namespace RPG.Core
 
     private void Start()
     {
+      Cursor.visible = false;
       cam = PlayerInfo.GetMainCamera();
     }
 
@@ -42,19 +46,26 @@ namespace RPG.Core
         return;
       }
 
+      SetCursorPosition();
       CheckForTargetable();
     }
 
     public void SetCursor(CursorType type)
     {
-      CursorMapping cursor = GetCursorMapping(type);
-      Cursor.SetCursor(cursor.icon, cursor.hotspot, CursorMode.Auto);
+      CursorMapping cursorData = GetCursorMapping(type);
+      cursor.texture = cursorData.icon;
+      currentState = type;
     }
 
     public void ResetTarget()
     {
       if (lastTarget == target) lastTarget = null;
       target = null;
+    }
+
+    private void SetCursorPosition()
+    {
+      cursor.transform.position = Input.mousePosition;
     }
 
     private CursorMapping GetCursorMapping(CursorType type)
