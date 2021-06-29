@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
+  name: 
   baseResourcePath: ItemSprites/
   icon: {fileID: 0}
-  itemObject: {fileID: 0}
+  itemObject: {fileID: 8094434287657265975, guid: 9015ba6e3ff1cbb4d87865a5e2c69355, type: 3}
   weight: 0
   itemType: 0
   modifiable: 0
-  modifiers: []
+  normalModifiers: []
+  epicModifiers: []
+  legendaryModifiers: []
   animation: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
   weaponDamage: {x: 2, y: 2}
+  weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 1, y: 1}
   weaponRange: 1
+  hitArea: {fileID: 4039246772879643832, guid: 6d070d20cdc422e4283bf6a17b514711, type: 3}
   damageType: {fileID: 0}
-  damageMultiplier: 0
   isRightHanded: 1

@@ -15,7 +15,7 @@ namespace RPG.Combat
     PlayerCursor cursor;
     Stamina stamina;
 
-    float lastAttackTime;
+    float lastAttackTime = Mathf.NegativeInfinity;
 
 
     private void Awake()
