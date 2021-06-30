@@ -74,8 +74,7 @@ MonoBehaviour:
   - {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
   - {fileID: -7445379525506200165, guid: bf5445928118ab24587fc9274fe9d4df, type: 3}
   - {fileID: 940044159290701119, guid: 43bb66db8a8cf3448b7f140053cd4727, type: 3}
-  keyMap: 710000007700000065000000
-  useKeyMap: 1
+  slots: []
 --- !u!114 &3244807190163713036
 MonoBehaviour:
   m_ObjectHideFlags: 0

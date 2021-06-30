@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
+  m_Name: BasicSickle
+  m_EditorClassIdentifier: 
+  name: Sickle
+  baseResourcePath: ItemSprites/
+  icon: {fileID: 21300000, guid: f9f0c605411a7e14dbcac5f4654327b5, type: 3}
+  itemObject: {fileID: 4832191428759962243, guid: 08df40d3c0c1b5f468bcb919d258d374, type: 3}
+  weight: 15
+  itemType: 0
+  modifiable: 1
+  normalModifiers: []
+  epicModifiers: []
+  legendaryModifiers: []
+  animation: {fileID: 7400000, guid: 29ade94d287400e4ca86040fa8bebf24, type: 2}
+  weaponDamage: {x: 10, y: 15}
+  weaponStaminaConsumption: 10
+  weaponAttackSpeed: {x: 0.8, y: 1}
+  weaponRange: 1.5
+  hitArea: {fileID: 8652708663802559081, guid: 33403b14677ab6f4b89d27d8f96bba64, type: 3}
+  damageType: {fileID: 0}
+  isRightHanded: 1
