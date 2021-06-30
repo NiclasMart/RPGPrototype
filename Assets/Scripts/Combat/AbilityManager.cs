@@ -11,9 +11,9 @@ namespace RPG.Combat
   {
     [SerializeField] Transform castPosition;
     [SerializeField] List<Ability> ablilities = new List<Ability>();
-    [SerializeField] List<KeyCode> keyMap = new List<KeyCode>();
-    [SerializeField] bool useKeyMap = false;
-    public List<KeyCode> KeySet => keyMap;
+    [SerializeField] List<AbilityCooldownDisplay> slots = new List<AbilityCooldownDisplay>();
+    Dictionary<KeyCode, AbilityCooldownDisplay> abilitySlots = new Dictionary<KeyCode, AbilityCooldownDisplay>();
+    public Dictionary<KeyCode, AbilityCooldownDisplay>.KeyCollection KeySet => abilitySlots.Keys;
 
     Dictionary<Ability, float> cooldownTable = new Dictionary<Ability, float>();
     ActionScheduler scheduler;
@@ -25,34 +25,44 @@ namespace RPG.Combat
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponentInChildren<Animator>();
       mover = GetComponent<Mover>();
-      InstanciateAbilities();
-      FillCooldownTable();
+      BuildSlotDictionary();
+    }
+
+    private void BuildSlotDictionary()
+    {
+      for (int i = 0; i < slots.Count; i++)
+      {
+        abilitySlots.Add(slots[i].activationKey, slots[i]);
+
+        Ability abilityInstance = InstanciateAbility(ablilities[i]);
+
+        slots[i].SetAbility(abilityInstance);
+      }
     }
 
     private void Start()
     {
-      if (!useKeyMap) return;
-
-      if (ablilities.Count != keyMap.Count)
-      {
-        Debug.LogError(transform.name + ": Abilitys and Key Map are inconsistent.");
-      }
-
       for (int i = 0; i < ablilities.Count; i++)
       {
+        if (ablilities[i] == null) continue;
         AnimationHandler.OverrideAnimations(animator, ablilities[i].animationClip, "Cast" + (i + 1));
       }
+    }
+
+    private void Update()
+    {
+
     }
 
     Ability castedAbility;
     public void CastAbility(KeyCode key, LayerMask collisionLayer)
     {
-      int index = keyMap.IndexOf(key);
-      if (index == -1) return;
 
-      castedAbility = ablilities[index];
-      if (cooldownTable[castedAbility] + castedAbility.cooldown > Time.time) return;
+      AbilityCooldownDisplay abilitySlot = abilitySlots[key];
 
+      if (!abilitySlot.CooldownReady()) return;
+
+      castedAbility = abilitySlot.ability;
       Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
 
       //prepare cast and check if its valid 
@@ -61,10 +71,12 @@ namespace RPG.Combat
 
       scheduler.StartAction(castedAbility);
       if (castedAbility.castImmediately) castedAbility.CastAction();
+      abilitySlot.SetCooldown();
       RotateCharacter(lookPoint);
 
       cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
+      int index = ablilities.FindIndex(x => x.name == castedAbility.name);
       animator.SetTrigger("cast" + (index + 1));
 
       /* ability cast is triggert by animation event CastAction() */
@@ -76,14 +88,10 @@ namespace RPG.Combat
       transform.Rotate(Vector3.up * castedAbility.animationRotationOffset);
     }
 
-    private void InstanciateAbilities()
+    private Ability InstanciateAbility(Ability ability)
     {
-      List<Ability> abilityInstances = new List<Ability>();
-      foreach (var ability in ablilities)
-      {
-        abilityInstances.Add(Instantiate(ability, transform));
-      }
-      ablilities = abilityInstances;
+      if (ability != null) return Instantiate(ability, transform);
+      else return null;
     }
 
     private void FillCooldownTable()

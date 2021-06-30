@@ -14,6 +14,7 @@ namespace RPG.Combat
     public float cooldown;
     public float range;
     public DamageClass damageType;
+    public Sprite icon;
     public AnimationClip animationClip;
     public float animationRotationOffset;
     public bool castImmediately = false;
