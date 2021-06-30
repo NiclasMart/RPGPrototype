@@ -18,7 +18,6 @@ namespace RPG.Combat
     public AnimationClip animationClip;
     public float animationRotationOffset;
     public bool castImmediately = false;
-    Animator animator;
 
     protected CastData data;
     protected class CastData
@@ -36,10 +35,9 @@ namespace RPG.Combat
       }
     }
 
-    public void PrepareCast(Vector3 lookPoint, GameObject source, Transform castPosition, LayerMask layer, Animator animator)
+    public void PrepareCast(Vector3 lookPoint, GameObject source, Transform castPosition, LayerMask layer)
     {
       data = new CastData(lookPoint, source, castPosition, layer);
-      this.animator = animator;
     }
 
     public void GetStats(ModifyTable stats)

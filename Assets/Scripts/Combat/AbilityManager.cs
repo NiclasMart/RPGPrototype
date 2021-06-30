@@ -49,11 +49,6 @@ namespace RPG.Combat
       }
     }
 
-    private void Update()
-    {
-
-    }
-
     Ability castedAbility;
     public void CastAbility(KeyCode key, LayerMask collisionLayer)
     {
@@ -66,7 +61,7 @@ namespace RPG.Combat
       Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
 
       //prepare cast and check if its valid 
-      castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer, animator);
+      castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
       if (!castedAbility.CastIsValid()) return;
 
       scheduler.StartAction(castedAbility);
@@ -76,7 +71,7 @@ namespace RPG.Combat
 
       cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
-      int index = ablilities.FindIndex(x => x.name == castedAbility.name);
+      int index = ablilities.FindIndex(x => x != null && x.name == castedAbility.name);
       animator.SetTrigger("cast" + (index + 1));
 
       /* ability cast is triggert by animation event CastAction() */

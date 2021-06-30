@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Stats;
+using RPG.Combat;
 
 namespace RPG.Movement
 {
   [RequireComponent(typeof(NavMeshAgent), typeof(ActionScheduler))]
   public class Mover : MonoBehaviour, IAction
   {
-
+    [SerializeField] Ability movementSkill;
     NavMeshAgent agent;
     Animator animator;
     ActionScheduler scheduler;
@@ -22,6 +23,12 @@ namespace RPG.Movement
       scheduler = GetComponent<ActionScheduler>();
 
       GetComponent<CharacterStats>().statsChange += UpdateMovementSpeed;
+
+      if (movementSkill != null)
+      {
+        Ability test = Instantiate(movementSkill, transform);
+        movementSkill = test;
+      }
     }
 
     private void Start()
