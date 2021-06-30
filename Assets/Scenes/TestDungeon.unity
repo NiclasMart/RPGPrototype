@@ -11954,6 +11954,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6603488554207994483, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
   m_PrefabInstance: {fileID: 2015963264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1564906357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 916917378494744782, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
+  m_PrefabInstance: {fileID: 299706719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &1564906361
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564906357}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 44115b2e88ab0904aa80a0586822a37b, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 44115b2e88ab0904aa80a0586822a37b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &1577195735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15739,6 +15760,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3415835719308980571, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.78845304
@@ -15830,7 +15855,7 @@ PrefabInstance:
     - target: {fileID: 3820922663825706881, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+      objectReference: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
     - target: {fileID: 5679850373035603726, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
