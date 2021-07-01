@@ -11,14 +11,14 @@ namespace RPG.Interaction
     public SimpleInventory connectedInventory;
     [SerializeField] Image border;
     [SerializeField] Color selectionColor;
-    Color defaultColor;
+    Color borderDefaultColor;
     protected PlayerInventory playerInventory;
 
 
     protected override void Awake()
     {
       base.Awake();
-      defaultColor = border.color;
+      borderDefaultColor = border.color;
       GetComponent<Button>().onClick.AddListener(Select);
       playerInventory = FindObjectOfType<PlayerInventory>();
     }
@@ -32,7 +32,7 @@ namespace RPG.Interaction
 
     public override void Deselect()
     {
-      border.color = defaultColor;
+      border.color = borderDefaultColor;
       connectedInventory.gameObject.SetActive(false);
     }
 

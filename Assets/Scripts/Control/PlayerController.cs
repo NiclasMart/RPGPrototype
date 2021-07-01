@@ -76,6 +76,8 @@ namespace RPG.Control
 
     private bool UpdateInteraction()
     {
+      if (!playerCursor.hasRaycastHit) return false;
+      
       Interactable interactionTarget = null;
       IInteraction target = playerCursor.Target;
       if (target != null) interactionTarget = target.GetGameObject().GetComponent<Interactable>();
@@ -99,6 +101,7 @@ namespace RPG.Control
         mover.StartMoveAction(movePosition);
         hudManager.SetUpEnemyDisplay(null, null);
       }
+      Debug.Log("SetMovement");
       playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
       return true;
     }

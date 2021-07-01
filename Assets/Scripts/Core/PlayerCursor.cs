@@ -11,7 +11,8 @@ namespace RPG.Core
     {
       COMBAT,
       INTERACT,
-      STANDARD
+      STANDARD,
+      UI
     }
 
     [System.Serializable]
@@ -52,6 +53,7 @@ namespace RPG.Core
 
     public void SetCursor(CursorType type)
     {
+      Debug.Log("Set Cursor type: " + type);
       CursorMapping cursorData = GetCursorMapping(type);
       cursor.texture = cursorData.icon;
       currentState = type;
@@ -82,7 +84,7 @@ namespace RPG.Core
     {
       if (EventSystem.current.IsPointerOverGameObject())
       {
-        SetCursor(CursorType.STANDARD);
+        SetCursor(CursorType.UI);
         hasRaycastHit = false;
         return;
       }
