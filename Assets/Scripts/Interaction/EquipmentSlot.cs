@@ -8,36 +8,27 @@ namespace RPG.Interaction
   {
     public ItemType equipmentType;
     public SimpleInventory connectedInventory;
-    PlayerInventory playerInventory;
-    GearChanger gearChanger;
+    protected PlayerInventory playerInventory;
+    
 
     protected override void Awake()
     {
       base.Awake();
       GetComponent<Button>().onClick.AddListener(Select);
-      gearChanger = FindObjectOfType<GearChanger>();
       playerInventory = FindObjectOfType<PlayerInventory>();
     }
 
     public override void Select()
     {
       inventory.SelectSlot(this);
-      connectedInventory.onSecondClick += SetGear;
       connectedInventory.gameObject.SetActive(true);
     }
 
     public override void Deselect()
     {
-      connectedInventory.onSecondClick -= SetGear;
       connectedInventory.gameObject.SetActive(false);
     }
 
-    public void SetGear(Item item)
-    {
-      SetIcon(item);
-      gearChanger.EquipGear(item);
-      this.item = item;
-      playerInventory.RecalculateModifiers();
-    }
+    
   }
 }

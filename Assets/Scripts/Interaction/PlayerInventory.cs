@@ -14,7 +14,7 @@ namespace RPG.Interaction
 
     private void Awake()
     {
-      Initialize();
+      InitializeEquipmentSlots();
     }
 
     public void AddItem(Item item)
@@ -68,22 +68,24 @@ namespace RPG.Interaction
       }
     }
 
-    private void Initialize()
+    private void InitializeEquipmentSlots()
     {
       foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
       {
         //initialize inventorys
-        InitializeInventory(slot.connectedInventory);
-        equipmentDictionary.Add(slot.equipmentType, slot);
+        if (!equipmentDictionary.ContainsKey(slot.equipmentType))
+        {
+          equipmentDictionary.Add(slot.equipmentType, slot);
+          InitializeInventory(slot.connectedInventory);
+        }
 
         //initialize slots
         slot.Initialize(null, this);
-        slot.connectedInventory.gameObject.SetActive(false);
       }
 
       //equip default weapon
       GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
-      if (defaultWeapon) equipmentDictionary[ItemType.Weapon].SetGear(defaultWeapon.GenerateItem());
+      if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).SetGear(defaultWeapon.GenerateItem());
       else RecalculateModifiers();
     }
 

@@ -7,6 +7,7 @@ namespace RPG.Items
     Boots,
     Helmet,
     Gloves,
-    Pants
+    Pants,
+    Ability
   }
 }

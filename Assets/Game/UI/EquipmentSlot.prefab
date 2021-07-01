@@ -1,22 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2237079213483568075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804507650023908700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eed6e8c95552f347b722e730c3de6bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconSlot: {fileID: 4339216391486017635}
-  selectable: {fileID: 3975243395076740816}
-  titleText: {fileID: 0}
-  mainStatText: {fileID: 0}
-  connectedInventory: {fileID: 0}
 --- !u!114 &3975243395076740816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +44,24 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6156744085116748933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804507650023908700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b3f9d2083d6ea4e890c52e76f66b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSlot: {fileID: 4339216391486017635}
+  selectable: {fileID: 3975243395076740816}
+  titleText: {fileID: 0}
+  mainStatText: {fileID: 0}
+  equipmentType: 0
+  connectedInventory: {fileID: 0}
 --- !u!1001 &8176858461361771374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68,6 +69,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 643485190993206752, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 643485190993206752, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
       propertyPath: m_Color.b
       value: 0.59607846
