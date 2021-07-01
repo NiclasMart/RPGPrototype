@@ -18,6 +18,7 @@ namespace RPG.Interaction
 
     public override void Deselect()
     {
+      base.Deselect();
       connectedInventory.onSecondClick -= SetAbility;
     }
 

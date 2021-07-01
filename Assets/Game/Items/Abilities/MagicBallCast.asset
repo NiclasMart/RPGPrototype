@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: SplitArrow
+  m_Name: MagicBallCast
   m_EditorClassIdentifier: 
-  name: Multiarrow
+  name: MagicBallCast
   baseResourcePath: ItemSprites/
-  icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
-  itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
+  icon: {fileID: 21300000, guid: 0b5ba48a12ad309408b91848f5b82bf9, type: 3}
+  itemObject: {fileID: 1886286223317658, guid: 92ba3aef2b0d5fe48b9015441633a35b, type: 3}
   weight: 1
   itemType: 6
   modifiable: 0
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  abilityPrefab: {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
+  abilityPrefab: {fileID: -7445379525506200165, guid: bf5445928118ab24587fc9274fe9d4df, type: 3}

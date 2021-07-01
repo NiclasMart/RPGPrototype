@@ -18,6 +18,8 @@ MonoBehaviour:
   mainStatText: {fileID: 0}
   equipmentType: 6
   connectedInventory: {fileID: 0}
+  border: {fileID: 4632359026599122896}
+  selectionColor: {r: 1, g: 1, b: 1, a: 1}
   abilityCooldownDisplay: {fileID: 0}
 --- !u!1001 &2702287097677261306
 PrefabInstance:
@@ -155,5 +157,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4632359026599122896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7334395879885864490, guid: e64e8278d3e6588458e27679af5d8374, type: 3}
+  m_PrefabInstance: {fileID: 2702287097677261306}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
