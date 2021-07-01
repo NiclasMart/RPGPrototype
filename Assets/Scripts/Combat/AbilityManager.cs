@@ -65,6 +65,12 @@ namespace RPG.Combat
       /* ability cast is triggert by animation event CastAction() */
     }
 
+    public void SetNewAbility(Ability newAbility, AbilityCooldownDisplay slot)
+    {
+      AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
+      slot.SetAbility(newAbility);
+    }
+
     private void InitializeStartAbilities()
     {
       for (int i = 0; i < startAbilities.Count; i++)

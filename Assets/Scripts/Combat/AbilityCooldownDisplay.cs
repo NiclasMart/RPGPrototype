@@ -7,7 +7,7 @@ namespace RPG.Combat
 {
   public class AbilityCooldownDisplay : CooldownDisplay
   {
-    public float index;
+    public int index;
     public KeyCode activationKey;
     [SerializeField] Image iconDisplay;
     [HideInInspector] public Ability ability;

@@ -9,12 +9,6 @@ namespace RPG.Interaction
   public class AbilityEquipmentSlot : EquipmentSlot
   {
     [SerializeField] AbilityCooldownDisplay abilityCooldownDisplay;
-    AbilityManager abilityManager;
-
-    private void Start()
-    {
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>();
-    }
 
     public override void Select()
     {
@@ -29,7 +23,10 @@ namespace RPG.Interaction
 
     private void SetAbility(Item item)
     {
-      Debug.Log("SetAbility");
+      Ability newAbility = (item as AbilityHolder)?.ability;
+      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(newAbility, abilityCooldownDisplay);
+      SetIcon(item);
+      this.item = item;
     }
   }
 }

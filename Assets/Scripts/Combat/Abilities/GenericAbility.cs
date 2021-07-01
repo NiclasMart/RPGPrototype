@@ -8,6 +8,11 @@ namespace RPG.Combat
   {
     [SerializeField] Ability abilityPrefab;
 
+    public override Item GenerateItem()
+    {
+      return new AbilityHolder(this);
+    }
+
     public Ability GetAbility() { return abilityPrefab; }
   }
 }
