@@ -211,8 +211,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownDisplay: {fileID: 1884144463911770998}
+  index: 1
+  activationKey: 32
   iconDisplay: {fileID: 4790972010749758242}
-  activationKey: 113
   ability: {fileID: 0}
   lastCastTime: 0
 --- !u!1 &8863838336200622627
@@ -369,8 +370,12 @@ PrefabInstance:
       value: Slot (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
+      propertyPath: index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: activationKey
-      value: 101
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 5539782380054812239, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: m_Pivot.x
@@ -473,6 +478,10 @@ PrefabInstance:
     - target: {fileID: 859499402095656320, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: m_Name
       value: Slot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
+      propertyPath: index
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: activationKey
@@ -593,8 +602,12 @@ PrefabInstance:
       value: Slot (3)
       objectReference: {fileID: 0}
     - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
+      propertyPath: index
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: activationKey
-      value: 114
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 5539782380054812239, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: m_Pivot.x
@@ -701,6 +714,14 @@ PrefabInstance:
     - target: {fileID: 859499402095656320, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: m_Name
       value: Slot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
+      propertyPath: index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660237547759520453, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
+      propertyPath: activationKey
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 5539782380054812239, guid: f69ba1b3f9ab6c2499d02203620b59d3, type: 3}
       propertyPath: m_Pivot.x

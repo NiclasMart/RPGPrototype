@@ -10,12 +10,12 @@ namespace RPG.Combat
   public class AbilityManager : MonoBehaviour
   {
     [SerializeField] Transform castPosition;
-    [SerializeField] List<Ability> ablilities = new List<Ability>();
     [SerializeField] List<AbilityCooldownDisplay> slots = new List<AbilityCooldownDisplay>();
+    [SerializeField] List<Ability> startAbilities = new List<Ability>();
     Dictionary<KeyCode, AbilityCooldownDisplay> abilitySlots = new Dictionary<KeyCode, AbilityCooldownDisplay>();
+    //List<Ability> abilities = new List<Ability>();
     public Dictionary<KeyCode, AbilityCooldownDisplay>.KeyCollection KeySet => abilitySlots.Keys;
 
-    Dictionary<Ability, float> cooldownTable = new Dictionary<Ability, float>();
     ActionScheduler scheduler;
     Animator animator;
     Mover mover;
@@ -26,26 +26,15 @@ namespace RPG.Combat
       animator = GetComponentInChildren<Animator>();
       mover = GetComponent<Mover>();
       BuildSlotDictionary();
-    }
-
-    private void BuildSlotDictionary()
-    {
-      for (int i = 0; i < slots.Count; i++)
-      {
-        abilitySlots.Add(slots[i].activationKey, slots[i]);
-
-        Ability abilityInstance = InstanciateAbility(ablilities[i]);
-
-        slots[i].SetAbility(abilityInstance);
-      }
+      InitializeStartAbilities();
     }
 
     private void Start()
     {
-      for (int i = 0; i < ablilities.Count; i++)
+      for (int i = 0; i < startAbilities.Count; i++)
       {
-        if (ablilities[i] == null) continue;
-        AnimationHandler.OverrideAnimations(animator, ablilities[i].animationClip, "Cast" + (i + 1));
+        if (startAbilities[i] == null) continue;
+        AnimationHandler.OverrideAnimations(animator, startAbilities[i].animationClip, "Cast" + (i + 1));
       }
     }
 
@@ -55,6 +44,7 @@ namespace RPG.Combat
 
       AbilityCooldownDisplay abilitySlot = abilitySlots[key];
 
+      if (abilitySlot.ability == null) return;
       if (!abilitySlot.CooldownReady()) return;
 
       castedAbility = abilitySlot.ability;
@@ -69,12 +59,27 @@ namespace RPG.Combat
       abilitySlot.SetCooldown();
       RotateCharacter(lookPoint);
 
-      cooldownTable[castedAbility] = Time.time;
       animator.SetTrigger("cast");
-      int index = ablilities.FindIndex(x => x != null && x.name == castedAbility.name);
-      animator.SetTrigger("cast" + (index + 1));
+      animator.SetTrigger("cast" + abilitySlot.index);
 
       /* ability cast is triggert by animation event CastAction() */
+    }
+
+    private void InitializeStartAbilities()
+    {
+      for (int i = 0; i < startAbilities.Count; i++)
+      {
+        Ability abilityInstance = InstanciateAbility(startAbilities[i]);
+        slots[i].SetAbility(abilityInstance);
+      }
+    }
+
+    private void BuildSlotDictionary()
+    {
+      for (int i = 0; i < slots.Count; i++)
+      {
+        abilitySlots.Add(slots[i].activationKey, slots[i]);
+      }
     }
 
     private void RotateCharacter(Vector3 lookPoint)
@@ -87,18 +92,6 @@ namespace RPG.Combat
     {
       if (ability != null) return Instantiate(ability, transform);
       else return null;
-    }
-
-    private void FillCooldownTable()
-    {
-      foreach (Ability ability in ablilities)
-      {
-        cooldownTable.Add(ability, -ability.cooldown);
-        if (ability.cooldown < ability.animationClip.length)
-        {
-          Debug.LogError("ERROR: Ability cooldown from " + name + " needs to be longer than animation clip length!");
-        }
-      }
     }
 
     void CastAction()

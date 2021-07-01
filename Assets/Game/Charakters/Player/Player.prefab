@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightWeaponHolder: {fileID: 7316862318045654546}
   leftWeaponHolder: {fileID: 7316862318045580922}
-  defaultWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 11400000, guid: d2fe97856c6407e4bb30430acfa4f5ab, type: 2}
 --- !u!114 &2009059569429678762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,11 +70,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castPosition: {fileID: 4773142253962847870}
-  ablilities:
-  - {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
-  - {fileID: -7445379525506200165, guid: bf5445928118ab24587fc9274fe9d4df, type: 3}
-  - {fileID: 940044159290701119, guid: 43bb66db8a8cf3448b7f140053cd4727, type: 3}
-  slots: []
+  slots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  startAbilities: []
 --- !u!114 &3244807190163713036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +92,7 @@ MonoBehaviour:
   cursor: {fileID: 0}
   cursorMap:
   - type: 2
-    icon: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    icon: {fileID: 2800000, guid: 87671d2abddff4e4e94e60b10e28eb1a, type: 3}
   - type: 0
     icon: {fileID: 2800000, guid: 2d18e23e3ce249b4489b8bcdd02d3f48, type: 3}
   - type: 1
@@ -144,12 +146,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: RPG.Display.ResourceBar, Assembly-CSharp
+        m_MethodName: UpdateUI
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -192,6 +194,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4662013511464741634, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
+      propertyPath: movementSkill
+      value: 
+      objectReference: {fileID: 940044159290701119, guid: 43bb66db8a8cf3448b7f140053cd4727, type: 3}
     - target: {fileID: 4880956305802271720, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: leftWeaponHolder
       value: 
