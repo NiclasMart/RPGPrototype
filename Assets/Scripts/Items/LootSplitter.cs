@@ -5,7 +5,7 @@ namespace RPG.Items
 {
   public static class LootSplitter
   {
-    static float gridCellSize = 0.25f, cellBorderSize = 0.05f;
+    static float gridCellSize = 0.5f, cellBorderSize = 0.05f;
     static HashSet<Vector3> lootGrid = new HashSet<Vector3>();
 
     public static Vector3 GetFreeGridPosition(Vector3 centerPoint)
