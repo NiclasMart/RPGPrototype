@@ -13,7 +13,7 @@ namespace RPG.Interaction
       gearChanger = FindObjectOfType<GearChanger>();
     }
 
-    protected override void EquipItem(Item item)
+    public override void EquipItem(Item item)
     {
       base.EquipItem(item);
       gearChanger.EquipGear(item);

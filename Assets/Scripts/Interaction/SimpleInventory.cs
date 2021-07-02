@@ -50,6 +50,7 @@ namespace RPG.Interaction
       }
     }
 
+
     public void DeleteSelectedItem()
     {
       if (!selectedSlot) return;
@@ -82,6 +83,7 @@ namespace RPG.Interaction
       {
         if (slot == transform) continue;
         Destroy(slot.gameObject);
+        //??? itemSlots.Remove(selectedSlot);
       }
     }
 

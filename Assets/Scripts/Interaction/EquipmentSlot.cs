@@ -38,9 +38,10 @@ namespace RPG.Interaction
       connectedInventory.onSecondClick -= EquipItem;
     }
 
-    protected virtual void EquipItem(Item item)
+    public virtual void EquipItem(Item item)
     {
-      if (item != null) UnequipCurrentItem();
+      if (this.item != null) UnequipCurrentItem();
+      connectedInventory.DeleteSelectedItem();
 
       SetIcon(item);
       this.item = item;

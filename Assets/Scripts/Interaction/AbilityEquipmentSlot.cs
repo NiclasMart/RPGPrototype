@@ -10,7 +10,7 @@ namespace RPG.Interaction
   {
     [SerializeField] AbilityCooldownDisplay abilityCooldownDisplay;
 
-    protected override void EquipItem(Item item)
+    public override void EquipItem(Item item)
     {
       base.EquipItem(item);
       Ability newAbility = (item as AbilityHolder)?.ability;
