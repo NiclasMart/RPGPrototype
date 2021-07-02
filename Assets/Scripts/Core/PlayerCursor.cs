@@ -53,7 +53,6 @@ namespace RPG.Core
 
     public void SetCursor(CursorType type)
     {
-      Debug.Log("Set Cursor type: " + type);
       CursorMapping cursorData = GetCursorMapping(type);
       cursor.texture = cursorData.icon;
       currentState = type;

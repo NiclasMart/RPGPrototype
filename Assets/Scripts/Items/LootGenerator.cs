@@ -58,7 +58,8 @@ namespace RPG.Items
     {
       foreach (var drop in drops)
       {
-        Pickup pickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity);
+        Vector3 spawnPosition = LootSplitter.GetFreeGridPosition(transform.position);
+        Pickup pickup = Instantiate(pickupPrefab, spawnPosition, Quaternion.identity);
         pickup.Spawn(drop);
       }
     }

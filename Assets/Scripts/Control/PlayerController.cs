@@ -101,7 +101,6 @@ namespace RPG.Control
         mover.StartMoveAction(movePosition);
         hudManager.SetUpEnemyDisplay(null, null);
       }
-      Debug.Log("SetMovement");
       playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
       return true;
     }

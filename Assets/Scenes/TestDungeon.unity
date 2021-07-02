@@ -7225,7 +7225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 1
-  maxDropAmount: 15
+  maxDropAmount: 10
   chanceReductionPerDrop: 0
   pickupPrefab: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
   itemPool:
@@ -15748,6 +15748,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1806002929105257879, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2114919283270635343, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: cursorMap.Array.size
       value: 4
@@ -15822,6 +15826,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2605613937515290342, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056900710425874982, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3056900710425874982, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}

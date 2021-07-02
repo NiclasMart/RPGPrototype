@@ -31,6 +31,7 @@ namespace RPG.Items
 
     public void Take()
     {
+      LootSplitter.FreeGridPosition(transform.position);
       Destroy(gameObject);
       PlayerInfo.GetPlayerCursor().ResetTarget();
     }
