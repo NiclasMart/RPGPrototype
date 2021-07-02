@@ -10,24 +10,11 @@ namespace RPG.Interaction
   {
     [SerializeField] AbilityCooldownDisplay abilityCooldownDisplay;
 
-    public override void Select()
+    protected override void EquipItem(Item item)
     {
-      base.Select();
-      connectedInventory.onSecondClick += SetAbility;
-    }
-
-    public override void Deselect()
-    {
-      base.Deselect();
-      connectedInventory.onSecondClick -= SetAbility;
-    }
-
-    private void SetAbility(Item item)
-    {
+      base.EquipItem(item);
       Ability newAbility = (item as AbilityHolder)?.ability;
       PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(newAbility, abilityCooldownDisplay);
-      SetIcon(item);
-      this.item = item;
     }
   }
 }

@@ -28,12 +28,27 @@ namespace RPG.Interaction
       inventory.SelectSlot(this);
       border.color = selectionColor;
       connectedInventory.gameObject.SetActive(true);
+      connectedInventory.onSecondClick += EquipItem;
     }
 
     public override void Deselect()
     {
       border.color = borderDefaultColor;
       connectedInventory.gameObject.SetActive(false);
+      connectedInventory.onSecondClick -= EquipItem;
+    }
+
+    protected virtual void EquipItem(Item item)
+    {
+      if (item != null) UnequipCurrentItem();
+
+      SetIcon(item);
+      this.item = item;
+    }
+
+    protected void UnequipCurrentItem()
+    {
+      connectedInventory.AddItem(item);
     }
 
 

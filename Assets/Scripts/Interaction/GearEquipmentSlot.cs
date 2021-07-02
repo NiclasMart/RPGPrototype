@@ -13,23 +13,10 @@ namespace RPG.Interaction
       gearChanger = FindObjectOfType<GearChanger>();
     }
 
-    public override void Select()
+    protected override void EquipItem(Item item)
     {
-      base.Select();
-      connectedInventory.onSecondClick += SetGear;
-    }
-
-    public override void Deselect()
-    {
-      base.Deselect();
-      connectedInventory.onSecondClick -= SetGear;
-    }
-
-    public void SetGear(Item item)
-    {
-      SetIcon(item);
+      base.EquipItem(item);
       gearChanger.EquipGear(item);
-      this.item = item;
       playerInventory.RecalculateModifiers();
     }
   }
