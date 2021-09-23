@@ -89,15 +89,14 @@ namespace RPG.Core
       }
 
       RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
-      SetMovePosition(hits);
+      HitData hitData = EvaluateHits(hits);
+      SetMovePosition(hitData.cursorPosition);
 
-      IInteraction closestHit = SearchClosestTarget(hits);
-
-      if (closestHit != null)
+      if (hitData.cursorTarget != null)
       {
-        HandleOutline(closestHit);
-        lastTarget = closestHit;
-        target = closestHit;
+        HandleOutline(hitData.cursorTarget);
+        lastTarget = hitData.cursorTarget;
+        target = hitData.cursorTarget;
       }
       else
       {
@@ -107,27 +106,41 @@ namespace RPG.Core
 
     }
 
-    private IInteraction SearchClosestTarget(RaycastHit[] hits)
+    public struct HitData
     {
-      IInteraction closestHit = null;
-      float closestDistance = Mathf.Infinity;
+      public Vector3 cursorPosition;
+      public IInteraction cursorTarget;
+    }
+
+    private HitData EvaluateHits(RaycastHit[] hits)
+    {
+      HitData data = new HitData();
+      float closestTargetDistance = Mathf.Infinity, closestCursorPosition = Mathf.NegativeInfinity;
       foreach (RaycastHit hit in hits)
       {
         if (hit.transform.CompareTag("Player")) continue;
 
-        IInteraction cursorTarget = hit.transform.GetComponent<IInteraction>();
-        if (cursorTarget != null)
+        //get cursorPosition
+        if (closestCursorPosition < hit.point.y)
+        {
+          data.cursorPosition = hit.point;
+          closestCursorPosition = hit.point.y;
+        }
+
+        //get InteractionTarget
+        IInteraction tmpHit = hit.transform.GetComponent<IInteraction>();
+        if (tmpHit != null)
         {
           float distance = Vector3.Distance(hit.point, hit.transform.position);
-          if (distance < closestDistance)
+          if (distance < closestTargetDistance)
           {
-            closestHit = cursorTarget;
-            closestDistance = distance;
+            data.cursorTarget = tmpHit;
+            closestTargetDistance = distance;
           }
         }
       }
 
-      return closestHit;
+      return data;
     }
 
     private void HandleOutline(IInteraction cursorTarget)
@@ -152,12 +165,12 @@ namespace RPG.Core
       lastTarget = null;
     }
 
-    private void SetMovePosition(RaycastHit[] hits)
+    private void SetMovePosition(Vector3 position)
     {
-      if (hits.Length != 0)
+      if (position != null)
       {
         hasRaycastHit = true;
-        hitPosition = hits[0].point;
+        hitPosition = position;
       }
       else
       {
