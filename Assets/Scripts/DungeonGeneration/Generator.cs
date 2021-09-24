@@ -656,6 +656,7 @@ namespace RPG.Dungeon
     {
       BitMatrix combinedMatrix = roomMatrix + pathMatrix;
       parent = new GameObject("Dungeon");
+      parent.layer = LayerMask.NameToLayer("Dungeon");
       NavMeshSurface surface = parent.AddComponent<NavMeshSurface>();
       tileSetTable.Initialize();
 
@@ -671,7 +672,8 @@ namespace RPG.Dungeon
             CheckForWallPlacement(i, j, tileSet);
 
             GameObject floorTile = tileSet.GetFloorTile();
-            Instantiate(floorTile, new Vector3(j * tileSize, 0, i * tileSize), Quaternion.identity, parent.transform);
+            GameObject instance = Instantiate(floorTile, new Vector3(j * tileSize, 0, i * tileSize), Quaternion.identity, parent.transform);
+            instance.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Dungeon");
           }
         }
       }
@@ -686,7 +688,8 @@ namespace RPG.Dungeon
             CheckForWallPlacement(i, j, tileSet);
 
             GameObject floorTile = tileSet.GetFloorTile();
-            Instantiate(floorTile, new Vector3(j * tileSize, 0, i * tileSize), Quaternion.identity, parent.transform);
+            GameObject instance = Instantiate(floorTile, new Vector3(j * tileSize, 0, i * tileSize), Quaternion.identity, parent.transform);
+            instance.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Dungeon");
           }
         }
       }
