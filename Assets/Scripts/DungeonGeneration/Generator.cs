@@ -683,6 +683,8 @@ namespace RPG.Dungeon
           }
         }
       }
+      surface.collectObjects = CollectObjects.Children;
+      surface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
       surface.BuildNavMesh();
     }
 
