@@ -66,6 +66,11 @@ namespace RPG.Dungeon
     float normalRoomProbability = 1;
     List<int> roomLookup = new List<int>();
 
+    private void Start()
+    {
+      StartGeneration();
+    }
+
     public void StartGeneration()
     {
       Initialize();
@@ -79,6 +84,8 @@ namespace RPG.Dungeon
 
       if (generateColumns) GenerateColumns();
 
+      GameObject player = GameObject.FindGameObjectWithTag("Player");
+      player.GetComponent<NavMeshAgent>().Warp(startRoom.GetCenterWorld() * tileSize);
     }
 
     private void Initialize()
@@ -751,6 +758,11 @@ namespace RPG.Dungeon
     // DEBUG FUNCTIONALITY
     //---------------------------------------------------------------------------------------------------
 
+    private void OnDrawGizmos()
+    {
+      DrawPath();
+      DrawDungeonTree();
+    }
     public void Reset()
     {
       eventRooms = new List<Room>();
@@ -812,11 +824,6 @@ namespace RPG.Dungeon
       }
       return count;
     }
-
-    // public int CountPathExits()
-    // {
-
-    // }
 
     public void IncreaseConnectionDegree()
     {
