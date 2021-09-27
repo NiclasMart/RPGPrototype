@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinimapCamera : MonoBehaviour
 {
   [SerializeField] GameObject player;
-  [SerializeField] Vector2 distanceBounds;
+  [SerializeField] Vector2 scrollBounds, movementBounds;
   [SerializeField] float stdMinimapDistance;
 
   Camera cam;
@@ -29,7 +29,7 @@ public class MinimapCamera : MonoBehaviour
   {
     float camSize = cam.orthographicSize;
     camSize += delta;
-    camSize = Mathf.Min(distanceBounds.y, Mathf.Max(distanceBounds.x, camSize));
+    camSize = Mathf.Min(scrollBounds.y, Mathf.Max(scrollBounds.x, camSize));
     cam.orthographicSize = camSize;
     currentMapDistance = camSize;
   }
@@ -42,7 +42,10 @@ public class MinimapCamera : MonoBehaviour
 
   public void UpdateCameraPosition(Vector3 direction)
   {
-    cam.transform.position += direction;
+    Vector3 camPos = cam.transform.position;
+    camPos.x = Math.Max(movementBounds.x, Mathf.Min(movementBounds.y, camPos.x + direction.x));
+    camPos.z = Math.Max(movementBounds.x, Mathf.Min(movementBounds.y, camPos.z + direction.z));
+    cam.transform.position = camPos;
     currentLargeMapCamPosition = cam.transform.position;
   }
 

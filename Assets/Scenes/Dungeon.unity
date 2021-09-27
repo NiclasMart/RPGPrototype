@@ -158,7 +158,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 200, y: -200}
-  m_SizeDelta: {x: 400, y: 400}
+  m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19774061
 MonoBehaviour:
@@ -1224,7 +1224,7 @@ GameObject:
   - component: {fileID: 1089125176}
   - component: {fileID: 1089125177}
   m_Layer: 12
-  m_Name: CFXR Demo Btn Arrow
+  m_Name: MapPlayerArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1718,7 +1718,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 200
+  orthographic size: 300
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1822,7 +1822,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 898545087}
-  distanceBounds: {x: 10, y: 100}
+  scrollBounds: {x: 10, y: 80}
+  movementBounds: {x: 0, y: 400}
   stdMinimapDistance: 17
 --- !u!1001 &1481971934
 PrefabInstance:
@@ -3228,7 +3229,7 @@ GameObject:
   - component: {fileID: 2105964154}
   - component: {fileID: 2105964155}
   m_Layer: 13
-  m_Name: Circle
+  m_Name: AreaOfVision_Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

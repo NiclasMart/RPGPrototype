@@ -55,6 +55,7 @@ namespace RPG.Display
         largemap.SetActive(!largeMapIsActive);
         largeMapIsActive = !largeMapIsActive;
         cam.SwitchCamera(largeMapIsActive);
+        if (largeMapIsActive) cam.CenterCamera();
       }
     }
   }
