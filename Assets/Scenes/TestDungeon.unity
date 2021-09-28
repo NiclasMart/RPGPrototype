@@ -4310,11 +4310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8036915302850426212, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: defaultWeapon
@@ -5678,6 +5678,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5715638290212016659, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+      propertyPath: outlineMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6193364346553392840, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5724,11 +5728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8036915302850426212, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: defaultWeapon
@@ -6812,7 +6816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &862201415
 Transform:
   m_ObjectHideFlags: 0
@@ -14007,11 +14011,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6743658965228430068, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8036915302850426212, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: defaultWeapon

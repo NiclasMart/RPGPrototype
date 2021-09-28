@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -7,7 +6,7 @@ namespace RPG.Dungeon
 {
   public class Generator : MonoBehaviour
   {
-    [SerializeField] int tileSize;  //how big the prefab tiles are
+    public int tileSize;  //how big the prefab tiles are
 
     // parameter for dungeon size
     [Header("Dungeon Parameters")]
@@ -57,14 +56,17 @@ namespace RPG.Dungeon
 
 
     BitMatrix roomMatrix, pathMatrix;
-    Graph roomsGraph;
+    public Graph roomsGraph;
     List<Path> paths = new List<Path>();
     List<Room> eventRooms = new List<Room>();
-    Room startRoom, endRoom;
+    public Room startRoom, endRoom;
     int currentRoomCount = 1, iterationCount = 0;
     Vector2Int shapeArea;
     float normalRoomProbability = 1;
     List<int> roomLookup = new List<int>();
+
+    public delegate void GenerationEvent();
+    public GenerationEvent finishedGeneration;
 
     private void Start()
     {
@@ -79,11 +81,15 @@ namespace RPG.Dungeon
       StartIterativeImproving();
       GenerateAdditionalConnections();
       GeneratePath();
-      //GenerateSpecialRooms();
       PlaceTiles();
+      //GenerateSpecialRooms();
+      //if (generateColumns) GenerateColumns();
 
-      if (generateColumns) GenerateColumns();
+      //CalculateDebugInformation();
+      Instantiate(debugCube, endRoom.GetCenterWorld() * tileSize, Quaternion.identity);
 
+      finishedGeneration?.Invoke();
+      //spawn player
       GameObject player = GameObject.FindGameObjectWithTag("Player");
       player.GetComponent<NavMeshAgent>().Warp(startRoom.GetCenterWorld() * tileSize);
     }

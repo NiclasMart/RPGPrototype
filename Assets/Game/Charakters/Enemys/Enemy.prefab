@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe61a0e5691c5f43be328695af962bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 0
+  visionRange: 5
   chaseSpeed: 4
   collisionLayer: 7
 --- !u!114 &5715638290212016659
