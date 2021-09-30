@@ -11,6 +11,7 @@ namespace RPG.SceneManagement
   public class DungeonEntrance : MonoBehaviour
   {
     [SerializeField] StageSelector selector;
+    [SerializeField] DungeonGenerationData data;
 
     private void Awake()
     {
@@ -20,7 +21,13 @@ namespace RPG.SceneManagement
     void EnterDungeon(int stage)
     {
       Debug.Log("Dungeon Stage: " + stage);
+      PrepareDungeonData(stage);
       StartCoroutine(Teleport());
+    }
+
+    private void PrepareDungeonData(int stage)
+    {
+      data.currentStage = stage;
     }
 
     IEnumerator Teleport()

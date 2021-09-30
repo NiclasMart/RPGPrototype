@@ -6630,6 +6630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selector: {fileID: 471320526}
+  data: {fileID: 11400000, guid: 7457162848e8a034090b06e9ca6420b2, type: 2}
 --- !u!114 &267849634
 MonoBehaviour:
   m_ObjectHideFlags: 0
