@@ -22,6 +22,7 @@ namespace RPG.Interaction
 
     private void Update()
     {
+
       if (interactionTarget == null) return;
 
       if (TargetInRange())

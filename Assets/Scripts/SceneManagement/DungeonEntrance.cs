@@ -4,16 +4,22 @@ using RPG.Dungeon;
 using UnityEngine;
 using System.Collections;
 using System;
+using RPG.Display;
 
 namespace RPG.SceneManagement
 {
-  public class DungeonEntrance : Interactable
+  public class DungeonEntrance : MonoBehaviour
   {
-    public override void Interact(GameObject interacter)
+    [SerializeField] StageSelector selector;
+
+    private void Awake()
     {
-      //play door animation
-      //show selection UI
-      //teltport to selected dungeon level
+      selector.enterDungeon += EnterDungeon;
+    }
+
+    void EnterDungeon(int stage)
+    {
+      Debug.Log("Dungeon Stage: " + stage);
       StartCoroutine(Teleport());
     }
 
@@ -21,8 +27,6 @@ namespace RPG.SceneManagement
     {
       DontDestroyOnLoad(transform.parent.gameObject);
       yield return SceneManager.LoadSceneAsync("Dungeon");
-
-
 
       Destroy(transform.parent.gameObject);
     }

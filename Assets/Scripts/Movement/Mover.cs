@@ -64,7 +64,6 @@ namespace RPG.Movement
 
     public void UpdateMovementSpeed(CharacterStats stats)
     {
-      Debug.Log("Update Movementspeed: " + stats.GetStat(Stat.MovementSpeed));
       SetMovementSpeed(stats.GetStat(Stat.MovementSpeed));
     }
 
