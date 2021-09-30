@@ -19,7 +19,6 @@ namespace RPG.Dungeon
 
     void Spawn()
     {
-      Debug.Log("EnemySpawn called");
       ShuffleList(dungeonGenerator.roomsGraph.nodes);
       int roomAmount = Mathf.FloorToInt(dungeonGenerator.roomsGraph.nodes.Count * enemyDensity);
 
