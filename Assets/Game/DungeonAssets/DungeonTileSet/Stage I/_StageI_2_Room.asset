@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b99ce8fc5ab529d48ae43e3b77f74b38, type: 3}
-  m_Name: _StandardRoom
+  m_Name: _StageI_2_Room
   m_EditorClassIdentifier: 
   floorTiles:
   - tile: {fileID: 7150963767270156942, guid: 2c78dc7e9e40cb14c80419225661b794, type: 3}
     frequency: 1
+  - tile: {fileID: 3665513839016791348, guid: d7523de5a596f4d469432a166b2404fd, type: 3}
+    frequency: 2
   wallTiles:
-  - tile: {fileID: 1756471130709502894, guid: 19d3eb28ea6796c4eb21c6358b8d854c, type: 3}
+  - tile: {fileID: 5010581509043474621, guid: 8c4c12851e467394b833ce8f0e430a6c, type: 3}
     frequency: 1
   ceilingTiles: []
