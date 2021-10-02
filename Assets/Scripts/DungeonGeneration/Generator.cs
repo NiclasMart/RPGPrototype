@@ -11,7 +11,7 @@ namespace RPG.Dungeon
     // parameter for dungeon size
     [Header("Dungeon Parameters")]
     [SerializeField, Min(1)] int dungeonSize = 100;
-    [SerializeField, Min(1)] int roomCount = 50;
+    [SerializeField, Min(1)] Vector2Int roomCount;
     [SerializeField] int pathWidth = 2;
     [SerializeField, Range(0, 1)] float compressFactor = 0.1f;
     [SerializeField] bool allowPathCrossings = true;
@@ -96,6 +96,7 @@ namespace RPG.Dungeon
 
     private void Initialize()
     {
+      roomCount.x = Random.Range(roomCount.x, roomCount.y + 1);
       roomMatrix = new BitMatrix(dungeonSize);
       pathMatrix = new BitMatrix(dungeonSize);
       roomsGraph = new Graph();
@@ -198,7 +199,7 @@ namespace RPG.Dungeon
     {
       for (int direction = 0; direction < 4; direction++)
       {
-        if (currentRoomCount >= roomCount) continue;
+        if (currentRoomCount >= roomCount.x) continue;
 
         //generate room with path in several attempts
         for (int attempt = 0; attempt < 1 + (compressFactor + 0.005f) * 10; attempt++)
@@ -463,7 +464,7 @@ namespace RPG.Dungeon
         for (int j = room.position.y; j < room.position.y + room.GetSize().y; j++)
         {
           if (i <= shapeArea.x || i >= shapeArea.y - 1 || j <= 0 || j >= roomMatrix.size - 1) continue;
-          if (room is BluePrintRoom && !(room as BluePrintRoom).GetBlueprintPixel(i - room.position.x, j - room.position.y)) continue;
+          //if (room is BluePrintRoom && !(room as BluePrintRoom).GetBlueprintPixel(i - room.position.x, j - room.position.y)) continue;
           if (GetDungeonShapeBlueprintPixel(i, j)) return false;
 
           if (!PositionIsFree(i, j)) return false;
@@ -502,7 +503,7 @@ namespace RPG.Dungeon
 
     private void StartIterativeImproving()
     {
-      if (roomsGraph.Count >= roomCount) return;
+      if (roomsGraph.Count >= roomCount.x) return;
       for (int attempts = 0; attempts < (compressFactor + 0.005f) * 10; attempts++)
       {
         //iterate over each room and try to generate additional rooms
@@ -510,7 +511,7 @@ namespace RPG.Dungeon
         {
           Room startRoom = roomsGraph[i];
           GenerateRecursivly(startRoom);
-          if (roomsGraph.Count >= roomCount) return;
+          if (roomsGraph.Count >= roomCount.x) return;
         }
       }
     }

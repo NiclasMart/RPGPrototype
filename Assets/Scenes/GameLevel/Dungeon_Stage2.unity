@@ -232,35 +232,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: 50
+  roomCount: {x: 23, y: 28}
   pathWidth: 2
-  compressFactor: 0.7
+  compressFactor: 0.305
   allowPathCrossings: 1
-  connectionDegree: 1
+  connectionDegree: 0.722
   shape: 0
   dungeonShapeBlueprint: {fileID: 0}
   roomDimensionX: {x: 5, y: 10}
   roomDimensionY: {x: 5, y: 10}
-  roomDistance: {x: 2, y: 15}
+  roomDistance: {x: 5, y: 15}
   useNormalRooms: 1
   normalRoomFrequency: 1
   useBlueprintRooms: 1
   roomBlueprints:
-  - roomBluePrint: {fileID: 2800000, guid: 409a0657a950dde49b86e66eb2b03013, type: 3}
-    frequency: 1
-    randomRotaion: 1
   - roomBluePrint: {fileID: 2800000, guid: 05bb3bf1f1bcd0e4ba69cfc49ad1429d, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 4c99b8e30f3c7af4eb512edca7602e81, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 93dfcbff485ae694eb7ee963338e75c8, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 72b4702bb7c99554cbe11724bf1bcfe7, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 4c2ea6514d422f44d8043f3389ec9927, type: 3}
     frequency: 1
     randomRotaion: 1
   amount: 5
   minimalDistanceFromStartRoom: 3
-  startRoomPosition: 2
+  startRoomPosition: 1
   endRoomPosition: 2
   minPathLength: 8
   maxPathLength: 10
@@ -339,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: 50
+  roomCount: {x: 0, y: 0}
   pathWidth: 2
   compressFactor: 0.7
   allowPathCrossings: 1
@@ -2077,7 +2074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.788453
+      value: 0.78845304
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2085,11 +2082,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000020546157
+      value: -0.00000000652274
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090549452648, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000016028652
+      value: 0.0000000050885776
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446137, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_ClearFlags
@@ -2097,15 +2094,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446137, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BackGroundColor.b
-      value: 0
+      value: 0.07698468
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446137, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BackGroundColor.g
-      value: 0
+      value: 0.07698468
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446137, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BackGroundColor.r
-      value: 0
+      value: 0.09433961
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446137, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -2125,7 +2122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.788453
+      value: 0.78845304
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2133,11 +2130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000020546157
+      value: -0.00000000652274
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090790446142, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000016028652
+      value: 0.0000000050885776
       objectReference: {fileID: 0}
     - target: {fileID: 3485343090866779288, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_Name
