@@ -16,7 +16,7 @@ MonoBehaviour:
   - tile: {fileID: 7150963767270156942, guid: 2c78dc7e9e40cb14c80419225661b794, type: 3}
     frequency: 1
   wallTiles:
-  - tile: {fileID: 5010581509043474621, guid: 8c4c12851e467394b833ce8f0e430a6c, type: 3}
+  - tile: {fileID: 1756471130709502894, guid: 19d3eb28ea6796c4eb21c6358b8d854c, type: 3}
     frequency: 1
   ceilingTiles:
   - tile: {fileID: 916917378494744782, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}

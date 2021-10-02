@@ -660,7 +660,7 @@ namespace RPG.Dungeon
     //iterates over filled matrix and places tiles accordingly into the world
     public void PlaceTiles()
     {
-      BitMatrix combinedMatrix = roomMatrix + pathMatrix;
+      combinedMatrix = roomMatrix + pathMatrix;
       parent = new GameObject("Dungeon");
       parent.layer = LayerMask.NameToLayer("Dungeon");
       NavMeshSurface surface = parent.AddComponent<NavMeshSurface>();
@@ -691,11 +691,16 @@ namespace RPG.Dungeon
         {
           for (int j = path.position.y; j < path.position.y + path.GetSize().y; j++)
           {
+            if (roomMatrix.GetValue(i, j)) continue;
+            if (!pathMatrix.GetValue(i, j)) continue;
+
             CheckForWallPlacement(i, j, tileSet);
 
             GameObject floorTile = tileSet.GetFloorTile();
             GameObject instance = Instantiate(floorTile, new Vector3(j * tileSize, 0, i * tileSize), Quaternion.identity, parent.transform);
             instance.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Dungeon");
+
+            pathMatrix.SetValue(i, j, false);
           }
         }
       }
@@ -704,21 +709,22 @@ namespace RPG.Dungeon
       surface.BuildNavMesh();
     }
 
+    BitMatrix combinedMatrix;
     void CheckForWallPlacement(int x, int y, TileSet tiles)
     {
-      if (!roomMatrix.GetValue(x, y - 1))
+      if (!combinedMatrix.GetValue(x, y - 1))
       {
         PlaceWall(x * tileSize, y * tileSize - tileSize / 2f, x, y, tiles);
       }
-      if (!roomMatrix.GetValue(x - 1, y))
+      if (!combinedMatrix.GetValue(x - 1, y))
       {
         PlaceWall(x * tileSize - tileSize / 2f, y * tileSize, x, y, tiles);
       }
-      if (!roomMatrix.GetValue(x + 1, y))
+      if (!combinedMatrix.GetValue(x + 1, y))
       {
         PlaceWall(x * tileSize + tileSize / 2f, y * tileSize, x, y, tiles);
       }
-      if (!roomMatrix.GetValue(x, y + 1))
+      if (!combinedMatrix.GetValue(x, y + 1))
       {
         PlaceWall(x * tileSize, y * tileSize + tileSize / 2f, x, y, tiles);
       }

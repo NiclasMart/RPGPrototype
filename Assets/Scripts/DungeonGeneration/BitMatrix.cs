@@ -49,12 +49,17 @@ namespace RPG.Dungeon
     {
       if (a.size != b.size) throw new Exception("Adding two BitMatrices of diffeent sizes is not allowed!");
 
+      BitMatrix c = new BitMatrix(a.size);
+
       for (int i = 0; i < a.size; i++)
       {
-        a.data[i].Or(b.data[i]);
+        for (int j = 0; j < a.size; j++)
+        {
+          if (a.GetValue(i, j) || b.GetValue(i, j)) c.SetValue(i, j, true);
+        }
       }
-      return a;
-    }
 
+      return c;
+    }
   }
 }

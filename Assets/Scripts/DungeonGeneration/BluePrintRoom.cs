@@ -34,7 +34,7 @@ namespace RPG.Dungeon
     {
       y = GetSize().y - y - 1;
       (x, y) = TransformCoordinats(x, y, GetSize().x - 1, GetSize().y - 1);
-      return blueprint.GetPixel(x, y) == Color.black;
+      return blueprint.GetPixel(x, y) != Color.white;
     }
 
     private (int x, int y) TransformCoordinats(float x, float y, float sizeX, float sizeY)
