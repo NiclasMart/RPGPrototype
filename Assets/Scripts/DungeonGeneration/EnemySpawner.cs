@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +6,11 @@ namespace RPG.Dungeon
 {
   public class EnemySpawner : MonoBehaviour
   {
-    [SerializeField, Range(0, 1)] float enemyDensity = 0.6f;
-    [SerializeField] Vector2 groupSize;
+    [SerializeField] int totalEnemyAmount;
+    [SerializeField] Vector2Int enemyGroupSize;
     [SerializeField] GameObject enemy;
     Generator dungeonGenerator;
+
     private void Awake()
     {
       dungeonGenerator = GetComponent<Generator>();
@@ -20,28 +20,44 @@ namespace RPG.Dungeon
     void Spawn()
     {
       ShuffleList(dungeonGenerator.roomsGraph.nodes);
-      int roomAmount = Mathf.FloorToInt(dungeonGenerator.roomsGraph.nodes.Count * enemyDensity);
-
-      SpawnEnemyGroups(roomAmount);
+      SpawnEnemyGroups();
     }
 
-    private void SpawnEnemyGroups(int roomAmount)
+    GameObject enemyHolder;
+    private void SpawnEnemyGroups()
     {
-      GameObject enemyHolder = new GameObject("Enemies");
-      for (int i = 0; i < roomAmount; i++)
+      enemyHolder = new GameObject("Enemies");
+      int currentlySpawnedEnemys = 0;
+      for (int i = 0; i < dungeonGenerator.roomsGraph.nodes.Count; i++)
       {
         Room room = dungeonGenerator.roomsGraph.nodes[i];
         if (room == dungeonGenerator.startRoom || room == dungeonGenerator.endRoom) continue;
-        GameObject go = Instantiate(enemy, room.GetCenterWorld() * dungeonGenerator.tileSize, Quaternion.identity, enemyHolder.transform);
-        StartCoroutine(TestEnableOutline(go));
+
+        int groupSize = Random.Range(enemyGroupSize.x, enemyGroupSize.y + 1);
+        currentlySpawnedEnemys += groupSize;
+
+        SpawnGroup(room, groupSize);
+        
+        if (currentlySpawnedEnemys >= totalEnemyAmount) return;
 
       }
     }
 
-    IEnumerator TestEnableOutline(GameObject go)
+    private void SpawnGroup(Room room, int groupSize)
     {
-      yield return new WaitForEndOfFrame();
-      go.GetComponent<Outline>().Initialize();
+      for (int i = 0; i < groupSize; i++)
+      {
+        bool validPosition = true;
+        int spawnOffsetY, spawnOffsetX;
+        do {
+           spawnOffsetX = Random.Range(0, room.size.x);
+           spawnOffsetY = Random.Range(0, room.size.y);
+          if (room is BluePrintRoom) validPosition = (room as BluePrintRoom).GetBlueprintPixel(spawnOffsetX, spawnOffsetY);
+        } while (!validPosition);
+
+        Vector3 spawnPos = new Vector3(room.position.y + spawnOffsetY, 0, room.position.x + spawnOffsetX) * dungeonGenerator.tileSize;
+        Instantiate(enemy, spawnPos, Quaternion.identity, enemyHolder.transform);
+      }
     }
 
     private static System.Random rng = new System.Random();
