@@ -33,7 +33,7 @@ namespace RPG.SceneManagement
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
-      yield return SceneManager.LoadSceneAsync("Dungeon");
+      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage);
 
       Destroy(transform.parent.gameObject);
     }
