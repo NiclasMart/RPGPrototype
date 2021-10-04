@@ -89,9 +89,6 @@ namespace RPG.Dungeon
       Instantiate(debugCube, endRoom.GetCenterWorld() * tileSize, Quaternion.identity);
 
       finishedGeneration?.Invoke();
-      //spawn player
-      GameObject player = GameObject.FindGameObjectWithTag("Player");
-      player.GetComponent<NavMeshAgent>().Warp(startRoom.GetCenterWorld() * tileSize);
     }
 
     private void Initialize()

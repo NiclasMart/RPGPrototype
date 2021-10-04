@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: {x: 20, y: 25}
+  roomCount: {x: 15, y: 20}
   pathWidth: 2
   compressFactor: 0.947
   allowPathCrossings: 0
@@ -296,9 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110a4085c4acab3409fa75193eebc7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalEnemyAmount: 50
-  enemyGroupSize: {x: 3, y: 5}
-  enemy: {fileID: 8453889284370974033, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+  totalEnemyAmount: 20
+  enemyGroupSize: {x: 1, y: 2}
+  stageData: {fileID: 11400000, guid: 7457162848e8a034090b06e9ca6420b2, type: 2}
 --- !u!224 &241254847 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224109161280853888, guid: d29ce1ad2cab14377a0825f14c647204, type: 3}
