@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d1fc4f2d53f904282544b7bf1312ae, type: 3}
   m_Name: DungeonData
   m_EditorClassIdentifier: 
-  currentStage: 1
+  currentStage: 2
+  currentDepth: 1
   stageData:
   - stageNumber: 1
     DungeonBlueprints: []

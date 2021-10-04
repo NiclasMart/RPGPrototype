@@ -57,5 +57,15 @@ namespace RPG.Dungeon
       return enemyList;
     }
 
+    public void CompletedCurrentDepthLevel()
+    {
+      if (currentDepth == 3)
+      {
+        currentStage++;
+        currentDepth = 1;
+      } 
+      else currentDepth++;
+    }
+
   }
 }

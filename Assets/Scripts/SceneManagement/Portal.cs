@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using RPG.Core;
+using RPG.Dungeon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,62 +9,54 @@ namespace RPG.SceneManagement
 {
   public class Portal : MonoBehaviour
   {
-    public int portalIndex;
-    [SerializeField] int connectedPortelIndex;
-    [SerializeField] string loadSceneName = "";
-    public Transform spawnPoint;
+    [SerializeField] float activationLightIntensifier;
+    [SerializeField] int teleportTime = 3;
+    [SerializeField] DungeonGenerationData dungeonData;
+    Light lightComponent;
+    float defaultLightRange;
+    bool teleportActive = false;
 
+    private void Awake()
+    {
+      lightComponent = GetComponentInChildren<Light>();
+      defaultLightRange = lightComponent.range;
+    }
     private void OnTriggerEnter(Collider other)
     {
-      if (other.CompareTag("Player"))
+      if (other.gameObject != PlayerInfo.GetPlayer() || teleportActive) return;
+
+      teleportActive = true;
+      StartCoroutine(Teleporting());
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+      if (other.gameObject != PlayerInfo.GetPlayer()) return;
+      lightComponent.range = defaultLightRange;
+      StopCoroutine(Teleporting());
+      teleportActive = false;
+    }
+
+    IEnumerator Teleporting()
+    {
+      float activeTime = 0;
+      while (activeTime < teleportTime)
       {
-        StartCoroutine(Teleport());
+        lightComponent.range += activationLightIntensifier;
+        yield return new WaitForSeconds(0.1f);
+        activeTime += 0.1f;
       }
+
+      yield return Teleport();
     }
 
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
-      yield return SceneManager.LoadSceneAsync(loadSceneName);
-
-      Portal conectedPortal = GetConectedPortal();
-      if (conectedPortal == null)
-      {
-        Debug.LogError("Can't find portal index within scene. Please try to ensure that all portal indicies are set up correctly!");
-        yield break; 
-      }
-      UpdatePlayerSpawn(conectedPortal);
+      dungeonData.CompletedCurrentDepthLevel();
+      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
 
       Destroy(transform.parent.gameObject);
-    }
-
-    private void UpdatePlayerSpawn(Portal portal)
-    {
-      GameObject player = GameObject.FindGameObjectWithTag("Player");
-      player.transform.position = portal.spawnPoint.position;
-      player.transform.rotation = portal.spawnPoint.rotation;
-    }
-
-    private Portal GetConectedPortal()
-    {
-      Portal connectedPortal = null;
-      PortalManager manager = GetNewScenePortalManager();
-
-      if (manager != null) connectedPortal = manager.GetPortal(connectedPortelIndex);
-
-      return connectedPortal;
-    }
-
-    private PortalManager GetNewScenePortalManager()
-    {
-      PortalManager[] managers = FindObjectsOfType<PortalManager>();
-      foreach (PortalManager manager in managers)
-      {
-        if (manager.gameObject == transform.parent.gameObject) continue;
-
-        return manager;
-      }
-      return null;
     }
   }
 }
