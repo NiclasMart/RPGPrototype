@@ -17,7 +17,7 @@ namespace RPG.Combat
 
     public override void WeaponAction(Health target, GameObject source, LayerMask layer, float damage)
     {
-      source.GetComponent<Mover>().AdjustDirection(target.transform.position);
+      //source.GetComponent<Mover>().AdjustDirection(target.transform.position);
       LaunchProjectile(source, layer, damage);
     }
 
