@@ -42,8 +42,11 @@ namespace RPG.Combat
       NavMeshAgent agent = GetComponent<NavMeshAgent>();
       agent.enabled = false;
 
-      equipedWeapon.hitArea.Toggle(true);
-      equipedWeapon.hitArea.AdjustDirection(transform.forward);
+      if (equipedWeapon.hitArea)
+      {
+        equipedWeapon.hitArea.Toggle(true);
+        equipedWeapon.hitArea.AdjustDirection(transform.forward);
+      }
 
       animator.speed = animationSpeed;
       animator.ResetTrigger("cancelAttack");
@@ -51,7 +54,7 @@ namespace RPG.Combat
 
       yield return new WaitForSeconds(equipedWeapon.baseItem.animationClip.length * (1 / animationSpeed));
       animator.speed = 1f;
-      equipedWeapon.hitArea.Toggle(false);
+      if (equipedWeapon.hitArea) equipedWeapon.hitArea.Toggle(false);
 
       agent.enabled = true;
 
@@ -76,7 +79,14 @@ namespace RPG.Combat
     //animation event (called from animator)
     void Shoot()
     {
-      Hit();
+      if (!target) return;
+
+      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>());
+
+      //if deleted change damage in weapon to private
+      Debug.Log("Enemy Dealt " + damage + " Damage. (Plain Weapon Damage: " + equipedWeapon.baseItem.damage);
+
+      equipedWeapon.WeaponAction(target, gameObject, collisionLayer, damage);
     }
 
     void FinishedAttack() { }

@@ -27,6 +27,6 @@ MonoBehaviour:
   weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 1, y: 1}
   weaponRange: 1
-  hitArea: {fileID: 4039246772879643832, guid: 6d070d20cdc422e4283bf6a17b514711, type: 3}
+  hitArea: {fileID: 6398649753869941678, guid: ae2a01a6ee06668489e8da797a7517eb, type: 3}
   damageType: {fileID: 0}
   isRightHanded: 1
