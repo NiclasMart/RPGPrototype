@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,17 +13,18 @@ namespace RPG.Dungeon
     [SerializeField] DungeonGenerationData stageData;
     Generator dungeonGenerator;
     List<GameObject> enemyList;
+    List<int> levelList;
 
     private void Awake()
     {
       dungeonGenerator = GetComponent<Generator>();
       dungeonGenerator.finishedGeneration += Spawn;
       enemyList = stageData.GetEnemyList();
+      levelList = stageData.GetLevelRange();
     }
 
     void Spawn()
     {
-      ShuffleList(dungeonGenerator.roomsGraph.nodes);
       SpawnPlayer();
       SpawnEnemyGroups();
     }
@@ -46,6 +48,8 @@ namespace RPG.Dungeon
     GameObject enemyHolder;
     private void SpawnEnemyGroups()
     {
+      ShuffleList(dungeonGenerator.roomsGraph.nodes);
+
       enemyHolder = new GameObject("Enemies");
       int currentlySpawnedEnemys = 0;
       for (int i = 0; i < dungeonGenerator.roomsGraph.nodes.Count; i++)
@@ -69,6 +73,7 @@ namespace RPG.Dungeon
       {
         Vector3 spawnPos = FindValidSpawnPosition(room);
         GameObject enemy = GetEnemyFromSpawnList();
+        enemy.GetComponent<CharacterStats>().SetLevel(levelList[Random.Range(0, levelList.Count)]);
         Instantiate(enemy, spawnPos, Quaternion.identity, enemyHolder.transform);
       }
     }

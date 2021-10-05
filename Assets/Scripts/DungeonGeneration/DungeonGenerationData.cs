@@ -31,18 +31,12 @@ namespace RPG.Dungeon
     public int currentDepth;
     [SerializeField] List<GeneratorParameters> stageData = new List<GeneratorParameters>();
 
+    float[] depthLevelMultiplicator = { 0.2f, 0.5f, 0.8f };
+
     public List<GameObject> GetEnemyList()
     {
-      //search for data within the list 
-      GeneratorParameters stageParameters = null;
-      foreach (var data in stageData)
-      {
-        if (data.stageNumber == currentStage)
-        {
-          stageParameters = data;
-          break;
-        }
-      }
+      if (currentStage == 0) currentStage = 1;
+      GeneratorParameters stageParameters = GetData();
 
       //construct enemy list based on the specified data
       List<GameObject> enemyList = new List<GameObject>();
@@ -57,14 +51,51 @@ namespace RPG.Dungeon
       return enemyList;
     }
 
+    public List<int> GetLevelRange()
+    {
+      List<int> levelSpan = new List<int>();
+      GeneratorParameters stageParameters = GetData();
+      int levelCount = stageParameters.levelRange.y - stageParameters.levelRange.x + 1;
+      for (int i = 0; i < levelCount; i++)
+      {
+        for (int j = 0; j < helpFunction(levelCount, i); j++)
+        {
+          levelSpan.Add(stageParameters.levelRange.x + i);
+          Debug.Log(stageParameters.levelRange.x + i);
+        }
+      }
+
+      return levelSpan;
+    }
+
+    private int helpFunction(int levelCount, int i)
+    {
+      float x = Mathf.InverseLerp(1, levelCount, i + 1);
+      float y = -25 * Mathf.Pow(x - depthLevelMultiplicator[currentDepth - 1], 2) + 10;
+      if (y <= 1) y = 2;
+      return Mathf.CeilToInt(y);
+    }
+
     public void CompletedCurrentDepthLevel()
     {
       if (currentDepth == 3)
       {
         currentStage++;
         currentDepth = 1;
-      } 
+      }
       else currentDepth++;
+    }
+
+    private GeneratorParameters GetData()
+    {
+      GeneratorParameters stageParameters = stageData[currentStage - 1];
+      if (stageParameters.stageNumber == currentStage) return stageParameters;
+
+      foreach (var data in stageData)
+      {
+        if (data.stageNumber == currentStage) return data;
+      }
+      return null;
     }
 
   }

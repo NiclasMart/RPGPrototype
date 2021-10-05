@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe61a0e5691c5f43be328695af962bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRange: 20
+  visionRange: 13
   chaseSpeed: 4.5
   collisionLayer: 7
 --- !u!114 &5715638290935827084
@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Name
-      value: Skelett_Normal
+      value: Skelett_Unarmed
       objectReference: {fileID: 0}
     - target: {fileID: 8312157637148517516, guid: 5f69deba1cd3b754da0d569eb63b6b9a, type: 3}
       propertyPath: m_Layer

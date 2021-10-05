@@ -31,6 +31,11 @@ namespace RPG.Stats
       return activeStats[stat];
     }
 
+    public void SetLevel(int level)
+    {
+      this.level = level;
+    }
+
 
     public void RecalculateStats(ModifyTable modifierTable)
     {
