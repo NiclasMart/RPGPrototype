@@ -1,3 +1,4 @@
+using RPG.Core;
 using UnityEngine;
 
 namespace RPG.Display
@@ -8,10 +9,26 @@ namespace RPG.Display
     [SerializeField] ResourceBar enemyLifeBar;
     [SerializeField] ValueDisplay enemyLevelDisplay;
 
+    PlayerCursor cursor;
     IDisplayable enemyHealth;
     IDisplayable enemyLevel;
-    private void Update() {
-      enemyLifeBar.UpdateUI(enemyHealth);
+
+    private void Start() 
+    {
+      cursor = PlayerInfo.GetPlayerCursor();
+    }
+      
+    private void Update() 
+    {
+      // if (cursor.Target != null)
+      // {
+      //  if (cursor.Target.GetGameObject().CompareTag("Enemy"))
+      //  {
+      //     enemyLifeBar.UpdateUI(enemyHealth);
+      //  }
+      // }
+      // else SetUpEnemyDisplay
+      
     }
 
     public void SetUpEnemyDisplay(IDisplayable health, IDisplayable level)
