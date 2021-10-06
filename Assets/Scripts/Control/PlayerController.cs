@@ -12,7 +12,6 @@ namespace RPG.Control
   public class PlayerController : MonoBehaviour
   {
     [SerializeField] int collisionLayer;
-    [SerializeField] EnemyHUD hudManager;
     Mover mover;
     PlayerFighter fighter;
     Interacter interacter;
@@ -99,7 +98,6 @@ namespace RPG.Control
       if (Input.GetMouseButton(0))
       {
         mover.StartMoveAction(movePosition);
-        hudManager.SetUpEnemyDisplay(null, null);
       }
       playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
       return true;

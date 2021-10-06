@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Display;
 using GameDevTV.Utils;
 using RPG.Items;
+using RPG.Combat;
 
 namespace RPG.Stats
 {
@@ -94,6 +95,8 @@ namespace RPG.Stats
         CharacterStats stats = GetComponent<CharacterStats>();
         playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level);
       }
+
+      instigator.GetComponent<SoulEnergy>()?.AddKill();
     }
 
     private void HandleDeath()

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace RPG.Dungeon
 {
-  [CreateAssetMenuAttribute(fileName = "DungeonData", menuName = "New DungeonData")]
+  [CreateAssetMenuAttribute(fileName = "DungeonData", menuName = "DungeonGeneration/New DungeonData")]
   public class DungeonGenerationData : ScriptableObject
   {
     [System.Serializable]

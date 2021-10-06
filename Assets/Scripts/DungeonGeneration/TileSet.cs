@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RPG.Dungeon
 {
 
-  [CreateAssetMenuAttribute(fileName = "newTileSet", menuName = "New Tile Set")]
+  [CreateAssetMenuAttribute(fileName = "newTileSet", menuName = "DungeonGeneration/New Tile Set")]
   public class TileSet : ScriptableObject
   {
     [SerializeField] List<Tile> floorTiles = new List<Tile>();
