@@ -57,6 +57,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3013015870523540367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344567361568208010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36d0735ff4793d4a82fe9a20e52e79f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageData: {fileID: 11400000, guid: 7457162848e8a034090b06e9ca6420b2, type: 2}
+  valueChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3233397508736140945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,21 +172,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3013015870523540367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2344567361568208010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e36d0735ff4793d4a82fe9a20e52e79f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valueChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6989325294484852301
 GameObject:
   m_ObjectHideFlags: 0

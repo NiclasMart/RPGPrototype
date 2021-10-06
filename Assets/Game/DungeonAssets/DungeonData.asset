@@ -24,6 +24,7 @@ MonoBehaviour:
     - enemy: {fileID: 5000065275458578920, guid: 737a3366f71da4e41be48d49540f6481, type: 3}
       frequency: 1
     levelRange: {x: 1, y: 2}
+    maxSoulEnergyKills: 45
   - stageNumber: 2
     DungeonBlueprints: []
     RoomBlueprints: []
@@ -35,43 +36,52 @@ MonoBehaviour:
     - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
       frequency: 1
     levelRange: {x: 3, y: 5}
+    maxSoulEnergyKills: 75
   - stageNumber: 3
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 4
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 5
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 6
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 7
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 8
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 9
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0
   - stageNumber: 10
     DungeonBlueprints: []
     RoomBlueprints: []
     enemyPool: []
     levelRange: {x: 0, y: 0}
+    maxSoulEnergyKills: 0

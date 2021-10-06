@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 using RPG.Display;
+using RPG.Core;
 
 namespace RPG.SceneManagement
 {

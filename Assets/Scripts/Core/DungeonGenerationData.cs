@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace RPG.Dungeon
+namespace RPG.Core
 {
   [CreateAssetMenuAttribute(fileName = "DungeonData", menuName = "DungeonGeneration/New DungeonData")]
   public class DungeonGenerationData : ScriptableObject
@@ -25,6 +25,7 @@ namespace RPG.Dungeon
       [Header("EnemyData")]
       public List<SpawnableEnemy> enemyPool = new List<SpawnableEnemy>();
       public Vector2Int levelRange;
+      public int maxSoulEnergyKills;
     }
 
     public int currentStage;
@@ -36,7 +37,7 @@ namespace RPG.Dungeon
     public List<GameObject> GetEnemyList()
     {
       if (currentStage == 0) currentStage = 1;
-      GeneratorParameters stageParameters = GetData();
+      GeneratorParameters stageParameters = GetCurrentStagesData();
 
       //construct enemy list based on the specified data
       List<GameObject> enemyList = new List<GameObject>();
@@ -54,7 +55,7 @@ namespace RPG.Dungeon
     public List<int> GetLevelRange()
     {
       List<int> levelSpan = new List<int>();
-      GeneratorParameters stageParameters = GetData();
+      GeneratorParameters stageParameters = GetCurrentStagesData();
       int levelCount = stageParameters.levelRange.y - stageParameters.levelRange.x + 1;
       for (int i = 0; i < levelCount; i++)
       {
@@ -68,12 +69,9 @@ namespace RPG.Dungeon
       return levelSpan;
     }
 
-    private int helpFunction(int levelCount, int i)
+    public float GetMaxSoulEnergyKills()
     {
-      float x = Mathf.InverseLerp(1, levelCount, i + 1);
-      float y = -25 * Mathf.Pow(x - depthLevelMultiplicator[currentDepth - 1], 2) + 10;
-      if (y <= 1) y = 2;
-      return Mathf.CeilToInt(y);
+      return GetCurrentStagesData().maxSoulEnergyKills;
     }
 
     public void CompletedCurrentDepthLevel()
@@ -86,7 +84,15 @@ namespace RPG.Dungeon
       else currentDepth++;
     }
 
-    private GeneratorParameters GetData()
+    private int helpFunction(int levelCount, int i)
+    {
+      float x = Mathf.InverseLerp(1, levelCount, i + 1);
+      float y = -25 * Mathf.Pow(x - depthLevelMultiplicator[currentDepth - 1], 2) + 10;
+      if (y <= 1) y = 2;
+      return Mathf.CeilToInt(y);
+    } 
+
+    private GeneratorParameters GetCurrentStagesData()
     {
       GeneratorParameters stageParameters = stageData[currentStage - 1];
       if (stageParameters.stageNumber == currentStage) return stageParameters;
