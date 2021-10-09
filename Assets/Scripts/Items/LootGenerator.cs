@@ -24,14 +24,48 @@ namespace RPG.Items
 
       itemPool.NoramlizeList();
       BuildDropProbabilityTable();
-
-
     }
 
-    public void DropLoot(Vector3 dropPosition)
+    public void DropLoot(Vector3 dropPosition, float soulEnergyLevel)
     {
-      List<Item> drops = GenerateLoot();
+      List<Item> drops = GenerateLoot(soulEnergyLevel);
       EjectLoot(drops, dropPosition);
+    }
+
+    private List<Item> GenerateLoot(float soulEnergyLevel)
+    {
+      List<Item> drops = new List<Item>();
+
+      if (maxDropAmount == 0) return drops;
+
+      float dropProb = dropChance * (1 + soulEnergyLevel);
+      for (int i = 0; i < maxDropAmount; i++)
+      {
+        if (Random.Range(0, 1f) >= dropProb) continue;
+
+        Item item = GenerateItem(soulEnergyLevel);
+        if (item != null) drops.Add(item);
+
+        dropProb -= (chanceReductionPerDrop * dropProb);
+      }
+      return drops;
+    }
+
+    private Item GenerateItem(float soulEnergyLevel)
+    {
+      float rand = Random.Range(0, 1f);
+
+      foreach (var drop in itemPool.items)
+      {
+        if (rand > drop.probability) continue;
+
+        Item newItem;
+        if (drop.item.modifiable) newItem = ModifyBaseItem(drop.item, soulEnergyLevel);
+        else newItem = drop.item.GenerateItem();
+
+        return newItem;
+      }
+      return null;
     }
 
     private void EjectLoot(List<Item> drops, Vector3 position)
@@ -42,42 +76,6 @@ namespace RPG.Items
         Pickup pickup = Instantiate(pickupPrefab, spawnPosition, Quaternion.identity);
         pickup.Spawn(drop);
       }
-    }
-
-    private List<Item> GenerateLoot()
-    {
-      List<Item> drops = new List<Item>();
-
-      if (maxDropAmount == 0) return drops;
-
-      float dropProb = dropChance;
-      for (int i = 0; i < maxDropAmount; i++)
-      {
-        if (Random.Range(0, 1f) >= dropProb) continue;
-
-        Item item = GenerateItem();
-        if (item != null) drops.Add(item);
-
-        dropProb -= (chanceReductionPerDrop * dropProb);
-      }
-      return drops;
-    }
-
-    private Item GenerateItem()
-    {
-      float rand = Random.Range(0, 1f);
-
-      foreach (var drop in itemPool.items)
-      {
-        if (rand > drop.probability) continue;
-
-        Item newItem;
-        if (drop.item.modifiable) newItem = ModifyBaseItem(drop.item);
-        else newItem = drop.item.GenerateItem();
-
-        return newItem;
-      }
-      return null;
     }
 
     float normalDropLimit, rareDropLimit, epicDropLimit, modifierProbability;
@@ -92,20 +90,20 @@ namespace RPG.Items
     }
 
 
-    private Item ModifyBaseItem(GenericItem baseItem)
+    private Item ModifyBaseItem(GenericItem baseItem, float soulEnergyLevel)
     {
       ModifiableItem item = baseItem.GenerateItem() as ModifiableItem;
       AddBaseModifiers(baseItem, item);
 
-      //SetRarity()
-      SetItemRarity(baseItem, item);
+      SetItemRarity(baseItem, item, soulEnergyLevel);
 
       return item;
     }
 
-    private void SetItemRarity(GenericItem baseItem, ModifiableItem item)
+    private void SetItemRarity(GenericItem baseItem, ModifiableItem item, float soulEnergyLevel)
     {
       float rand = Random.Range(0, 1f);
+      rand += Mathf.Lerp(0, 0.1f, soulEnergyLevel);
       //normal 
       if (rand < normalDropLimit)
       {

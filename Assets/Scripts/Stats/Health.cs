@@ -5,6 +5,7 @@ using RPG.Display;
 using GameDevTV.Utils;
 using RPG.Items;
 using RPG.Combat;
+using System;
 
 namespace RPG.Stats
 {
@@ -56,8 +57,15 @@ namespace RPG.Stats
       if (currentHealth.value == 0 && !isDead)
       {
         HandleDeath();
+        EmitLoot(instigator);
         EmitExperience(instigator);
       }
+    }
+
+    private void EmitLoot(GameObject instigator)
+    {
+      SoulEnergy energy = instigator.GetComponent<SoulEnergy>();
+      LootGenerator.instance.DropLoot(transform.position, energy.GetSoulEnergyLevel());
     }
 
     public void LevelUpHealth(CharacterStats stats)
@@ -103,7 +111,6 @@ namespace RPG.Stats
     {
       if (animator != null) animator.SetTrigger("die");
       GetComponent<ActionScheduler>().CancelCurrentAction();
-      LootGenerator.instance.DropLoot(transform.position);
       DisableComponents();
       isDead = true;
     }

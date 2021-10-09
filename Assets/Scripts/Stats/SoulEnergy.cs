@@ -25,7 +25,7 @@ namespace RPG.Stats
 
     public float GetSoulEnergyLevel()
     {
-      return Mathf.Min(1, (float)killsForMaxSoulEnergy / killAmount);
+      return Mathf.Min(1, (float)killAmount / killsForMaxSoulEnergy);
     }
 
     public float GetCurrentValue()
