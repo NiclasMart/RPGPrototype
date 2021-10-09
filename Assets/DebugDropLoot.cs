@@ -7,7 +7,7 @@ public class DebugDropLoot : MonoBehaviour
 {
   private void Start()
   {
-    GetComponent<LootGenerator>().DropLoot();
+    GetComponent<LootGenerator>().DropLoot(transform.position);
   }
 
 }

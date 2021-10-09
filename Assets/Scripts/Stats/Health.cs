@@ -103,7 +103,7 @@ namespace RPG.Stats
     {
       if (animator != null) animator.SetTrigger("die");
       GetComponent<ActionScheduler>().CancelCurrentAction();
-      GetComponent<LootGenerator>()?.DropLoot();
+      LootGenerator.instance.DropLoot(transform.position);
       DisableComponents();
       isDead = true;
     }

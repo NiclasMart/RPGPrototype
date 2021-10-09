@@ -7,58 +7,38 @@ namespace RPG.Items
   public class LootGenerator : MonoBehaviour
   {
     const float _dropSpread = 0.5f;
+    public static LootGenerator instance;
 
     [Header("Parameter")]
     [SerializeField, Range(0, 1f)] float dropChance = 0.3f;
     [SerializeField, Min(0)] int maxDropAmount = 1;
     [SerializeField, Range(0, 1)] float chanceReductionPerDrop = 0;
     [SerializeField] Pickup pickupPrefab;
-    [SerializeField] List<Drop> itemPool = new List<Drop>();
+    [SerializeField] ItemPool itemPool;
 
-    [System.Serializable]
-    class Drop
-    {
-      public GenericItem item;
-      public float probability;
-    }
 
     private void Awake()
     {
-      NoramlizeList();
+      if (instance != null) Destroy(instance.gameObject);
+      instance = this;
+
+      itemPool.NoramlizeList();
       BuildDropProbabilityTable();
+
+
     }
 
-    public void DropLoot()
+    public void DropLoot(Vector3 dropPosition)
     {
       List<Item> drops = GenerateLoot();
-      EjectLoot(drops);
+      EjectLoot(drops, dropPosition);
     }
 
-    private void NoramlizeList()
-    {
-      float totalProbability = 0;
-      foreach (var drop in itemPool)
-      {
-        totalProbability += drop.probability;
-      }
-
-      float cumulatedProbability = 0;
-      foreach (var drop in itemPool)
-      {
-        drop.probability /= totalProbability;
-        float normalizedProb = drop.probability;
-        drop.probability += cumulatedProbability;
-        cumulatedProbability += normalizedProb;
-      }
-
-      itemPool.Sort((x, y) => x.probability.CompareTo(y.probability));
-    }
-
-    private void EjectLoot(List<Item> drops)
+    private void EjectLoot(List<Item> drops, Vector3 position)
     {
       foreach (var drop in drops)
       {
-        Vector3 spawnPosition = LootSplitter.GetFreeGridPosition(transform.position);
+        Vector3 spawnPosition = LootSplitter.GetFreeGridPosition(position);
         Pickup pickup = Instantiate(pickupPrefab, spawnPosition, Quaternion.identity);
         pickup.Spawn(drop);
       }
@@ -87,7 +67,7 @@ namespace RPG.Items
     {
       float rand = Random.Range(0, 1f);
 
-      foreach (var drop in itemPool)
+      foreach (var drop in itemPool.items)
       {
         if (rand > drop.probability) continue;
 
