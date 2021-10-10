@@ -26,17 +26,19 @@ namespace RPG.SceneManagement
       if (other.gameObject != PlayerInfo.GetPlayer() || teleportActive) return;
 
       teleportActive = true;
-      StartCoroutine(Teleporting());
+      coroutine = StartCoroutine(Teleporting());
     }
 
     private void OnTriggerExit(Collider other)
     {
-      if (other.gameObject != PlayerInfo.GetPlayer()) return;
+      if (other.gameObject != PlayerInfo.GetPlayer() || !teleportActive) return;
+
       lightComponent.range = defaultLightRange;
-      StopCoroutine(Teleporting());
+      StopCoroutine(coroutine);
       teleportActive = false;
     }
 
+    Coroutine coroutine = null;
     IEnumerator Teleporting()
     {
       float activeTime = 0;
@@ -47,14 +49,16 @@ namespace RPG.SceneManagement
         activeTime += 0.1f;
       }
 
-      yield return Teleport();
+      if (teleportActive) yield return Teleport();
     }
 
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
+
+      if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
+      else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       dungeonData.CompletedCurrentDepthLevel();
-      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
 
       Destroy(transform.parent.gameObject);
     }
