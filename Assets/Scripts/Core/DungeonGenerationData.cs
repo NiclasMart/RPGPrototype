@@ -62,7 +62,6 @@ namespace RPG.Core
         for (int j = 0; j < helpFunction(levelCount, i); j++)
         {
           levelSpan.Add(stageParameters.levelRange.x + i);
-          Debug.Log(stageParameters.levelRange.x + i);
         }
       }
 

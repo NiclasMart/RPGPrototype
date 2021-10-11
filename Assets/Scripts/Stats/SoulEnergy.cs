@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using RPG.Display;
 using RPG.Core;
 using UnityEngine;
+using RPG.Saving;
 
 namespace RPG.Stats
 {
-  public class SoulEnergy : MonoBehaviour, IDisplayable
+  public class SoulEnergy : MonoBehaviour, IDisplayable, ISaveable
   {
     [SerializeField] DungeonGenerationData stageData;
     int killAmount = 0, killsForMaxSoulEnergy;
@@ -36,6 +37,16 @@ namespace RPG.Stats
     public float GetMaxValue()
     {
       return killsForMaxSoulEnergy; 
+    }
+
+    public object CaptureSaveData()
+    {
+      return killAmount;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      killAmount = (int)data;
     }
   }
 }

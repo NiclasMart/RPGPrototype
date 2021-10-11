@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using RPG.Core;
-using RPG.Dungeon;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -56,9 +56,11 @@ namespace RPG.SceneManagement
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
+      //FindObjectOfType<SavingSystem>().Save("PlayerData");
       if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
       else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       dungeonData.CompletedCurrentDepthLevel();
+      //FindObjectOfType<SavingSystem>().Load("PlayerData");
 
       Destroy(transform.parent.gameObject);
     }

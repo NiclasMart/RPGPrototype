@@ -1,9 +1,6 @@
-using RPG.Interaction;
 using UnityEngine.SceneManagement;
-using RPG.Dungeon;
 using UnityEngine;
 using System.Collections;
-using System;
 using RPG.Display;
 using RPG.Core;
 
