@@ -18,15 +18,11 @@ namespace RPG.Interaction
     Color defaultColor;
     ModifierDisplay modifierDisplay;
 
-
-    protected virtual void Awake()
+    public virtual void Initialize(Item item, Inventory inventory)
     {
       defaultColor = selectable.GetComponent<Image>().color;
       modifierDisplay = FindObjectOfType<ModifierDisplay>();
-    }
 
-    public void Initialize(Item item, Inventory inventory)
-    {
       this.item = item;
       this.inventory = inventory;
       SetIcon(item);

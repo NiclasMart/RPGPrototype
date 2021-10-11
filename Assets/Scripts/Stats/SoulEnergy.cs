@@ -13,7 +13,7 @@ namespace RPG.Stats
     int killAmount = 0, killsForMaxSoulEnergy;
     public ValueChangeEvent valueChange;
 
-    private void Awake() 
+    private void Awake()
     {
       killsForMaxSoulEnergy = (int)stageData.GetMaxSoulEnergyKills();
     }
@@ -36,7 +36,7 @@ namespace RPG.Stats
 
     public float GetMaxValue()
     {
-      return killsForMaxSoulEnergy; 
+      return killsForMaxSoulEnergy;
     }
 
     public object CaptureSaveData()
@@ -47,6 +47,7 @@ namespace RPG.Stats
     public void RestoreSaveData(object data)
     {
       killAmount = (int)data;
+      valueChange.Invoke(this);
     }
   }
 }

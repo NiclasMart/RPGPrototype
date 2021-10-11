@@ -7,9 +7,9 @@ namespace RPG.Interaction
   {
     GearChanger gearChanger;
 
-    protected override void Awake()
+    public override void Initialize(Item item, Inventory inventory)
     {
-      base.Awake();
+      base.Initialize(item, inventory);
       gearChanger = FindObjectOfType<GearChanger>();
     }
 

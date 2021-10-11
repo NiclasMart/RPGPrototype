@@ -15,12 +15,13 @@ namespace RPG.Interaction
     protected PlayerInventory playerInventory;
 
 
-    protected override void Awake()
+    public override void Initialize(Item item, Inventory inventory)
     {
-      base.Awake();
+      base.Initialize(item, inventory);
       borderDefaultColor = border.color;
       GetComponent<Button>().onClick.AddListener(Select);
       playerInventory = FindObjectOfType<PlayerInventory>();
+
     }
 
     public override void Select()

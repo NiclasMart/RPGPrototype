@@ -20,6 +20,8 @@ namespace RPG.SceneManagement
     {
       lightComponent = GetComponentInChildren<Light>();
       defaultLightRange = lightComponent.range;
+
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -56,11 +58,11 @@ namespace RPG.SceneManagement
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
-      //FindObjectOfType<SavingSystem>().Save("PlayerData");
+      FindObjectOfType<SavingSystem>().Save("PlayerData");
       if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
       else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       dungeonData.CompletedCurrentDepthLevel();
-      //FindObjectOfType<SavingSystem>().Load("PlayerData");
+      FindObjectOfType<SavingSystem>().Load("PlayerData");
 
       Destroy(transform.parent.gameObject);
     }
