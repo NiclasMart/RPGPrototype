@@ -58,11 +58,11 @@ namespace RPG.SceneManagement
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
-      FindObjectOfType<SavingSystem>().Save("PlayerData");
+      FindObjectOfType<SavingSystem>().Save("SceneTransitionData", SaveType.Transition);
       if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
       else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       dungeonData.CompletedCurrentDepthLevel();
-      FindObjectOfType<SavingSystem>().Load("PlayerData");
+      FindObjectOfType<SavingSystem>().Load("SceneTransitionData");
 
       Destroy(transform.parent.gameObject);
     }

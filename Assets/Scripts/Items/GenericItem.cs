@@ -5,10 +5,10 @@ using UnityEngine;
 namespace RPG.Items
 {
   [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
-  public class GenericItem : ScriptableObject
+  public abstract class GenericItem : ScriptableObject, ISerializationCallbackReceiver
   {
+    public string itemID = null;
     public string name;
-    public string baseResourcePath = "ItemSprites/";
     public Sprite icon;
     public GameObject itemObject;
     public float weight;
@@ -22,5 +22,38 @@ namespace RPG.Items
     {
       return new Item(this);
     }
+
+    static Dictionary<string, GenericItem> itemLookupCache;
+    public static GenericItem GetFromID(string itemID)
+    {
+      if (itemLookupCache == null)
+      {
+        itemLookupCache = new Dictionary<string, GenericItem>();
+        var itemList = Resources.LoadAll<GenericItem>("");
+        foreach (var item in itemList)
+        {
+          if (item.itemID == null) continue;
+          if (itemLookupCache.ContainsKey(item.itemID))
+          {
+            Debug.LogError(string.Format("Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
+            continue;
+          }
+
+          itemLookupCache[item.itemID] = item;
+        }
+      }
+
+      if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
+      return itemLookupCache[itemID];
+    }
+
+    void ISerializationCallbackReceiver.OnBeforeSerialize()
+    {
+      if (string.IsNullOrWhiteSpace(itemID))
+      {
+        itemID = System.Guid.NewGuid().ToString();
+      }
+    }
+    void ISerializationCallbackReceiver.OnAfterDeserialize() { }
   }
 }

@@ -1,5 +1,6 @@
 namespace RPG.Items
 {
+  [System.Serializable]
   public class ModifyTable
   {
     public float healthFlat, healthPercent;

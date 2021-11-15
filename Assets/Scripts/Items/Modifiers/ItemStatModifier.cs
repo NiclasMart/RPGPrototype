@@ -4,6 +4,7 @@ using UltEvents;
 
 namespace RPG.Items
 {
+  [System.Serializable]
   public enum Rank
   {
     Normal,
@@ -25,6 +26,6 @@ namespace RPG.Items
       return Random.Range(min, max + 1);
     }
 
-    public virtual void ModifyStat(ModifyTable stats, float value) {}
+    public virtual void ModifyStat(ModifyTable stats, float value) { }
   }
 }

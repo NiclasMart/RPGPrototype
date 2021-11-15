@@ -1,11 +1,12 @@
 using System;
 using GameDevTV.Utils;
 using RPG.Display;
+using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-  public class Experience : MonoBehaviour, IDisplayable
+  public class Experience : MonoBehaviour, IDisplayable, ISaveable
   {
     [SerializeField] float experienceMuliplier = 0.87f;
     [SerializeField] GameObject levelUpParticlePrefab;
@@ -74,6 +75,17 @@ namespace RPG.Stats
     public float GetMaxValue()
     {
       return maxExperiencePoints.value;
+    }
+
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return currentExperiencePoints;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      currentExperiencePoints = (float)data;
+      valueChange.Invoke(this);
     }
   }
 }

@@ -100,12 +100,14 @@ namespace RPG.Interaction
       capacityDisplay.text = value;
     }
 
-    public object CaptureSaveData()
+    public object CaptureSaveData(SaveType saveType)
     {
       List<object> saveData = new List<object>();
+      if (saveType != SaveType.Transition) return saveData;
+
       foreach (ItemSlot slot in itemSlots)
       {
-        //saveData.Add(slot.item.GetSaveData());
+        saveData.Add(slot.item.GetSaveData());
       }
       return saveData;
     }
@@ -116,7 +118,7 @@ namespace RPG.Interaction
 
       foreach (object obj in saveData)
       {
-
+        AddItem(Item.CreateItemFromData(obj));
       }
     }
   }

@@ -7,10 +7,10 @@ namespace RPG.Saving
 {
   public class SavingSystem : MonoBehaviour
   {
-    public void Save(string saveFile)
+    public void Save(string saveFile, SaveType saveType)
     {
       Dictionary<string, object> data = new Dictionary<string, object>();
-      CaptureSaveData(data);
+      CaptureSaveData(data, saveType);
       SaveFile(saveFile, data);
     }
 
@@ -52,11 +52,11 @@ namespace RPG.Saving
       }
     }
 
-    private void CaptureSaveData(Dictionary<string, object> data)
+    private void CaptureSaveData(Dictionary<string, object> data, SaveType saveType)
     {
       foreach (SaveableEntity entity in FindObjectsOfType<SaveableEntity>())
       {
-        data[entity.GUID] = entity.CaptureSaveData();
+        data[entity.GUID] = entity.CaptureSaveData(saveType);
       }
     }
 

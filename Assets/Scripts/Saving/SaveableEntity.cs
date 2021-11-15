@@ -11,12 +11,12 @@ namespace RPG.Saving
 
     public string GUID => uniqueIdentifier;
 
-    public object CaptureSaveData()
+    public object CaptureSaveData(SaveType saveType)
     {
       Dictionary<string, object> state = new Dictionary<string, object>();
       foreach (ISaveable saveable in GetComponents<ISaveable>())
       {
-        state[saveable.GetType().ToString()] = saveable.CaptureSaveData();
+        state[saveable.GetType().ToString()] = saveable.CaptureSaveData(saveType);
       }
       return state;
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RPG.Core;
 using UltEvents;
@@ -9,6 +10,7 @@ namespace RPG.Items
   {
     public class Modifier
     {
+      public string name;
       public float value;
       public string display;
       public Rank rarity;
@@ -16,6 +18,7 @@ namespace RPG.Items
 
       public Modifier(ItemStatModifier baseModifier)
       {
+        name = baseModifier.GetType().ToString();
         value = baseModifier.GetRandomValue();
         display = baseModifier.displayText;
         rarity = baseModifier.rank;
@@ -28,6 +31,32 @@ namespace RPG.Items
       }
     }
 
+    [Serializable]
+    public class SerializableModifier
+    {
+      public string name;
+      public float value;
+
+      public SerializableModifier(Modifier mod)
+      {
+        this.name = mod.name;
+        this.value = mod.value;
+      }
+
+      public Modifier ConvertToModifier()
+      {
+        ItemStatModifier genericMod = Resources.Load("Items/_Modifiers/" + name) as ItemStatModifier;
+        if (genericMod == null) return null;
+        Modifier mod = new Modifier(genericMod);
+        mod.value = value;
+        return mod;
+      }
+    }
+
+    public List<Modifier> modifiers = new List<Modifier>();
+
+    public ModifiableItem(GenericItem baseItem) : base(baseItem) { }
+
     public static Color GetRarityColor(Rank rarity)
     {
       switch (rarity)
@@ -39,12 +68,27 @@ namespace RPG.Items
       }
     }
 
-    public List<Modifier> modifiers = new List<Modifier>();
-    public ModifiableItem(GenericItem baseItem) : base(baseItem) { }
-
     public void AddModifier(ItemStatModifier newModifier)
     {
       modifiers.Add(new Modifier(newModifier));
+    }
+
+    public List<SerializableModifier> GetSerializableModifiers()
+    {
+      List<SerializableModifier> sMods = new List<SerializableModifier>();
+      foreach (var mod in modifiers)
+      {
+        sMods.Add(new SerializableModifier(mod));
+      }
+      return sMods;
+    }
+
+    public void DeserializeModifiers(List<SerializableModifier> sMods)
+    {
+      foreach (var smod in sMods)
+      {
+        modifiers.Add(smod.ConvertToModifier());
+      }
     }
 
     public virtual void GetStats(ModifyTable stats) { }

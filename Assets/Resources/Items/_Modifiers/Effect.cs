@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace RPG.Items
 {
+  [Serializable]
   public static class Effect
   {
     public static void AddFlatDamage(ModifyTable modifyTable, float value)

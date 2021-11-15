@@ -7,9 +7,9 @@ namespace RPG.Saving
     const string saveFileName = "testSave";
     SavingSystem saveSystem;
 
-    private void Awake() 
+    private void Awake()
     {
-      saveSystem = GetComponent<SavingSystem>();  
+      saveSystem = GetComponent<SavingSystem>();
     }
 
     private void Update()
@@ -25,7 +25,7 @@ namespace RPG.Saving
 
     private void SaveData()
     {
-      saveSystem.Save(saveFileName);
+      saveSystem.Save(saveFileName, SaveType.Always);
     }
   }
 }
