@@ -39,6 +39,12 @@ namespace RPG.Stats
       return killsForMaxSoulEnergy;
     }
 
+    public  void Reset() 
+    {
+      killAmount = 0;
+      valueChange.Invoke(this);
+    }
+
     public object CaptureSaveData(SaveType saveType)
     {
       return saveType == SaveType.Transition ? killAmount : 0;

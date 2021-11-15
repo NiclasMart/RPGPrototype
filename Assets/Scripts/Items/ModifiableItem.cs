@@ -18,7 +18,7 @@ namespace RPG.Items
 
       public Modifier(ItemStatModifier baseModifier)
       {
-        name = baseModifier.GetType().ToString();
+        name = baseModifier.name;
         value = baseModifier.GetRandomValue();
         display = baseModifier.displayText;
         rarity = baseModifier.rank;

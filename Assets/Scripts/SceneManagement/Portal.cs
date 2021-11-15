@@ -12,6 +12,7 @@ namespace RPG.SceneManagement
     [SerializeField] float activationLightIntensifier;
     [SerializeField] int teleportTime = 3;
     [SerializeField] DungeonGenerationData dungeonData;
+    [SerializeField] bool homeTeleporter = false;
     Light lightComponent;
     float defaultLightRange;
     bool teleportActive = false;
@@ -20,9 +21,8 @@ namespace RPG.SceneManagement
     {
       lightComponent = GetComponentInChildren<Light>();
       defaultLightRange = lightComponent.range;
-
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
       if (other.gameObject != PlayerInfo.GetPlayer() || teleportActive) return;
@@ -59,8 +59,12 @@ namespace RPG.SceneManagement
       DontDestroyOnLoad(transform.parent.gameObject);
 
       FindObjectOfType<SavingSystem>().Save("SceneTransitionData", SaveType.Transition);
-      if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
-      else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
+      if (homeTeleporter) yield return SceneManager.LoadSceneAsync("Village");
+      else
+      {
+        if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
+        else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
+      }
       dungeonData.CompletedCurrentDepthLevel();
       FindObjectOfType<SavingSystem>().Load("SceneTransitionData");
 

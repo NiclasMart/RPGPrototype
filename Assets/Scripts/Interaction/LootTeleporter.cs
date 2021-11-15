@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Items;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Interaction
 {
   public class LootTeleporter : Interactable
   {
-    [SerializeField] SimpleInventory connectedReciever;
+    [SerializeField] LootBank connectedBank;
     public override void Interact(GameObject interacter)
     {
       SimpleInventory playerInventory = interacter.GetComponent<Interacter>().inventory;
-      connectedReciever.DeleteAllItems();
-      connectedReciever.AddItems(playerInventory.GetItemList());
+      interacter.GetComponent<SoulEnergy>().Reset();
+      connectedBank.AddLoot(playerInventory.GetItemList());
       playerInventory.DeleteAllItems();
     }
   }

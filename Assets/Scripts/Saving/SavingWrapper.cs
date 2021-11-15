@@ -14,8 +14,8 @@ namespace RPG.Saving
 
     private void Update()
     {
-      if (Input.GetKeyDown(KeyCode.S)) SaveData();
-      if (Input.GetKeyDown(KeyCode.L)) LoadData();
+      // if (Input.GetKeyDown(KeyCode.S)) SaveData();
+      // if (Input.GetKeyDown(KeyCode.L)) LoadData();
     }
 
     private void LoadData()
