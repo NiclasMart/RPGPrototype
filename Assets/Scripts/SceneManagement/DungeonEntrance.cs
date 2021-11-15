@@ -3,8 +3,10 @@ using UnityEngine;
 using System.Collections;
 using RPG.Display;
 using RPG.Core;
+using RPG.Stats;
+using RPG.Saving;
 
-namespace RPG.SceneManagement
+namespace RPG.Interaction
 {
   public class DungeonEntrance : MonoBehaviour
   {
@@ -19,19 +21,25 @@ namespace RPG.SceneManagement
     void EnterDungeon(int stage)
     {
       Debug.Log("Dungeon Stage: " + stage);
-      PrepareDungeonData(stage);
+      PrepareTeleport(stage);
       StartCoroutine(Teleport());
     }
 
-    private void PrepareDungeonData(int stage)
+    private void PrepareTeleport(int stage)
     {
       data.currentStage = stage;
+      data.currentDepth = 1;
+
+      FindObjectOfType<SoulEnergy>().Reset();
     }
 
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
-      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage);
+
+      FindObjectOfType<SavingSystem>().Save("SceneTransitionData", SaveType.Transition);
+      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage); 
+      FindObjectOfType<SavingSystem>().Load("SceneTransitionData");
 
       Destroy(transform.parent.gameObject);
     }
