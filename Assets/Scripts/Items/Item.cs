@@ -7,7 +7,7 @@ namespace RPG.Items
   [Serializable]
   public class Item
   {
-    string itemID;
+    public string itemID;
     string name;
     public Rank rarity;
     public Sprite icon;

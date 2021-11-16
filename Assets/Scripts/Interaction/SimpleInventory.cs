@@ -36,6 +36,7 @@ namespace RPG.Interaction
 
     public void AddItem(Item item)
     {
+      Debug.Log(item.itemID);
       ItemSlot slot = Instantiate(itemSlot, list);
       slot.Initialize(item, this);
       itemSlots.Add(slot);

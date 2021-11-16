@@ -9,9 +9,16 @@ namespace RPG.Items
   {
     [SerializeField] List<Item> savedItems = new List<Item>();
 
+    public bool Empty => savedItems.Count == 0;
     public void AddLoot(List<Item> newItems)
     {
       savedItems.AddRange(newItems);
+    }
+    public List<Item> GetLoot()
+    {
+      List<Item> tmpList = savedItems;
+      savedItems = null;
+      return tmpList;
     }
   }
 }
