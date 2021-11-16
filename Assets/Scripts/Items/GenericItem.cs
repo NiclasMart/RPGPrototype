@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RPG.Items
 {
   [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
-  public abstract class GenericItem : ScriptableObject, ISerializationCallbackReceiver
+  public abstract class GenericItem : ScriptableObject
   {
     public string itemID = null;
     public string name;
@@ -47,13 +47,12 @@ namespace RPG.Items
       return itemLookupCache[itemID];
     }
 
-    void ISerializationCallbackReceiver.OnBeforeSerialize()
+    private void OnValidate() 
     {
       if (string.IsNullOrWhiteSpace(itemID))
       {
         itemID = System.Guid.NewGuid().ToString();
       }
     }
-    void ISerializationCallbackReceiver.OnAfterDeserialize() { }
   }
 }
