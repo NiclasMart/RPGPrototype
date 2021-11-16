@@ -85,7 +85,6 @@ namespace RPG.Stats
     public void RestoreSaveData(object data)
     {
       currentExperiencePoints = (float)data;
-      valueChange.Invoke(this);
     }
   }
 }

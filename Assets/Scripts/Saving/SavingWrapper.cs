@@ -20,12 +20,12 @@ namespace RPG.Saving
 
     private void LoadData()
     {
-      saveSystem.Load(saveFileName);
+     // saveSystem.Load(saveFileName);
     }
 
     private void SaveData()
     {
-      saveSystem.Save(saveFileName, SaveType.Always);
+      //saveSystem.Save(saveFileName, SaveType.Always);
     }
   }
 }

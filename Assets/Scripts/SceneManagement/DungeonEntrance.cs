@@ -37,9 +37,8 @@ namespace RPG.Interaction
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
-      FindObjectOfType<SavingSystem>().Save("SceneTransitionData", SaveType.Transition);
-      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage); 
-      FindObjectOfType<SavingSystem>().Load("SceneTransitionData");
+      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
+      yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage);
 
       Destroy(transform.parent.gameObject);
     }

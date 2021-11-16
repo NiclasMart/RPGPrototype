@@ -8,7 +8,7 @@ namespace RPG.Items
   public class Item
   {
     public string itemID;
-    string name;
+    public string name;
     public Rank rarity;
     public Sprite icon;
     public GameObject itemObject;

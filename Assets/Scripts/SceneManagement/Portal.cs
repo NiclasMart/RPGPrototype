@@ -58,7 +58,7 @@ namespace RPG.SceneManagement
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
-      FindObjectOfType<SavingSystem>().Save("SceneTransitionData", SaveType.Transition);
+      FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
       if (homeTeleporter) yield return SceneManager.LoadSceneAsync("Village");
       else
       {
@@ -66,7 +66,7 @@ namespace RPG.SceneManagement
         else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       }
       dungeonData.CompletedCurrentDepthLevel();
-      FindObjectOfType<SavingSystem>().Load("SceneTransitionData");
+      FindObjectOfType<SavingSystem>().Load("CompleteData");
 
       Destroy(transform.parent.gameObject);
     }

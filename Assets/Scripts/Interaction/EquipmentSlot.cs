@@ -28,14 +28,14 @@ namespace RPG.Interaction
     {
       inventory.SelectSlot(this);
       border.color = selectionColor;
-      connectedInventory.gameObject.SetActive(true);
+      connectedInventory.transform.GetChild(0).gameObject.SetActive(true);
       connectedInventory.onSecondClick += EquipItem;
     }
 
     public override void Deselect()
     {
       border.color = borderDefaultColor;
-      connectedInventory.gameObject.SetActive(false);
+      connectedInventory.transform.GetChild(0).gameObject.SetActive(false);
       connectedInventory.onSecondClick -= EquipItem;
     }
 

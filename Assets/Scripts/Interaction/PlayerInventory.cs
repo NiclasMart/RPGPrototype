@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Items;
+using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace RPG.Interaction
     private void Awake()
     {
       InitializeEquipmentSlots();
+      LoadSaveData();
+      HideAllInventorys();
     }
 
     public void AddItem(Item item)
@@ -68,6 +71,11 @@ namespace RPG.Interaction
       }
     }
 
+    private void LoadSaveData()
+    {
+      FindObjectOfType<SavingSystem>().Load("PlayerData");
+    }
+
     private void InitializeEquipmentSlots()
     {
       foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
@@ -76,7 +84,7 @@ namespace RPG.Interaction
         if (!equipmentDictionary.ContainsKey(slot.equipmentType))
         {
           equipmentDictionary.Add(slot.equipmentType, slot);
-          InitializeInventory(slot.connectedInventory);
+          slot.connectedInventory.InitializeColorParameters();
         }
 
         //initialize slots
@@ -89,10 +97,12 @@ namespace RPG.Interaction
       else RecalculateModifiers();
     }
 
-    private static void InitializeInventory(Inventory inventory)
+    private void HideAllInventorys()
     {
-      inventory.InitializeColorParameters();
-      inventory.gameObject.SetActive(false);
+      foreach (var slot in equipmentDictionary.Values)
+      {
+        slot.connectedInventory.transform.GetChild(0).gameObject.SetActive(false);
+      }
     }
   }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
+  itemID: affeec99-0918-4846-b35d-983d1385b03c
   name: War-Hammer
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: 2fa066f3d3017294db55d66ba056afc6, type: 3}
   itemObject: {fileID: 6032763338291004813, guid: 7998e5016618e384aa54b66da389a356, type: 3}
   weight: 18

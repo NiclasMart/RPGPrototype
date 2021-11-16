@@ -16,7 +16,8 @@ namespace RPG.Saving
       Dictionary<string, object> state = new Dictionary<string, object>();
       foreach (ISaveable saveable in GetComponents<ISaveable>())
       {
-        state[saveable.GetType().ToString()] = saveable.CaptureSaveData(saveType);
+        object data = saveable.CaptureSaveData(saveType);
+        if (data != null) state[saveable.GetType().ToString()] = data;
       }
       return state;
     }

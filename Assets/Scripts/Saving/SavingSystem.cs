@@ -54,7 +54,7 @@ namespace RPG.Saving
 
     private void CaptureSaveData(Dictionary<string, object> data, SaveType saveType)
     {
-      foreach (SaveableEntity entity in FindObjectsOfType<SaveableEntity>())
+      foreach (SaveableEntity entity in Object.FindObjectsOfType<SaveableEntity>(true))
       {
         data[entity.GUID] = entity.CaptureSaveData(saveType);
       }
@@ -62,7 +62,7 @@ namespace RPG.Saving
 
     private void RestoreSaveData(Dictionary<string, object> data)
     {
-      foreach (SaveableEntity entity in FindObjectsOfType<SaveableEntity>())
+      foreach (SaveableEntity entity in Object.FindObjectsOfType<SaveableEntity>(true))
       {
         if (!data.ContainsKey(entity.GUID)) continue;
         entity.RestoreSaveData(data[entity.GUID]);

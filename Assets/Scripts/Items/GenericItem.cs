@@ -7,7 +7,7 @@ namespace RPG.Items
   [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
   public abstract class GenericItem : ScriptableObject
   {
-    public string itemID = null;
+    [ScriptableObjectId] public string itemID = null;
     public string name;
     public Sprite icon;
     public GameObject itemObject;
@@ -45,14 +45,6 @@ namespace RPG.Items
 
       if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
       return itemLookupCache[itemID];
-    }
-
-    private void OnValidate() 
-    {
-      if (string.IsNullOrWhiteSpace(itemID))
-      {
-        itemID = System.Guid.NewGuid().ToString();
-      }
     }
   }
 }

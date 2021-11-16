@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad299c0a559bdc41908be9065b1cb90, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  itemID: f0e93f54-faf1-4cdf-bc75-20f7efefb062
   name: Bow
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: f2bc388aefa15764d95c287ab58d1a94, type: 3}
   itemObject: {fileID: 0}
   weight: 20
@@ -24,6 +24,7 @@ MonoBehaviour:
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: 24d693751e9fd0b42ba8f9595d8b5f5e, type: 3}
   weaponDamage: {x: 15, y: 17}
+  weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 1.8, y: 2.1}
   weaponRange: 5
   hitArea: {fileID: 0}

@@ -11,6 +11,7 @@ namespace RPG.Interaction
 {
   public class SimpleInventory : Inventory, ISaveable
   {
+    [SerializeField] SaveType saveRestriction;
     [SerializeField] float capacity = 100f;
 
     [Header("UI Specifications")]
@@ -36,7 +37,7 @@ namespace RPG.Interaction
 
     public void AddItem(Item item)
     {
-      Debug.Log(item.itemID);
+      Debug.Log(item.itemID + " " + item.name);
       ItemSlot slot = Instantiate(itemSlot, list);
       slot.Initialize(item, this);
       itemSlots.Add(slot);
@@ -104,7 +105,7 @@ namespace RPG.Interaction
     public object CaptureSaveData(SaveType saveType)
     {
       List<object> saveData = new List<object>();
-      if (saveType != SaveType.Transition) return saveData;
+      if (saveType != SaveType.All && saveType != saveRestriction) return null;
 
       foreach (ItemSlot slot in itemSlots)
       {

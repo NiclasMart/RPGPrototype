@@ -1,9 +1,12 @@
+using System;
+
 namespace RPG.Saving
 {
+  [Serializable]
   public enum SaveType
   {
-    Always,
-    Transition
+    All,
+    PlayerSpecific
   }
   
   interface ISaveable

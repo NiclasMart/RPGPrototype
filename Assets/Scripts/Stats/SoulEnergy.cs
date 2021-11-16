@@ -47,7 +47,8 @@ namespace RPG.Stats
 
     public object CaptureSaveData(SaveType saveType)
     {
-      return saveType == SaveType.Transition ? killAmount : 0;
+      if (saveType == SaveType.All) return killAmount; 
+      else return null;
     }
 
     public void RestoreSaveData(object data)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Items;
+using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Interaction
@@ -10,9 +11,9 @@ namespace RPG.Interaction
     [SerializeField] LootBank connectedBank;
     Light showLight;
 
-    private void Awake() 
+    private void Awake()
     {
-      showLight = GetComponentInChildren<Light>();  
+      showLight = GetComponentInChildren<Light>();
       showLight.enabled = !connectedBank.Empty;
     }
 
@@ -20,6 +21,7 @@ namespace RPG.Interaction
     {
       PlayerInventory playerInventory = interacter.GetComponent<Interacter>().mainInventory;
       playerInventory.AddItems(connectedBank.GetLoot());
+      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
     }
   }
 }
