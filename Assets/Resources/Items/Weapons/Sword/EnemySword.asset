@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: EnemySword
   m_EditorClassIdentifier: 
+  itemID: e78e449a-03ea-41d8-b467-0a1ea394481e
   name: EnemySword
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 15

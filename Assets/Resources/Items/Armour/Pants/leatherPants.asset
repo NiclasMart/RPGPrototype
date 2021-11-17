@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
   m_Name: leatherPants
   m_EditorClassIdentifier: 
+  itemID: b99c4afa-723f-4fd8-9f22-26a3784cf745
   name: Leather Pants
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: 7c487959e49b9e447a29431caf3fdc77, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 3

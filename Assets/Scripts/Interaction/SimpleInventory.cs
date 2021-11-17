@@ -117,10 +117,9 @@ namespace RPG.Interaction
     public void RestoreSaveData(object data)
     {
       List<object> saveData = (List<object>)data;
-
       foreach (object obj in saveData)
       {
-        AddItem(Item.CreateItemFromData(obj));
+        AddItem((obj as Item.SaveData).CreateItemFromData());
       }
     }
   }

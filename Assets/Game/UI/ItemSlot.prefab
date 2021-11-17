@@ -1117,6 +1117,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5869035206881880007}
     m_Modifications:
+    - target: {fileID: 1491548284629740868, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5007902473887222172, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1199,6 +1203,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007902473887222172, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5570380047078785805, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7525778134314776114, guid: a43d8d8fbb5a2cd4b90d45a93cd125de, type: 3}

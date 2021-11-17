@@ -43,7 +43,11 @@ namespace RPG.Items
         }
       }
 
-      if (itemID == null || !itemLookupCache.ContainsKey(itemID)) return null;
+      if (itemID == null || !itemLookupCache.ContainsKey(itemID))
+      {
+        Debug.Log("Found no item with ID: " + itemID);
+        return null;
+      }
       return itemLookupCache[itemID];
     }
   }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
   m_Name: leatherHelmet
   m_EditorClassIdentifier: 
+  itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
   name: Leather Helmet
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 2

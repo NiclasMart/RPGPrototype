@@ -53,6 +53,24 @@ namespace RPG.Items
       }
     }
 
+    [Serializable]
+    public class MSaveData : SaveData
+    {
+      public List<ModifiableItem.SerializableModifier> modifiers;
+
+      public MSaveData(Item item) : base(item)
+      {
+        modifiers = (item as ModifiableItem).GetSerializableModifiers();
+      }
+
+      public override Item CreateItemFromData()
+      {
+        ModifiableItem mItem = base.CreateItemFromData() as ModifiableItem;
+        mItem.DeserializeModifiers(modifiers);
+        return mItem;
+      }
+    }
+
     public List<Modifier> modifiers = new List<Modifier>();
 
     public ModifiableItem(GenericItem baseItem) : base(baseItem) { }
@@ -89,6 +107,11 @@ namespace RPG.Items
       {
         modifiers.Add(smod.ConvertToModifier());
       }
+    }
+
+    public override object GetSaveData()
+    {
+      return new MSaveData(this);
     }
 
     public virtual void GetStats(ModifyTable stats) { }

@@ -1,3 +1,4 @@
+using System;
 using RPG.Items;
 using RPG.Stats;
 using UnityEngine;
@@ -6,6 +7,17 @@ namespace RPG.Combat
 {
   public class RangedWeapon : Weapon
   {
+    [Serializable]
+    public class RWSaveData : MSaveData
+    {
+      public RWSaveData(Item item) : base(item){ }
+
+      public override Item CreateItemFromData()
+      {
+        RangedWeapon mItem = base.CreateItemFromData() as RangedWeapon;
+        return mItem;
+      }
+    }
     GameObject projectilePrefab;
 
     public RangedWeapon(GenericItem baseItem) : base(baseItem)

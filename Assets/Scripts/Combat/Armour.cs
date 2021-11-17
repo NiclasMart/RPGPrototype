@@ -1,3 +1,4 @@
+using System;
 using RPG.Items;
 using UnityEngine;
 
@@ -5,9 +6,28 @@ namespace RPG.Combat
 {
   public class Armour : ModifiableItem
   {
-    float armour, magicResistance;
-    public float ArmourValue { get => armour; }
-    public float MagicResiValue { get => magicResistance; }
+    [Serializable]
+    public class ASaveData : MSaveData
+    {
+      public float armour, magicResistance;
+
+      public ASaveData(Item item) : base(item)
+      {
+        Armour armourItem = item as Armour;
+        armour = armourItem.armour;
+        magicResistance = armourItem.magicResistance;
+      }
+
+      public override Item CreateItemFromData()
+      {
+        Armour mItem = base.CreateItemFromData() as Armour;
+        mItem.armour = armour;
+        mItem.magicResistance = magicResistance;
+        return mItem;
+      }
+    }
+
+    public float armour, magicResistance;
 
     public Armour(GenericItem baseItem) : base(baseItem)
     {
@@ -25,6 +45,11 @@ namespace RPG.Combat
     {
       stats.armourFlat += armour;
       stats.magicResiFlat += magicResistance;
+    }
+
+    public override object GetSaveData()
+    {
+      return new ASaveData(this);
     }
   }
 }

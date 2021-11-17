@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad299c0a559bdc41908be9065b1cb90, type: 3}
   m_Name: nonHomingBow
   m_EditorClassIdentifier: 
+  itemID: 28ad56a3-e7e1-4a8b-a6d7-c321750fd7e4
   name: Bow
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: f2bc388aefa15764d95c287ab58d1a94, type: 3}
   itemObject: {fileID: 8581517286537546858, guid: 44057ed6fb8e45746a43c1fe85a98d6c, type: 3}
   weight: 20
@@ -24,6 +24,7 @@ MonoBehaviour:
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: 24d693751e9fd0b42ba8f9595d8b5f5e, type: 3}
   weaponDamage: {x: 15, y: 17}
+  weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 0.8, y: 1}
   weaponRange: 5
   hitArea: {fileID: 0}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
   m_Name: leatherGloves
   m_EditorClassIdentifier: 
+  itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
   name: Leather Gloves
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1

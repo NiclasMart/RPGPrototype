@@ -1,3 +1,4 @@
+using System;
 using RPG.Items;
 using UnityEngine;
 
@@ -5,11 +6,32 @@ namespace RPG.Combat
 {
   public class Weapon : ModifiableItem
   {
+    [Serializable]
+    public class WSaveData : MSaveData
+    {
+      public float damage, attackSpeed;
+
+      public WSaveData(Item item) : base(item)
+      {
+        Weapon weapon = item as Weapon;
+        damage = weapon.damage;
+        attackSpeed = weapon.attackSpeed;
+      }
+
+      public override Item CreateItemFromData()
+      {
+        Weapon mItem = base.CreateItemFromData() as Weapon;
+        mItem.damage = damage;
+        mItem.attackSpeed = attackSpeed;
+        return mItem;
+      }
+    }
+    
     public AnimationClip animationClip;
     public float damage;
     public float staminaUse;
     private float range;
-    private float attackSpeed;
+    public float attackSpeed;
     private GameObject hitArea;
     private DamageClass damageType;
     private protected bool isRightHanded = true;
@@ -61,6 +83,11 @@ namespace RPG.Combat
       stats.damageFlat += damage;
       stats.attackSpeed += attackSpeed;
       stats.attackRange += range;
+    }
+
+    public override object GetSaveData()
+    {
+      return new WSaveData(this);
     }
   }
 }

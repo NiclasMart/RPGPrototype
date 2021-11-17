@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
   m_Name: leatherChest
   m_EditorClassIdentifier: 
+  itemID: cd6b1b29-8bc2-4f21-9371-75888207a1c4
   name: Leather Chest
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: 4766716444a965b449ef86e524455e71, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 4
