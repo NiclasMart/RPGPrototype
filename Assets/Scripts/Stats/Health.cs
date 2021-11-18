@@ -127,7 +127,8 @@ namespace RPG.Stats
 
     private void DisableComponents()
     {
-      if (TryGetComponent(out NavMeshAgent agent)) agent.enabled = false;
+      NavMeshAgent agent;
+      if (TryGetComponent(out agent)) agent.enabled = false;
       foreach (Collider col in GetComponentsInChildren<Collider>())
       {
         col.enabled = false;
