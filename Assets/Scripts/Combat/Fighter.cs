@@ -56,7 +56,7 @@ namespace RPG.Combat
       animator.speed = 1f;
       if (equipedWeapon.hitArea) equipedWeapon.hitArea.Toggle(false);
 
-      agent.enabled = true;
+      if (!GetComponent<Health>().IsDead) agent.enabled = true;
 
       scheduler.CancelCurrentAction();
       isAttacking = false;
