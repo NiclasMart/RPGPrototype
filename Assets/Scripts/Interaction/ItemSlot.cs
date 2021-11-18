@@ -56,6 +56,11 @@ namespace RPG.Interaction
       else modifierDisplay.HideModifiers();
     }
 
+    public void DeleteItem()
+    {
+      (inventory as SimpleInventory).DeleteItemSlot(this);
+    }
+
     protected void SetIcon(Item item)
     {
       if (item == null) return;

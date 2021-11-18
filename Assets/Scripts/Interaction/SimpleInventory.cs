@@ -52,14 +52,18 @@ namespace RPG.Interaction
       }
     }
 
+    public void DeleteItemSlot(ItemSlot slot)
+    {
+      RecalculateCapacity(-slot.item.weight);
+      itemSlots.Remove(slot);
+      if (selectedSlot == slot) selectedSlot = null;
+      Destroy(slot.gameObject);
+    }
 
     public void DeleteSelectedItem()
     {
       if (!selectedSlot) return;
-      RecalculateCapacity(-selectedSlot.item.weight);
-      itemSlots.Remove(selectedSlot);
-      Destroy(selectedSlot.gameObject);
-      selectedSlot = null;
+      DeleteItemSlot(selectedSlot);
     }
 
     public void DeleteAllItems()
