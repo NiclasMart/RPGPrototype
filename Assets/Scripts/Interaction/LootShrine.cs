@@ -24,7 +24,6 @@ namespace RPG.Interaction
     {
       PlayerInventory playerInventory = interacter.GetComponent<Interacter>().mainInventory;
       playerInventory.AddItems(connectedBank.GetLoot());
-      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
     }
 
     public object CaptureSaveData(SaveType saveType)

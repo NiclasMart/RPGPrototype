@@ -81,12 +81,12 @@ namespace RPG.Interaction
 
     void Clear()
     {
-      foreach (Transform slot in list.transform)
+      foreach (var slot in itemSlots)
       {
-        if (slot == transform) continue;
         Destroy(slot.gameObject);
         //??? itemSlots.Remove(selectedSlot);
       }
+      itemSlots = new List<ItemSlot>();
     }
 
     void RecalculateCapacity(float weight)
@@ -116,6 +116,7 @@ namespace RPG.Interaction
 
     public void RestoreSaveData(object data)
     {
+      Clear();
       List<object> saveData = (List<object>)data;
       foreach (object obj in saveData)
       {

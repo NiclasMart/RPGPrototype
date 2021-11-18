@@ -1,11 +1,12 @@
 using RPG.Display;
 using RPG.Items;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace RPG.Interaction
 {
-  public class EquipmentSlot : ItemSlot
+  public class EquipmentSlot : ItemSlot, ISaveable
   {
     public ItemType equipmentType;
     public SimpleInventory connectedInventory;
@@ -53,6 +54,16 @@ namespace RPG.Interaction
       connectedInventory.AddItem(item);
     }
 
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return (item != null) ? item.GetSaveData() : null;
+    }
 
+    public void RestoreSaveData(object data)
+    {
+      item = null;
+      Item.SaveData itemData = (data as Item.SaveData);
+      EquipItem(itemData != null ? itemData.CreateItemFromData() : null);
+    }
   }
 }

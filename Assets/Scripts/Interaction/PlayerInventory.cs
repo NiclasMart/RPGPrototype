@@ -92,9 +92,10 @@ namespace RPG.Interaction
       }
 
       //equip default weapon
-      GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
-      if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
-      else RecalculateModifiers();
+      // GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
+      // if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
+      // else RecalculateModifiers();
+      RecalculateModifiers();
     }
 
     private void HideAllInventorys()

@@ -20,7 +20,6 @@ namespace RPG.Items
         savedItems.RemoveRange(0, capacityOverflow);
       }
       savedItems.AddRange(newItems);
-      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
     }
 
     public void AddLoot(Item newItem)
@@ -36,7 +35,7 @@ namespace RPG.Items
     public List<Item> GetLoot()
     {
       List<Item> tmpList = savedItems;
-      savedItems = new List<Item>();
+      //savedItems = new List<Item>();
       return tmpList;
     }
 

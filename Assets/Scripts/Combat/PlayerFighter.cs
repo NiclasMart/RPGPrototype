@@ -33,7 +33,7 @@ namespace RPG.Combat
     {
       if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
       cooldownDisplay.UpdateCooldown(lastAttackTime, 1f / stats.GetStat(Stat.AttackSpeed));
-      currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
+      // currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
     }
 
     public void Attack(ActionScheduler scheduler, PlayerCursor cursor)
