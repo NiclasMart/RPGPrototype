@@ -109,6 +109,11 @@ namespace RPG.Items
       }
     }
 
+    public override int GetSellValue()
+    {
+      return Mathf.CeilToInt(baseValue * modifiers.Count * (1 + (int)rarity * 0.5f));
+    }
+
     public override object GetSaveData()
     {
       return new MSaveData(this);

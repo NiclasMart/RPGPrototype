@@ -12,7 +12,7 @@ namespace RPG.Interaction
   {
     [SerializeField] Image iconSlot;
     [SerializeField] Button selectable;
-    [SerializeField] TextMeshProUGUI titleText, mainStatText;
+    [SerializeField] TextMeshProUGUI titleText, mainStatText, valueText;
     [HideInInspector] public Item item { get; protected set; }
     protected Inventory inventory;
     Color defaultColor;
@@ -74,6 +74,8 @@ namespace RPG.Interaction
 
       titleText.text = item.GetTitleText();
       mainStatText.text = item.GetMainStatText();
+      int value = item.GetSellValue();
+      valueText.text = (value < 2) ? value.ToString() + " Soul Gem" : value.ToString() + " Soul Gems";
     }
 
     void SetColor(Color color)

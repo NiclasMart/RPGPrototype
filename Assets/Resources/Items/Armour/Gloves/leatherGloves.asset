@@ -17,6 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1
+  baseValue: 1
   itemType: 4
   modifiable: 1
   normalModifiers:

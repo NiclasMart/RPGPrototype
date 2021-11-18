@@ -68,7 +68,6 @@ namespace RPG.Interaction
 
     public void DeleteAllItems()
     {
-      itemSlots = new List<ItemSlot>();
       Clear();
     }
 
@@ -91,11 +90,18 @@ namespace RPG.Interaction
         //??? itemSlots.Remove(selectedSlot);
       }
       itemSlots = new List<ItemSlot>();
+      ResetCapacity();
     }
 
     void RecalculateCapacity(float weight)
     {
       currentCapacity += weight;
+      UpdateCapacityDisplay(currentCapacity, capacity);
+    }
+
+    void ResetCapacity()
+    {
+      currentCapacity = 0;
       UpdateCapacityDisplay(currentCapacity, capacity);
     }
 

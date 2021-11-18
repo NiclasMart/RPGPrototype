@@ -12,6 +12,7 @@ namespace RPG.Items
     public Sprite icon;
     public GameObject itemObject;
     public float weight;
+    public float baseValue;
     public ItemType itemType;
     public bool modifiable = false;
     public List<ItemStatModifier> normalModifiers = new List<ItemStatModifier>();

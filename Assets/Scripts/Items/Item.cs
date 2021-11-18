@@ -13,6 +13,7 @@ namespace RPG.Items
     public Sprite icon;
     public GameObject itemObject;
     public float weight;
+    public float baseValue;
     public ItemType itemType;
 
 
@@ -45,6 +46,7 @@ namespace RPG.Items
       this.itemObject = baseItem.itemObject;
       this.weight = baseItem.weight;
       this.itemType = baseItem.itemType;
+      this.baseValue = baseItem.baseValue;
     }
 
     public virtual string GetTitleText()
@@ -55,6 +57,11 @@ namespace RPG.Items
     public virtual string GetMainStatText()
     {
       return "";
+    }
+
+    public virtual int GetSellValue()
+    {
+      return Mathf.CeilToInt(baseValue);
     }
 
     public virtual object GetSaveData()
