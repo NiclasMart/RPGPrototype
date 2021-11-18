@@ -12,4 +12,145 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f37445ce016d54998a652df338da37, type: 3}
   m_Name: LootBank
   m_EditorClassIdentifier: 
-  savedItems: []
+  size: 50
+  savedItems:
+  - itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
+    name: Leather Helmet
+    rarity: 0
+    icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 2
+    itemType: 3
+  - itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
+    name: Leather Helmet
+    rarity: 0
+    icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 2
+    itemType: 3
+  - itemID: cd6b1b29-8bc2-4f21-9371-75888207a1c4
+    name: Leather Chest
+    rarity: 1
+    icon: {fileID: 21300000, guid: 4766716444a965b449ef86e524455e71, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 4
+    itemType: 1
+  - itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+    name: Leather Boots
+    rarity: 2
+    icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 2
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 0
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
+    name: Leather Helmet
+    rarity: 0
+    icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 2
+    itemType: 3
+  - itemID: cd6b1b29-8bc2-4f21-9371-75888207a1c4
+    name: Leather Chest
+    rarity: 3
+    icon: {fileID: 21300000, guid: 4766716444a965b449ef86e524455e71, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 4
+    itemType: 1
+  - itemID: cd6b1b29-8bc2-4f21-9371-75888207a1c4
+    name: Leather Chest
+    rarity: 0
+    icon: {fileID: 21300000, guid: 4766716444a965b449ef86e524455e71, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 4
+    itemType: 1
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 0
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 0
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 0
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+    name: Leather Boots
+    rarity: 0
+    icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 2
+  - itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
+    name: Leather Helmet
+    rarity: 2
+    icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 2
+    itemType: 3
+  - itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+    name: Leather Boots
+    rarity: 1
+    icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 2
+  - itemID: cd6b1b29-8bc2-4f21-9371-75888207a1c4
+    name: Leather Chest
+    rarity: 1
+    icon: {fileID: 21300000, guid: 4766716444a965b449ef86e524455e71, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 4
+    itemType: 1
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 1
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+    name: Leather Boots
+    rarity: 0
+    icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 2
+  - itemID: 660a3d3a-bae5-4da0-af63-6f69dd0b0190
+    name: Leather Gloves
+    rarity: 0
+    icon: {fileID: 21300000, guid: f1139c6b43e054f46abe94de0f4aee15, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 4
+  - itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+    name: Leather Boots
+    rarity: 0
+    icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 1
+    itemType: 2
+  - itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
+    name: Leather Helmet
+    rarity: 0
+    icon: {fileID: 21300000, guid: 7f6c6fdab50f1054c9820b737360db07, type: 3}
+    itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
+    weight: 2
+    itemType: 3
