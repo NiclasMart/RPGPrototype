@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Items;
@@ -14,11 +15,9 @@ namespace RPG.Interaction
 
     private void Awake()
     {
-      showLight = GetComponentInChildren<Light>();
-      float capacityLevel = connectedBank.GetCapacityLevel();
-      showLight.color = colorSchema.Evaluate(capacityLevel);
-      showLight.enabled = !connectedBank.Empty;
+      SetLight();
     }
+
 
     public override void Interact(GameObject interacter)
     {
@@ -45,6 +44,16 @@ namespace RPG.Interaction
       {
         connectedBank.AddLoot((obj as Item.SaveData).CreateItemFromData());
       }
+
+      SetLight();
+    }
+
+    private void SetLight()
+    {
+      showLight = GetComponentInChildren<Light>();
+      float capacityLevel = connectedBank.GetCapacityLevel();
+      showLight.color = colorSchema.Evaluate(capacityLevel);
+      showLight.enabled = !connectedBank.Empty;
     }
   }
 }

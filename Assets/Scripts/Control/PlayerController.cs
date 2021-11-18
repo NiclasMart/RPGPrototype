@@ -37,8 +37,8 @@ namespace RPG.Control
     {
       if (health.IsDead)
       {
-        playerCursor.SetCursor(PlayerCursor.CursorType.STANDARD);
-        playerCursor.active = false;
+        playerCursor.SetCursor(PlayerCursor.CursorType.UI);
+        //playerCursor.active = false;
         return;
       }
 

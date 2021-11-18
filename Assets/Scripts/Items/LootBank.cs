@@ -35,7 +35,7 @@ namespace RPG.Items
     public List<Item> GetLoot()
     {
       List<Item> tmpList = savedItems;
-      //savedItems = new List<Item>();
+      savedItems = new List<Item>();
       return tmpList;
     }
 

@@ -6,6 +6,8 @@ using GameDevTV.Utils;
 using RPG.Items;
 using RPG.Combat;
 using System;
+using RPG.Saving;
+using Display;
 
 namespace RPG.Stats
 {
@@ -57,8 +59,16 @@ namespace RPG.Stats
       if (currentHealth.value == 0 && !isDead)
       {
         HandleDeath();
-        EmitLoot(instigator);
-        EmitExperience(instigator);
+        if (PlayerInfo.GetPlayer() == gameObject)
+        {
+          FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
+          FindObjectOfType<DeathScreen>().Show();
+        }
+        else
+        {
+          EmitLoot(instigator);
+          EmitExperience(instigator);
+        }
       }
     }
 
