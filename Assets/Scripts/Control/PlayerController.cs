@@ -63,7 +63,7 @@ namespace RPG.Control
 
     private bool UpdateCombat()
     {
-      if (Input.GetMouseButton(1))
+      if (Input.GetMouseButton(1) && playerCursor.currentState != PlayerCursor.CursorType.UI)
       {
         mover.AdjustDirection(playerCursor.Position);
         fighter.Attack(scheduler, playerCursor);

@@ -48,7 +48,7 @@ namespace RPG.Display
       }
     }
 
-    public void ShowModifiers(Item item)
+    public void ShowModifiers(Item item, RectTransform rectTransform)
     {
       ModifiableItem modItem = item as ModifiableItem;
       if (modItem == null) return;
@@ -61,14 +61,14 @@ namespace RPG.Display
       else
       {
         panels[1].SetActive(true);
-        SetPosition();
+        SetPosition(rectTransform);
       }
       panels[1].DisplayItem(modItem);
     }
 
-    private void SetPosition()
+    private void SetPosition(RectTransform slotTransform)
     {
-      panels[1].transform.position = Input.mousePosition;
+      panels[1].transform.position = slotTransform.position - new Vector3(slotTransform.rect.width / 2, 0, 0);
       // if (Input.mousePosition.x > canvasRect.rect.width / 2) panels[1].transform.position = Input.mousePosition - new Vector3(panels[1].GetComponent<RectTransform>().rect.width, 0, 0);
       // else panels[1].transform.position = Input.mousePosition;
     }

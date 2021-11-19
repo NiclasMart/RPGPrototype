@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 5869035206178753262}
   - component: {fileID: 5558277429514730261}
   - component: {fileID: 8888191999076935235}
+  - component: {fileID: 72626955881940392}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -671,6 +672,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &72626955881940392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5869035206178753256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f566052f8a8348e49b2c1210b09f184a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5869035206185359255
 GameObject:
   m_ObjectHideFlags: 0

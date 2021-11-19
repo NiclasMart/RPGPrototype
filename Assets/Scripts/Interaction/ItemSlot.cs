@@ -31,14 +31,6 @@ namespace RPG.Interaction
 
     public virtual void Select()
     {
-      //handle second click
-      if (inventory.selectedSlot == this)
-      {
-        SimpleInventory simpleInventory = inventory as SimpleInventory;
-        if (simpleInventory) simpleInventory.onSecondClick.Invoke(inventory.selectedSlot.item);
-        return;
-      }
-
       SetColor(selectable.colors.highlightedColor);
       inventory.SelectSlot(this);
     }
@@ -52,7 +44,7 @@ namespace RPG.Interaction
     {
       if (item == null) return;
 
-      if (show) modifierDisplay.ShowModifiers(item);
+      if (show) modifierDisplay.ShowModifiers(item, GetComponent<RectTransform>());
       else modifierDisplay.HideModifiers();
     }
 
@@ -61,9 +53,20 @@ namespace RPG.Interaction
       (inventory as SimpleInventory).DeleteItemSlot(this);
     }
 
+    public virtual void HandleRightClick()
+    {
+      SimpleInventory sInventory = inventory as SimpleInventory;
+      if (sInventory) sInventory.onRightClick.Invoke(this);
+    }
+
     protected void SetIcon(Item item)
     {
-      if (item == null) return;
+      if (item == null)
+      {
+        iconSlot.transform.GetChild(0).GetComponent<Image>().sprite = null;
+        return;
+      }
+
       iconSlot.transform.GetChild(0).GetComponent<Image>().sprite = item.icon;
       iconSlot.color = ModifiableItem.GetRarityColor(item.rarity);
     }

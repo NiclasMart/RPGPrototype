@@ -22,7 +22,7 @@ namespace RPG.Interaction
     float currentCapacity;
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
-    public Action<Item> onSecondClick = (item) => { };
+    public Action<ItemSlot> onRightClick = (itemSlot) => { };
 
 
     public List<Item> GetItemList()
@@ -58,6 +58,13 @@ namespace RPG.Interaction
       itemSlots.Remove(slot);
       if (selectedSlot == slot) selectedSlot = null;
       Destroy(slot.gameObject);
+    }
+
+    public void DeleteItem(Item item)
+    {
+      RecalculateCapacity(-item.weight);
+      ItemSlot slot = itemSlots.Find(x => x.item == item);
+      if (slot) Destroy(slot.gameObject);
     }
 
     public void DeleteSelectedItem()

@@ -11,7 +11,7 @@ namespace RPG.Interaction
     void Awake()
     {
       storage = GetComponent<UIActivator>().connectedUI.GetComponent<SimpleInventory>();
-      storage.onSecondClick += TakeSelectedItem;
+      //storage.onRightClick += TakeSelectedItem;
     }
 
     public void TakeAllItems()

@@ -30,28 +30,44 @@ namespace RPG.Interaction
       inventory.SelectSlot(this);
       border.color = selectionColor;
       connectedInventory.transform.GetChild(0).gameObject.SetActive(true);
-      connectedInventory.onSecondClick += EquipItem;
+      connectedInventory.onRightClick += EquipItem;
     }
 
     public override void Deselect()
     {
       border.color = borderDefaultColor;
       connectedInventory.transform.GetChild(0).gameObject.SetActive(false);
-      connectedInventory.onSecondClick -= EquipItem;
+      connectedInventory.onRightClick -= EquipItem;
+    }
+
+    public virtual void EquipItem(ItemSlot itemSlot)
+    {
+      if (this.item != null) UnequipCurrentItem();
+      SetIcon(itemSlot.item);
+      this.item = itemSlot.item;
+      connectedInventory.DeleteItemSlot(itemSlot);
     }
 
     public virtual void EquipItem(Item item)
     {
       if (this.item != null) UnequipCurrentItem();
-      connectedInventory.DeleteSelectedItem();
-
       SetIcon(item);
       this.item = item;
+      connectedInventory.DeleteItem(item);
     }
 
     protected void UnequipCurrentItem()
     {
       connectedInventory.AddItem(item);
+    }
+
+    public override void HandleRightClick()
+    {
+      if (item == null) return;
+
+      UnequipCurrentItem();
+      SetIcon(null);
+      this.item = null;
     }
 
     public object CaptureSaveData(SaveType saveType)
