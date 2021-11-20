@@ -38,6 +38,11 @@ namespace RPG.Interaction
       }
     }
 
+    public SimpleInventory GetConnectedInventory(ItemType type)
+    {
+      return equipmentDictionary[type].connectedInventory;
+    }
+
     public override void SelectSlot(ItemSlot slot)
     {
       EquipmentSlot equipSlot = slot as EquipmentSlot;
@@ -75,7 +80,7 @@ namespace RPG.Interaction
       }
     }
 
-    public void RegisterDoubleClickAction(Action<Item, SimpleInventory> action)
+    public void RegisterDoubleClickAction(Action<Item> action)
     {
       foreach (var slot in equipmentDictionary.Values)
       {
@@ -83,7 +88,7 @@ namespace RPG.Interaction
       }
     }
 
-    public void UnregisterDoubleClickAction(Action<Item, SimpleInventory> action)
+    public void UnregisterDoubleClickAction(Action<Item> action)
     {
       foreach (var slot in equipmentDictionary.Values)
       {
@@ -95,6 +100,16 @@ namespace RPG.Interaction
     {
       gemCount += amount;
       gemDisplay.text = gemCount.ToString();
+    }
+
+    public List<Item> GetAllItemsByRank(Rank rank)
+    {
+      List<Item> list = new List<Item>();
+      foreach (var slot in equipmentDictionary.Values)
+      {
+        list.AddRange(slot.connectedInventory.GetItemsByRank(rank));
+      }
+      return list;
     }
 
     private void LoadSaveData()

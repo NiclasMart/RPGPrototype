@@ -24,7 +24,7 @@ namespace RPG.Interaction
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public Action<ItemSlot> onRightClick = (itemSlot) => { };
-    public Action<Item, SimpleInventory> onDoubleClick = (item, inventory) => { };
+    public Action<Item> onDoubleClick = (item) => { };
 
 
     public List<Item> GetItemList()
@@ -33,6 +33,16 @@ namespace RPG.Interaction
       foreach (ItemSlot slot in itemSlots)
       {
         itemList.Add(slot.item);
+      }
+      return itemList;
+    }
+
+    public List<Item> GetItemsByRank(Rank rank)
+    {
+      List<Item> itemList = new List<Item>();
+      foreach (ItemSlot slot in itemSlots)
+      {
+        if (slot.item.rarity == rank) itemList.Add(slot.item);
       }
       return itemList;
     }
@@ -90,7 +100,7 @@ namespace RPG.Interaction
     {
       if (selectedSlot == slot)
       {
-        onDoubleClick.Invoke(slot.item, this);
+        onDoubleClick.Invoke(slot.item);
       }
       else if (selectedSlot) selectedSlot.Deselect();
 

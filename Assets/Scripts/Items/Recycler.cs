@@ -12,11 +12,21 @@ namespace RPG.Interaction
     [SerializeField] TextMeshProUGUI valueDisplay;
     [SerializeField] SimpleInventory list;
     [SerializeField] PlayerInventory playerInventory;
-    int recycleValue = 0;
+   int recycleValue = 0;
+
+    public int RecycleValue
+    {
+      get { return recycleValue; }
+      set
+      {
+        recycleValue = value;
+        UpdateValueDisplay();
+      }
+    }
 
     private void Awake()
     {
-      list.onDoubleClick += RemoveItemFromRecycle;
+      list.onDoubleClick += RemoveItemFromRecycler;
     }
 
     public void HandleOpening()
@@ -30,34 +40,50 @@ namespace RPG.Interaction
       Recycle();
     }
 
-    public void AddItem(Item item, SimpleInventory caller)
+    public void AddItem(Item item)
     {
       list.AddItem(item);
-      caller.DeleteItem(item);
-      recycleValue += item.GetSellValue();
+      playerInventory.GetConnectedInventory(item.itemType).DeleteItem(item);
+      RecycleValue += item.GetSellValue();
       UpdateValueDisplay();
+    }
 
-
+    public void RemoveAllItems()
+    {
+      foreach (var item in list.GetItemList())
+      {
+        RemoveItemFromRecycler(item);
+      }
+      RecycleValue = 0;
     }
 
     public void Recycle()
     {
-      playerInventory.AddGems(recycleValue);
-      recycleValue = 0;
-      UpdateValueDisplay();
+      playerInventory.AddGems(RecycleValue);
+      RecycleValue = 0;
       list.DeleteAllItems();
     }
 
-    void RemoveItemFromRecycle(Item item, SimpleInventory caller)
+    void RemoveItemFromRecycler(Item item)
     {
       list.DeleteItem(item);
       playerInventory.AddItem(item);
+      RecycleValue -= item.GetSellValue();
+    }
 
+    public void GetAllItemsByRank(int rank)
+    {
+      List<Item> items = playerInventory.GetAllItemsByRank((Rank)rank);
+
+      foreach (var item in items)
+      {
+        AddItem(item);
+      }
     }
 
     void UpdateValueDisplay()
     {
-      valueDisplay.text = (recycleValue != 1) ? recycleValue.ToString() + " Gems" : recycleValue.ToString() + " Gem";
+      valueDisplay.text = (RecycleValue != 1) ? RecycleValue.ToString() + " Gems" : RecycleValue.ToString() + " Gem";
     }
   }
 }
