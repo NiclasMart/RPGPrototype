@@ -69,8 +69,6 @@ namespace RPG.Display
     private void SetPosition(RectTransform slotTransform)
     {
       panels[1].transform.position = slotTransform.position - new Vector3(slotTransform.rect.width / 2, 0, 0);
-      // if (Input.mousePosition.x > canvasRect.rect.width / 2) panels[1].transform.position = Input.mousePosition - new Vector3(panels[1].GetComponent<RectTransform>().rect.width, 0, 0);
-      // else panels[1].transform.position = Input.mousePosition;
     }
 
 
@@ -88,12 +86,19 @@ namespace RPG.Display
     public void RegisterMenu()
     {
       activeConnections++;
+      if (compareModeIsActive) SetUIActive(true);
     }
 
     public void UnregisterMenu()
     {
       activeConnections--;
       if (activeConnections == 0) SetUIActive(false);
+    }
+
+    public void UnregisterAllMenus()
+    {
+      activeConnections = 0;
+      SetUIActive(false);
     }
 
 
@@ -106,7 +111,5 @@ namespace RPG.Display
         panel.gameObject.SetActive(active);
       }
     }
-
-
   }
 }

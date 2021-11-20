@@ -8,10 +8,12 @@ namespace RPG.Display
     [SerializeField] KeyCode displayButton = KeyCode.I;
     [SerializeField] UltEvent openAction, closeAction;
     bool displayActive = false;
+    GameObject handletUI;
 
     private void Start()
     {
-      transform.GetChild(0).gameObject.SetActive(false);
+      handletUI = transform.GetChild(0).gameObject;
+      handletUI.SetActive(false);      
     }
 
     private void Update()
@@ -23,8 +25,8 @@ namespace RPG.Display
     {
       if (Input.GetKeyDown(displayButton))
       {
-        displayActive = !displayActive;
-        transform.GetChild(0).gameObject.SetActive(displayActive);
+        displayActive = !handletUI.activeSelf;
+        handletUI.SetActive(displayActive);
 
         if (displayActive) openAction.Invoke();
         else closeAction.Invoke();

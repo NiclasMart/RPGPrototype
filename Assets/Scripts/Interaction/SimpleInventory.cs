@@ -6,6 +6,7 @@ using System;
 using RPG.Saving;
 using RPG.Items;
 using UltEvents;
+using RPG.Core;
 
 namespace RPG.Interaction
 {
@@ -23,6 +24,7 @@ namespace RPG.Interaction
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public Action<ItemSlot> onRightClick = (itemSlot) => { };
+    public Action<Item, SimpleInventory> onDoubleClick = (item, inventory) => { };
 
 
     public List<Item> GetItemList()
@@ -78,9 +80,16 @@ namespace RPG.Interaction
       Clear();
     }
 
+    PlayerInventory playerInventory;
     public override void SelectSlot(ItemSlot slot)
     {
-      if (selectedSlot) selectedSlot.Deselect();
+      if (selectedSlot == slot)
+      {
+        Debug.Log("Double Click");
+        onDoubleClick.Invoke(slot.item, this);
+      }
+      else if (selectedSlot) selectedSlot.Deselect();
+
       selectedSlot = slot;
     }
 

@@ -8,8 +8,7 @@ namespace RPG.Interaction
 {
   public class UIActivator : Interactable
   {
-    [SerializeField] GameObject UI;
-    public GameObject connectedUI => UI;
+    [SerializeField] List<GameObject> UI = new List<GameObject>();
     [SerializeField] float openDistance = 2f;
     [SerializeField] UltEvent openAction, closeAction;
 
@@ -20,7 +19,7 @@ namespace RPG.Interaction
 
     private void Start()
     {
-      UI.SetActive(false);
+      SetUIActive(false);
     }
 
     private void Update()
@@ -36,10 +35,18 @@ namespace RPG.Interaction
     private void ToggleUI()
     {
       uiActive = !uiActive;
-      UI.SetActive(uiActive);
+      SetUIActive(uiActive);
 
       if (uiActive) openAction.Invoke();
       else closeAction.Invoke();
+    }
+
+    private void SetUIActive(bool on)
+    {
+      foreach (var ui in UI)
+      {
+        ui.SetActive(on);
+      }
     }
 
     public override void Interact(GameObject interacter)

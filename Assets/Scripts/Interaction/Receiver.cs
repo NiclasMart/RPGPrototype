@@ -10,7 +10,7 @@ namespace RPG.Interaction
     SimpleInventory storage;
     void Awake()
     {
-      storage = GetComponent<UIActivator>().connectedUI.GetComponent<SimpleInventory>();
+      //storage = GetComponent<UIActivator>().connectedUI.GetComponent<SimpleInventory>();
       //storage.onRightClick += TakeSelectedItem;
     }
 

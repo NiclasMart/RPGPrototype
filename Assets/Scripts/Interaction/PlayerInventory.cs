@@ -71,6 +71,22 @@ namespace RPG.Interaction
       }
     }
 
+    public void RegisterDoubleClickAction(Action<Item, SimpleInventory> action)
+    {
+      foreach (var slot in equipmentDictionary.Values)
+      {
+        slot.connectedInventory.onDoubleClick += action;
+      }
+    }
+
+    public void UnregisterDoubleClickAction(Action<Item, SimpleInventory> action)
+    {
+      foreach (var slot in equipmentDictionary.Values)
+      {
+        slot.connectedInventory.onDoubleClick -= action;
+      }
+    }
+
     private void LoadSaveData()
     {
       FindObjectOfType<SavingSystem>().Load("PlayerData");
