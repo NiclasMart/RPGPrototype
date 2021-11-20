@@ -68,7 +68,8 @@ namespace RPG.Display
 
     private void SetPosition(RectTransform slotTransform)
     {
-      panels[1].transform.position = slotTransform.position - new Vector3(slotTransform.rect.width / 2, 0, 0);
+      if (Input.mousePosition.x > canvasRect.rect.width / 2) panels[1].transform.position = slotTransform.position - new Vector3(slotTransform.rect.width / 2, 0, 0);
+      else panels[1].transform.position = slotTransform.position + new Vector3((slotTransform.rect.width / 2), 0, 0) * slotTransform.localScale.x + new Vector3((panels[1].transform as RectTransform).rect.width, 0, 0);
     }
 
 

@@ -57,6 +57,7 @@ namespace RPG.Interaction
     public void DeleteItemSlot(ItemSlot slot)
     {
       RecalculateCapacity(-slot.item.weight);
+      slot.ToggleItemModifiers(false);
       itemSlots.Remove(slot);
       if (selectedSlot == slot) selectedSlot = null;
       Destroy(slot.gameObject);
@@ -66,7 +67,11 @@ namespace RPG.Interaction
     {
       RecalculateCapacity(-item.weight);
       ItemSlot slot = itemSlots.Find(x => x.item == item);
-      if (slot) Destroy(slot.gameObject);
+      if (slot)
+      {
+        slot.ToggleItemModifiers(false);
+        Destroy(slot.gameObject);
+      }
     }
 
     public void DeleteSelectedItem()
@@ -80,7 +85,6 @@ namespace RPG.Interaction
       Clear();
     }
 
-    PlayerInventory playerInventory;
     public override void SelectSlot(ItemSlot slot)
     {
       if (selectedSlot == slot)

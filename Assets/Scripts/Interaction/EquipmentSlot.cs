@@ -65,6 +65,7 @@ namespace RPG.Interaction
     {
       if (item == null) return;
 
+      ToggleItemModifiers(false);
       UnequipCurrentItem();
       SetIcon(null);
       this.item = null;
