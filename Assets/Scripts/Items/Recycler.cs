@@ -42,7 +42,7 @@ namespace RPG.Interaction
 
     public void Recycle()
     {
-      Debug.Log("Get " + recycleValue);
+      playerInventory.AddGems(recycleValue);
       recycleValue = 0;
       UpdateValueDisplay();
       list.DeleteAllItems();

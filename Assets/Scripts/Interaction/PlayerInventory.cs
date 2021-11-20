@@ -6,12 +6,16 @@ using RPG.Items;
 using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
+using TMPro;
 
 namespace RPG.Interaction
 {
-  public class PlayerInventory : Inventory
+  public class PlayerInventory : Inventory, ISaveable
   {
+    [SerializeField] TextMeshProUGUI gemDisplay;
     Dictionary<ItemType, EquipmentSlot> equipmentDictionary = new Dictionary<ItemType, EquipmentSlot>();
+    int gemCount;
+
 
     private void Awake()
     {
@@ -87,6 +91,12 @@ namespace RPG.Interaction
       }
     }
 
+    public void AddGems(int amount)
+    {
+      gemCount += amount;
+      gemDisplay.text = gemCount.ToString();
+    }
+
     private void LoadSaveData()
     {
       FindObjectOfType<SavingSystem>().Load("PlayerData");
@@ -120,6 +130,17 @@ namespace RPG.Interaction
       {
         slot.connectedInventory.transform.GetChild(0).gameObject.SetActive(false);
       }
+    }
+
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return gemCount;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      gemCount = 0;
+      AddGems((int)data);
     }
   }
 }

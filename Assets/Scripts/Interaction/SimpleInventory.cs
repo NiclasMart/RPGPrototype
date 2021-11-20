@@ -70,6 +70,7 @@ namespace RPG.Interaction
       if (slot)
       {
         slot.ToggleItemModifiers(false);
+        itemSlots.Remove(slot);
         Destroy(slot.gameObject);
       }
     }
@@ -89,7 +90,6 @@ namespace RPG.Interaction
     {
       if (selectedSlot == slot)
       {
-        Debug.Log("Double Click");
         onDoubleClick.Invoke(slot.item, this);
       }
       else if (selectedSlot) selectedSlot.Deselect();
