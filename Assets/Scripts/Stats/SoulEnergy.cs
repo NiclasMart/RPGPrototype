@@ -16,11 +16,18 @@ namespace RPG.Stats
     private void Awake()
     {
       killsForMaxSoulEnergy = (int)stageData.GetMaxSoulEnergyKills();
+      valueChange.Invoke(this);
     }
 
     public void AddKill()
     {
       killAmount++;
+      valueChange.Invoke(this);
+    }
+
+    public void SetInitialSouls(int amount)
+    {
+      killAmount = amount;
       valueChange.Invoke(this);
     }
 
@@ -39,7 +46,7 @@ namespace RPG.Stats
       return killsForMaxSoulEnergy;
     }
 
-    public  void Reset() 
+    public void Reset()
     {
       killAmount = 0;
       valueChange.Invoke(this);
@@ -47,7 +54,7 @@ namespace RPG.Stats
 
     public object CaptureSaveData(SaveType saveType)
     {
-      if (saveType == SaveType.All) return killAmount; 
+      if (saveType == SaveType.All) return killAmount;
       else return null;
     }
 

@@ -102,6 +102,15 @@ namespace RPG.Interaction
       gemDisplay.text = gemCount.ToString();
     }
 
+    public int GetGems(int amount)
+    {
+      if (amount > gemCount) return 0;
+      gemCount -= amount;
+      gemDisplay.text = gemCount.ToString();
+      return amount;
+
+    }
+
     public List<Item> GetAllItemsByRank(Rank rank)
     {
       List<Item> list = new List<Item>();

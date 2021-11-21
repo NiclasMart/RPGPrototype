@@ -29,15 +29,13 @@ namespace RPG.Interaction
     {
       data.currentStage = stage;
       data.currentDepth = 1;
-
-      FindObjectOfType<SoulEnergy>().Reset();
     }
 
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
 
-      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
+      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
       yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + data.currentStage);
 
       Destroy(transform.parent.gameObject);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Display
@@ -9,6 +10,7 @@ namespace RPG.Display
   {
     [SerializeField] List<Stage> stages = new List<Stage>();
     [SerializeField] int highestStageReached = 1;
+    [SerializeField] InitialSoulEnergySetter soulEnergySetter;
     Stage selectedStage = null;
     public Action<int> enterDungeon;
 
@@ -24,6 +26,7 @@ namespace RPG.Display
     public void EnterSelectedDungeon()
     {
       if (!selectedStage) return;
+      soulEnergySetter.SetSoulEnergy();
       enterDungeon.Invoke(selectedStage.number);
     }
 

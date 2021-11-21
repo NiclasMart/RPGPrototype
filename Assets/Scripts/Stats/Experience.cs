@@ -31,7 +31,7 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
-    public void GainExperience(int baseXP, int enemyLevel)
+    public void GainExperience(int baseXP, int enemyLevel, float soulEnergy)
     {
       CharacterStats playerStats = GetComponent<CharacterStats>();
       int levelDifferenceToEnemy = playerStats.Level - enemyLevel;

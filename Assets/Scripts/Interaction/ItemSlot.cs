@@ -77,8 +77,7 @@ namespace RPG.Interaction
 
       titleText.text = item.GetTitleText();
       mainStatText.text = item.GetMainStatText();
-      int value = item.GetSellValue();
-      valueText.text = (value < 2) ? value.ToString() + " Soul Gem" : value.ToString() + " Soul Gems";
+      valueText.text = item.GetSellValue().ToString();
     }
 
     void SetColor(Color color)

@@ -66,16 +66,17 @@ namespace RPG.Stats
         }
         else
         {
-          EmitLoot(instigator);
-          EmitExperience(instigator);
+          SoulEnergy energy = instigator.GetComponent<SoulEnergy>();
+          EmitLoot(energy.GetSoulEnergyLevel());
+          EmitExperience(instigator, energy.GetSoulEnergyLevel());
+          energy.AddKill();
         }
       }
     }
 
-    private void EmitLoot(GameObject instigator)
+    private void EmitLoot(float soulEnergy)
     {
-      SoulEnergy energy = instigator.GetComponent<SoulEnergy>();
-      LootGenerator.instance.DropLoot(transform.position, energy.GetSoulEnergyLevel());
+      LootGenerator.instance.DropLoot(transform.position, soulEnergy);
     }
 
     public void LevelUpHealth(CharacterStats stats)
@@ -105,16 +106,14 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
-    private void EmitExperience(GameObject instigator)
+    private void EmitExperience(GameObject instigator, float soulEnergy)
     {
       Experience playerExperience = instigator.GetComponent<Experience>();
       if (playerExperience)
       {
         CharacterStats stats = GetComponent<CharacterStats>();
-        playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level);
+        playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level,soulEnergy);
       }
-
-      instigator.GetComponent<SoulEnergy>()?.AddKill();
     }
 
     private void HandleDeath()
