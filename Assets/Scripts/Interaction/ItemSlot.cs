@@ -42,10 +42,14 @@ namespace RPG.Interaction
 
     public void ToggleItemModifiers(bool show)
     {
+      if (!show)
+      {
+        modifierDisplay.HideModifiers();
+        return;
+      }
       if (item == null) return;
 
-      if (show) modifierDisplay.ShowModifiers(item, GetComponent<RectTransform>());
-      else modifierDisplay.HideModifiers();
+      modifierDisplay.ShowModifiers(item, GetComponent<RectTransform>());
     }
 
     public void DeleteItem()
@@ -73,11 +77,9 @@ namespace RPG.Interaction
 
     void SetText(Item item)
     {
-      if (!titleText) return;
-
-      titleText.text = item.GetTitleText();
-      mainStatText.text = item.GetMainStatText();
-      valueText.text = item.GetSellValue().ToString();
+      if (titleText) titleText.text = (item!=null) ? item.GetTitleText() : "";
+      if (mainStatText) mainStatText.text = (item != null) ? item.GetMainStatText() : "";
+      if (valueText) valueText.text = (item != null) ? item.GetSellValue().ToString() : "";
     }
 
     void SetColor(Color color)
