@@ -86,9 +86,11 @@ namespace RPG.Items
       }
     }
 
-    public void AddModifier(ItemStatModifier newModifier)
+    public Modifier AddModifier(ItemStatModifier newModifier)
     {
-      modifiers.Add(new Modifier(newModifier));
+      Modifier mod = new Modifier(newModifier);
+      modifiers.Add(mod);
+      return mod;
     }
 
     public List<SerializableModifier> GetSerializableModifiers()

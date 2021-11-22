@@ -51,5 +51,20 @@ namespace RPG.Items
       }
       return itemLookupCache[itemID];
     }
+
+    public ItemStatModifier GetModifier(Rank rarity)
+    {
+      switch (rarity)
+      {
+        case Rank.Normal:
+        case Rank.Rare:
+          return normalModifiers[UnityEngine.Random.Range(0, normalModifiers.Count)];
+        case Rank.Epic:
+          return epicModifiers[UnityEngine.Random.Range(0, epicModifiers.Count)];
+        case Rank.Legendary:
+          return legendaryModifiers[UnityEngine.Random.Range(0, legendaryModifiers.Count)];
+      }
+      return null;
+    }
   }
 }

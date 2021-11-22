@@ -115,6 +115,7 @@ namespace RPG.Items
       foreach (var modifier in item.modifiers)
       {
         modifier.value *= 1 + PlayerInfo.GetGlobalParameters().rareValueImprovement;
+        modifier.rarity = Rank.Rare;
       }
       if (rand < rareDropLimit)
       {
@@ -123,7 +124,7 @@ namespace RPG.Items
       }
 
       //epic+
-      item.AddModifier(baseItem.epicModifiers[Random.Range(0, baseItem.epicModifiers.Count)]);
+      item.AddModifier(baseItem.GetModifier(Rank.Epic));
       if (rand < epicDropLimit)
       {
         item.rarity = Rank.Epic;
@@ -131,7 +132,7 @@ namespace RPG.Items
       }
 
       //unique
-      item.AddModifier(baseItem.legendaryModifiers[Random.Range(0, baseItem.legendaryModifiers.Count)]);
+      item.AddModifier(baseItem.GetModifier(Rank.Legendary));
       item.rarity = Rank.Legendary;
     }
 

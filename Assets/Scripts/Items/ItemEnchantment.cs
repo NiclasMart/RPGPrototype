@@ -4,20 +4,30 @@ using UnityEngine;
 using TMPro;
 using System;
 using RPG.Interaction;
+using RPG.Saving;
+using UnityEngine.UI;
+using RPG.Core;
 
 namespace RPG.Items
 {
-  public class ItemEnchantment : MonoBehaviour
+  public class ItemEnchantment : MonoBehaviour, ISaveable
   {
-    [SerializeField] List<TextMeshProUGUI> modiefierSlots = new List<TextMeshProUGUI>();
+    [SerializeField] List<EnchantmentModifierSlot> modifierSlot = new List<EnchantmentModifierSlot>();
     [SerializeField] TextMeshProUGUI rerollBtn;
     [SerializeField] ItemSlot itemSlot;
     [SerializeField] PlayerInventory playerInventory;
+    [SerializeField] List<int> rerollPrices;
+    [SerializeField] Color selectColor;
+    EnchantmentModifierSlot previouseSelectedSlot = null;
 
     private void Awake()
     {
-      ResetModifierSlots();
+      foreach (var slot in modifierSlot)
+      {
+        slot.selectColor = selectColor;
+      }
     }
+
 
     public void AddItem(Item item)
     {
@@ -34,18 +44,16 @@ namespace RPG.Items
     {
       ModifiableItem mItem = item as ModifiableItem;
 
-      for (int i = 0; i < modiefierSlots.Count; i++)
+      for (int i = 0; i < modifierSlot.Count; i++)
       {
         if (mItem.modifiers.Count > i)
         {
           ModifiableItem.Modifier mod = mItem.modifiers[i];
-          modiefierSlots[i].text = mod.GetDisplayText();
-          modiefierSlots[i].color = ModifiableItem.GetRarityColor(mod.rarity);
+          modifierSlot[i].SetModifier(mItem.modifiers[i]);
         }
         else
         {
-          modiefierSlots[i].text = "---";
-          modiefierSlots[i].color = Color.white;
+          modifierSlot[i].ResetSlot();
         }
       }
     }
@@ -55,6 +63,59 @@ namespace RPG.Items
       playerInventory.AddItem(itemSlot.item);
       itemSlot.Initialize(null, null);
       ResetModifierSlots();
+      previouseSelectedSlot = null;
+    }
+
+    public void SelectModifier(EnchantmentModifierSlot slot)
+    {
+      HandleSelectionColor(slot);
+
+      ModifiableItem.Modifier mod = slot.GetModifier();
+
+      if (mod == null)
+      {
+        rerollBtn.text = "Reroll for 0";
+        return;
+      }
+      rerollBtn.text = "Reroll for " + rerollPrices[(int)mod.rarity];
+    }
+
+    private void HandleSelectionColor(EnchantmentModifierSlot slot)
+    {
+      if (previouseSelectedSlot != null) previouseSelectedSlot.Deselect();
+      slot.Select();
+      previouseSelectedSlot = slot;
+    }
+
+    public void Reroll()
+    {
+      if (previouseSelectedSlot == null || previouseSelectedSlot.GetModifier() == null) return;
+
+      //get mod and pay price
+      ModifiableItem.Modifier mod = previouseSelectedSlot.GetModifier();
+      int payed = playerInventory.GetGems(rerollPrices[(int)mod.rarity]);
+      if (payed == 0) return;
+
+      int index = (itemSlot.item as ModifiableItem).modifiers.IndexOf(mod);
+      (itemSlot.item as ModifiableItem).modifiers.Remove(mod);
+
+      //get baseModifier
+      ItemStatModifier baseMod;
+      do baseMod = GenericItem.GetFromID(itemSlot.item.itemID).GetModifier(mod.rarity);
+      while ((itemSlot.item as ModifiableItem).modifiers.Find(x => x.name == baseMod.name) != null);
+
+      ModifiableItem.Modifier newMod = new ModifiableItem.Modifier(baseMod);
+
+      //upgrade modifier if rerolled modifier was rare
+      if (mod.rarity == Rank.Rare)
+      {
+        newMod.value *= 1 + PlayerInfo.GetGlobalParameters().rareValueImprovement;
+        newMod.rarity = Rank.Rare;
+      }
+
+      (itemSlot.item as ModifiableItem).modifiers.Insert(index, newMod);
+      LoadModifiers(itemSlot.item);
+      FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
     }
 
     public void HandleOpening()
@@ -67,17 +128,24 @@ namespace RPG.Items
       playerInventory.UnregisterDoubleClickAction(AddItem);
     }
 
-
-
     private void ResetModifierSlots()
     {
-      foreach (var slot in modiefierSlots)
+      foreach (var slot in modifierSlot)
       {
-        slot.text = "---";
-        slot.color = Color.white;
+        slot.ResetSlot();
       }
       rerollBtn.text = "Reroll for 0";
       itemSlot.Initialize(null, null);
+    }
+
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return (itemSlot.item != null) ? itemSlot.item.GetSaveData() : null;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      AddItem((data as Item.SaveData).CreateItemFromData());
     }
   }
 }
