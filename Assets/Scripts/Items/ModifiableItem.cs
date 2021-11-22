@@ -15,6 +15,7 @@ namespace RPG.Items
       public string display;
       public Rank rarity;
       public UltEvent<ModifyTable, float> effect;
+      public UltEvent<float> legendaryEffect;
 
       public Modifier(ItemStatModifier baseModifier)
       {
@@ -23,6 +24,7 @@ namespace RPG.Items
         display = baseModifier.displayText;
         rarity = baseModifier.rank;
         effect += baseModifier.effect.InvokeX<ModifyTable, float>;
+        legendaryEffect += baseModifier.legendaryEffect.InvokeX<float>;
       }
 
       public string GetDisplayText()

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c185077c6668284c9162f187b02cec6, type: 3}
+  m_Name: ItemPool_Debug
+  m_EditorClassIdentifier: 
+  drops:
+  - item: {fileID: 11400000, guid: e7d242568ad7f3a43b2e1aadbc5e786b, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: aa4a3b1adb294ac40822da08df58135f, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: ebf192bb24af15c4ea5d500943bb2e85, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 02329bc7ad72fd34baed6c602ac39b8b, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 94734c471f800a547bfb93db052967e9, type: 2}
+    probability: 1
+  items:
+  - item: {fileID: 11400000, guid: e7d242568ad7f3a43b2e1aadbc5e786b, type: 2}
+    probability: 0.2
+  - item: {fileID: 11400000, guid: aa4a3b1adb294ac40822da08df58135f, type: 2}
+    probability: 0.4
+  - item: {fileID: 11400000, guid: ebf192bb24af15c4ea5d500943bb2e85, type: 2}
+    probability: 0.8
+  - item: {fileID: 11400000, guid: 02329bc7ad72fd34baed6c602ac39b8b, type: 2}
+    probability: 1.6000001
+  - item: {fileID: 11400000, guid: 94734c471f800a547bfb93db052967e9, type: 2}
+    probability: 3.2000003

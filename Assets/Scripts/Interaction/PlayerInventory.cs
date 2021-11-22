@@ -61,6 +61,7 @@ namespace RPG.Interaction
 
     public void RecalculateModifiers()
     {
+      Debug.Log("Recalculate");
       ModifyTable table = new ModifyTable();
       foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
       {
@@ -78,6 +79,7 @@ namespace RPG.Interaction
       foreach (var modifier in modItem.modifiers)
       {
         modifier.effect.Invoke(table, modifier.value);
+        modifier.legendaryEffect.Invoke(modifier.value);
       }
     }
 
@@ -146,7 +148,6 @@ namespace RPG.Interaction
       // GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
       // if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
       // else RecalculateModifiers();
-      RecalculateModifiers();
     }
 
     private void HideAllInventorys()

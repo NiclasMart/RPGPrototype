@@ -19,8 +19,7 @@ MonoBehaviour:
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: RPG.Items.Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null.AddCriticalDamage
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddCriticalDamage
       _PersistentArguments:
       - _Type: 14
         _Int: 0
@@ -39,3 +38,5 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
+  legendaryEffect:
+    _PersistentCalls: []

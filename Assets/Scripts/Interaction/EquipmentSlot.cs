@@ -42,10 +42,7 @@ namespace RPG.Interaction
 
     public virtual void EquipItem(ItemSlot itemSlot)
     {
-      if (this.item != null) UnequipCurrentItem();
-      SetIcon(itemSlot.item);
-      this.item = itemSlot.item;
-      connectedInventory.DeleteItemSlot(itemSlot);
+      EquipItem(itemSlot.item);
     }
 
     public virtual void EquipItem(Item item)
@@ -69,6 +66,7 @@ namespace RPG.Interaction
       UnequipCurrentItem();
       SetIcon(null);
       this.item = null;
+      playerInventory.RecalculateModifiers();
     }
 
     public object CaptureSaveData(SaveType saveType)

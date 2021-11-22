@@ -20,6 +20,7 @@ namespace RPG.Items
     public string displayText;
     public int min, max;
     public UltEvent<ModifyTable, float> effect;
+    public UltEvent<float> legendaryEffect;
 
     public int GetRandomValue()
     {

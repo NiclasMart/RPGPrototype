@@ -4,6 +4,7 @@ using RPG.Display;
 using RPG.Core;
 using UnityEngine;
 using RPG.Saving;
+using System;
 
 namespace RPG.Stats
 {
@@ -13,6 +14,8 @@ namespace RPG.Stats
     int killAmount = 0, killsForMaxSoulEnergy;
     public ValueChangeEvent valueChange;
 
+    public Action onGetEnergy = () => { };
+
     private void Awake()
     {
       killsForMaxSoulEnergy = (int)stageData.GetMaxSoulEnergyKills();
@@ -20,6 +23,13 @@ namespace RPG.Stats
     }
 
     public void AddKill()
+    {
+      killAmount++;
+      onGetEnergy.Invoke();
+      valueChange.Invoke(this);
+    }
+
+    public void AddEnergy()
     {
       killAmount++;
       valueChange.Invoke(this);

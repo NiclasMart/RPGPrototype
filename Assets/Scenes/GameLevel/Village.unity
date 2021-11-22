@@ -5720,11 +5720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485343091035548624, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 7.38e-43
       objectReference: {fileID: 0}
     - target: {fileID: 3485343091035548624, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.3510647e-38
+      value: 6e-44
       objectReference: {fileID: 0}
     - target: {fileID: 3485343091035548624, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_BoundingSphereOverride.z

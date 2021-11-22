@@ -10,6 +10,7 @@ namespace RPG.Stats
   {
     [SerializeField] float experienceMuliplier = 0.87f;
     [SerializeField] GameObject levelUpParticlePrefab;
+    [SerializeField] float soulEnergyMultiplier = 2;
     float currentExperiencePoints;
     LazyValue<float> maxExperiencePoints;
 
@@ -36,6 +37,7 @@ namespace RPG.Stats
       CharacterStats playerStats = GetComponent<CharacterStats>();
       int levelDifferenceToEnemy = playerStats.Level - enemyLevel;
       float gainedExperience = baseXP * Mathf.Pow(experienceMuliplier, levelDifferenceToEnemy);
+      gainedExperience *= Mathf.Lerp(1, 2, soulEnergy);
 
       CalculateNewXPBalance(playerStats, gainedExperience);
       valueChange.Invoke(this);

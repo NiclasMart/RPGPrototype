@@ -112,7 +112,7 @@ namespace RPG.Stats
       if (playerExperience)
       {
         CharacterStats stats = GetComponent<CharacterStats>();
-        playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level,soulEnergy);
+        playerExperience.GainExperience((int)stats.GetStat(Stat.Experience), stats.Level, soulEnergy);
       }
     }
 

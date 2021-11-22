@@ -10,33 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: E_PercentageDamageModifier
+  m_Name: L_SoulGainer
   m_EditorClassIdentifier: 
-  rank: 2
-  displayText: Increase damage by *%
-  min: 5
-  max: 10
+  rank: 3
+  displayText: After * Kills you gain additionally 1 Soul Energy.
+  min: 3
+  max: 6
   effect:
+    _PersistentCalls: []
+  legendaryEffect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddPercentDamage
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendarySoulGainer_Install
       _PersistentArguments:
       - _Type: 14
         _Int: 0
-        _String: RPG.Items.ModifyTable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        _X: 0
-        _Y: 0
-        _Z: 0
-        _W: 0
-        _Object: {fileID: 0}
-      - _Type: 14
-        _Int: 1
         _String: 
         _X: 5
         _Y: 0
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-  legendaryEffect:
-    _PersistentCalls: []
