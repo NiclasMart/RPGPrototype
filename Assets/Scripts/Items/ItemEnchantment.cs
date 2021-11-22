@@ -77,7 +77,8 @@ namespace RPG.Items
         rerollBtn.text = "Reroll for 0";
         return;
       }
-      rerollBtn.text = "Reroll for " + rerollPrices[(int)mod.rarity];
+      if (itemSlot.item.rarity == Rank.Rare && mod.rarity == Rank.Normal) rerollBtn.text = "Reroll for " + rerollPrices[1];
+      else rerollBtn.text = "Reroll for " + rerollPrices[(int)mod.rarity];
     }
 
     private void HandleSelectionColor(EnchantmentModifierSlot slot)
@@ -93,7 +94,8 @@ namespace RPG.Items
 
       //get mod and pay price
       ModifiableItem.Modifier mod = previouseSelectedSlot.GetModifier();
-      int payed = playerInventory.GetGems(rerollPrices[(int)mod.rarity]);
+      int price = (itemSlot.item.rarity == Rank.Rare && mod.rarity == Rank.Normal) ? rerollPrices[1] : rerollPrices[(int)mod.rarity];
+      int payed = playerInventory.GetGems(price);
       if (payed == 0) return;
 
       int index = (itemSlot.item as ModifiableItem).modifiers.IndexOf(mod);
@@ -107,11 +109,10 @@ namespace RPG.Items
       ModifiableItem.Modifier newMod = new ModifiableItem.Modifier(baseMod);
 
       //upgrade modifier if rerolled modifier was rare
-      if (mod.rarity == Rank.Rare)
-      {
+      if (itemSlot.item.rarity == Rank.Rare && mod.rarity == Rank.Normal)
         newMod.value *= 1 + PlayerInfo.GetGlobalParameters().rareValueImprovement;
-        newMod.rarity = Rank.Rare;
-      }
+
+      
 
       (itemSlot.item as ModifiableItem).modifiers.Insert(index, newMod);
       LoadModifiers(itemSlot.item);

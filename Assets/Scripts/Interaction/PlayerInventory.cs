@@ -26,6 +26,7 @@ namespace RPG.Interaction
 
     public void AddItem(Item item)
     {
+      if (item == null) return;
       SimpleInventory inventory = equipmentDictionary[item.itemType].connectedInventory;
       inventory.AddItem(item);
     }

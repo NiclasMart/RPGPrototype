@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Display;
 using RPG.Items;
+using RPG.Saving;
 using UltEvents;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-  public class CharacterStats : MonoBehaviour, IDisplayable
+  public class CharacterStats : MonoBehaviour, IDisplayable, ISaveable
   {
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
@@ -84,5 +85,15 @@ namespace RPG.Stats
       return 100;
     }
 
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return level;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      level = (int)data;
+      valueChange.Invoke(this);
+    }
   }
 }
