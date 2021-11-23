@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using RPG.Core;
+using RPG.Interaction;
 using RPG.Saving;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -57,11 +58,16 @@ namespace RPG.SceneManagement
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
-
-      FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
-      if (homeTeleporter) yield return SceneManager.LoadSceneAsync("Village");
+      
+      if (homeTeleporter)
+      {
+        FindObjectOfType<LootTeleporter>().TeleportItems(PlayerInfo.GetPlayer());
+        FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
+        yield return SceneManager.LoadSceneAsync("Village");
+      }
       else
       {
+        FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
         if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
         else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       }
