@@ -71,6 +71,11 @@ namespace RPG.Combat
       slot.SetAbility(newAbility);
     }
 
+    public Ability GetRollAbility()
+    {
+      return abilitySlots[slots[0].activationKey].ability;
+    }
+
     private void InitializeStartAbilities()
     {
       for (int i = 0; i < startAbilities.Count; i++)

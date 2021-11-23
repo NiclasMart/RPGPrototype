@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using RPG.Combat;
 using RPG.Core;
 using RPG.Items;
 using RPG.Stats;
@@ -6,7 +8,7 @@ using UnityEngine;
 
 
 [Serializable]
-public static class Effect
+public class Effect
 {
   public static void AddFlatDamage(ModifyTable modifyTable, float value)
   {
@@ -69,22 +71,41 @@ public static class Effect
 
   //----- Legendary Effects -----
 
+  public class Timer : MonoBehaviour { }
+  private static Timer timerInstance;
+  private static void InitTimer()
+  {
+    if (timerInstance == null)
+    {
+      GameObject go = new GameObject("Timer");
+      timerInstance = go.AddComponent<Timer>();
+    }
+  }
+
+  public delegate float AlterStat(float stat);
+
   //--- L1 Start ---
   public static void LegendarySoulGainer_Install(float value)
   {
-    PlayerInfo.GetPlayer().GetComponent<SoulEnergy>().onGetEnergy -= SoulGain;
+    SoulEnergy component = PlayerInfo.GetPlayer().GetComponent<SoulEnergy>();
+    component.onGetEnergy -= SoulGain;
+    component.onGetEnergy += SoulGain;
 
-    PlayerInfo.GetPlayer().GetComponent<SoulEnergy>().onGetEnergy += SoulGain;
-    if (value == 0) effectValueL1 = (int)value;
+    if (effectValueL1 == 0) effectValueL1 = (int)value;
     else effectValueL1 = Mathf.Min(effectValueL1, (int)value);
-    Debug.Log("Install with " + value);
+  }
+
+  public static void LegendarySoulGainer_Uninstall()
+  {
+    SoulEnergy component = PlayerInfo.GetPlayer().GetComponent<SoulEnergy>();
+    component.onGetEnergy -= SoulGain;
+    effectValueL1 = 0;
   }
 
   static int soulsGained = 0, effectValueL1;
   public static void SoulGain()
   {
     soulsGained++;
-    Debug.Log("Called Legendary Effect " + soulsGained);
 
     if (soulsGained == effectValueL1)
     {
@@ -93,5 +114,38 @@ public static class Effect
     }
   }
   //--- L1 End ---
+
+  //--- L2 Start
+  public static void LegendaryRollStaminaReduction_Install(float value)
+  {
+    MoveSkill rollAbility = PlayerInfo.GetPlayer().GetComponent<AbilityManager>().GetRollAbility() as MoveSkill;
+    rollAbility.alterStamina -= RollStaminaReduction;
+    rollAbility.alterStamina += RollStaminaReduction;
+
+    if (effectValueL2 == 0) effectValueL2 = (int)value;
+    else effectValueL2 = Mathf.Max(effectValueL2, (int)value);
+  }
+
+  public static void LegendaryRollStaminaReduction_Uninstall()
+  {
+    MoveSkill rollAbility = PlayerInfo.GetPlayer().GetComponent<AbilityManager>().GetRollAbility() as MoveSkill;
+    rollAbility.alterStamina -= RollStaminaReduction;
+    effectValueL2 = 0;
+  }
+
+  static int effectValueL2;
+
+  public static float RollStaminaReduction(float stamina)
+  {
+    float newValue = stamina - stamina * (effectValueL2 / 100f);
+    return newValue;
+  }
+
+  IEnumerator SetMovementSpeed(float time, float value)
+  {
+    yield return null;
+  }
+
+  //--- L2 End ---
 
 }

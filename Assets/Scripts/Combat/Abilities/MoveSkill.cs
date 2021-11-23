@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Stats;
 using UnityEngine;
 using UnityEngine.AI;
+using static Effect;
 
 namespace RPG.Combat
 {
@@ -12,15 +13,19 @@ namespace RPG.Combat
     public float time;
     public float staminaConsumption;
 
+    public AlterStat alterStamina;
+
     public override bool CastIsValid()
     {
       Stamina stamina = data.source.GetComponent<Stamina>();
-      return stamina.UseStamina(staminaConsumption);
+      if (alterStamina != null) return stamina.UseStamina(alterStamina.Invoke(staminaConsumption));
+      else return stamina.UseStamina(staminaConsumption);
     }
 
     public override void CastAction()
     {
       StartCoroutine(Dash());
+      base.CastAction();
     }
 
     IEnumerator Dash()

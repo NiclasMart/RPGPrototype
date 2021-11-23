@@ -15,7 +15,8 @@ namespace RPG.Items
       public string display;
       public Rank rarity;
       public UltEvent<ModifyTable, float> effect;
-      public UltEvent<float> legendaryEffect;
+      public UltEvent<float> legendaryInstallEffect;
+      public UltEvent legendaryUninstallEffect;
 
       public Modifier(ItemStatModifier baseModifier)
       {
@@ -24,7 +25,8 @@ namespace RPG.Items
         display = baseModifier.displayText;
         rarity = baseModifier.rank;
         effect += baseModifier.effect.InvokeX<ModifyTable, float>;
-        legendaryEffect += baseModifier.legendaryEffect.InvokeX<float>;
+        legendaryInstallEffect += baseModifier.legendaryInstallEffect.InvokeX<float>;
+        legendaryUninstallEffect += baseModifier.legendaryUninstallEffect.InvokeX;
       }
 
       public string GetDisplayText()
@@ -93,6 +95,11 @@ namespace RPG.Items
       Modifier mod = new Modifier(newModifier);
       modifiers.Add(mod);
       return mod;
+    }
+
+    public Modifier GetLegendaryModifier()
+    {
+      return modifiers.Find(x => x.rarity == Rank.Legendary);
     }
 
     public List<SerializableModifier> GetSerializableModifiers()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
@@ -18,6 +19,8 @@ namespace RPG.Combat
     public AnimationClip animationClip;
     public float animationRotationOffset;
     public bool castImmediately = false;
+
+    public Action onEndCast;
 
     protected CastData data;
     protected class CastData
@@ -49,7 +52,7 @@ namespace RPG.Combat
 
     public virtual bool CastIsValid() { return true; }
 
-    public virtual void CastAction() { }
+    public virtual void CastAction() { onEndCast?.Invoke(); }
 
     public void Cancel() { }
   }

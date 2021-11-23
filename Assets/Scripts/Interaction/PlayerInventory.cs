@@ -79,7 +79,7 @@ namespace RPG.Interaction
       foreach (var modifier in modItem.modifiers)
       {
         modifier.effect.Invoke(table, modifier.value);
-        modifier.legendaryEffect.Invoke(modifier.value);
+        modifier.legendaryInstallEffect.Invoke(modifier.value);
       }
     }
 

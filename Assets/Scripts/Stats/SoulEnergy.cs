@@ -14,7 +14,7 @@ namespace RPG.Stats
     int killAmount = 0, killsForMaxSoulEnergy;
     public ValueChangeEvent valueChange;
 
-    public Action onGetEnergy = () => { };
+    public Action onGetEnergy;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ namespace RPG.Stats
     public void AddKill()
     {
       killAmount++;
-      onGetEnergy.Invoke();
+      onGetEnergy?.Invoke();
       valueChange.Invoke(this);
     }
 

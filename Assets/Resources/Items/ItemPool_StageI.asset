@@ -17,14 +17,6 @@ MonoBehaviour:
     probability: 1
   - item: {fileID: 11400000, guid: aa4a3b1adb294ac40822da08df58135f, type: 2}
     probability: 1
-  - item: {fileID: 11400000, guid: ebf192bb24af15c4ea5d500943bb2e85, type: 2}
-    probability: 1
-  - item: {fileID: 11400000, guid: 02329bc7ad72fd34baed6c602ac39b8b, type: 2}
-    probability: 1
-  - item: {fileID: 11400000, guid: 94734c471f800a547bfb93db052967e9, type: 2}
-    probability: 1
-  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
-    probability: 1
   items:
   - item: {fileID: 11400000, guid: e7d242568ad7f3a43b2e1aadbc5e786b, type: 2}
     probability: 0.5

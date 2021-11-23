@@ -38,6 +38,7 @@ namespace RPG.Stats
 
     public bool UseStamina(float neededStamina)
     {
+      Debug.Log("Stamina: " + neededStamina);
       if (!CheckStamina(neededStamina)) return false;
 
       currentStamina.value -= neededStamina;

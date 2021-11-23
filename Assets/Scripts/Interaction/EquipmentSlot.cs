@@ -56,6 +56,7 @@ namespace RPG.Interaction
     protected void UnequipCurrentItem()
     {
       connectedInventory.AddItem(item);
+      if (item.rarity == Rank.Legendary) (item as ModifiableItem).GetLegendaryModifier().legendaryUninstallEffect.Invoke();
     }
 
     public override void HandleRightClick()
