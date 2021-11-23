@@ -25,6 +25,7 @@ namespace RPG.Stats
     public float MaxHealth => maxHealth.value;
 
     public ValueChangeEvent valueChange;
+    public AlterValue onTakeDamage;
 
     private void Awake()
     {
@@ -49,6 +50,7 @@ namespace RPG.Stats
 
     public void ApplyDamage(GameObject instigator, float damage)
     {
+      onTakeDamage?.Invoke(ref damage);
       currentHealth.value = Mathf.Max(0, currentHealth.value - damage);
       CheckForDeath(instigator);
       valueChange.Invoke(this);

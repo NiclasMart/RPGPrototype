@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: L_ExperienceGain
   m_EditorClassIdentifier: 
   rank: 3
-  displayText: You gain *% more Experience (stackable).
+  displayText: You gain *% more Experience.
   min: 8
   max: 15
   effect:

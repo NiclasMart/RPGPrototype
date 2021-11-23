@@ -3,7 +3,6 @@ using GameDevTV.Utils;
 using RPG.Display;
 using RPG.Saving;
 using UnityEngine;
-using static Effect;
 
 namespace RPG.Stats
 {
@@ -16,7 +15,7 @@ namespace RPG.Stats
     LazyValue<float> maxExperiencePoints;
 
     public ValueChangeEvent valueChange;
-    public AlterStat alterExperienceMultiplier;
+    public AlterValue alterExperienceMultiplier;
 
     private void Awake()
     {
@@ -42,7 +41,7 @@ namespace RPG.Stats
 
       //additional modifications
       float multiplier = 1;
-      if (alterExperienceMultiplier != null) multiplier = alterExperienceMultiplier.Invoke(multiplier);
+      alterExperienceMultiplier?.Invoke(ref multiplier);
       gainedExperience *= (Mathf.Lerp(0, 1, soulEnergy) + multiplier);
 
       CalculateNewXPBalance(playerStats, gainedExperience);

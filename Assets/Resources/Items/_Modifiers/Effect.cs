@@ -7,6 +7,7 @@ using RPG.Movement;
 using RPG.Stats;
 using UnityEngine;
 
+public delegate void AlterValue(ref float stat);
 
 [Serializable]
 public class Effect
@@ -83,7 +84,7 @@ public class Effect
     }
   }
 
-  public delegate float AlterStat(float stat);
+
 
   //--- L1 Start ---
   public static void LegendarySoulGainer_Install(float value)
@@ -136,10 +137,9 @@ public class Effect
 
   static int effectValueL2;
 
-  private static float RollStaminaReduction(float stamina)
+  private static void RollStaminaReduction(ref float stamina)
   {
-    float newValue = stamina - stamina * (effectValueL2 / 100f);
-    return newValue;
+    stamina -= (stamina * (effectValueL2 / 100f));
   }
 
   //--- L2 End ---
@@ -165,10 +165,9 @@ public class Effect
 
   static float effectValueL3;
 
-  private static float ExperienceGain(float value)
+  private static void ExperienceGain(ref float value)
   {
     value += (effectValueL3 / 100f);
-    return value;
   }
   //--- L3 End ---
 
@@ -193,17 +192,17 @@ public class Effect
 
   static float effectValueL4;
   static float resetTime;
-  static bool L4EffectActive = false;
+  static bool effectActiveL4 = false;
 
   private static void RollingSpeed()
   {
-    if (L4EffectActive)
+    if (effectActiveL4)
     {
       resetTime = Time.time + effectValueL4;
       return;
     }
 
-    L4EffectActive = true;
+    effectActiveL4 = true;
     Mover mover = PlayerInfo.GetPlayer().GetComponent<Mover>();
     float speedChange = mover.MovementSpeed * 0.2f;
     mover.SetMovementSpeed(mover.MovementSpeed + speedChange);
@@ -211,7 +210,6 @@ public class Effect
     InitTimer();
     timerInstance.StartCoroutine(SetMovementSpeed(mover, speedChange));
   }
-  //--- L4 End ---
 
   static IEnumerator SetMovementSpeed(Mover mover, float value)
   {
@@ -223,8 +221,66 @@ public class Effect
     }
 
     mover.SetMovementSpeed(mover.MovementSpeed - value);
-    L4EffectActive = false;
+    effectActiveL4 = false;
   }
+  //--- L4 End ---
+
+  //--- L5 Start ---
+
+  public static void LegendaryLifeSaver_Install(float value)
+  {
+    Health component = PlayerInfo.GetPlayer().GetComponent<Health>();
+    component.onTakeDamage -= ActivateLifeSaver;
+    component.onTakeDamage += ActivateLifeSaver;
+
+    if (effectValueL5 == 0) effectValueL5 = value;
+    else effectValueL5 = Mathf.Max(effectValueL5, value);
+  }
+
+  public static void LegendaryLifeSaver_Uninstall()
+  {
+    Health component = PlayerInfo.GetPlayer().GetComponent<Health>();
+    component.onTakeDamage -= ActivateLifeSaver;
+    effectValueL5 = 0;
+  }
+
+  static float effectValueL5;
+  static bool effectActiveL5, cooldownReadyL5 = true;
+
+  private static void ActivateLifeSaver(ref float damage)
+  {
+    if (effectActiveL5)
+    {
+      damage -= (damage * (effectValueL5 / 100f));
+      return;
+    }
+
+    Health health = PlayerInfo.GetPlayer().GetComponent<Health>();
+    if (!cooldownReadyL5 || health.CurrentHealth > health.MaxHealth * 0.2f) return;
+
+    effectActiveL5 = true;
+    cooldownReadyL5 = false;
+
+    InitTimer();
+    timerInstance.StartCoroutine(WaitTimerL5(50, () => {cooldownReadyL5 = true;}));
+    timerInstance.StartCoroutine(WaitTimerL5(5, () => {effectActiveL5 = false;}));
+  }
+
+  static IEnumerator WaitTimerL5(float time, Action methode)
+  {
+    float endTime = Time.time + time;
+
+    while (Time.time < endTime)
+    {
+      yield return new WaitForSeconds(0.5f);
+    }
+
+    methode.Invoke();
+  }
+
+  //--- L5 End ---
+
+
 
 
 

@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: L_RollingSpeed
+  m_Name: L_LifeSaver
   m_EditorClassIdentifier: 
   rank: 3
-  displayText: After rolling your movementspeed is increased by 20% for *s.
-  min: 1
-  max: 4
+  displayText: If your life drops below 20%, incoming damage is reduced by *% for
+    5s (50s Cooldown).
+  min: 25
+  max: 50
   effect:
     _PersistentCalls: []
   legendaryInstallEffect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryRollingSpeed_Install
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryLifeSaver_Install
       _PersistentArguments:
       - _Type: 14
         _Int: 0
@@ -34,5 +35,5 @@ MonoBehaviour:
   legendaryUninstallEffect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryRollingSpeed_Uninstall
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryLifeSaver_Uninstall
       _PersistentArguments: []
