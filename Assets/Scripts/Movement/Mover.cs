@@ -14,6 +14,7 @@ namespace RPG.Movement
     ActionScheduler scheduler;
 
     public bool IsMoving => agent.destination != null;
+    public float MovementSpeed => agent.speed;
 
     private void Awake()
     {

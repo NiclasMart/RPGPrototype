@@ -33,12 +33,12 @@ namespace RPG.Combat
 
       NavMeshAgent agent = transform.parent.GetComponent<NavMeshAgent>();
       agent.destination = data.source.transform.position + direction * moveDistance;
-      float defaultSpeed = agent.speed;
-      agent.speed = defaultSpeed * 2;
+      float speedChange = agent.speed;
+      agent.speed += speedChange;
 
       yield return new WaitForSeconds(time);
 
-      agent.speed = defaultSpeed;
+      agent.speed -= speedChange;
       onEndCast?.Invoke();
     }
 

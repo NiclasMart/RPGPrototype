@@ -192,27 +192,38 @@ public class Effect
   }
 
   static float effectValueL4;
-  static IEnumerator routine;
+  static float resetTime;
+  static bool L4EffectActive = false;
 
   private static void RollingSpeed()
   {
-    float baseSpeed = PlayerInfo.GetPlayer().GetComponent<CharacterStats>().GetStat(Stat.MovementSpeed);
+    if (L4EffectActive)
+    {
+      resetTime = Time.time + effectValueL4;
+      return;
+    }
+
+    L4EffectActive = true;
     Mover mover = PlayerInfo.GetPlayer().GetComponent<Mover>();
-    mover.SetMovementSpeed(baseSpeed + baseSpeed * 0.2f);
+    float speedChange = mover.MovementSpeed * 0.2f;
+    mover.SetMovementSpeed(mover.MovementSpeed + speedChange);
 
     InitTimer();
-
-    if (routine != null) timerInstance.StopCoroutine(routine);
-    routine = SetMovementSpeed(mover, effectValueL4, baseSpeed);
-    timerInstance.StartCoroutine(routine);
+    timerInstance.StartCoroutine(SetMovementSpeed(mover, speedChange));
   }
   //--- L4 End ---
 
-  static IEnumerator SetMovementSpeed(Mover mover, float time, float value)
+  static IEnumerator SetMovementSpeed(Mover mover, float value)
   {
-    yield return new WaitForSeconds(time);
+    resetTime = Time.time + effectValueL4;
 
-    mover.SetMovementSpeed(value);
+    while (Time.time < resetTime)
+    {
+      yield return new WaitForSeconds(0.5f);
+    }
+
+    mover.SetMovementSpeed(mover.MovementSpeed - value);
+    L4EffectActive = false;
   }
 
 
