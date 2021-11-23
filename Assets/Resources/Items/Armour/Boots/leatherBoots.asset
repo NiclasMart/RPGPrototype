@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
   - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
   legendaryModifiers:
-  - {fileID: 11400000, guid: 36b4611555b3b6f4999548d09904ba63, type: 2}
+  - {fileID: 11400000, guid: bf8e10084d5f1dd43981d71a4cb365f8, type: 2}
+  - {fileID: 11400000, guid: 622e4d1bda44f98468248db5d4c22c80, type: 2}
   armour: {x: 1, y: 3}
   magicResistance: {x: 2, y: 4}

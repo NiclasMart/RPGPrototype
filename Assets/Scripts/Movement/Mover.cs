@@ -47,6 +47,7 @@ namespace RPG.Movement
 
     public void SetMovementSpeed(float speed)
     {
+      Debug.Log("Set MovementSpeed to: " + speed);
       agent.speed = Mathf.Abs(speed);
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using RPG.Combat;
 using RPG.Core;
 using RPG.Items;
+using RPG.Movement;
 using RPG.Stats;
 using UnityEngine;
 
@@ -103,7 +104,7 @@ public class Effect
   }
 
   static int soulsGained = 0, effectValueL1;
-  public static void SoulGain()
+  private static void SoulGain()
   {
     soulsGained++;
 
@@ -135,17 +136,85 @@ public class Effect
 
   static int effectValueL2;
 
-  public static float RollStaminaReduction(float stamina)
+  private static float RollStaminaReduction(float stamina)
   {
     float newValue = stamina - stamina * (effectValueL2 / 100f);
     return newValue;
   }
 
-  IEnumerator SetMovementSpeed(float time, float value)
+  //--- L2 End ---
+
+  //--- L3 Start---
+
+  public static void LegendaryExperienceGain_Install(float value)
   {
-    yield return null;
+    Experience component = PlayerInfo.GetPlayer().GetComponent<Experience>();
+    component.alterExperienceMultiplier -= ExperienceGain;
+    component.alterExperienceMultiplier += ExperienceGain;
+
+    if (effectValueL3 == 0) effectValueL3 = (int)value;
+    else effectValueL3 = Mathf.Max(effectValueL3, (int)value);
   }
 
-  //--- L2 End ---
+  public static void LegendaryExperienceGain_Uninstall()
+  {
+    Experience component = PlayerInfo.GetPlayer().GetComponent<Experience>();
+    component.alterExperienceMultiplier -= ExperienceGain;
+    effectValueL3 = 0;
+  }
+
+  static float effectValueL3;
+
+  private static float ExperienceGain(float value)
+  {
+    value += (effectValueL3 / 100f);
+    return value;
+  }
+  //--- L3 End ---
+
+  // --- L4 Start
+
+  public static void LegendaryRollingSpeed_Install(float value)
+  {
+    MoveSkill rollAbility = PlayerInfo.GetPlayer().GetComponent<AbilityManager>().GetRollAbility() as MoveSkill;
+    rollAbility.onEndCast -= RollingSpeed;
+    rollAbility.onEndCast += RollingSpeed;
+
+    if (effectValueL4 == 0) effectValueL4 = value;
+    else effectValueL4 = Mathf.Max(effectValueL4, value);
+  }
+
+  public static void LegendaryRollingSpeed_Uninstall()
+  {
+    MoveSkill rollAbility = PlayerInfo.GetPlayer().GetComponent<AbilityManager>().GetRollAbility() as MoveSkill;
+    rollAbility.onEndCast -= RollingSpeed;
+    effectValueL4 = 0;
+  }
+
+  static float effectValueL4;
+  static IEnumerator routine;
+
+  private static void RollingSpeed()
+  {
+    float baseSpeed = PlayerInfo.GetPlayer().GetComponent<CharacterStats>().GetStat(Stat.MovementSpeed);
+    Mover mover = PlayerInfo.GetPlayer().GetComponent<Mover>();
+    mover.SetMovementSpeed(baseSpeed + baseSpeed * 0.2f);
+
+    InitTimer();
+
+    if (routine != null) timerInstance.StopCoroutine(routine);
+    routine = SetMovementSpeed(mover, effectValueL4, baseSpeed);
+    timerInstance.StartCoroutine(routine);
+  }
+  //--- L4 End ---
+
+  static IEnumerator SetMovementSpeed(Mover mover, float time, float value)
+  {
+    yield return new WaitForSeconds(time);
+
+    mover.SetMovementSpeed(value);
+  }
+
+
 
 }

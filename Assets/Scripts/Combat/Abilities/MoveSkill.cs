@@ -25,7 +25,6 @@ namespace RPG.Combat
     public override void CastAction()
     {
       StartCoroutine(Dash());
-      base.CastAction();
     }
 
     IEnumerator Dash()
@@ -40,6 +39,7 @@ namespace RPG.Combat
       yield return new WaitForSeconds(time);
 
       agent.speed = defaultSpeed;
+      onEndCast?.Invoke();
     }
 
     private Vector3 GetDashDirection()

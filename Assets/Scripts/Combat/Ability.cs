@@ -52,7 +52,7 @@ namespace RPG.Combat
 
     public virtual bool CastIsValid() { return true; }
 
-    public virtual void CastAction() { onEndCast?.Invoke(); }
+    public virtual void CastAction() { }
 
     public void Cancel() { }
   }

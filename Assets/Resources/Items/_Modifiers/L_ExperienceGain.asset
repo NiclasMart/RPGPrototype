@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: L_SoulGainer
+  m_Name: L_ExperienceGain
   m_EditorClassIdentifier: 
   rank: 3
-  displayText: After * kills you gain additionally 1 Soul Energy.
-  min: 3
-  max: 6
+  displayText: You gain *% more Experience (stackable).
+  min: 8
+  max: 15
   effect:
     _PersistentCalls: []
   legendaryInstallEffect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendarySoulGainer_Install
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryExperienceGain_Install
       _PersistentArguments:
       - _Type: 14
         _Int: 0
@@ -34,5 +34,5 @@ MonoBehaviour:
   legendaryUninstallEffect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendarySoulGainer_Uninstall
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.LegendaryExperienceGain_Uninstall
       _PersistentArguments: []

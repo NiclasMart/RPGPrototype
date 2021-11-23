@@ -25,8 +25,16 @@ namespace RPG.Combat
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponentInChildren<Animator>();
       mover = GetComponent<Mover>();
+      Initialize();
+    }
+
+    bool initialized = false;
+    private void Initialize()
+    {
+      if (initialized) return;
       BuildSlotDictionary();
       InitializeStartAbilities();
+      initialized = true;
     }
 
     private void Start()
@@ -73,6 +81,7 @@ namespace RPG.Combat
 
     public Ability GetRollAbility()
     {
+      Initialize();
       return abilitySlots[slots[0].activationKey].ability;
     }
 
