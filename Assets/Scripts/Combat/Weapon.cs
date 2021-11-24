@@ -80,7 +80,7 @@ namespace RPG.Combat
 
     public override void GetStats(ModifyTable stats)
     {
-      stats.damageFlat += damage;
+      stats.physicalDamageFlat += damage;
       stats.attackSpeed += attackSpeed;
       stats.attackRange += range;
     }

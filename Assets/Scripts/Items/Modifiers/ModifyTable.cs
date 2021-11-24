@@ -6,13 +6,15 @@ namespace RPG.Items
     public float healthFlat, healthPercent;
     public float armourFlat, armourPercent;
     public float magicResiFlat, magicResiPercent;
-    public float damageFlat, damagePercent;
+    public float physicalDamageFlat, physicalDamagePercent;
+    public float magicDamageFlat, magicDamagePercent;
     public float staminaFlat, staminaPercent;
     public float critChanceFlat, critDamageFlat;
     public float staminaPerSecond;
     public float movementSpeed;
     public float attackSpeed;
     public float attackRange;
+    public float cooldownReduction;
 
     public float ModifyHealth(float baseStat)
     {
@@ -24,9 +26,19 @@ namespace RPG.Items
       return (1 + armourPercent / 100) * baseStat + armourFlat;
     }
 
-    public float ModifyDamage(float baseStat)
+    public float ModifyMagicResi(float baseStat)
     {
-      return (1 + damagePercent / 100) * (baseStat + damageFlat);
+      return (1 + magicResiPercent / 100) * baseStat + magicResiFlat;
+    }
+
+    public float ModifyPhysicalDamage(float baseStat)
+    {
+      return (1 + physicalDamagePercent / 100) * (baseStat + physicalDamageFlat);
+    }
+
+    public float ModifyMagicDamage(float baseStat)
+    {
+      return (1 + magicDamagePercent / 100) * (baseStat + magicDamageFlat);
     }
 
     public float ModifyStamina(float baseStat)
@@ -37,6 +49,11 @@ namespace RPG.Items
     public float ModifyMovementSpeed(float baseStat)
     {
       return (1 + movementSpeed / 100) * baseStat;
+    }
+
+    public float ModifyCooldownReduction(float baseStat)
+    {
+      return cooldownReduction + baseStat;
     }
 
     public float GetAttackSpeed(float baseStat)

@@ -43,7 +43,7 @@ namespace RPG.Stats
       activeStats = new Dictionary<Stat, float>();
 
       CalculateStat(Stat.Health, modifierTable.ModifyHealth);
-      CalculateStat(Stat.Damage, modifierTable.ModifyDamage);
+      CalculateStat(Stat.Damage, modifierTable.ModifyPhysicalDamage);
       CalculateStat(Stat.Armour, modifierTable.ModifyArmour);
       CalculateStat(Stat.MovementSpeed, modifierTable.ModifyMovementSpeed);
       CalculateStat(Stat.Stamina, modifierTable.ModifyStamina);
@@ -52,6 +52,9 @@ namespace RPG.Stats
       CalculateStat(Stat.CritChance, modifierTable.ModifyCritChance);
       CalculateStat(Stat.CritDamage, modifierTable.ModifyCritDamage);
       CalculateStat(Stat.StaminaRegeneration, modifierTable.ModifyStaminaRegeneration);
+      CalculateStat(Stat.CooldownReduction, modifierTable.ModifyCooldownReduction);
+      CalculateStat(Stat.MagicDamage, modifierTable.ModifyMagicDamage);
+      CalculateStat(Stat.MagicResi, modifierTable.ModifyMagicResi);
 
       activeStats.Add(Stat.Experience, progressionSet.GetStat(Stat.Experience, charakterClass, level));
       statsChange.Invoke(this);

@@ -12,13 +12,9 @@ namespace RPG.Stats
     AttackRange,
     CritChance,
     CritDamage,
-    StaminaRegeneration
-    // MagicResi,
-
-    // CooldownReduction,
-    // MagicDamage,
-    // 
-    // ExperienceGainMultiplier,
-
+    StaminaRegeneration,
+    MagicResi,
+    CooldownReduction,
+    MagicDamage,
   }
 }
