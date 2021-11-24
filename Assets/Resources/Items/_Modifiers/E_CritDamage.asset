@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E_CritDamage
   m_EditorClassIdentifier: 
   rank: 2
-  displayText: Increases critical hit damage by * % (additive)
+  displayText: Adds *% critical hit damage.
   min: 50
   max: 70
   effect:
@@ -38,5 +38,7 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-  legendaryEffect:
+  legendaryInstallEffect:
+    _PersistentCalls: []
+  legendaryUninstallEffect:
     _PersistentCalls: []

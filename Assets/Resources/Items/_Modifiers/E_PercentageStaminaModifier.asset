@@ -13,8 +13,32 @@ MonoBehaviour:
   m_Name: E_PercentageStaminaModifier
   m_EditorClassIdentifier: 
   rank: 2
-  displayText: Increase stamina by *%
+  displayText: Increase stamina by *%.
   min: 3
   max: 5
   effect:
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddPercentStamina
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: RPG.Items.ModifyTable, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: 
+        _X: 5
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  legendaryInstallEffect:
+    _PersistentCalls: []
+  legendaryUninstallEffect:
     _PersistentCalls: []

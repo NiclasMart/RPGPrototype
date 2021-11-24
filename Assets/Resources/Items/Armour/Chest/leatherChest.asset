@@ -20,6 +20,7 @@ MonoBehaviour:
   baseValue: 3
   itemType: 1
   modifiable: 1
+  modifierQuality: 1
   normalModifiers:
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
   - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}

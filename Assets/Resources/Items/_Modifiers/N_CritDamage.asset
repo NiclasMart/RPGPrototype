@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: N_CritDamage
   m_EditorClassIdentifier: 
   rank: 0
-  displayText: Increases critical hit damage by * % (additive)
-  min: 10
-  max: 30
+  displayText: + *% critical hit damage
+  min: 5
+  max: 15
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}
@@ -38,5 +38,7 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-  legendaryEffect:
+  legendaryInstallEffect:
+    _PersistentCalls: []
+  legendaryUninstallEffect:
     _PersistentCalls: []

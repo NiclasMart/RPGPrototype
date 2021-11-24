@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: E_PercentageDamageModifier
   m_EditorClassIdentifier: 
   rank: 2
-  displayText: Increase damage by *%
+  displayText: Increase damage by *%.
   min: 5
   max: 10
   effect:
@@ -38,5 +38,7 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-  legendaryEffect:
+  legendaryInstallEffect:
+    _PersistentCalls: []
+  legendaryUninstallEffect:
     _PersistentCalls: []

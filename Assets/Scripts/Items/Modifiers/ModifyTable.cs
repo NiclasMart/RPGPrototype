@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace RPG.Items
 {
   [System.Serializable]
@@ -68,7 +70,7 @@ namespace RPG.Items
 
     public float ModifyCritChance(float baseStat)
     {
-      return baseStat + critChanceFlat;
+      return Mathf.Min(baseStat + critChanceFlat, 60);
     }
 
     public float ModifyCritDamage(float baseStat)

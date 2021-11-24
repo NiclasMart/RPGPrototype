@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: N_StaminaRegeneration
   m_EditorClassIdentifier: 
   rank: 0
-  displayText: + * Stamina per second
+  displayText: + * stamina per second
   min: 1
   max: 4
   effect:
@@ -38,5 +38,7 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
-  legendaryEffect:
+  legendaryInstallEffect:
+    _PersistentCalls: []
+  legendaryUninstallEffect:
     _PersistentCalls: []
