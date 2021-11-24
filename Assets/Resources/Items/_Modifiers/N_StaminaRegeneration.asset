@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
   m_Name: N_StaminaRegeneration
   m_EditorClassIdentifier: 
-  rank: 0
+  rank: 2
   displayText: + * stamina per second
   min: 1
-  max: 4
+  max: 5
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}

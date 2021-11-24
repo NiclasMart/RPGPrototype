@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 2
   displayText: Increase stamina by *%.
-  min: 3
-  max: 5
+  min: 2
+  max: 10
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}

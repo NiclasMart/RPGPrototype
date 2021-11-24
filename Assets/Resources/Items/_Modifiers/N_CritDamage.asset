@@ -15,7 +15,7 @@ MonoBehaviour:
   rank: 0
   displayText: + *% critical hit damage
   min: 5
-  max: 15
+  max: 25
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}

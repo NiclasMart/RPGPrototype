@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 2
   displayText: Increase health by *%.
-  min: 5
-  max: 10
+  min: 2
+  max: 15
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}

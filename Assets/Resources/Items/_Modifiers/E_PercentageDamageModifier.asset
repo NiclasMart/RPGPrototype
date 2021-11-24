@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 2
   displayText: Increase damage by *%.
-  min: 5
-  max: 10
+  min: 2
+  max: 12
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}

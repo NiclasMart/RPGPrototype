@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 0
   displayText: + * % movement speed
-  min: 5
+  min: 2
   max: 7
   effect:
     _PersistentCalls:

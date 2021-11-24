@@ -15,7 +15,7 @@ MonoBehaviour:
   rank: 2
   displayText: Adds *% critical hit chance.
   min: 2
-  max: 5
+  max: 8
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}
