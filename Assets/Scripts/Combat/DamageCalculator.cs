@@ -28,12 +28,12 @@ namespace RPG.Combat
       return damage;
     }
 
-    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, out bool isCrit)
+    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, ref bool isCrit)
     {
       float damage = CalculatePhysicalDamage(attacker, defender);
 
       //crit calculation
-      isCrit = (attacker.GetStat(Stat.CritChance) / 100f) > Random.value;
+      if (!isCrit) isCrit = (attacker.GetStat(Stat.CritChance) / 100f) > Random.value;
       if (isCrit) damage *= (attacker.GetStat(Stat.CritDamage) / 100);
 
       Debug.Log("Critical Strike: " + isCrit + " (new damage: " + damage + ")");

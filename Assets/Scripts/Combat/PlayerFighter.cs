@@ -17,6 +17,8 @@ namespace RPG.Combat
     AttackColdownDisplay cooldownDisplay;
 
     float lastAttackTime = Mathf.NegativeInfinity;
+    public AlterValue<float> onDealDamage;
+    public AlterValue<bool> onBeforeAttack;
 
 
     private void Awake()
@@ -60,11 +62,16 @@ namespace RPG.Combat
     {
       List<Health> targets = currentWeapon.GetHitTargets(transform.position, transform.forward, gameObject.layer);
 
+
+
       foreach (var target in targets)
       {
         Debug.Log("----------------");
-        bool isCrit;
-        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), out isCrit);
+        bool isCrit = false;
+        onBeforeAttack?.Invoke(ref isCrit);
+        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), ref isCrit);
+        onDealDamage?.Invoke(ref damage);
+        isCrit = false;
 
         //if deleted change damage in weapon to private
         Debug.Log("Player Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);

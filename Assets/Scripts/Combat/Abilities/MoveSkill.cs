@@ -12,7 +12,7 @@ namespace RPG.Combat
     public float time;
     public float staminaConsumption;
 
-    public AlterValue alterStamina;
+    public AlterValue<float> alterStamina;
 
     public override bool CastIsValid()
     {

@@ -15,7 +15,7 @@ namespace RPG.Stats
     LazyValue<float> maxExperiencePoints;
 
     public ValueChangeEvent valueChange;
-    public AlterValue alterExperienceMultiplier;
+    public AlterValue<float> alterExperienceMultiplier;
 
     private void Awake()
     {

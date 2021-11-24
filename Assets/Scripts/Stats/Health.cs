@@ -25,7 +25,7 @@ namespace RPG.Stats
     public float MaxHealth => maxHealth.value;
 
     public ValueChangeEvent valueChange;
-    public AlterValue onTakeDamage;
+    public AlterValue<float> onTakeDamage;
 
     private void Awake()
     {

@@ -7,7 +7,7 @@ using RPG.Movement;
 using RPG.Stats;
 using UnityEngine;
 
-public delegate void AlterValue(ref float stat);
+public delegate void AlterValue<T>(ref T stat);
 
 [Serializable]
 public class Effect
@@ -124,6 +124,7 @@ public class Effect
     rollAbility.alterStamina -= RollStaminaReduction;
     rollAbility.alterStamina += RollStaminaReduction;
 
+    value /= 100f;
     if (effectValueL2 == 0) effectValueL2 = (int)value;
     else effectValueL2 = Mathf.Max(effectValueL2, (int)value);
   }
@@ -139,7 +140,7 @@ public class Effect
 
   private static void RollStaminaReduction(ref float stamina)
   {
-    stamina -= (stamina * (effectValueL2 / 100f));
+    stamina -= (stamina * effectValueL2);
   }
 
   //--- L2 End ---
@@ -152,6 +153,7 @@ public class Effect
     component.alterExperienceMultiplier -= ExperienceGain;
     component.alterExperienceMultiplier += ExperienceGain;
 
+    value /= 100f;
     if (effectValueL3 == 0) effectValueL3 = (int)value;
     else effectValueL3 = Mathf.Max(effectValueL3, (int)value);
   }
@@ -167,7 +169,7 @@ public class Effect
 
   private static void ExperienceGain(ref float value)
   {
-    value += (effectValueL3 / 100f);
+    value += effectValueL3;
   }
   //--- L3 End ---
 
@@ -233,6 +235,7 @@ public class Effect
     component.onTakeDamage -= ActivateLifeSaver;
     component.onTakeDamage += ActivateLifeSaver;
 
+    value /= 100f;
     if (effectValueL5 == 0) effectValueL5 = value;
     else effectValueL5 = Mathf.Max(effectValueL5, value);
   }
@@ -251,7 +254,7 @@ public class Effect
   {
     if (effectActiveL5)
     {
-      damage -= (damage * (effectValueL5 / 100f));
+      damage -= (damage * effectValueL5);
       return;
     }
 
@@ -262,8 +265,8 @@ public class Effect
     cooldownReadyL5 = false;
 
     InitTimer();
-    timerInstance.StartCoroutine(WaitTimerL5(50, () => {cooldownReadyL5 = true;}));
-    timerInstance.StartCoroutine(WaitTimerL5(5, () => {effectActiveL5 = false;}));
+    timerInstance.StartCoroutine(WaitTimerL5(50, () => { cooldownReadyL5 = true; }));
+    timerInstance.StartCoroutine(WaitTimerL5(5, () => { effectActiveL5 = false; }));
   }
 
   static IEnumerator WaitTimerL5(float time, Action methode)
@@ -279,6 +282,73 @@ public class Effect
   }
 
   //--- L5 End ---
+
+  //--- L6 Start ---
+
+  public static void LegendaryAttackHealer_Install(float value)
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    playerHealth = PlayerInfo.GetPlayer().GetComponent<Health>();
+    component.onDealDamage -= AttackHealer;
+    component.onDealDamage += AttackHealer;
+
+    value /= 100f;
+    if (effectValueL6 == 0) effectValueL6 = value;
+    else effectValueL6 = Mathf.Max(effectValueL6, value);
+  }
+
+  public static void LegendaryAttackHealer_Uninstall()
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    component.onDealDamage -= AttackHealer;
+    effectValueL6 = 0;
+  }
+
+  static float effectValueL6;
+  static Health playerHealth;
+
+  private static void AttackHealer(ref float damage)
+  {
+    int heal = Mathf.CeilToInt(damage * effectValueL6);
+    Debug.Log("Healt for " + heal);
+    playerHealth.HealAbsolut(heal);
+  }
+
+  //--- L6 End ---
+
+  //--- L7 Start ---
+
+  public static void LegendaryCritMaker_Install(float value)
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    component.onBeforeAttack -= CritMaker;
+    component.onBeforeAttack += CritMaker;
+
+    if (effectValueL7 == 0) effectValueL7 = value;
+    else effectValueL7 = Mathf.Min(effectValueL7, value);
+  }
+
+  public static void LegendaryCritMaker_Uninstall()
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    component.onBeforeAttack -= CritMaker;
+    effectValueL7 = 0;
+  }
+
+  static float effectValueL7, attackCounter;
+
+  private static void CritMaker(ref bool isCrit)
+  {
+    attackCounter++;
+    Debug.Log("Crit counter " + attackCounter);
+    if (attackCounter < effectValueL7) return;
+
+    Debug.Log("Crit");
+    isCrit = true;
+    attackCounter = 0;
+  }
+
+  //--- L7 End ---
 
 
 
