@@ -23,9 +23,15 @@ namespace RPG.Items
     public UltEvent<float> legendaryInstallEffect;
     public UltEvent legendaryUninstallEffect;
 
-    public int GetRandomValue()
+    public int GetRandomValue(float quality)
     {
-      return Random.Range(min, max + 1);
+      float lowQuality, highQuality;
+      int lokalMin, lokalMax;
+      lowQuality = Mathf.Max(0, quality - 0.1f);
+      highQuality = Mathf.Min(1, quality + 0.1f);
+      lokalMin = Mathf.FloorToInt(Mathf.Lerp(min, max, lowQuality));
+      lokalMax = Mathf.RoundToInt(Mathf.Lerp(min, max, highQuality));
+      return Random.Range(lokalMin, lokalMax + 1);
     }
 
     public virtual void ModifyStat(ModifyTable stats, float value) { }

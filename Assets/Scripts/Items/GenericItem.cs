@@ -15,6 +15,7 @@ namespace RPG.Items
     public float baseValue;
     public ItemType itemType;
     public bool modifiable = false;
+    [Range(0, 1)] public float modifierQuality;
     public List<ItemStatModifier> normalModifiers = new List<ItemStatModifier>();
     public List<ItemStatModifier> epicModifiers = new List<ItemStatModifier>();
     public List<ItemStatModifier> legendaryModifiers = new List<ItemStatModifier>();
@@ -52,7 +53,7 @@ namespace RPG.Items
       return itemLookupCache[itemID];
     }
 
-    public ItemStatModifier GetModifier(Rank rarity)
+    public ItemStatModifier GetRandomModifier(Rank rarity)
     {
       switch (rarity)
       {

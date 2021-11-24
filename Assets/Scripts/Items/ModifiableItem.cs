@@ -12,16 +12,18 @@ namespace RPG.Items
     {
       public string name;
       public float value;
+      public float quality;
       public string display;
       public Rank rarity;
       public UltEvent<ModifyTable, float> effect;
       public UltEvent<float> legendaryInstallEffect;
       public UltEvent legendaryUninstallEffect;
 
-      public Modifier(ItemStatModifier baseModifier)
+      public Modifier(ItemStatModifier baseModifier, float quality)
       {
         name = baseModifier.name;
-        value = baseModifier.GetRandomValue();
+        value = baseModifier.GetRandomValue(quality);
+        this.quality = quality;
         display = baseModifier.displayText;
         rarity = baseModifier.rank;
         effect += baseModifier.effect.InvokeX<ModifyTable, float>;
@@ -51,7 +53,7 @@ namespace RPG.Items
       {
         ItemStatModifier genericMod = Resources.Load("Items/_Modifiers/" + name) as ItemStatModifier;
         if (genericMod == null) return null;
-        Modifier mod = new Modifier(genericMod);
+        Modifier mod = new Modifier(genericMod, 1);
         mod.value = value;
         return mod;
       }
@@ -90,9 +92,9 @@ namespace RPG.Items
       }
     }
 
-    public Modifier AddModifier(ItemStatModifier newModifier)
+    public Modifier AddModifier(ItemStatModifier newModifier, float quality)
     {
-      Modifier mod = new Modifier(newModifier);
+      Modifier mod = new Modifier(newModifier, quality);
       modifiers.Add(mod);
       return mod;
     }

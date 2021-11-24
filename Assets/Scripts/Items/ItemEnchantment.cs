@@ -102,11 +102,12 @@ namespace RPG.Items
       (itemSlot.item as ModifiableItem).modifiers.Remove(mod);
 
       //get baseModifier
+      GenericItem baseItem = GenericItem.GetFromID(itemSlot.item.itemID);
       ItemStatModifier baseMod;
-      do baseMod = GenericItem.GetFromID(itemSlot.item.itemID).GetModifier(mod.rarity);
+      do baseMod = baseItem.GetRandomModifier(mod.rarity);
       while ((itemSlot.item as ModifiableItem).modifiers.Find(x => x.name == baseMod.name) != null);
 
-      ModifiableItem.Modifier newMod = new ModifiableItem.Modifier(baseMod);
+      ModifiableItem.Modifier newMod = new ModifiableItem.Modifier(baseMod, baseItem.modifierQuality);
 
       //upgrade modifier if rerolled modifier was rare
       if (itemSlot.item.rarity == Rank.Rare && mod.rarity == Rank.Normal)

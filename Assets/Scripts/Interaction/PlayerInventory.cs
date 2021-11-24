@@ -21,7 +21,18 @@ namespace RPG.Interaction
     {
       InitializeEquipmentSlots();
       LoadSaveData();
+      EquipBaseWeapon();
       HideAllInventorys();
+    }
+
+    private void EquipBaseWeapon()
+    {
+      if (equipmentDictionary[ItemType.Weapon].item == null)
+      {
+        GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
+        if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
+        else RecalculateModifiers();
+      }
     }
 
     public void AddItem(Item item)
@@ -143,11 +154,6 @@ namespace RPG.Interaction
         //initialize slots
         slot.Initialize(null, this);
       }
-
-      //equip default weapon
-      // GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
-      // if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
-      // else RecalculateModifiers();
     }
 
     private void HideAllInventorys()
