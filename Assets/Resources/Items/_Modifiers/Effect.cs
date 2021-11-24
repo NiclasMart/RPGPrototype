@@ -14,12 +14,12 @@ public class Effect
 {
   public static void AddFlatDamage(ModifyTable modifyTable, float value)
   {
-    modifyTable.damageFlat += value;
+    modifyTable.physicalDamageFlat += value;
   }
 
   public static void AddPercentDamage(ModifyTable modifyTable, float value)
   {
-    modifyTable.damagePercent += value;
+    modifyTable.physicalDamagePercent += value;
   }
 
   public static void AddFlatHealth(ModifyTable modifyTable, float value)
@@ -73,6 +73,7 @@ public class Effect
 
   //----- Legendary Effects -----
 
+  static Health playerHealth;
   public class Timer : MonoBehaviour { }
   private static Timer timerInstance;
   private static void InitTimer()
@@ -231,9 +232,9 @@ public class Effect
 
   public static void LegendaryLifeSaver_Install(float value)
   {
-    Health component = PlayerInfo.GetPlayer().GetComponent<Health>();
-    component.onTakeDamage -= ActivateLifeSaver;
-    component.onTakeDamage += ActivateLifeSaver;
+    playerHealth = PlayerInfo.GetPlayer().GetComponent<Health>();
+    playerHealth.onTakeDamage -= ActivateLifeSaver;
+    playerHealth.onTakeDamage += ActivateLifeSaver;
 
     value /= 100f;
     if (effectValueL5 == 0) effectValueL5 = value;
@@ -242,8 +243,7 @@ public class Effect
 
   public static void LegendaryLifeSaver_Uninstall()
   {
-    Health component = PlayerInfo.GetPlayer().GetComponent<Health>();
-    component.onTakeDamage -= ActivateLifeSaver;
+    playerHealth.onTakeDamage -= ActivateLifeSaver;
     effectValueL5 = 0;
   }
 
@@ -258,8 +258,7 @@ public class Effect
       return;
     }
 
-    Health health = PlayerInfo.GetPlayer().GetComponent<Health>();
-    if (!cooldownReadyL5 || health.CurrentHealth > health.MaxHealth * 0.2f) return;
+    if (!cooldownReadyL5 || playerHealth.CurrentHealth > playerHealth.MaxHealth * 0.2f) return;
 
     effectActiveL5 = true;
     cooldownReadyL5 = false;
@@ -305,12 +304,10 @@ public class Effect
   }
 
   static float effectValueL6;
-  static Health playerHealth;
 
   private static void AttackHealer(ref float damage)
   {
     int heal = Mathf.CeilToInt(damage * effectValueL6);
-    Debug.Log("Healt for " + heal);
     playerHealth.HealAbsolut(heal);
   }
 
@@ -340,15 +337,42 @@ public class Effect
   private static void CritMaker(ref bool isCrit)
   {
     attackCounter++;
-    Debug.Log("Crit counter " + attackCounter);
     if (attackCounter < effectValueL7) return;
 
-    Debug.Log("Crit");
     isCrit = true;
     attackCounter = 0;
   }
 
   //--- L7 End ---
+
+  //--- L8 Start ---
+
+  public static void LegendaryKillHealer_Install(float value)
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    playerHealth = PlayerInfo.GetPlayer().GetComponent<Health>();
+    component.onKill -= KillHealer;
+    component.onKill += KillHealer;
+
+    value /= 100;
+    if (effectValueL8 == 0) effectValueL8 = value;
+    else effectValueL8 = Mathf.Max(effectValueL8, value);
+  }
+
+  public static void LegendaryKillHealer_Uninstall()
+  {
+    PlayerFighter component = PlayerInfo.GetPlayer().GetComponent<PlayerFighter>();
+    component.onKill -= KillHealer;
+    effectValueL8 = 0;
+  }
+
+  static float effectValueL8;
+
+  private static void KillHealer()
+  {
+    playerHealth.HealPercentageMax(effectValueL8);
+  }
+  //--- L8 End ---
 
 
 

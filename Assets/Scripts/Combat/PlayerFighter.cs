@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Interaction;
@@ -19,6 +20,7 @@ namespace RPG.Combat
     float lastAttackTime = Mathf.NegativeInfinity;
     public AlterValue<float> onDealDamage;
     public AlterValue<bool> onBeforeAttack;
+    public Action onKill;
 
 
     private void Awake()
@@ -62,8 +64,6 @@ namespace RPG.Combat
     {
       List<Health> targets = currentWeapon.GetHitTargets(transform.position, transform.forward, gameObject.layer);
 
-
-
       foreach (var target in targets)
       {
         Debug.Log("----------------");
@@ -77,7 +77,7 @@ namespace RPG.Combat
         Debug.Log("Player Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);
         Debug.Log("----------------");
 
-        target.ApplyDamage(gameObject, damage);
+        if (target.ApplyDamage(gameObject, damage)) ;
       }
     }
 

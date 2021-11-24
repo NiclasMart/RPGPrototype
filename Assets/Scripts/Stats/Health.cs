@@ -48,15 +48,15 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
-    public void ApplyDamage(GameObject instigator, float damage)
+    public bool ApplyDamage(GameObject instigator, float damage)
     {
       onTakeDamage?.Invoke(ref damage);
       currentHealth.value = Mathf.Max(0, currentHealth.value - damage);
-      CheckForDeath(instigator);
       valueChange.Invoke(this);
+      return CheckForDeath(instigator);
     }
 
-    private void CheckForDeath(GameObject instigator)
+    private bool CheckForDeath(GameObject instigator)
     {
       if (currentHealth.value == 0 && !isDead)
       {
@@ -73,7 +73,9 @@ namespace RPG.Stats
           EmitExperience(instigator, energy.GetSoulEnergyLevel());
           energy.AddKill();
         }
+        return true;
       }
+      return false;
     }
 
     private void EmitLoot(float soulEnergy)
@@ -84,7 +86,7 @@ namespace RPG.Stats
     public void LevelUpHealth(CharacterStats stats)
     {
       maxHealth.value = stats.GetStat(Stat.Health);
-      HealPercentage(lvlUpHeal);
+      HealPercentageCurrent(lvlUpHeal);
     }
 
     public void HealAbsolut(int value)
@@ -94,10 +96,17 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
-    public void HealPercentage(float percent)
+    public void HealPercentageCurrent(float percent)
     {
       percent = Mathf.Abs(percent);
       currentHealth.value = Mathf.Min(maxHealth.value, currentHealth.value += currentHealth.value * percent);
+      valueChange.Invoke(this);
+    }
+
+    public void HealPercentageMax(float percent)
+    {
+      percent = Mathf.Abs(percent);
+      currentHealth.value = Mathf.Min(maxHealth.value, currentHealth.value += maxHealth.value * percent);
       valueChange.Invoke(this);
     }
 
