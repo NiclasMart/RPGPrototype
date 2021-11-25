@@ -34,13 +34,20 @@ namespace RPG.Combat
       Vector3 direction = GetDashDirection();
 
       NavMeshAgent agent = transform.parent.GetComponent<NavMeshAgent>();
-      agent.destination = data.source.transform.position + direction * moveDistance;
-      float speedChange = agent.speed;
-      agent.speed += speedChange;
+      float initialAngularSpeed = agent.angularSpeed;
+      agent.isStopped = true;
+      agent.angularSpeed = 0;
+      float startTime = Time.time;
 
-      yield return new WaitForSeconds(time);
+      while (Time.time < startTime + time)
+      {
+        agent.Move(direction * Time.deltaTime * moveDistance);
+        yield return new WaitForEndOfFrame();
+      }
+      agent.destination = data.source.transform.position;
+      agent.isStopped = false;
+      agent.angularSpeed = initialAngularSpeed; ;
 
-      agent.speed -= speedChange;
       onEndCast?.Invoke();
     }
 

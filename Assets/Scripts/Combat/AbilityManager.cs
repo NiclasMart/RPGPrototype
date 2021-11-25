@@ -57,7 +57,7 @@ namespace RPG.Combat
       if (!abilitySlot.CooldownReady()) return;
 
       castedAbility = abilitySlot.ability;
-      Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
+      Vector3 lookPoint = PlayerInfo.GetPlayerCursor().Position;
 
       //prepare cast and check if its valid 
       castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
@@ -66,10 +66,10 @@ namespace RPG.Combat
       //cast and set cooldown
       if (!scheduler.StartAction(this, true)) return;
       abilitySlot.SetCooldown();
+      RotateCharacter(lookPoint);
       if (castedAbility.castImmediately) castedAbility.CastAction();
 
       //handle animation
-      RotateCharacter(lookPoint);
       animator.SetTrigger("cast");
       animator.SetTrigger("cast" + abilitySlot.index);
 
