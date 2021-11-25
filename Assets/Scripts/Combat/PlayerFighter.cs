@@ -44,10 +44,11 @@ namespace RPG.Combat
     {
       float timePerAttack = 1 / stats.GetStat(Stat.AttackSpeed);
       if (Time.time < lastAttackTime + timePerAttack) return;
+      if (!scheduler.StartAction(this, false)) return;
       if (!stamina.UseStamina(currentWeapon.baseItem.staminaUse)) return;
 
       
-      if (!scheduler.StartAction(this, false)) return;
+      
       lastAttackTime = Time.time;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
