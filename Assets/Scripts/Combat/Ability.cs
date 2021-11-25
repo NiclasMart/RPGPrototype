@@ -9,7 +9,7 @@ using UnityEngine;
 namespace RPG.Combat
 {
   [Serializable] public enum DamageType { physicalDamage, magicDamage }
-  public class Ability : MonoBehaviour, IAction
+  public class Ability : MonoBehaviour
   {
     public string name;
     public DamageType damageType;
@@ -54,7 +54,5 @@ namespace RPG.Combat
     public virtual bool CastIsValid() { return true; }
 
     public virtual void CastAction() { }
-
-    public void Cancel() { }
   }
 }

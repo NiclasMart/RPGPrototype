@@ -39,7 +39,7 @@ namespace RPG.Interaction
 
     public void SetInteractionTarget(IInteraction target)
     {
-      scheduler.StartAction(this);
+      if (!scheduler.StartAction(this, false)) return;
       interactionTarget = target;
     }
 

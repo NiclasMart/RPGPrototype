@@ -11,6 +11,7 @@ namespace RPG.Combat
     [SerializeField] float destroyDelay = 0.1f;
     [SerializeField] float maxTravelDistance = 10f;
     [SerializeField] bool homing = true;
+    [SerializeField] bool penetrating = false;
     [SerializeField] GameObject graphicComponent;
     DamageType damageType;
     float baseDamage;
@@ -74,6 +75,7 @@ namespace RPG.Combat
     private void Impact()
     {
       DealDamage(target);
+      if (penetrating) return;
       HandleDestruction();
       active = false;
     }
@@ -81,6 +83,7 @@ namespace RPG.Combat
     private void Impact(Health hitTarget)
     {
       DealDamage(hitTarget);
+      if (penetrating) return;
       HandleDestruction();
       active = false;
     }
@@ -121,7 +124,7 @@ namespace RPG.Combat
       if (trail) trail.Clear();
     }
 
-
+    Collider lastTarget;
     private void OnTriggerEnter(Collider other)
     {
       if (!active) return;
@@ -136,7 +139,13 @@ namespace RPG.Combat
       else
       {
         Health hitTarget = other.GetComponent<Health>();
-        if (hitTarget) Impact(hitTarget);
+        
+        if (hitTarget)
+        {
+          if (other == lastTarget) return;
+          lastTarget = other;
+          Impact(hitTarget); Debug.Log("Hit " + other.name);
+        }
       }
     }
   }

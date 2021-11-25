@@ -37,7 +37,7 @@ namespace RPG.Movement
 
     public void StartMoveAction(Vector3 destination)
     {
-      scheduler.StartAction(this);
+      if (!scheduler.StartAction(this, false)) return;
       MoveTo(destination);
     }
 

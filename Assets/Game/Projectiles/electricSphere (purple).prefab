@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f8b301dc8cba243a5eb5c567ffb31d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.07
+  speed: 0.1
   destroyDelay: 0.1
   maxTravelDistance: 10
   homing: 0
+  penetrating: 1
   graphicComponent: {fileID: 5223809076999773424}
 --- !u!135 &8321541287469428716
 SphereCollider:

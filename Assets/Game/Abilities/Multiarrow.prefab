@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Multiarrow
-  baseDamage: 8
-  cooldown: 1.5
+  damageType: 0
+  baseDamage: 10
+  cooldown: 2
   range: 20
-  damageType: {fileID: 0}
   icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
   animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
   animationRotationOffset: 60
   castImmediately: 0
   projectilePrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
-  projectileAmount: 5
+  projectileAmount: 7
   degrees: 120
 --- !u!1001 &2396571310056724169
 PrefabInstance:

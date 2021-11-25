@@ -33,7 +33,7 @@ namespace RPG.Combat
 
     public virtual void Attack(Health combatTarget, LayerMask layer)
     {
-      scheduler.StartAction(this);
+      if (!scheduler.StartAction(this, false)) return;
 
       float attackSpeed = stats.GetStat(Stat.AttackSpeed) * attackSpeedMuliplier;
       if (lastAttackTime + (1 / attackSpeed) > Time.time) return;

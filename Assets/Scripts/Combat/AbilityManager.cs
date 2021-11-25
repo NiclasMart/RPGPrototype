@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
-  public class AbilityManager : MonoBehaviour
+  public class AbilityManager : MonoBehaviour, IAction
   {
     [SerializeField] Transform castPosition;
     [SerializeField] List<AbilityCooldownDisplay> slots = new List<AbilityCooldownDisplay>();
@@ -51,13 +51,11 @@ namespace RPG.Combat
     Ability castedAbility;
     public void CastAbility(KeyCode key, LayerMask collisionLayer)
     {
-
       AbilityCooldownDisplay abilitySlot = abilitySlots[key];
 
       if (abilitySlot.ability == null) return;
       if (!abilitySlot.CooldownReady()) return;
 
-      abilitySlot.SetCooldown();
       castedAbility = abilitySlot.ability;
       Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
 
@@ -65,11 +63,13 @@ namespace RPG.Combat
       castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
       if (!castedAbility.CastIsValid()) return;
 
-      scheduler.StartAction(castedAbility);
+      //cast and set cooldown
+      if (!scheduler.StartAction(this, true)) return;
+      abilitySlot.SetCooldown();
       if (castedAbility.castImmediately) castedAbility.CastAction();
 
+      //handle animation
       RotateCharacter(lookPoint);
-
       animator.SetTrigger("cast");
       animator.SetTrigger("cast" + abilitySlot.index);
 
@@ -120,9 +120,21 @@ namespace RPG.Combat
       else return null;
     }
 
+    //called by animation
     void CastAction()
     {
       castedAbility.CastAction();
+    }
+
+    //called by animation
+    void FinishedCast()
+    {
+      scheduler.ReleaseLock();
+    }
+
+    public void Cancel()
+    {
+      //animator.SetTrigger("cancelAttack");
     }
   }
 }

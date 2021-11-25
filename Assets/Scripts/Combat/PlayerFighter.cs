@@ -46,8 +46,9 @@ namespace RPG.Combat
       if (Time.time < lastAttackTime + timePerAttack) return;
       if (!stamina.UseStamina(currentWeapon.baseItem.staminaUse)) return;
 
+      
+      if (!scheduler.StartAction(this, false)) return;
       lastAttackTime = Time.time;
-      scheduler.StartAction(this);
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
 

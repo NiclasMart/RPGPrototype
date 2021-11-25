@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MagicBallCast
   damageType: 1
-  baseDamage: 30
+  baseDamage: 10
   cooldown: 2
   range: 3
   icon: {fileID: 21300000, guid: 0b5ba48a12ad309408b91848f5b82bf9, type: 3}
