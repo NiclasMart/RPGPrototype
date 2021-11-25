@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
   m_Name: SplitArrow
   m_EditorClassIdentifier: 
+  itemID: 4234eef1-2c2a-4abd-8486-f437e660068b
   name: Multiarrow
-  baseResourcePath: ItemSprites/
   icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
   itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
   weight: 1
+  baseValue: 0
   itemType: 6
   modifiable: 0
+  modifierQuality: 0
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []

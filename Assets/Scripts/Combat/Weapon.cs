@@ -26,14 +26,14 @@ namespace RPG.Combat
         return mItem;
       }
     }
-    
+
     public AnimationClip animationClip;
     public float damage;
     public float staminaUse;
     private float range;
     public float attackSpeed;
     private GameObject hitArea;
-    private DamageClass damageType;
+    // private DamageClass damageType;
     private protected bool isRightHanded = true;
 
     public Weapon(GenericItem baseItem) : base(baseItem)
@@ -43,7 +43,7 @@ namespace RPG.Combat
       damage = baseWeapon.GetDamage();
       range = baseWeapon.weaponRange;
       attackSpeed = baseWeapon.GetAttackspeed();
-      damageType = baseWeapon.damageType;
+      // damageType = baseWeapon.damageType;
       isRightHanded = baseWeapon.isRightHanded;
       hitArea = baseWeapon.hitArea;
       staminaUse = baseWeapon.weaponStaminaConsumption;
@@ -80,7 +80,7 @@ namespace RPG.Combat
 
     public override void GetStats(ModifyTable stats)
     {
-      stats.physicalDamageFlat += damage;
+      // stats.physicalDamageFlat += damage;
       stats.attackSpeed += attackSpeed;
       stats.attackRange += range;
     }

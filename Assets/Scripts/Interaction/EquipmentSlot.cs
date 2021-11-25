@@ -53,7 +53,7 @@ namespace RPG.Interaction
       connectedInventory.DeleteItem(item);
     }
 
-    protected void UnequipCurrentItem()
+    protected virtual void UnequipCurrentItem()
     {
       connectedInventory.AddItem(item);
       if (item.rarity == Rank.Legendary) (item as ModifiableItem).GetLegendaryModifier().legendaryUninstallEffect.Invoke();

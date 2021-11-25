@@ -37,6 +37,11 @@ namespace RPG.Combat
       return hitArea.TargetsInArea;
     }
 
+    public float GetDamage()
+    {
+      return baseItem.damage;
+    }
+
     public void DamageAreaLockState(bool locked)
     {
       hitArea.locked = locked;

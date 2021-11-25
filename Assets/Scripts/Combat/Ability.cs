@@ -8,13 +8,14 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
+  [Serializable] public enum DamageType { physicalDamage, magicDamage }
   public class Ability : MonoBehaviour, IAction
   {
     public string name;
+    public DamageType damageType;
     public float baseDamage;
     public float cooldown;
     public float range;
-    public DamageClass damageType;
     public Sprite icon;
     public AnimationClip animationClip;
     public float animationRotationOffset;

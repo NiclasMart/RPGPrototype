@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ItemPool_StageI
   m_EditorClassIdentifier: 
   drops:
-  - item: {fileID: 11400000, guid: e7d242568ad7f3a43b2e1aadbc5e786b, type: 2}
+  - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
     probability: 1
-  - item: {fileID: 11400000, guid: aa4a3b1adb294ac40822da08df58135f, type: 2}
+  - item: {fileID: 11400000, guid: 7f93bf5b86fa1fb43b83fc5049ad0238, type: 2}
     probability: 1
   items:
-  - item: {fileID: 11400000, guid: e7d242568ad7f3a43b2e1aadbc5e786b, type: 2}
+  - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
     probability: 0.5
-  - item: {fileID: 11400000, guid: aa4a3b1adb294ac40822da08df58135f, type: 2}
+  - item: {fileID: 11400000, guid: 7f93bf5b86fa1fb43b83fc5049ad0238, type: 2}
     probability: 1

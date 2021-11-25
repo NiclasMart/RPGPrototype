@@ -69,12 +69,12 @@ namespace RPG.Combat
         Debug.Log("----------------");
         bool isCrit = false;
         onBeforeAttack?.Invoke(ref isCrit);
-        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), ref isCrit);
+        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), currentWeapon.GetDamage(), ref isCrit);
         onDealDamage?.Invoke(ref damage);
         isCrit = false;
 
         //if deleted change damage in weapon to private
-        Debug.Log("Player Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.baseItem.damage);
+        Debug.Log("Player Dealt " + damage + " Damage. (Plain Weapon Damage: " + currentWeapon.GetDamage().ToString());
         Debug.Log("----------------");
 
         if (target.ApplyDamage(gameObject, damage)) ;

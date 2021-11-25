@@ -68,7 +68,7 @@ namespace RPG.Combat
       if (equipedWeapon.hitArea.TargetsInArea.Count == 0) return;
       if (!target) return;
 
-      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>());
+      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), equipedWeapon.GetDamage());
 
       //if deleted change damage in weapon to private
       Debug.Log("Enemy Dealt " + damage + " Damage. (Plain Weapon Damage: " + equipedWeapon.baseItem.damage);
@@ -81,7 +81,7 @@ namespace RPG.Combat
     {
       if (!target) return;
 
-      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>());
+      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), equipedWeapon.GetDamage());
 
       //if deleted change damage in weapon to private
       Debug.Log("Enemy Dealt " + damage + " Damage. (Plain Weapon Damage: " + equipedWeapon.baseItem.damage);

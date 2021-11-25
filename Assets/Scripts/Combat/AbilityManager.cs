@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -25,6 +26,7 @@ namespace RPG.Combat
       scheduler = GetComponent<ActionScheduler>();
       animator = GetComponentInChildren<Animator>();
       mover = GetComponent<Mover>();
+
       Initialize();
     }
 
@@ -55,6 +57,7 @@ namespace RPG.Combat
       if (abilitySlot.ability == null) return;
       if (!abilitySlot.CooldownReady()) return;
 
+      abilitySlot.SetCooldown();
       castedAbility = abilitySlot.ability;
       Vector3 lookPoint = GetComponent<PlayerCursor>().Position;
 
@@ -64,7 +67,7 @@ namespace RPG.Combat
 
       scheduler.StartAction(castedAbility);
       if (castedAbility.castImmediately) castedAbility.CastAction();
-      abilitySlot.SetCooldown();
+
       RotateCharacter(lookPoint);
 
       animator.SetTrigger("cast");
@@ -75,8 +78,9 @@ namespace RPG.Combat
 
     public void SetNewAbility(Ability newAbility, AbilityCooldownDisplay slot)
     {
-      AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
       slot.SetAbility(newAbility);
+      if (newAbility == null) return;
+      AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
     }
 
     public Ability GetRollAbility()
@@ -96,9 +100,11 @@ namespace RPG.Combat
 
     private void BuildSlotDictionary()
     {
+      CharacterStats stats = GetComponent<CharacterStats>();
       for (int i = 0; i < slots.Count; i++)
       {
         abilitySlots.Add(slots[i].activationKey, slots[i]);
+        slots[i].Initialize(stats);
       }
     }
 

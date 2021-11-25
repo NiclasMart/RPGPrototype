@@ -12,7 +12,8 @@ namespace RPG.Combat
     [SerializeField] float maxTravelDistance = 10f;
     [SerializeField] bool homing = true;
     [SerializeField] GameObject graphicComponent;
-    float damage;
+    DamageType damageType;
+    float baseDamage;
     GameObject source;
     Health target;
     Vector3 startLocation;
@@ -27,16 +28,18 @@ namespace RPG.Combat
     {
       Initialize(source, damage, collisionLayer);
       transform.forward = direction;
+      damageType = DamageType.physicalDamage;
     }
 
     //ability projectile
-    public void Initialize(Vector3 direction, ProjectileCast cast, Vector3 spawnPosition, float damage, LayerMask collisionLayer)
+    public void Initialize(Vector3 direction, GameObject source, ProjectileCast cast, Vector3 spawnPosition, float damage, DamageType damageType, LayerMask collisionLayer)
     {
 
       transform.position = spawnPosition;
       transform.forward = direction;
       castOrigin = cast;
-      Initialize(cast.gameObject, damage, collisionLayer);
+      this.damageType = damageType;
+      Initialize(source, damage, collisionLayer);
 
     }
 
@@ -44,7 +47,7 @@ namespace RPG.Combat
     {
       gameObject.layer = collisionLayer;
       this.source = source;
-      this.damage = damage;
+      this.baseDamage = damage;
       startLocation = transform.position;
       Enable();
     }
@@ -70,16 +73,26 @@ namespace RPG.Combat
 
     private void Impact()
     {
-      target.ApplyDamage(source, damage);
+      DealDamage(target);
       HandleDestruction();
       active = false;
     }
 
     private void Impact(Health hitTarget)
     {
-      hitTarget.ApplyDamage(source, damage);
+      DealDamage(hitTarget);
       HandleDestruction();
       active = false;
+    }
+
+    private void DealDamage(Health target)
+    {
+      bool isCrit = false;
+      float finalDamage = (damageType == DamageType.physicalDamage)
+        ? DamageCalculator.CalculatePhysicalDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage, ref isCrit)
+        : DamageCalculator.CalculateMagicDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage);
+
+      target.ApplyDamage(source, finalDamage);
     }
 
     void HandleDestruction()

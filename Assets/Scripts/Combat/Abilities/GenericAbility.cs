@@ -10,7 +10,7 @@ namespace RPG.Combat
 
     public override Item GenerateItem()
     {
-      return new AbilityHolder(this);
+      return new AbilityGem(this);
     }
 
     public Ability GetAbility() { return abilityPrefab; }

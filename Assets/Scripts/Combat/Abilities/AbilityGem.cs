@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
-  public class AbilityHolder : Item
+  public class AbilityGem : Item
   {
     public Ability ability;
 
-    public AbilityHolder(GenericItem baseItem) : base(baseItem)
+    public AbilityGem(GenericItem baseItem) : base(baseItem)
     {
       GenericAbility baseAbility = baseItem as GenericAbility;
       ability = baseAbility.GetAbility();

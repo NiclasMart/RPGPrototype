@@ -48,7 +48,7 @@ namespace RPG.Combat
     {
       direction.y = 0;
       Projectile projectile = GetProjectile();
-      projectile.Initialize(direction, this, castPosition.position, base.baseDamage, layer);
+      projectile.Initialize(direction, source, this, castPosition.position, base.baseDamage, base.damageType, layer);
     }
 
     Projectile GetProjectile()
