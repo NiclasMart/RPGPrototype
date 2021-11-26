@@ -2,12 +2,14 @@ using RPG.Items;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using RPG.Combat;
+using System;
 
 namespace RPG.Display
 {
   public class ModifierShowPanel : MonoBehaviour
   {
-    [SerializeField] TextMeshProUGUI title, mainStats;
+    [SerializeField] TextMeshProUGUI title, mainStats, abilityText;
     [SerializeField] Transform modifiers;
     [SerializeField] Image iconSlot;
     Color epicCol, legendaryCol, defaultSlotCol;
@@ -31,6 +33,12 @@ namespace RPG.Display
 
       DisplayMainInfo(item);
       DisplayModifiers(item);
+      if (item is AbilityGem) DisplayAbilityText((item as AbilityGem).ability);
+    }
+
+    private void DisplayAbilityText(Ability ability)
+    {
+      abilityText.text = ability.description;
     }
 
     public void Clear()
@@ -76,6 +84,7 @@ namespace RPG.Display
     {
       title.text = "";
       mainStats.text = "";
+      abilityText.text = "";
       foreach (var display in modifiers.GetComponentsInChildren<TextMeshProUGUI>())
       {
         display.text = "";

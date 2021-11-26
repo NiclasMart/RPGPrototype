@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Multiarrow
+  description: Shoots 7 arrows in shape of a fan. Each arrow deals physical damage.
   damageType: 0
   baseDamage: 10
   cooldown: 2

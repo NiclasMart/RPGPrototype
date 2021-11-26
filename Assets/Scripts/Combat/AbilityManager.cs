@@ -76,10 +76,12 @@ namespace RPG.Combat
       /* ability cast is triggert by animation event CastAction() */
     }
 
-    public void SetNewAbility(Ability newAbility, AbilityCooldownDisplay slot)
+    public void SetNewAbility(Ability newAbility, float damage, AbilityCooldownDisplay slot)
     {
-      slot.SetAbility(newAbility);
+      Ability abilityInstance = InstanciateAbility(newAbility);
+      slot.SetAbility(abilityInstance);
       if (newAbility == null) return;
+      abilityInstance.baseDamage = damage;
       AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
     }
 

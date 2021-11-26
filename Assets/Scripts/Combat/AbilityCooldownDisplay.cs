@@ -29,6 +29,7 @@ namespace RPG.Combat
     public void SetAbility(Ability newAbility)
     {
       SetIcon(newAbility);
+      if (ability != null) Destroy(ability.gameObject);
 
       if (newAbility == null) UpdateCooldown(Time.time, 1);
       nextCastTime = Mathf.NegativeInfinity;

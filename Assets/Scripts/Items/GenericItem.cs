@@ -53,6 +53,16 @@ namespace RPG.Items
       return itemLookupCache[itemID];
     }
 
+    protected float GetRandomValueByQuality(float min, float max)
+    {
+      float lowQuality, highQuality, lokalMin, lokalMax;
+      lowQuality = Mathf.Max(0, modifierQuality - 0.1f);
+      highQuality = Mathf.Min(1, modifierQuality + 0.1f);
+      lokalMin = Mathf.Lerp(min, max, lowQuality);
+      lokalMax = Mathf.Lerp(min, max, highQuality);
+      return UnityEngine.Random.Range(lokalMin, lokalMax);
+    }
+
     public ItemStatModifier GetRandomModifier(Rank rarity)
     {
       switch (rarity)

@@ -12,8 +12,9 @@ namespace RPG.Combat
   public class Ability : MonoBehaviour
   {
     public string name;
+    public string description;
     public DamageType damageType;
-    public float baseDamage;
+    [HideInInspector] public float baseDamage;
     public float cooldown;
     public float range;
     public Sprite icon;
@@ -46,9 +47,9 @@ namespace RPG.Combat
 
     public void GetStats(ModifyTable stats)
     {
-      stats.physicalDamageFlat = baseDamage;
-      stats.attackSpeed = 1 / cooldown;
-      stats.attackRange = range;
+      // stats.physicalDamageFlat = baseDamage;
+      // stats.attackSpeed = 1 / cooldown;
+      // stats.attackRange = range;
     }
 
     public virtual bool CastIsValid() { return true; }

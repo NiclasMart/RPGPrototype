@@ -13,14 +13,16 @@ namespace RPG.Interaction
     public override void EquipItem(Item item)
     {
       base.EquipItem(item);
-      Ability newAbility = (item as AbilityGem)?.ability;
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(newAbility, abilityCooldownDisplay);
+      AbilityGem gem = (item as AbilityGem);
+      if (gem == null) return;
+
+      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(gem.ability, gem.damage, abilityCooldownDisplay);
     }
 
     protected override void UnequipCurrentItem()
     {
       connectedInventory.AddItem(item);
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(null, abilityCooldownDisplay);
+      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(null, 0, abilityCooldownDisplay);
     }
   }
 }
