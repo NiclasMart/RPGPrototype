@@ -148,6 +148,14 @@ MonoBehaviour:
       - 3
       - 3
       - 3
+    - stat: 11
+      values:
+      - 20
+      - 20
+      - 20
+      - 20
+      - 20
+      - 20
   - charakterClass: 3
     stats:
     - stat: 0

@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
   name: Leather Boots
-  icon: {fileID: 21300000, guid: a2e17fe4fd24da348aa43901f817958f, type: 3}
+  icon: {fileID: 21300000, guid: aafffac096dc8d4488bd6e2b38ebe950, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1
   baseValue: 1
   itemType: 2
   modifiable: 1
+  modifierQuality: 0
   normalModifiers:
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
   - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
