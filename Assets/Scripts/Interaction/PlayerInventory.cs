@@ -82,7 +82,7 @@ namespace RPG.Interaction
     {
       Debug.Log("Recalculate");
       ModifyTable table = new ModifyTable();
-      foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
+      foreach (var slot in equipmentDictionary.Values)
       {
         ModifiableItem modItem = slot.item as ModifiableItem;
         if (modItem == null) continue;
