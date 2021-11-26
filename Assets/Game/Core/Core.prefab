@@ -3505,14 +3505,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae90bc9ee19d3544cb9019b7dff02783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modiefierDisplays: []
+  modifierSlot: []
   rerollBtn: {fileID: 7386864429613568005}
   itemSlot: {fileID: 5914268111857588441}
   playerInventory: {fileID: 4484019124929437824}
-  normalRerollPrice: 0
-  rareRerollPrice: 0
-  epicRerollPrice: 0
-  legendaryRerollPrice: 0
+  rerollPrices: 
+  selectColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &6335329297179552460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7475,10 +7473,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1461150398240726799, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 74a29afb-1b1f-4a4b-a167-60a4ab572681
+      objectReference: {fileID: 0}
     - target: {fileID: 1985904026184760617, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: gemDisplay
       value: 
       objectReference: {fileID: 7839148970637204206}
+    - target: {fileID: 1985904026184760617, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: abilitySlot.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985904026184760617, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: abilitySlot.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985904026184760617, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: abilitySlot.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985904026184760617, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: abilitySlot.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2755700833022049328, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7599,6 +7617,10 @@ PrefabInstance:
       propertyPath: saveRestriction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3814472285345535021, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 725350b3-a8ac-46e4-8276-cff0114368d4
+      objectReference: {fileID: 0}
     - target: {fileID: 4695000263316243183, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7647,10 +7669,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5647147070897984378, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 114b629d-617b-40e0-8e7a-0743879852a0
+      objectReference: {fileID: 0}
     - target: {fileID: 5946808863789865752, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: abilityCooldownDisplay
       value: 
       objectReference: {fileID: 6125284459661150452}
+    - target: {fileID: 6211437201517778664, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: uniqueIdentifier
+      value: feaed7cd-6e0b-4eff-933e-c0f925ea7642
+      objectReference: {fileID: 0}
     - target: {fileID: 6725498003343278242, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -13,6 +13,7 @@ namespace RPG.Interaction
   public class PlayerInventory : Inventory, ISaveable
   {
     [SerializeField] TextMeshProUGUI gemDisplay;
+    [SerializeField] List<AbilityEquipmentSlot> abilitySlot = new List<AbilityEquipmentSlot>();
     Dictionary<ItemType, EquipmentSlot> equipmentDictionary = new Dictionary<ItemType, EquipmentSlot>();
     int gemCount;
 
@@ -66,8 +67,15 @@ namespace RPG.Interaction
 
     public Item GetEquipedItem(ItemType type)
     {
-      if (equipmentDictionary.ContainsKey(type)) return equipmentDictionary[type].item;
+      if (type == ItemType.Ability) return GetSelectedAbility();
+      else if (equipmentDictionary.ContainsKey(type)) return equipmentDictionary[type].item;
       else return null;
+    }
+
+    private Item GetSelectedAbility()
+    {
+      if (selectedSlot == null) return null;
+      return selectedSlot.item;
     }
 
     public void RecalculateModifiers()
@@ -144,24 +152,21 @@ namespace RPG.Interaction
     {
       foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
       {
-        //initialize inventorys
-        if (!equipmentDictionary.ContainsKey(slot.equipmentType))
-        {
-          equipmentDictionary.Add(slot.equipmentType, slot);
-          slot.connectedInventory.InitializeColorParameters();
-        }
-
-        //initialize slots
+        if (slot.equipmentType != ItemType.Ability)
+          if (!equipmentDictionary.ContainsKey(slot.equipmentType)) equipmentDictionary.Add(slot.equipmentType, slot);
+        
+        slot.connectedInventory.InitializeColorParameters();
         slot.Initialize(null, this);
       }
     }
 
-    private void HideAllInventorys()
+    public void HideAllInventorys()
     {
-      foreach (var slot in equipmentDictionary.Values)
+      foreach (var slot in GetComponentsInChildren<SimpleInventory>())
       {
-        slot.connectedInventory.transform.GetChild(0).gameObject.SetActive(false);
+        slot.transform.GetChild(0).gameObject.SetActive(false);
       }
+
     }
 
     public object CaptureSaveData(SaveType saveType)
