@@ -81,7 +81,9 @@ namespace RPG.Combat
       Ability abilityInstance = InstanciateAbility(newAbility);
       slot.SetAbility(abilityInstance);
       if (newAbility == null) return;
-      abilityInstance.baseDamage = damage;
+
+      abilityInstance.baseEffectValue = damage;
+      if (animator == null) animator = GetComponentInChildren<Animator>();
       AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
     }
 

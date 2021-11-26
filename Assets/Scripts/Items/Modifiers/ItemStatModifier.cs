@@ -10,7 +10,8 @@ namespace RPG.Items
     Normal,
     Rare,
     Epic,
-    Legendary
+    Legendary,
+    Gem
   }
 
   [CreateAssetMenu(fileName = "ItemStatModifier", menuName = "Items/Modifiers/Create New ItemStatModifier", order = 0)]

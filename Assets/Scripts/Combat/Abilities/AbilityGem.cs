@@ -32,11 +32,17 @@ namespace RPG.Combat
       GenericAbility baseAbility = baseItem as GenericAbility;
       ability = baseAbility.GetAbility();
       damage = baseAbility.GetDamage();
+      rarity = Rank.Gem;
     }
 
     public override string GetMainStatText()
     {
-      return $"{damage.ToString("F2")} Damage \n{ability.cooldown.ToString("F2")}s Base Cooldown";
+      return $"{ability.cooldown.ToString("F1")}s Base Cooldown";
+    }
+
+    public string GetDescription()
+    {
+      return ability.description.Replace("*", damage.ToString("F1"));
     }
 
     public override object GetSaveData()

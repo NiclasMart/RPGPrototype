@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7445379525506200165
+--- !u!114 &7879756210610046078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,23 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1594730573423823412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 722617e4a23507745bc74984e6b79131, type: 3}
+  m_Script: {fileID: 11500000, guid: aac7ed5fe271b1a49badc3df198b3281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: MagicBallCast
-  description: Casts 3 electric spheres, which penetrade enemies. Each sphere deals
-    * magic damage.
-  damageType: 1
+  name: MagicArmor
+  description: 'Icreases your armor and your magic resistance for 5 seconds by 15%
+    plus '
+  damageType: 0
   baseEffectValue: 0
-  cooldown: 2
-  range: 3
-  icon: {fileID: 21300000, guid: 0b5ba48a12ad309408b91848f5b82bf9, type: 3}
+  cooldown: 10
+  range: 0
+  icon: {fileID: 21300000, guid: b4cf912984d2aba4aae84f325f018142, type: 3}
   animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
-  animationRotationOffset: 60
+  animationRotationOffset: 0
   castImmediately: 0
-  projectilePrefab: {fileID: 158369935145786950, guid: 6201f1448d71b494c93cb58a7f93ad0a, type: 3}
-  projectileAmount: 3
-  degrees: 120
+  duration: 5
 --- !u!1001 &2396571310056724169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35,7 +33,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3991257898309328125, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
       propertyPath: m_Name
-      value: MagicBallCast
+      value: MagicArmor
       objectReference: {fileID: 0}
     - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
       propertyPath: m_RootOrder

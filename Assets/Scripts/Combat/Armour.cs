@@ -38,7 +38,7 @@ namespace RPG.Combat
 
     public override string GetMainStatText()
     {
-      return $"{armour.ToString("F2")} Armour \n{magicResistance.ToString("F2")} Magic Resistance";
+      return $"{armour.ToString("F1")} Armour \n{magicResistance.ToString("F1")} Magic Resistance";
     }
 
     public override void GetStats(ModifyTable stats)

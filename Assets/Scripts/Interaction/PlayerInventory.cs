@@ -152,8 +152,7 @@ namespace RPG.Interaction
     {
       foreach (var slot in transform.GetComponentsInChildren<EquipmentSlot>())
       {
-        if (slot.equipmentType != ItemType.Ability)
-          if (!equipmentDictionary.ContainsKey(slot.equipmentType)) equipmentDictionary.Add(slot.equipmentType, slot);
+        if (!equipmentDictionary.ContainsKey(slot.equipmentType)) equipmentDictionary.Add(slot.equipmentType, slot);
         
         slot.connectedInventory.InitializeColorParameters();
         slot.Initialize(null, this);

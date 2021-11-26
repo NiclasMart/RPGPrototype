@@ -14,7 +14,7 @@ namespace RPG.Combat
     public string name;
     public string description;
     public DamageType damageType;
-    [HideInInspector] public float baseDamage;
+    [HideInInspector] public float baseEffectValue;
     public float cooldown;
     public float range;
     public Sprite icon;
@@ -38,6 +38,11 @@ namespace RPG.Combat
         this.castPosition = castPosition;
         this.layer = layer;
       }
+    }
+
+    public string GetDescription()
+    {
+      return description.Replace("*", baseEffectValue.ToString());
     }
 
     public void PrepareCast(Vector3 lookPoint, GameObject source, Transform castPosition, LayerMask layer)

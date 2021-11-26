@@ -33,12 +33,12 @@ namespace RPG.Display
 
       DisplayMainInfo(item);
       DisplayModifiers(item);
-      if (item is AbilityGem) DisplayAbilityText((item as AbilityGem).ability);
+      if (item is AbilityGem) DisplayAbilityText(item as AbilityGem);
     }
 
-    private void DisplayAbilityText(Ability ability)
+    private void DisplayAbilityText(AbilityGem abilityGem)
     {
-      abilityText.text = ability.description;
+      abilityText.text = abilityGem.GetDescription();
     }
 
     public void Clear()

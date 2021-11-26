@@ -32,6 +32,11 @@ namespace RPG.Stats
       return activeStats[stat];
     }
 
+    public void ChangeStat(Stat stat, float value)
+    {
+      activeStats[stat] = value;
+    }
+
     public void SetLevel(int level)
     {
       this.level = level;

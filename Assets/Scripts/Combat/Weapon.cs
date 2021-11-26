@@ -70,7 +70,7 @@ namespace RPG.Combat
 
     public override string GetMainStatText()
     {
-      return $"{damage.ToString("F2")} Attack damage \n{attackSpeed.ToString("F2")} Attack Speed";
+      return $"{damage.ToString("F1")} Attack damage \n{attackSpeed.ToString("F1")} Attack Speed";
     }
 
     protected Transform SelectTransform(Transform rightHand, Transform leftHand)
