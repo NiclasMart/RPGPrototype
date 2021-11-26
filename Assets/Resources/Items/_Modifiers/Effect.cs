@@ -22,6 +22,16 @@ public class Effect
     modifyTable.physicalDamagePercent += value;
   }
 
+  public static void AddFlatMagicDamage(ModifyTable modifyTable, float value)
+  {
+    modifyTable.magicDamageFlat += value;
+  }
+
+  public static void AddPercentMagicDamage(ModifyTable modifyTable, float value)
+  {
+    modifyTable.magicDamagePercent += value;
+  }
+
   public static void AddFlatHealth(ModifyTable modifyTable, float value)
   {
     modifyTable.healthFlat += value;
@@ -40,6 +50,16 @@ public class Effect
   public static void AddPercentArmour(ModifyTable modifyTable, float value)
   {
     modifyTable.armourPercent += value;
+  }
+
+  public static void AddFlatMagicResi(ModifyTable modifyTable, float value)
+  {
+    modifyTable.magicResiFlat += value;
+  }
+
+  public static void AddPercentMagicResi(ModifyTable modifyTable, float value)
+  {
+    modifyTable.magicResiPercent += value;
   }
 
   public static void AddStaminaFlat(ModifyTable modifyTable, float value)
@@ -69,6 +89,11 @@ public class Effect
   public static void AddStaminaRegeneration(ModifyTable modifyTable, float value)
   {
     modifyTable.staminaPerSecond += value;
+  }
+
+  public static void AddCooldownReduction(ModifyTable modifyTable, float value)
+  {
+    modifyTable.cooldownReduction += value;
   }
 
   //----- Legendary Effects -----

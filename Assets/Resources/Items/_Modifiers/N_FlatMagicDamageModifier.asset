@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: E_CritDamage
+  m_Name: N_FlatMagicDamageModifier
   m_EditorClassIdentifier: 
-  rank: 2
-  displayText: Adds *% critical hit damage.
-  min: 20
-  max: 70
+  rank: 0
+  displayText: + * damage to magic attacks
+  min: 2
+  max: 30
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddCriticalDamage
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddFlatMagicDamage
       _PersistentArguments:
       - _Type: 14
         _Int: 0

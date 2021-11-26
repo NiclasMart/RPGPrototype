@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b181fc0a1139a94eb61a2cc766266d3, type: 3}
-  m_Name: N_CritDamage
+  m_Name: E_CooldownReductionModifier
   m_EditorClassIdentifier: 
-  rank: 0
-  displayText: + *% critical hit damage
-  min: 5
-  max: 25
+  rank: 2
+  displayText: The cooldown of abilities is reduced by *%.
+  min: 2
+  max: 10
   effect:
     _PersistentCalls:
     - _Target: {fileID: 0}
-      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddCriticalDamage
+      _MethodName: Effect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null.AddCooldownReduction
       _PersistentArguments:
       - _Type: 14
         _Int: 0

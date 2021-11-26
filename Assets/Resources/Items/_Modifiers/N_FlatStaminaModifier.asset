@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 0
   displayText: + * stamina
-  min: 15
+  min: 5
   max: 20
   effect:
     _PersistentCalls:

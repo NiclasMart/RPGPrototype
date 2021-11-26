@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 0
   displayText: + * health
-  min: 20
+  min: 10
   max: 50
   effect:
     _PersistentCalls:
