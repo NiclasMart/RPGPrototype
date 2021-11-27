@@ -9,40 +9,42 @@ namespace RPG.Combat
     [Serializable]
     public class ASaveData : SaveData
     {
-      public float damage;
+      public float baseEffectValue;
 
       public ASaveData(Item item) : base(item)
       {
         AbilityGem abilityGem = item as AbilityGem;
-        damage = abilityGem.damage;
+        baseEffectValue = abilityGem.baseEffectValue;
       }
 
       public override Item CreateItemFromData()
       {
         AbilityGem mItem = base.CreateItemFromData() as AbilityGem;
-        mItem.damage = damage;
+        mItem.baseEffectValue = baseEffectValue;
         return mItem;
       }
     }
     public Ability ability;
-    public float damage;
+    public float baseEffectValue;
 
     public AbilityGem(GenericItem baseItem) : base(baseItem)
     {
       GenericAbility baseAbility = baseItem as GenericAbility;
       ability = baseAbility.GetAbility();
-      damage = baseAbility.GetDamage();
+      baseEffectValue = baseAbility.GetDamage();
       rarity = Rank.Gem;
     }
 
     public override string GetMainStatText()
     {
-      return $"{ability.cooldown.ToString("F1")}s Base Cooldown";
+      string display = $"{ability.cooldown.ToString("F1")}s Base Cooldown";
+      if (ability.staminaConsumption != 0) display += $"\n{ability.staminaConsumption.ToString()} Stamina Consumption";
+      return display;
     }
 
     public string GetDescription()
     {
-      return ability.description.Replace("*", damage.ToString("F1"));
+      return ability.description.Replace("*", baseEffectValue.ToString("F1"));
     }
 
     public override object GetSaveData()

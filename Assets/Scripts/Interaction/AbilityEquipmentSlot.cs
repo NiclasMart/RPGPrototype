@@ -16,13 +16,13 @@ namespace RPG.Interaction
       AbilityGem gem = (item as AbilityGem);
       if (gem == null) return;
 
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(gem.ability, gem.damage, abilityCooldownDisplay);
+      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(gem, abilityCooldownDisplay);
     }
 
     protected override void UnequipCurrentItem()
     {
       connectedInventory.AddItem(item);
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(null, 0, abilityCooldownDisplay);
+      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(null, abilityCooldownDisplay);
     }
   }
 }

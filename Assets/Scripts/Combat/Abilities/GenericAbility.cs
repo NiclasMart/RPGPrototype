@@ -7,7 +7,7 @@ namespace RPG.Combat
   public class GenericAbility : GenericItem
   {
     [SerializeField] Ability abilityPrefab;
-    [SerializeField] Vector2 damage;
+    [SerializeField] Vector2 baseEffectValue;
 
     public override Item GenerateItem()
     {
@@ -16,6 +16,6 @@ namespace RPG.Combat
 
     public Ability GetAbility() { return abilityPrefab; }
 
-    public float GetDamage() { return GetRandomValueByQuality(damage[0], damage[1]); }
+    public float GetDamage() { return GetRandomValueByQuality(baseEffectValue[0], baseEffectValue[1]); }
   }
 }

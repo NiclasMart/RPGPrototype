@@ -10,18 +10,15 @@ namespace RPG.Combat
   {
     public float moveDistance;
     public float time;
-    public float staminaConsumption;
 
     public AlterValue<float> alterStamina;
 
-    public override bool CastIsValid()
+    public override bool CastIsValid(GameObject player)
     {
-      Stamina stamina = data.source.GetComponent<Stamina>();
+      Stamina stamina = player.GetComponent<Stamina>();
       float usedStamina = staminaConsumption;
       alterStamina?.Invoke(ref usedStamina);
       return stamina.UseStamina(usedStamina);
-      // if (alterStamina != null) return stamina.UseStamina(alterStamina.Invoke(staminaConsumption));
-      // else return stamina.UseStamina(staminaConsumption);
     }
 
     public override void CastAction()

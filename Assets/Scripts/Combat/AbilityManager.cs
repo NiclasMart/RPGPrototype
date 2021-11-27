@@ -14,7 +14,6 @@ namespace RPG.Combat
     [SerializeField] List<AbilityCooldownDisplay> slots = new List<AbilityCooldownDisplay>();
     [SerializeField] List<Ability> startAbilities = new List<Ability>();
     Dictionary<KeyCode, AbilityCooldownDisplay> abilitySlots = new Dictionary<KeyCode, AbilityCooldownDisplay>();
-    //List<Ability> abilities = new List<Ability>();
     public Dictionary<KeyCode, AbilityCooldownDisplay>.KeyCollection KeySet => abilitySlots.Keys;
 
     ActionScheduler scheduler;
@@ -61,7 +60,7 @@ namespace RPG.Combat
 
       //prepare cast and check if its valid 
       castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
-      if (!castedAbility.CastIsValid()) return;
+      if (!castedAbility.CastIsValid(gameObject)) return;
 
       //cast and set cooldown
       if (!scheduler.StartAction(this, true)) return;
@@ -76,15 +75,20 @@ namespace RPG.Combat
       /* ability cast is triggert by animation event CastAction() */
     }
 
-    public void SetNewAbility(Ability newAbility, float damage, AbilityCooldownDisplay slot)
+    public void SetNewAbility(AbilityGem gem, AbilityCooldownDisplay slot)
     {
-      Ability abilityInstance = InstanciateAbility(newAbility);
+      if (gem == null)
+      {
+        slot.SetAbility(null);
+        return;
+      }
+      Ability abilityInstance = InstanciateAbility(gem.ability);
       slot.SetAbility(abilityInstance);
-      if (newAbility == null) return;
 
-      abilityInstance.baseEffectValue = damage;
+      abilityInstance.baseEffectValue = gem.baseEffectValue;
+      abilityInstance.range = gem.ability.range;
       if (animator == null) animator = GetComponentInChildren<Animator>();
-      AnimationHandler.OverrideAnimations(animator, newAbility.animationClip, "Cast" + slot.index);
+      AnimationHandler.OverrideAnimations(animator, gem.ability.animationClip, "Cast" + slot.index);
     }
 
     public Ability GetRollAbility()

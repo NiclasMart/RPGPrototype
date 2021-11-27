@@ -33,12 +33,14 @@ namespace RPG.Combat
     }
 
     //ability projectile
-    public void Initialize(Vector3 direction, GameObject source, ProjectileCast cast, Vector3 spawnPosition, float damage, DamageType damageType, LayerMask collisionLayer)
+    public void Initialize(Vector3 direction, GameObject source, ProjectileCast cast, Vector3 spawnPosition, float damage, float maxTravelDistance, DamageType damageType, LayerMask collisionLayer)
     {
 
       transform.position = spawnPosition;
+      startLocation = spawnPosition;
       transform.forward = direction;
       castOrigin = cast;
+      this.maxTravelDistance = maxTravelDistance;
       this.damageType = damageType;
       Initialize(source, damage, collisionLayer);
 
@@ -139,7 +141,7 @@ namespace RPG.Combat
       else
       {
         Health hitTarget = other.GetComponent<Health>();
-        
+
         if (hitTarget)
         {
           if (other == lastTarget) return;

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac7ed5fe271b1a49badc3df198b3281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: MagicArmor
-  description: 'Icreases your armor and your magic resistance for 5 seconds by 15%
-    plus '
+  description: Icreases your armor and your magic resistance for 5 seconds by 15%
+    + *% of your magic damage.
   damageType: 0
   baseEffectValue: 0
-  cooldown: 10
+  cooldown: 15
+  staminaConsumption: 0
   range: 0
   icon: {fileID: 21300000, guid: b4cf912984d2aba4aae84f325f018142, type: 3}
   animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
