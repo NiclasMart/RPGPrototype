@@ -23,6 +23,7 @@ namespace RPG.Interaction
     {
       PlayerInventory playerInventory = interacter.GetComponent<Interacter>().mainInventory;
       playerInventory.AddItems(connectedBank.GetLoot());
+      SetLight();
     }
 
     public object CaptureSaveData(SaveType saveType)

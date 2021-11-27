@@ -2411,7 +2411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3485343090790446139}
-  m_LocalRotation: {x: -0.08107038, y: 0.86742747, z: -0.4672779, w: -0.15049432}
+  m_LocalRotation: {x: -0.0810704, y: 0.86742747, z: -0.46727797, w: -0.15049434}
   m_LocalPosition: {x: 75.8, y: 26.79, z: 6.2900004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2688,7 +2688,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: -1.6744397e+34, z: 4.5905e-41, w: 0.0000000029497205}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -6806,7 +6806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020349726849360375, guid: 150064b42466f4745acf80266dc1aab7, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1407664928819543757, guid: 150064b42466f4745acf80266dc1aab7, type: 3}
       propertyPath: m_TagString
@@ -7756,6 +7756,10 @@ PrefabInstance:
     - target: {fileID: 7792119020092414291, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102020778214777166, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
+      propertyPath: m_text
+      value: 'Additional Attack Damage: *'
       objectReference: {fileID: 0}
     - target: {fileID: 8182821921346088652, guid: df6bcf1e188bfef46b12e68315f96d68, type: 3}
       propertyPath: m_AnchorMax.y

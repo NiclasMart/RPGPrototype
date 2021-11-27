@@ -5128,6 +5128,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7675111134487635040, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
+      propertyPath: m_text
+      value: 'Additional Attack Damage: *'
+      objectReference: {fileID: 0}
     - target: {fileID: 7690338808148108784, guid: cdbd712a185f93d44a104f022216a5eb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
