@@ -15,6 +15,7 @@ namespace RPG.Items
     public float baseValue;
     public ItemType itemType;
     public bool modifiable = false;
+    [Range(1, 3)]public int maxModifierCount = 3;
     [Range(0, 1)] public float modifierQuality;
     public List<ItemStatModifier> normalModifiers = new List<ItemStatModifier>();
     public List<ItemStatModifier> epicModifiers = new List<ItemStatModifier>();

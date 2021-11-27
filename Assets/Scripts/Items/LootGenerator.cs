@@ -139,7 +139,7 @@ namespace RPG.Items
 
     private void AddBaseModifiers(GenericItem baseItem, ModifiableItem item)
     {
-      int modifierCount = CalculateAmountOfModifiers();
+      int modifierCount = CalculateAmountOfModifiers(baseItem.maxModifierCount);
       List<int> indexCache = new List<int>();
       for (int i = 0; i < modifierCount; i++)
       {
@@ -153,13 +153,16 @@ namespace RPG.Items
       }
     }
 
-    private int CalculateAmountOfModifiers()
+    private int CalculateAmountOfModifiers(float maxCount)
     {
       float rand = Random.Range(0, 1f);
+      float amount;
 
-      if (rand < (modifierProbability * modifierProbability)) return 3;
-      if (rand < modifierProbability) return 2;
-      return 1;
+      if (rand < (modifierProbability * modifierProbability)) amount = 3;
+      if (rand < modifierProbability) amount = 2;
+      amount = 1;
+
+      return (int)Mathf.Min(amount, maxCount);
     }
   }
 }
