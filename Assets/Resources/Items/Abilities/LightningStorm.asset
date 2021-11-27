@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: SplitArrow
+  m_Name: LightningStorm
   m_EditorClassIdentifier: 
-  itemID: 4234eef1-2c2a-4abd-8486-f437e660068b
-  name: Multiarrow
-  icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
-  itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
+  itemID: f31b3967-a9b7-48bc-95ad-5c6d3f8bd973
+  name: LightningStorm
+  icon: {fileID: 21300000, guid: 39658835b35c67c41b2032d578fe12c1, type: 3}
+  itemObject: {fileID: 1489826464051998, guid: c747d97d4add4f040b138754572e206c, type: 3}
   weight: 1
   baseValue: 1
   itemType: 6
@@ -25,5 +25,5 @@ MonoBehaviour:
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  abilityPrefab: {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
-  baseEffectValue: {x: 10, y: 40}
+  abilityPrefab: {fileID: -7400151085907235050, guid: 71161f2863acac244b852dabe9b6baf0, type: 3}
+  baseEffectValue: {x: 15, y: 50}

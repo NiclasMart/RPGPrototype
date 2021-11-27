@@ -34,7 +34,7 @@ namespace RPG.Combat
     {
       if (initialized) return;
       BuildSlotDictionary();
-      //InitializeStartAbilities();
+      InitializeStartAbilities();
       initialized = true;
     }
 
@@ -99,11 +99,13 @@ namespace RPG.Combat
 
     private void InitializeStartAbilities()
     {
-      for (int i = 0; i < startAbilities.Count; i++)
-      {
-        Ability abilityInstance = InstanciateAbility(startAbilities[i]);
-        slots[i].SetAbility(abilityInstance);
-      }
+      Ability abilityInstance = InstanciateAbility(startAbilities[0]);
+      slots[0].SetAbility(abilityInstance);
+      // for (int i = 0; i < startAbilities.Count; i++)
+      // {
+      //   Ability abilityInstance = InstanciateAbility(startAbilities[i]);
+      //   slots[i].SetAbility(abilityInstance);
+      // }
     }
 
     private void BuildSlotDictionary()
