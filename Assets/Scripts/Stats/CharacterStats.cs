@@ -14,7 +14,7 @@ namespace RPG.Stats
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
-    [SerializeField] StatsDisplay statsDisplay;
+    public StatsDisplay statsDisplay;
 
     public int Level => level;
     public ValueChangeEvent valueChange;

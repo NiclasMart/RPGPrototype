@@ -1220,6 +1220,18 @@ PrefabInstance:
       propertyPath: gearChanger
       value: 
       objectReference: {fileID: 898545097}
+    - target: {fileID: 2053985526829475282, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: startAbilities.Array.data[2]
+      value: 
+      objectReference: {fileID: -4869949201458223747, guid: 35ac6e536ec6696409280b4c81513750, type: 3}
+    - target: {fileID: 2053985526829475282, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: startAbilities.Array.data[3]
+      value: 
+      objectReference: {fileID: 6395940439820364721, guid: e2adfa19c35b3e24298d278f99547eaf, type: 3}
+    - target: {fileID: 2053985526829475282, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: startAbilities.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2201049465331413386, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: cam
       value: 

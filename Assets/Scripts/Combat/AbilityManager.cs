@@ -34,7 +34,7 @@ namespace RPG.Combat
     {
       if (initialized) return;
       BuildSlotDictionary();
-      InitializeStartAbilities();
+      //InitializeStartAbilities();
       initialized = true;
     }
 

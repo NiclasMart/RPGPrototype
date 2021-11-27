@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
@@ -14,9 +15,11 @@ namespace RPG.Combat
 
     public override void CastAction()
     {
+      float damage = CalculateDamage();
+
       Vector3 direction = data.lookPoint - transform.position;
       //middle projectile
-      SpawnProjectile(direction, data.source, data.castPosition, data.layer);
+      SpawnProjectile(direction, data.source,damage, data.castPosition, data.layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
@@ -24,10 +27,10 @@ namespace RPG.Combat
       {
         //right hand projectiles
         newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * direction;
-        SpawnProjectile(newDirection, data.source, data.castPosition, data.layer);
+        SpawnProjectile(newDirection, data.source, damage, data.castPosition, data.layer);
         //left hand projectiles
         newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * direction;
-        SpawnProjectile(newDirection, data.source, data.castPosition, data.layer);
+        SpawnProjectile(newDirection, data.source, damage, data.castPosition, data.layer);
       }
     }
 
@@ -44,11 +47,25 @@ namespace RPG.Combat
       }
     }
 
-    void SpawnProjectile(Vector3 direction, GameObject source, Transform castPosition, LayerMask layer)
+    void SpawnProjectile(Vector3 direction, GameObject source, float damage, Transform castPosition, LayerMask layer)
     {
       direction.y = 0;
       Projectile projectile = GetProjectile();
-      projectile.Initialize(direction, source, this, castPosition.position, base.baseEffectValue, base.range, base.damageType, layer);
+      projectile.Initialize(direction, source, this, castPosition.position, damage, base.range, base.damageType, layer);
+    }
+
+    CharacterStats stats;
+    private float CalculateDamage()
+    {
+      if (stats == null) data.source.GetComponent<CharacterStats>();
+
+      float damage;
+      if (damageType == DamageType.physicalDamage)
+        damage = (baseEffectValue + stats.GetStat(Stat.DamageFlat)) * (1 + stats.GetStat(Stat.DamagePercent) / 100f);
+      else
+        damage = (baseEffectValue + stats.GetStat(Stat.MagicDamageFlat)) * (1 + stats.GetStat(Stat.MagicDamagePercent) / 100f);
+
+      return damage;
     }
 
     Projectile GetProjectile()

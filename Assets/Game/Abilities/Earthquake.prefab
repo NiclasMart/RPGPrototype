@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6395940439820364721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594730573423823412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a1d376c42b6a84e8039fae2a6bbd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 'You create an earthquake which deals nearby enemies every second
+    damage equal to *% of your physical damage. '
+  damageType: 0
+  baseEffectValue: 0
+  cooldown: 20
+  staminaConsumption: 30
+  range: 0
+  icon: {fileID: 0}
+  animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
+  animationRotationOffset: 0
+  castImmediately: 0
+  duration: 3
+  areaPrefab: {fileID: 914188140105750101, guid: 5241c031ec0f1c346802acf143743832, type: 3}
+--- !u!1001 &2396571310056724169
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3991257898309328125, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_Name
+      value: Earthquake
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+--- !u!1 &1594730573423823412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3991257898309328125, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
+  m_PrefabInstance: {fileID: 2396571310056724169}
+  m_PrefabAsset: {fileID: 0}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: MagicArmor
+  m_Name: Earthquake
   m_EditorClassIdentifier: 
-  itemID: d46e529e-1188-425b-9e6a-1380d6833a87
-  name: MagicArmor
-  icon: {fileID: 21300000, guid: b4cf912984d2aba4aae84f325f018142, type: 3}
-  itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
+  itemID: 71103ec7-4b42-4e4d-8523-f21fdae14c74
+  name: Earthquake
+  icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
+  itemObject: {fileID: 1496298310679528, guid: bc26352670c946d45843202b6b14d5e9, type: 3}
   weight: 1
   baseValue: 0
   itemType: 6
@@ -24,5 +24,5 @@ MonoBehaviour:
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  abilityPrefab: {fileID: 7879756210610046078, guid: fd276a94e3e91ac44903c7a9edeb02dc, type: 3}
-  baseEffectValue: {x: 10, y: 30}
+  abilityPrefab: {fileID: 6395940439820364721, guid: e2adfa19c35b3e24298d278f99547eaf, type: 3}
+  baseEffectValue: {x: 40, y: 80}

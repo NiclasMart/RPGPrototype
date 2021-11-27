@@ -25,4 +25,4 @@ MonoBehaviour:
   epicModifiers: []
   legendaryModifiers: []
   abilityPrefab: {fileID: 0}
-  damage: {x: 0.5, y: 2}
+  baseEffectValue: {x: 2.5, y: 5}

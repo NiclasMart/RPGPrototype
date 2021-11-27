@@ -23,18 +23,22 @@ namespace RPG.Combat
       float tmpArmorSave, tmpMagicResiSave;
       tmpArmorSave = stats.GetStat(Stat.Armour);
       tmpMagicResiSave = stats.GetStat(Stat.MagicResi);
-      Debug.Log($"Armor: {tmpArmorSave} to {tmpArmorSave * multipicator} and Resi {tmpMagicResiSave} to {tmpMagicResiSave * multipicator}");
+
+      stats.statsDisplay.DisplayStat(Stat.Armour, tmpArmorSave * multipicator);
+      stats.statsDisplay.DisplayStat(Stat.MagicResi, tmpMagicResiSave * multipicator);
 
       stats.ChangeStat(Stat.Armour, tmpArmorSave * multipicator);
       stats.ChangeStat(Stat.MagicResi, tmpMagicResiSave * multipicator);
 
       yield return new WaitForSeconds(duration);
 
-      if (stats.GetStat(Stat.Armour) == tmpArmorSave * multipicator && stats.GetStat(Stat.MagicResi) == tmpMagicResiSave * multipicator)
+      if ((int)stats.GetStat(Stat.Armour) == (int)(tmpArmorSave * multipicator) && (int)stats.GetStat(Stat.MagicResi) == (int)(tmpMagicResiSave * multipicator))
       {
-        Debug.Log("reset aura");
         stats.ChangeStat(Stat.Armour, tmpArmorSave);
         stats.ChangeStat(Stat.MagicResi, tmpMagicResiSave);
+
+        stats.statsDisplay.DisplayStat(Stat.Armour, tmpArmorSave);
+        stats.statsDisplay.DisplayStat(Stat.MagicResi, tmpMagicResiSave);
       }
     }
   }
