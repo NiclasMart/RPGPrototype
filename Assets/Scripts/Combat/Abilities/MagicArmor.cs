@@ -12,7 +12,7 @@ namespace RPG.Combat
     public override void CastAction()
     {
       if (stats == null) stats = data.source.GetComponent<CharacterStats>();
-      float magicDamage = stats.GetStat(Stat.MagicDamage);
+      float magicDamage = stats.GetStat(Stat.MagicDamageFlat) * (1 + stats.GetStat(Stat.MagicDamagePercent) / 100f);
 
       float multipicator = magicDamage * (baseEffectValue / 100f);
       StartCoroutine(ActiveAura(1 + multipicator));

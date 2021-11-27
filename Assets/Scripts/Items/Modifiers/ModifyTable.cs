@@ -33,14 +33,23 @@ namespace RPG.Items
       return (1 + magicResiPercent / 100) * baseStat + magicResiFlat;
     }
 
-    public float ModifyPhysicalDamage(float baseStat)
+    public float ModifyPhysicalDamageFlat(float baseStat)
     {
-      return (1 + physicalDamagePercent / 100) * (baseStat + physicalDamageFlat);
+      return baseStat + physicalDamageFlat;
+    }
+    public float ModifyPhysicalDamagePercent(float baseStat)
+    {
+      return baseStat + physicalDamagePercent;
     }
 
-    public float ModifyMagicDamage(float baseStat)
+    public float ModifyMagicDamageFlat(float baseStat)
     {
-      return (1 + magicDamagePercent / 100) * (baseStat + magicDamageFlat);
+      return baseStat + magicDamageFlat;
+    }
+
+    public float ModifyMagicDamagePercent(float baseStat)
+    {
+      return baseStat + magicDamagePercent;
     }
 
     public float ModifyStamina(float baseStat)

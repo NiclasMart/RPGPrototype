@@ -33,7 +33,6 @@ namespace RPG.Combat
     private float range;
     public float attackSpeed;
     private GameObject hitArea;
-    // private DamageClass damageType;
     private protected bool isRightHanded = true;
 
     public Weapon(GenericItem baseItem) : base(baseItem)
@@ -43,7 +42,6 @@ namespace RPG.Combat
       damage = baseWeapon.GetDamage();
       range = baseWeapon.weaponRange;
       attackSpeed = baseWeapon.GetAttackspeed();
-      // damageType = baseWeapon.damageType;
       isRightHanded = baseWeapon.isRightHanded;
       hitArea = baseWeapon.hitArea;
       staminaUse = baseWeapon.weaponStaminaConsumption;

@@ -3,7 +3,7 @@ namespace RPG.Stats
   public enum Stat
   {
     Health,
-    Damage,
+    DamageFlat,
     Armour,
     Experience,
     Stamina,
@@ -15,6 +15,8 @@ namespace RPG.Stats
     StaminaRegeneration,
     MagicResi,
     CooldownReduction,
-    MagicDamage,
+    MagicDamagePercent,
+    MagicDamageFlat,
+    DamagePercent
   }
 }

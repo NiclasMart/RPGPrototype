@@ -7,7 +7,7 @@ namespace RPG.Combat
   {
     public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage)
     {
-      float baseDamage = attacker.GetStat(Stat.Damage) + weaponDamage;
+      float baseDamage = (attacker.GetStat(Stat.DamageFlat) + weaponDamage) * (1 + attacker.GetStat(Stat.DamagePercent) / 100f);
 
       //armour calculation
       float armour = defender.GetStat(Stat.Armour);
@@ -36,7 +36,7 @@ namespace RPG.Combat
 
     public static float CalculateMagicDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage)
     {
-      float baseDamage = attacker.GetStat(Stat.MagicDamage) + weaponDamage;
+      float baseDamage = (attacker.GetStat(Stat.MagicDamageFlat) + weaponDamage) * (1 + attacker.GetStat(Stat.MagicDamagePercent) / 100f);
 
       //armour calculation
       float magicResi = defender.GetStat(Stat.MagicResi);
