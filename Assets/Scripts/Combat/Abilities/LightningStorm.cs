@@ -41,5 +41,10 @@ namespace RPG.Combat
       yield return new WaitForSeconds(duration);
       detectorInstance.gameObject.SetActive(false);
     }
+
+    public override bool CastIsValid(GameObject player)
+    {
+      return PlayerInfo.GetPlayerCursor().Position != Vector3.zero;
+    }
   }
 }

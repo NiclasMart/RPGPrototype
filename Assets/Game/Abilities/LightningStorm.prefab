@@ -18,11 +18,11 @@ MonoBehaviour:
   cooldown: 20
   staminaConsumption: 0
   range: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 39658835b35c67c41b2032d578fe12c1, type: 3}
   animationClip: {fileID: 7400000, guid: 7bed0f6312a14734f8658811e5fea889, type: 2}
   animationRotationOffset: 0
   castImmediately: 1
-  duration: 1
+  duration: 2
   areaPrefab: {fileID: 1970642387455564185, guid: 088e711bfdd166d4f8244f0b405aabba, type: 3}
 --- !u!1001 &2396571310056724169
 PrefabInstance:
