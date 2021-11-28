@@ -8,10 +8,13 @@ namespace RPG.Combat
   public class MagicArmor : Ability
   {
     [SerializeField] float duration;
+    [SerializeField] GameObject effect;
     CharacterStats stats;
+    GameObject effectInstance;
     public override void CastAction()
     {
       if (stats == null) stats = data.source.GetComponent<CharacterStats>();
+      if (effectInstance == null) effectInstance = Instantiate(effect, transform);
       float magicDamage = stats.GetStat(Stat.MagicDamageFlat) * (1 + stats.GetStat(Stat.MagicDamagePercent) / 100f);
 
       float multipicator = magicDamage * (baseEffectValue / 100f);
@@ -20,6 +23,7 @@ namespace RPG.Combat
 
     IEnumerator ActiveAura(float multipicator)
     {
+      effectInstance.SetActive(true);
       float tmpArmorSave, tmpMagicResiSave;
       tmpArmorSave = stats.GetStat(Stat.Armour);
       tmpMagicResiSave = stats.GetStat(Stat.MagicResi);
@@ -40,6 +44,7 @@ namespace RPG.Combat
         stats.statsDisplay.DisplayStat(Stat.Armour, tmpArmorSave);
         stats.statsDisplay.DisplayStat(Stat.MagicResi, tmpMagicResiSave);
       }
+      effectInstance.SetActive(false);
     }
   }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &7879756210610046078
+--- !u!114 &-7329818561728299329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,22 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1594730573423823412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aac7ed5fe271b1a49badc3df198b3281, type: 3}
+  m_Script: {fileID: 11500000, guid: fe8ced6b9fece334592e4be57c5dbb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Icreases your armor and your magic resistance for 5 seconds by 15%
-    + *% of your magic damage.
+  description: You gain *% additional percentual physical damage increasement for
+    the next 8 seconds.
   damageType: 0
   baseEffectValue: 0
-  cooldown: 15
-  staminaConsumption: 0
+  cooldown: 3
+  staminaConsumption: 20
   range: 0
-  icon: {fileID: 21300000, guid: b4cf912984d2aba4aae84f325f018142, type: 3}
+  icon: {fileID: 0}
   animationClip: {fileID: 7400000, guid: f34593a481cfdcc448619f52fbc2757a, type: 2}
   animationRotationOffset: 0
   castImmediately: 0
-  duration: 5
-  effect: {fileID: 514329376921072645, guid: 2c3cbd01b906bf84388d48f1853e0de9, type: 3}
+  duration: 8
+  effect: {fileID: 1067152240470389725, guid: edb407abd208b0e4a8fc85c973fe92c5, type: 3}
 --- !u!1001 &2396571310056724169
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34,7 +34,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3991257898309328125, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
       propertyPath: m_Name
-      value: MagicArmor
+      value: Berserker
       objectReference: {fileID: 0}
     - target: {fileID: 5705234143678265684, guid: 01b0aa308ddf95140804aa993a39f99d, type: 3}
       propertyPath: m_RootOrder
