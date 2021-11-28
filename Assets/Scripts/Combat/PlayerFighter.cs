@@ -35,8 +35,14 @@ namespace RPG.Combat
 
     private void Update()
     {
+      if (currentWeapon)
+      {
+        
+        currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
+        currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.T));
+      }
       cooldownDisplay.UpdateCooldown(lastAttackTime, 1f / stats.GetStat(Stat.AttackSpeed));
-      // currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.Space));
+
     }
 
     public void Attack(ActionScheduler scheduler, PlayerCursor cursor)
@@ -52,12 +58,14 @@ namespace RPG.Combat
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
 
+      if (currentWeapon) currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
       currentWeapon.DamageAreaLockState(true);
     }
 
     public void Cancel()
     {
       animator.SetTrigger("cancelAttack");
+      currentWeapon.DamageAreaLockState(false);
     }
 
     void Hit()

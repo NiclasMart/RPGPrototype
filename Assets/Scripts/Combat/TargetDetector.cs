@@ -36,7 +36,7 @@ namespace RPG.Combat
     {
       if (locked) return;
 
-      lookDirection.y = transform.position.y;
+      lookDirection.y = 0;
       transform.LookAt(transform.position + lookDirection);
     }
 

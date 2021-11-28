@@ -12,11 +12,15 @@ namespace RPG.Interaction
 
     public override void EquipItem(Item item)
     {
+      AbilityManager manager = PlayerInfo.GetPlayer().GetComponent<AbilityManager>();
+
+      if (manager.AbilityTypeIsAlreadyEquiped(item.name) && abilityCooldownDisplay.ability?.name != item.name) return;
+
       base.EquipItem(item);
       AbilityGem gem = (item as AbilityGem);
       if (gem == null) return;
 
-      PlayerInfo.GetPlayer().GetComponent<AbilityManager>().SetNewAbility(gem, abilityCooldownDisplay);
+      manager.SetNewAbility(gem, abilityCooldownDisplay);
     }
 
     protected override void UnequipCurrentItem()
