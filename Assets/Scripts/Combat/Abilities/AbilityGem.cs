@@ -32,6 +32,7 @@ namespace RPG.Combat
       GenericAbility baseAbility = baseItem as GenericAbility;
       ability = baseAbility.GetAbility();
       ability.icon = baseAbility.icon;
+      ability.name = name;
       baseEffectValue = baseAbility.GetDamage();
       rarity = Rank.Gem;
     }

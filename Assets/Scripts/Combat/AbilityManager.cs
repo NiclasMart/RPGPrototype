@@ -91,6 +91,16 @@ namespace RPG.Combat
       AnimationHandler.OverrideAnimations(animator, gem.ability.animationClip, "Cast" + slot.index);
     }
 
+    public bool AbilityTypeIsAlreadyEquiped(string name)
+    {
+      foreach (var slot in slots)
+      {
+        if (slot.ability == null) continue;
+        if (slot.ability.name == name) return true;
+      }
+      return false;
+    }
+
     public Ability GetRollAbility()
     {
       Initialize();

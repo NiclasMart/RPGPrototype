@@ -12,6 +12,7 @@ namespace RPG.Combat
   [Serializable] public enum DamageType { physicalDamage, magicDamage }
   public class Ability : MonoBehaviour
   {
+    [HideInInspector] public string name;
     public string description;
     public DamageType damageType;
     [HideInInspector] public float baseEffectValue;
@@ -53,8 +54,8 @@ namespace RPG.Combat
       // stats.attackRange = range;
     }
 
-    public virtual bool CastIsValid(GameObject player) 
-    { 
+    public virtual bool CastIsValid(GameObject player)
+    {
       Stamina stamina = player.GetComponent<Stamina>();
       return stamina.UseStamina(staminaConsumption);
     }
