@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Berserker
   m_EditorClassIdentifier: 
   itemID: 2fed0da0-8cb9-4d70-9627-bb782517f21e
-  name: 
-  icon: {fileID: 0}
-  itemObject: {fileID: 0}
-  weight: 0
-  baseValue: 0
-  itemType: 0
+  name: Berserker
+  icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
+  itemObject: {fileID: 1886286223317658, guid: 92ba3aef2b0d5fe48b9015441633a35b, type: 3}
+  weight: 1
+  baseValue: 1
+  itemType: 6
   modifiable: 0
   maxModifierCount: 3
   modifierQuality: 0
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  abilityPrefab: {fileID: 0}
-  baseEffectValue: {x: 0, y: 0}
+  abilityPrefab: {fileID: -7329818561728299329, guid: a5435ec73d8842442a8a8ca700508602, type: 3}
+  baseEffectValue: {x: 50, y: 120}
