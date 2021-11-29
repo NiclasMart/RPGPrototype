@@ -10,23 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
-  m_Name: Unarmed
+  m_Name: Unarmed_Enemy
   m_EditorClassIdentifier: 
+  itemID: f5837015-18d9-4f97-83bf-d1b6bf1a525d
   name: 
-  baseResourcePath: ItemSprites/
   icon: {fileID: 0}
   itemObject: {fileID: 8094434287657265975, guid: 9015ba6e3ff1cbb4d87865a5e2c69355, type: 3}
   weight: 0
+  baseValue: 0
   itemType: 0
   modifiable: 0
+  maxModifierCount: 3
+  modifierQuality: 0
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  animation: {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
+  animation: {fileID: 7400000, guid: 8970772241882624980cf2be928e8096, type: 2}
   weaponDamage: {x: 2, y: 2}
   weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 1, y: 1}
   weaponRange: 1
   hitArea: {fileID: 6398649753869941678, guid: ae2a01a6ee06668489e8da797a7517eb, type: 3}
-  damageType: {fileID: 0}
   isRightHanded: 1

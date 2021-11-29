@@ -7,6 +7,7 @@ using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
 using TMPro;
+using RPG.Combat;
 
 namespace RPG.Interaction
 {
@@ -22,17 +23,19 @@ namespace RPG.Interaction
     {
       InitializeEquipmentSlots();
       LoadSaveData();
-      EquipBaseWeapon();
+      TryEquipBaseWeapon();
       HideAllInventorys();
+
+      
     }
 
-    private void EquipBaseWeapon()
+    public void TryEquipBaseWeapon()
     {
       if (equipmentDictionary[ItemType.Weapon].item == null)
       {
-        GenericItem defaultWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().GetDefaultWeapon();
-        if (defaultWeapon) (equipmentDictionary[ItemType.Weapon] as GearEquipmentSlot).EquipItem(defaultWeapon.GenerateItem());
-        else RecalculateModifiers();
+        Weapon dWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().EquipDefaultWeapon();
+        RecalculateModifiers();
+        PlayerInfo.GetPlayer().GetComponent<CharacterStats>().ChangeStat(Stat.AttackSpeed, dWeapon.attackSpeed);
       }
     }
 
@@ -80,7 +83,6 @@ namespace RPG.Interaction
 
     public void RecalculateModifiers()
     {
-      Debug.Log("Recalculate");
       ModifyTable table = new ModifyTable();
       foreach (var slot in equipmentDictionary.Values)
       {

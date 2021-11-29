@@ -12,10 +12,12 @@ namespace RPG.Items
     [SerializeField] Transform leftWeaponHolder;
     [SerializeField] GenericWeapon defaultWeapon;
 
-    public GenericWeapon GetDefaultWeapon()
+    public Weapon EquipDefaultWeapon()
     {
-      if (defaultWeapon) return defaultWeapon;
-      else return Resources.Load("Prefabs/Unarmed") as GenericWeapon;
+      GenericWeapon dWeapon = defaultWeapon ? defaultWeapon : Resources.Load("Prefabs/Unarmed") as GenericWeapon;
+      Weapon weapon = dWeapon.GenerateItem() as Weapon;
+      EquipWeapon(weapon);
+      return weapon;
     }
 
     public void EquipGear(Item item)
@@ -23,10 +25,15 @@ namespace RPG.Items
       if (item as Weapon != null) EquipWeapon(item as Weapon);
     }
 
+    public void UnequipGear(Item item)
+    {
+      if (item as Weapon != null) EquipDefaultWeapon();
+    }
+
     EquipedWeapon weaponReference = null;
     public void EquipWeapon(Weapon weapon)
     {
-      if (weaponReference) Destroy(weaponReference);
+      DeleteOldWeapon();
       GetComponent<PlayerFighter>().currentWeapon = InitializeWeapon(weapon);
     }
 
@@ -35,6 +42,14 @@ namespace RPG.Items
       Animator animator = GetComponent<Animator>();
       weaponReference = weapon.Equip(transform, rightWeaponHolder, leftWeaponHolder, animator);
       return weaponReference;
+    }
+
+    private void DeleteOldWeapon()
+    {
+      if (weaponReference == null) return;
+
+      Destroy(weaponReference.hitArea.gameObject);
+      Destroy(weaponReference.gameObject);
     }
   }
 }

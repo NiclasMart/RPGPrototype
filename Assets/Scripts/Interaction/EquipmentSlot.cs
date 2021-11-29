@@ -67,7 +67,8 @@ namespace RPG.Interaction
       UnequipCurrentItem();
       SetIcon(null);
       this.item = null;
-      playerInventory.RecalculateModifiers();
+      if (equipmentType == ItemType.Weapon) playerInventory.TryEquipBaseWeapon();
+      else playerInventory.RecalculateModifiers();
     }
 
     public object CaptureSaveData(SaveType saveType)
