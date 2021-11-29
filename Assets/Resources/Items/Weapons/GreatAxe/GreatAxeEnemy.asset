@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
-  m_Name: Unarmed_Enemy
+  m_Name: GreatAxeEnemy
   m_EditorClassIdentifier: 
-  itemID: f5837015-18d9-4f97-83bf-d1b6bf1a525d
+  itemID: 8255a693-79df-4aab-9a4e-eef470024783
   name: 
   icon: {fileID: 0}
-  itemObject: {fileID: 8094434287657265975, guid: 9015ba6e3ff1cbb4d87865a5e2c69355, type: 3}
+  itemObject: {fileID: 8642829691525252339, guid: dbd424949d78d754aa4726f7905a8fcb, type: 3}
   weight: 0
   baseValue: 0
   itemType: 0
@@ -25,10 +25,10 @@ MonoBehaviour:
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  animation: {fileID: 7400000, guid: 8970772241882624980cf2be928e8096, type: 2}
-  weaponDamage: {x: 5, y: 5}
+  animation: {fileID: 7400000, guid: 9129b86089ea3e948b8b45da54e6eaf6, type: 2}
+  weaponDamage: {x: 20, y: 20}
   weaponStaminaConsumption: 0
-  weaponAttackSpeed: {x: 1, y: 1.4}
-  weaponRange: 1
-  hitArea: {fileID: 6398649753869941678, guid: ae2a01a6ee06668489e8da797a7517eb, type: 3}
+  weaponAttackSpeed: {x: 0.4, y: 0.7}
+  weaponRange: 2
+  hitArea: {fileID: 4039246772879643832, guid: a79983288d70b2142be3de8f5354750b, type: 3}
   isRightHanded: 1

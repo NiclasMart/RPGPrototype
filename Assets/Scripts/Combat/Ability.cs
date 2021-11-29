@@ -49,9 +49,8 @@ namespace RPG.Combat
 
     public void GetStats(ModifyTable stats)
     {
-      // stats.physicalDamageFlat = baseDamage;
-      // stats.attackSpeed = 1 / cooldown;
-      // stats.attackRange = range;
+      stats.attackSpeed = 1;
+      stats.attackRange = range;
     }
 
     public virtual bool CastIsValid(GameObject player)

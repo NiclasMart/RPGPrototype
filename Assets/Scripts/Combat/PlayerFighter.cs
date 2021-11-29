@@ -70,7 +70,7 @@ namespace RPG.Combat
 
     void Hit()
     {
-      List<Health> targets = currentWeapon.GetHitTargets(transform.position, transform.forward, gameObject.layer);
+      List<Health> targets = currentWeapon.GetHitTargets();
 
       foreach (var target in targets)
       {

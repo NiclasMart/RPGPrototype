@@ -19,7 +19,7 @@ namespace RPG.Combat
 
       Vector3 direction = data.lookPoint - transform.position;
       //middle projectile
-      SpawnProjectile(direction, data.source,damage, data.castPosition, data.layer);
+      SpawnProjectile(direction, data.source, damage, data.castPosition, data.layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
@@ -57,7 +57,7 @@ namespace RPG.Combat
     CharacterStats stats;
     private float CalculateDamage()
     {
-      if (stats == null) data.source.GetComponent<CharacterStats>();
+      if (stats == null) stats = data.source.GetComponent<CharacterStats>();
 
       float damage;
       if (damageType == DamageType.physicalDamage)

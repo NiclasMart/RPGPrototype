@@ -149,6 +149,7 @@ namespace RPG.Combat
     //called by animation
     void FinishedCast()
     {
+      Debug.Log("Finished Cast");
       scheduler.ReleaseLock();
     }
 

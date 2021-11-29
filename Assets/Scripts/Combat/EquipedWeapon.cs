@@ -32,7 +32,7 @@ namespace RPG.Combat
     }
 
     //player fighter
-    public List<Health> GetHitTargets(Vector3 position, Vector3 direction, LayerMask layer)
+    public List<Health> GetHitTargets()
     {
       return hitArea.TargetsInArea;
     }

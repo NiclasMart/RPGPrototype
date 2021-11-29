@@ -182,6 +182,10 @@ MonoBehaviour:
       values:
       - 15
       - 18
+    - stat: 14
+      values:
+      - 15
+      - 18
   - charakterClass: 2
     stats:
     - stat: 0

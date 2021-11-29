@@ -17,16 +17,18 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 15
+  baseValue: 0
   itemType: 0
   modifiable: 1
+  maxModifierCount: 3
+  modifierQuality: 0
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: 826da4d1604c2114396e949c1212639a, type: 2}
   weaponDamage: {x: 12, y: 12}
   weaponStaminaConsumption: 10
-  weaponAttackSpeed: {x: 0.8, y: 1}
+  weaponAttackSpeed: {x: 0.8, y: 1.1}
   weaponRange: 1.5
   hitArea: {fileID: 4039246772879643832, guid: 3d30411685e215e48b0b1120d9efe2e0, type: 3}
-  damageType: {fileID: 0}
   isRightHanded: 1
