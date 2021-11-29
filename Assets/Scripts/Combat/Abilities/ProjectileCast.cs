@@ -15,11 +15,11 @@ namespace RPG.Combat
 
     public override void CastAction()
     {
-      float damage = CalculateDamage();
+      //float damage = CalculateDamage();
 
       Vector3 direction = data.lookPoint - transform.position;
       //middle projectile
-      SpawnProjectile(direction, data.source, damage, data.castPosition, data.layer);
+      SpawnProjectile(direction, data.source, baseEffectValue, data.castPosition, data.layer);
 
       float spawnDegrees = CalculateSpawnDegree();
       Vector3 newDirection;
@@ -27,10 +27,10 @@ namespace RPG.Combat
       {
         //right hand projectiles
         newDirection = Quaternion.AngleAxis(spawnDegrees * i, Vector3.up) * direction;
-        SpawnProjectile(newDirection, data.source, damage, data.castPosition, data.layer);
+        SpawnProjectile(newDirection, data.source, baseEffectValue, data.castPosition, data.layer);
         //left hand projectiles
         newDirection = Quaternion.AngleAxis(-spawnDegrees * i, Vector3.up) * direction;
-        SpawnProjectile(newDirection, data.source, damage, data.castPosition, data.layer);
+        SpawnProjectile(newDirection, data.source, baseEffectValue, data.castPosition, data.layer);
       }
     }
 
