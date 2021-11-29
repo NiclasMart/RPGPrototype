@@ -49,7 +49,11 @@ namespace RPG.Control
 
     private void Update()
     {
-      if ((health.IsDead)) return;
+      if ((health.IsDead))
+      {
+        GetComponentInChildren<TargetDetector>()?.Toggle(false);
+        return;
+      }
       if (attacker.isAttacking) return;
 
       float playerDistance = Vector3.Distance(player.transform.position, transform.position);
