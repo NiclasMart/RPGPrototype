@@ -9,7 +9,7 @@ using Display;
 
 namespace RPG.Stats
 {
-  public class Health : MonoBehaviour, IDisplayable, IInteraction
+  public class Health : MonoBehaviour, IDisplayable, IInteraction, ISaveable
   {
     [SerializeField] float lvlUpHeal = 0.3f;
     Animator animator;
@@ -29,7 +29,7 @@ namespace RPG.Stats
     {
       animator = GetComponentInChildren<Animator>();
       maxHealth = new LazyValue<float>(GetInitializeHealth);
-      currentHealth = new LazyValue<float>(GetInitializeHealth);
+      if (currentHealth == null) currentHealth = new LazyValue<float>(GetInitializeHealth);
 
       GetComponent<CharacterStats>().statsChange += UpdateMaxHealth;
     }
@@ -158,6 +158,16 @@ namespace RPG.Stats
     public GameObject GetGameObject()
     {
       return gameObject;
+    }
+
+    public object CaptureSaveData(SaveType saveType)
+    {
+      return currentHealth.value;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      currentHealth = new LazyValue<float>(() => (float)data);
     }
   }
 }

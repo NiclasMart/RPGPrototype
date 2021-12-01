@@ -25,8 +25,6 @@ namespace RPG.Interaction
       LoadSaveData();
       TryEquipBaseWeapon();
       HideAllInventorys();
-
-      
     }
 
     public void TryEquipBaseWeapon()

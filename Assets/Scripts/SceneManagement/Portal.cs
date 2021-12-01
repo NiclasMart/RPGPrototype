@@ -3,6 +3,7 @@ using System.Collections;
 using RPG.Core;
 using RPG.Interaction;
 using RPG.Saving;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -58,7 +59,7 @@ namespace RPG.SceneManagement
     IEnumerator Teleport()
     {
       DontDestroyOnLoad(transform.parent.gameObject);
-      
+
       if (homeTeleporter)
       {
         FindObjectOfType<LootTeleporter>().TeleportItems(PlayerInfo.GetPlayer());
@@ -68,7 +69,9 @@ namespace RPG.SceneManagement
       else
       {
         PlayerInfo.GetPlayer().GetComponent<ProgressionData>().UpdateProgress();
+        if (dungeonData.currentDepth == 4) PlayerInfo.GetPlayer().GetComponent<Health>().HealPercentageMax(1);
         FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
+
         if (dungeonData.currentDepth == 4) yield return SceneManager.LoadSceneAsync("TransitionRoom");
         else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       }
