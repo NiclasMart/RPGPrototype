@@ -10,7 +10,7 @@ public class MinimapCamera : MonoBehaviour
 
   Camera cam;
   bool shouldFollowPlayer = true;
-  float currentMapDistance;
+  float currentMapDistance = 40;
   Vector3 currentMinMapCamPosition, currentLargeMapCamPosition;
 
   private void Start()
