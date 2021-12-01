@@ -7,7 +7,7 @@ namespace RPG.Items
   [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
   public abstract class GenericItem : ScriptableObject
   {
-    [ScriptableObjectId] public string itemID = null;
+    [ScriptableObjectIdAttribute] public string itemID = null;
     public string name;
     public Sprite icon;
     public GameObject itemObject;
@@ -15,7 +15,7 @@ namespace RPG.Items
     public float baseValue;
     public ItemType itemType;
     public bool modifiable = false;
-    [Range(1, 3)]public int maxModifierCount = 3;
+    [Range(1, 3)] public int maxModifierCount = 3;
     [Range(0, 1)] public float modifierQuality;
     public List<ItemStatModifier> normalModifiers = new List<ItemStatModifier>();
     public List<ItemStatModifier> epicModifiers = new List<ItemStatModifier>();

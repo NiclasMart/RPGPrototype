@@ -16,6 +16,6 @@ namespace RPG.Combat
 
     public Ability GetAbility() { return abilityPrefab; }
 
-    public float GetDamage() { return GetRandomValueByQuality(baseEffectValue[0], baseEffectValue[1]); }
+    public float GetDamage() { return GetRandomValueByQuality(baseEffectValue.x, baseEffectValue.y); }
   }
 }

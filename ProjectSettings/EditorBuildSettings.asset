@@ -23,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevel/TransitionRoom.unity
     guid: adec66e95e5c95542ab7a1c6bfb0d25f
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage3.unity
+    guid: e378b02e7baf24b4291599e86fc7cced
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage4.unity
+    guid: 585329af0a7173f47a0e9146c30cb0ff
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage5.unity
+    guid: 8cc2a104290f91048870c2185ff581a8
   m_configObjects: {}

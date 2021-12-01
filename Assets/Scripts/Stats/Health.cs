@@ -6,6 +6,7 @@ using GameDevTV.Utils;
 using RPG.Items;
 using RPG.Saving;
 using Display;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Stats
 {
@@ -84,7 +85,7 @@ namespace RPG.Stats
     public void LevelUpHealth(CharacterStats stats)
     {
       maxHealth.value = stats.GetStat(Stat.Health);
-      HealPercentageCurrent(lvlUpHeal);
+      HealPercentageMax(lvlUpHeal);
     }
 
     public void HealAbsolut(int value)
@@ -111,7 +112,6 @@ namespace RPG.Stats
     private void UpdateMaxHealth(CharacterStats stats)
     {
       maxHealth.value = stats.GetStat(Stat.Health);
-      currentHealth.value = maxHealth.value;
       valueChange.Invoke(this);
     }
 
@@ -167,6 +167,8 @@ namespace RPG.Stats
 
     public void RestoreSaveData(object data)
     {
+      string sceneName = SceneManager.GetActiveScene().name;
+      if (sceneName == "TransitionRoom" || sceneName == "Village") return;
       currentHealth = new LazyValue<float>(() => (float)data);
     }
   }

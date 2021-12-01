@@ -14,7 +14,7 @@ namespace RPG.Combat
       return new Armour(this);
     }
 
-    public float GetArmour() { return Random.Range(armour.x, armour.y); }
-    public float GetMagicResi() { return Random.Range(magicResistance.x, magicResistance.y); }
+    public float GetArmour() { return GetRandomValueByQuality(armour.x, armour.y); }
+    public float GetMagicResi() { return GetRandomValueByQuality(magicResistance.x, magicResistance.y); }
   }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
-  m_Name: leatherBoots
+  m_Name: leatherBoots_I
   m_EditorClassIdentifier: 
-  itemID: 4b765ecc-44f5-40d4-80c9-6117b5386c34
+  itemID: 4cb3f352-e300-4d0f-8093-83d289eb4762
   name: Leather Boots
   icon: {fileID: 21300000, guid: aafffac096dc8d4488bd6e2b38ebe950, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
@@ -20,16 +20,22 @@ MonoBehaviour:
   baseValue: 1
   itemType: 2
   modifiable: 1
+  maxModifierCount: 1
   modifierQuality: 0
   normalModifiers:
+  - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
   - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
   - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  - {fileID: 11400000, guid: ff6d9713209058b4491938d9e025f030, type: 2}
+  - {fileID: 11400000, guid: ab52140fddbb24a4780c603c87619f2c, type: 2}
+  - {fileID: 11400000, guid: 4b3bce114afad9e4ebc7af1cb8209beb, type: 2}
+  - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
   epicModifiers:
-  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
-  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
-  legendaryModifiers:
-  - {fileID: 11400000, guid: d776d0151a8a1f645b2cf9bfe478f12a, type: 2}
-  - {fileID: 11400000, guid: afbe05d3b5d4ae14e96bbb9f20e3e5cd, type: 2}
-  armour: {x: 1, y: 3}
-  magicResistance: {x: 2, y: 4}
+  - {fileID: 11400000, guid: 0d2b793bea115c748924802aa797aaac, type: 2}
+  - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
+  - {fileID: 11400000, guid: c816e60a010578249b93c075e8912ba5, type: 2}
+  - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
+  legendaryModifiers: []
+  armour: {x: 1, y: 10}
+  magicResistance: {x: 2, y: 12}

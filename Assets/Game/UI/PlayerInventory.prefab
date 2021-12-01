@@ -724,11 +724,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedSlot: {fileID: 0}
   gemDisplay: {fileID: 0}
-  abilitySlot:
-  - {fileID: 8258336409595677554}
-  - {fileID: 6890320643407532238}
-  - {fileID: 7520359897128537398}
-  - {fileID: 5946808863789865752}
 --- !u!1 &1440802214282670494
 GameObject:
   m_ObjectHideFlags: 0

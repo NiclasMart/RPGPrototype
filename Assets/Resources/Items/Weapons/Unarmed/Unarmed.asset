@@ -26,7 +26,7 @@ MonoBehaviour:
   epicModifiers: []
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: 8970772241882624980cf2be928e8096, type: 2}
-  weaponDamage: {x: 3, y: 3}
+  weaponDamage: {x: 5, y: 5}
   weaponStaminaConsumption: 5
   weaponAttackSpeed: {x: 1.3, y: 1.3}
   weaponRange: 1

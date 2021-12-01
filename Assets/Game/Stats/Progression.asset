@@ -16,223 +16,142 @@ MonoBehaviour:
   - charakterClass: 0
     stats:
     - stat: 0
-      values:
-      - 100
-      - 102
-      - 104
-      - 106
-      - 107
-      - 110
+      startValue: 200
+      increasement: 10
     - stat: 3
-      values:
-      - 100
-      - 200
-      - 200
-      - 200
-      - 200
-      - 200
+      startValue: 150
+      increasement: 80
     - stat: 1
-      values:
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-    - stat: 2
-      values:
-      - 10
-      - 10
-      - 10
-      - 10
-      - 10
-      - 10
+      startValue: 10
+      increasement: 2
     - stat: 5
-      values:
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-    - stat: 8
-      values:
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-    - stat: 9
-      values:
-      - 150
-      - 150
-      - 150
-      - 150
-      - 150
-      - 150
+      startValue: 5
+      increasement: 0
     - stat: 4
-      values:
-      - 100
-      - 100
-      - 100
-      - 100
-      - 100
-      - 100
+      startValue: 100
+      increasement: 2
     - stat: 10
-      values:
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-    - stat: 13
-      values:
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-    - stat: 11
-      values:
-      - 10
-      - 10
-      - 10
-      - 10
-      - 10
-      - 10
-    - stat: 12
-      values:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
+      startValue: 4
+      increasement: 0
     - stat: 14
-      values:
-      - 20
-      - 20
-      - 20
-      - 20
-      - 20
-      - 20
+      startValue: 10
+      increasement: 2
+  - charakterClass: 4
+    stats:
+    - stat: 0
+      startValue: 30
+      increasement: 10
+    - stat: 2
+      startValue: 5
+      increasement: 2
+    - stat: 11
+      startValue: 5
+      increasement: 2
+    - stat: 1
+      startValue: 5
+      increasement: 2
+    - stat: 3
+      startValue: 15
+      increasement: 4
   - charakterClass: 1
     stats:
     - stat: 0
-      values:
-      - 50
-      - 60
-      - 60
-      - 60
-      - 60
+      startValue: 50
+      increasement: 10
     - stat: 2
-      values:
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-    - stat: 1
-      values:
-      - 20
-      - 22
-      - 22
-      - 22
-      - 22
-    - stat: 3
-      values:
-      - 20
-      - 22
-      - 22
-      - 22
-      - 22
-    - stat: 5
-      values:
-      - 3
-      - 3
-      - 3
-      - 3
-      - 3
+      startValue: 8
+      increasement: 2
     - stat: 11
-      values:
-      - 20
-      - 20
-      - 20
-      - 20
-      - 20
-      - 20
-  - charakterClass: 3
-    stats:
-    - stat: 0
-      values:
-      - 40
-      - 50
-    - stat: 2
-      values:
-      - 30
-      - 35
+      startValue: 2
+      increasement: 2
     - stat: 1
-      values:
-      - 15
-      - 18
+      startValue: 8
+      increasement: 3
     - stat: 3
-      values:
-      - 15
-      - 18
-    - stat: 14
-      values:
-      - 15
-      - 18
+      startValue: 20
+      increasement: 4
   - charakterClass: 2
     stats:
     - stat: 0
-      values:
-      - 50
-      - 60
-      - 60
-      - 60
-      - 60
-      - 60
-      - 60
-      - 60
-      - 60
-      - 60
+      startValue: 40
+      increasement: 10
     - stat: 2
-      values:
-      - 40
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
-      - 50
+      startValue: 2
+      increasement: 2
+    - stat: 11
+      startValue: 2
+      increasement: 2
     - stat: 1
-      values:
-      - 20
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
+      startValue: 10
+      increasement: 3
     - stat: 3
-      values:
-      - 20
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
-      - 22
+      startValue: 20
+      increasement: 4
+  - charakterClass: 3
+    stats:
+    - stat: 0
+      startValue: 50
+      increasement: 10
+    - stat: 2
+      startValue: 5
+      increasement: 2
+    - stat: 11
+      startValue: 15
+      increasement: 2
+    - stat: 14
+      startValue: 15
+      increasement: 4
+    - stat: 3
+      startValue: 25
+      increasement: 4
+  - charakterClass: 5
+    stats:
+    - stat: 0
+      startValue: 70
+      increasement: 10
+    - stat: 2
+      startValue: 10
+      increasement: 2
+    - stat: 11
+      startValue: 5
+      increasement: 2
+    - stat: 1
+      startValue: 12
+      increasement: 3
+    - stat: 3
+      startValue: 25
+      increasement: 4
+  - charakterClass: 6
+    stats:
+    - stat: 0
+      startValue: 0
+      increasement: 0
+    - stat: 2
+      startValue: 0
+      increasement: 0
+    - stat: 11
+      startValue: 0
+      increasement: 0
+    - stat: 1
+      startValue: 0
+      increasement: 0
+    - stat: 3
+      startValue: 0
+      increasement: 0
+  - charakterClass: 7
+    stats:
+    - stat: 0
+      startValue: 0
+      increasement: 0
+    - stat: 2
+      startValue: 0
+      increasement: 0
+    - stat: 11
+      startValue: 0
+      increasement: 0
+    - stat: 14
+      startValue: 0
+      increasement: 0
+    - stat: 3
+      startValue: 0
+      increasement: 0

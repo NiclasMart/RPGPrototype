@@ -2,6 +2,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
+[System.Serializable]
 public class ScriptableObjectIdAttribute : PropertyAttribute { }
 
 #if UNITY_EDITOR

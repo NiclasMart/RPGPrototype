@@ -52,7 +52,7 @@ namespace RPG.Dungeon
     [SerializeField] TileSetTable tileSetTable;
     [SerializeField] bool generateCeiling = false;
     [SerializeField, Min(0)] int dungeonHeight = 1;
-    [SerializeField] GameObject debugCube;
+    //[SerializeField] GameObject debugCube;
 
 
     BitMatrix roomMatrix, pathMatrix;
@@ -86,7 +86,7 @@ namespace RPG.Dungeon
       //if (generateColumns) GenerateColumns();
 
       //CalculateDebugInformation();
-      Instantiate(debugCube, endRoom.GetCenterWorld() * tileSize, Quaternion.identity);
+      //Instantiate(debugCube, endRoom.GetCenterWorld() * tileSize, Quaternion.identity);
 
       finishedGeneration?.Invoke();
     }
@@ -760,7 +760,7 @@ namespace RPG.Dungeon
               int x = (int)Mathf.Round((float)(room.GetSize().x * j) / (columnBluePrint.width) + (j * 0.1f));
               int y = (int)Mathf.Round((float)(room.GetSize().y * i) / (columnBluePrint.height) + (i * 0.1f));
               Vector2Int position = room.GetBottomLeft() + new Vector2Int(x, -y);
-              SetDebugBlock(position);
+              //SetDebugBlock(position);
             }
           }
         }
@@ -855,7 +855,7 @@ namespace RPG.Dungeon
 
     void SetDebugBlock(int x, int y)
     {
-      Instantiate(debugCube, new Vector3(y * tileSize, 0, x * tileSize), Quaternion.identity);
+      //Instantiate(debugCube, new Vector3(y * tileSize, 0, x * tileSize), Quaternion.identity);
     }
 
     public void DrawEventRooms()

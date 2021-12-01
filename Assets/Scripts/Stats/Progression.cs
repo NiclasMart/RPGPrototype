@@ -11,50 +11,45 @@ namespace RPG.Stats
     class ProgressionCharacterClass
     {
       public CharakterClass charakterClass;
-      public StatList[] stats;
+      public StatData[] stats;
     }
 
     [System.Serializable]
-    class StatList
+    class StatData
     {
       public Stat stat;
-      public float[] values;
+      public float startValue;
+      public float increasement;
     }
 
     [SerializeField] ProgressionCharacterClass[] charakterProgression;
 
-    Dictionary<CharakterClass, Dictionary<Stat, float[]>> lookupTable = null;
+    Dictionary<CharakterClass, Dictionary<Stat, StatData>> lookupTable = null;
 
     public float GetStat(Stat stat, CharakterClass charakterClass, int level)
     {
       BuildLookupTable();
 
-      Dictionary<Stat, float[]> characterTable = lookupTable[charakterClass];
-      float[] valueLevels;
+      Dictionary<Stat, StatData> characterTable = lookupTable[charakterClass];
+      StatData valueLevels;
       if (!characterTable.TryGetValue(stat, out valueLevels)) return 0;
 
-      if (valueLevels.Length < level)
-      {
-        Debug.LogError("Level " + level + " " + stat + " in progression for " + charakterClass + " is not implemented");
-        return 0;
-      }
-
-      return valueLevels[level - 1];
+      return valueLevels.startValue + ((level - 1) * valueLevels.increasement);
     }
 
     private void BuildLookupTable()
     {
       if (lookupTable != null) return;
 
-      lookupTable = new Dictionary<CharakterClass, Dictionary<Stat, float[]>>();
+      lookupTable = new Dictionary<CharakterClass, Dictionary<Stat, StatData>>();
 
       foreach (ProgressionCharacterClass charClass in charakterProgression)
       {
-        Dictionary<Stat, float[]> statTable = new Dictionary<Stat, float[]>();
+        Dictionary<Stat, StatData> statTable = new Dictionary<Stat, StatData>();
 
-        foreach (StatList statList in charClass.stats)
+        foreach (StatData statList in charClass.stats)
         {
-          statTable.Add(statList.stat, statList.values);
+          statTable.Add(statList.stat, statList);
         }
         lookupTable.Add(charClass.charakterClass, statTable);
       }

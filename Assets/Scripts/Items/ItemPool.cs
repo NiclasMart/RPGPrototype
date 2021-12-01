@@ -39,7 +39,7 @@ namespace RPG.Items
         float prob = drop.probability;
         prob /= totalProbability;
         Drop newItem = new Drop(drop.item, prob + cumulatedProbability);
-        cumulatedProbability += newItem.probability;
+        cumulatedProbability += prob;
 
         items.Add(newItem);
       }

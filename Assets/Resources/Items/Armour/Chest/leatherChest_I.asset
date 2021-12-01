@@ -10,25 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
-  m_Name: leatherPants
+  m_Name: leatherChest_I
   m_EditorClassIdentifier: 
-  itemID: b99c4afa-723f-4fd8-9f22-26a3784cf745
-  name: Leather Pants
-  icon: {fileID: 21300000, guid: 95f6b4454d03c5649906cb0956cac137, type: 3}
+  itemID: 01fbddc4-49f2-435c-9c43-e547e37e37dc
+  name: Leather Chest
+  icon: {fileID: 21300000, guid: 5026f01778f1a17469db776ce28e3424, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
-  weight: 3
-  baseValue: 2
-  itemType: 5
+  weight: 4
+  baseValue: 3
+  itemType: 1
   modifiable: 1
+  maxModifierCount: 1
   modifierQuality: 0
   normalModifiers:
+  - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
   - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
   - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  - {fileID: 11400000, guid: ff6d9713209058b4491938d9e025f030, type: 2}
+  - {fileID: 11400000, guid: ab52140fddbb24a4780c603c87619f2c, type: 2}
+  - {fileID: 11400000, guid: 4b3bce114afad9e4ebc7af1cb8209beb, type: 2}
+  - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
   epicModifiers:
   - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
   - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
-  legendaryModifiers:
-  - {fileID: 11400000, guid: 248cf38e2c9529a4196eb6253a693be2, type: 2}
-  armour: {x: 4, y: 6}
-  magicResistance: {x: 6, y: 8}
+  - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
+  - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
+  legendaryModifiers: []
+  armour: {x: 5, y: 25}
+  magicResistance: {x: 8, y: 28}

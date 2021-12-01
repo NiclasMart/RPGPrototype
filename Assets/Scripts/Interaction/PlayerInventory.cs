@@ -14,7 +14,6 @@ namespace RPG.Interaction
   public class PlayerInventory : Inventory, ISaveable
   {
     [SerializeField] TextMeshProUGUI gemDisplay;
-    [SerializeField] List<AbilityEquipmentSlot> abilitySlot = new List<AbilityEquipmentSlot>();
     Dictionary<ItemType, EquipmentSlot> equipmentDictionary = new Dictionary<ItemType, EquipmentSlot>();
     int gemCount;
 

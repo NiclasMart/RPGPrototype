@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
+  m_Name: BasicSword_II
+  m_EditorClassIdentifier: 
+  itemID: c7dd920e-2893-47e9-ab7d-cd5af5285456
+  name: Sword
+  icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
+  itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
+  weight: 3
+  baseValue: 2
+  itemType: 0
+  modifiable: 1
+  maxModifierCount: 1
+  modifierQuality: 0
+  normalModifiers:
+  - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
+  - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
+  - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
+  epicModifiers:
+  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
+  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
+  - {fileID: 11400000, guid: 8d8913a200518d844b710aca9cf6c837, type: 2}
+  legendaryModifiers:
+  - {fileID: 11400000, guid: 248cf38e2c9529a4196eb6253a693be2, type: 2}
+  animation: {fileID: 7400000, guid: a70d055f9bf70614188c2e5540e0f39e, type: 2}
+  weaponDamage: {x: 10, y: 50}
+  weaponStaminaConsumption: 10
+  weaponAttackSpeed: {x: 0.8, y: 1}
+  weaponRange: 1.5
+  hitArea: {fileID: 4039246772879643832, guid: 6d070d20cdc422e4283bf6a17b514711, type: 3}
+  isRightHanded: 1

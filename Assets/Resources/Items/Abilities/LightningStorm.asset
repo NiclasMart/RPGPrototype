@@ -16,7 +16,7 @@ MonoBehaviour:
   name: LightningStorm
   icon: {fileID: 21300000, guid: 39658835b35c67c41b2032d578fe12c1, type: 3}
   itemObject: {fileID: 1489826464051998, guid: c747d97d4add4f040b138754572e206c, type: 3}
-  weight: 1
+  weight: 2
   baseValue: 1
   itemType: 6
   modifiable: 0

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using RPG.Display;
+using RPG.Interaction;
 using RPG.Items;
 using RPG.Saving;
 using UltEvents;
@@ -14,6 +15,7 @@ namespace RPG.Stats
     [SerializeField, Range(1, 100)] int level = 1;
     [SerializeField] CharakterClass charakterClass;
     [SerializeField] Progression progressionSet;
+    [SerializeField] PlayerInventory playerInventory;
     public StatsDisplay statsDisplay;
 
     public int Level => level;
@@ -77,9 +79,10 @@ namespace RPG.Stats
 
     public bool LevelUp()
     {
-      if (level == 100) return false;
+      if (level == 50) return false;
       level++;
       GetComponent<Health>().LevelUpHealth(this);
+      playerInventory.RecalculateModifiers();
       valueChange.Invoke(this);
       return true;
     }
@@ -104,6 +107,7 @@ namespace RPG.Stats
     {
       level = (int)data;
       valueChange.Invoke(this);
+      FindObjectOfType<PlayerInventory>().RecalculateModifiers();
     }
   }
 }

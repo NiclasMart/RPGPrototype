@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c185077c6668284c9162f187b02cec6, type: 3}
+  m_Name: ItemPool_StageII
+  m_EditorClassIdentifier: 
+  drops:
+  - item: {fileID: 11400000, guid: af7b4fd9c7bd4f84bb3491bcac1bcea6, type: 2}
+    probability: 1
+  items:
+  - item: {fileID: 11400000, guid: af7b4fd9c7bd4f84bb3491bcac1bcea6, type: 2}
+    probability: 1

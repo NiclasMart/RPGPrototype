@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: {x: 18, y: 23}
+  roomCount: {x: 18, y: 20}
   pathWidth: 2
   compressFactor: 0.305
   allowPathCrossings: 1

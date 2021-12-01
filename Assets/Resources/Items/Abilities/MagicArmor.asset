@@ -16,7 +16,7 @@ MonoBehaviour:
   name: MagicArmor
   icon: {fileID: 21300000, guid: b4cf912984d2aba4aae84f325f018142, type: 3}
   itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
-  weight: 1
+  weight: 2
   baseValue: 1
   itemType: 6
   modifiable: 0

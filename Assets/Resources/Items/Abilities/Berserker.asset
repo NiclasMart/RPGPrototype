@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Berserker
   icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
   itemObject: {fileID: 1886286223317658, guid: 92ba3aef2b0d5fe48b9015441633a35b, type: 3}
-  weight: 1
+  weight: 2
   baseValue: 1
   itemType: 6
   modifiable: 0

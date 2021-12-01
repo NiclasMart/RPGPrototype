@@ -40,20 +40,42 @@ MonoBehaviour:
   - stageNumber: 3
     DungeonBlueprints: []
     RoomBlueprints: []
-    enemyPool: []
-    levelRange: {x: 0, y: 0}
-    maxSoulEnergyKills: 0
+    enemyPool:
+    - enemy: {fileID: 7071450950155131485, guid: 78e6423b0e0e9504e9a1adeaa6ceb8f7, type: 3}
+      frequency: 1
+    - enemy: {fileID: 5000065275458578920, guid: 737a3366f71da4e41be48d49540f6481, type: 3}
+      frequency: 2
+    - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
+      frequency: 2
+    - enemy: {fileID: 2756761319062809261, guid: ad9012eb39823f54089719672b5cedc2, type: 3}
+      frequency: 1
+    levelRange: {x: 6, y: 9}
+    maxSoulEnergyKills: 105
   - stageNumber: 4
     DungeonBlueprints: []
     RoomBlueprints: []
-    enemyPool: []
-    levelRange: {x: 0, y: 0}
-    maxSoulEnergyKills: 0
+    enemyPool:
+    - enemy: {fileID: 5000065275458578920, guid: 737a3366f71da4e41be48d49540f6481, type: 3}
+      frequency: 2
+    - enemy: {fileID: 2756761319062809261, guid: ad9012eb39823f54089719672b5cedc2, type: 3}
+      frequency: 2
+    - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
+      frequency: 1
+    - enemy: {fileID: 4480122857357601484, guid: f00cf918116796d4c907de775ea7c0eb, type: 3}
+      frequency: 1
+    levelRange: {x: 10, y: 13}
+    maxSoulEnergyKills: 150
   - stageNumber: 5
     DungeonBlueprints: []
     RoomBlueprints: []
-    enemyPool: []
-    levelRange: {x: 0, y: 0}
+    enemyPool:
+    - enemy: {fileID: 2756761319062809261, guid: ad9012eb39823f54089719672b5cedc2, type: 3}
+      frequency: 2
+    - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
+      frequency: 1
+    - enemy: {fileID: 4480122857357601484, guid: f00cf918116796d4c907de775ea7c0eb, type: 3}
+      frequency: 1
+    levelRange: {x: 14, y: 18}
     maxSoulEnergyKills: 0
   - stageNumber: 6
     DungeonBlueprints: []
