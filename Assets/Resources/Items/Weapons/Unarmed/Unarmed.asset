@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   itemID: 0668f479-6e7d-47d8-8591-110bad7ad5a3
-  name: 
+  name: Unarmed
   icon: {fileID: 0}
   itemObject: {fileID: 8094434287657265975, guid: 9015ba6e3ff1cbb4d87865a5e2c69355, type: 3}
   weight: 0

@@ -55,6 +55,7 @@ namespace RPG.Interaction
 
     protected virtual void UnequipCurrentItem()
     {
+      if (item.name == "Unarmed") return;
       connectedInventory.AddItem(item);
       if (item.rarity == Rank.Legendary) (item as ModifiableItem).GetLegendaryModifier().legendaryUninstallEffect.Invoke();
     }

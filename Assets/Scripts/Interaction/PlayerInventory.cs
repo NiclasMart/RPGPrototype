@@ -33,9 +33,8 @@ namespace RPG.Interaction
     {
       if (equipmentDictionary[ItemType.Weapon].item == null)
       {
-        Weapon dWeapon = PlayerInfo.GetPlayer().GetComponent<GearChanger>().EquipDefaultWeapon();
+        equipmentDictionary[ItemType.Weapon].EquipItem(PlayerInfo.GetPlayer().GetComponent<GearChanger>().EquipDefaultWeapon());
         RecalculateModifiers();
-        PlayerInfo.GetPlayer().GetComponent<CharacterStats>().ChangeStat(Stat.AttackSpeed, dWeapon.attackSpeed);
       }
     }
 
@@ -91,6 +90,7 @@ namespace RPG.Interaction
 
         GetModifiersFromItem(table, modItem);
       }
+
       PlayerInfo.GetPlayer().GetComponent<CharacterStats>().RecalculateStats(table);
     }
 

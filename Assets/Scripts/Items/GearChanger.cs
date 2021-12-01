@@ -16,7 +16,6 @@ namespace RPG.Items
     {
       GenericWeapon dWeapon = defaultWeapon ? defaultWeapon : Resources.Load("Prefabs/Unarmed") as GenericWeapon;
       Weapon weapon = dWeapon.GenerateItem() as Weapon;
-      EquipWeapon(weapon);
       return weapon;
     }
 
