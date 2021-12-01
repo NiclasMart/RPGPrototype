@@ -73,16 +73,6 @@ namespace RPG.Core
       return GetCurrentStagesData().maxSoulEnergyKills;
     }
 
-    public void CompletedCurrentDepthLevel()
-    {
-      if (currentDepth == 3)
-      {
-        currentStage++;
-        currentDepth = 1;
-      }
-      else currentDepth++;
-    }
-
     private int helpFunction(int levelCount, int i)
     {
       float x = Mathf.InverseLerp(1, levelCount, i + 1);

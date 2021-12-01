@@ -62,17 +62,16 @@ namespace RPG.SceneManagement
       if (homeTeleporter)
       {
         FindObjectOfType<LootTeleporter>().TeleportItems(PlayerInfo.GetPlayer());
-        FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
+        FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
         yield return SceneManager.LoadSceneAsync("Village");
       }
       else
       {
-        FindObjectOfType<SavingSystem>().Save("CompleteData", SaveType.All);
-        if (dungeonData.currentDepth == 3) yield return SceneManager.LoadSceneAsync("TransitionRoom");
+        PlayerInfo.GetPlayer().GetComponent<ProgressionData>().UpdateProgress();
+        FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
+        if (dungeonData.currentDepth == 4) yield return SceneManager.LoadSceneAsync("TransitionRoom");
         else yield return SceneManager.LoadSceneAsync("Dungeon_Stage" + dungeonData.currentStage);
       }
-      dungeonData.CompletedCurrentDepthLevel();
-      FindObjectOfType<SavingSystem>().Load("CompleteData");
 
       Destroy(transform.parent.gameObject);
     }
