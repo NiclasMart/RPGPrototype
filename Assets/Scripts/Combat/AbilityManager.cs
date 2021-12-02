@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Movement;
+using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Combat
 {
-  public class AbilityManager : MonoBehaviour, IAction
+  public class AbilityManager : MonoBehaviour, ISaveable, IAction
   {
     [SerializeField] Transform castPosition;
     [SerializeField] List<AbilityCooldownDisplay> slots = new List<AbilityCooldownDisplay>();
@@ -59,14 +61,20 @@ namespace RPG.Combat
       Vector3 lookPoint = PlayerInfo.GetPlayerCursor().Position;
 
       //prepare cast and check if its valid 
-      castedAbility.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
-      if (!castedAbility.CastIsValid(gameObject)) return;
+      abilitySlot.ability.PrepareCast(lookPoint, gameObject, castPosition, collisionLayer);
+      if (!abilitySlot.ability.CastIsValid(gameObject)) return;
 
       //cast and set cooldown
       if (!scheduler.StartAction(this, true)) return;
       abilitySlot.SetCooldown();
-      RotateCharacter(lookPoint);
-      if (castedAbility.castImmediately) castedAbility.CastAction();
+      if (abilitySlot.ability.shouldRotate) RotateCharacter(lookPoint);
+      if (abilitySlot.ability.castImmediately) abilitySlot.ability.CastAction();
+
+      if (abilitySlot.ability.animationClip == null)
+      {
+        FinishedCast();
+        return;
+      }
 
       //handle animation
       animator.SetTrigger("cast");
@@ -109,13 +117,13 @@ namespace RPG.Combat
 
     private void InitializeStartAbilities()
     {
-      Ability abilityInstance = InstanciateAbility(startAbilities[0]);
-      slots[0].SetAbility(abilityInstance);
-      // for (int i = 0; i < startAbilities.Count; i++)
-      // {
-      //   Ability abilityInstance = InstanciateAbility(startAbilities[i]);
-      //   slots[i].SetAbility(abilityInstance);
-      // }
+      for (int i = 0; i < startAbilities.Count; i++)
+      {
+        Ability abilityInstance = InstanciateAbility(startAbilities[i]);
+        slots[i].SetAbility(abilityInstance);
+        if (!abilityInstance) continue;
+        if (abilityInstance.hasUses && abilityInstance.remainingUses == -1) slots[i].ability.remainingUses = abilityInstance.useAmount;
+      }
     }
 
     private void BuildSlotDictionary()
@@ -153,9 +161,28 @@ namespace RPG.Combat
       scheduler.ReleaseLock();
     }
 
-    public void Cancel()
+    public void Cancel() { }
+
+    public object CaptureSaveData(SaveType saveType)
     {
-      //animator.SetTrigger("cancelAttack");
+      string sceneName = SceneManager.GetActiveScene().name;
+      if (sceneName == "TransitionRoom" || sceneName == "Village") return null;
+      return slots[5].ability.remainingUses;
+    }
+
+    public void RestoreSaveData(object data)
+    {
+      Initialize();
+
+      string sceneName = SceneManager.GetActiveScene().name;
+      if (sceneName == "TransitionRoom" || sceneName == "Village")
+      {
+        slots[5].ability.remainingUses = slots[5].ability.useAmount;
+        return;
+      }
+
+      slots[5].ability.remainingUses = (int)data;
+      slots[5].UpdateUsesDisplay();
     }
   }
 }

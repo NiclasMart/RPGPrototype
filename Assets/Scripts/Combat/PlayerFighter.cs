@@ -37,9 +37,8 @@ namespace RPG.Combat
     {
       if (currentWeapon)
       {
-        
         currentWeapon.hitArea.AdjustDirection(cursor.Position - transform.position);
-        currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.T));
+        currentWeapon.hitArea.Toggle(Input.GetKey(KeyCode.LeftAlt));
       }
       cooldownDisplay.UpdateCooldown(lastAttackTime, 1f / stats.GetStat(Stat.AttackSpeed));
 

@@ -19,10 +19,14 @@ namespace RPG.Combat
     public float cooldown;
     public float staminaConsumption;
     public float range;
-    [HideInInspector] public Sprite icon;
+    public Sprite icon;
     public AnimationClip animationClip;
+    public bool shouldRotate = true;
     public float animationRotationOffset;
     public bool castImmediately = false;
+    public bool hasUses = false;
+    public int useAmount = 2;
+    [HideInInspector] public int remainingUses = -1;
 
     public Action onEndCast;
 
