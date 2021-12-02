@@ -11,7 +11,8 @@ namespace RPG.Combat
 
       //armour calculation
       float armour = defender.GetStat(Stat.Armour);
-      float damageReduction = Mathf.Min(0.05f * Mathf.Pow(armour, 0.5f), 0.9f);
+      //float damageReduction = Mathf.Min(0.05f * Mathf.Pow(armour, 0.5f), 0.9f);
+      float damageReduction = Mathf.Min(armour * 0.003f, 0.8f);
       Debug.Log("Base Damage: " + baseDamage);
       float damage = baseDamage * (1 - damageReduction);
       Debug.Log("Damage after armour: " + damage + " (Reduction: " + damageReduction + ")");
@@ -40,7 +41,8 @@ namespace RPG.Combat
 
       //armour calculation
       float magicResi = defender.GetStat(Stat.MagicResi);
-      float damageReduction = Mathf.Min(0.05f * Mathf.Pow(magicResi, 0.5f), 0.9f);
+      //float damageReduction = Mathf.Min(0.05f * Mathf.Pow(magicResi, 0.5f), 0.9f);
+      float damageReduction = Mathf.Min(magicResi * 0.003f, 0.8f);
       Debug.Log("Base Magic Damage: " + baseDamage);
       float damage = baseDamage * (1 - damageReduction);
       Debug.Log("Damage after magic Resi: " + damage + " (Reduction: " + damageReduction + ")");

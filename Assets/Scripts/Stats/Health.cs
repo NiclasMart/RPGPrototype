@@ -112,6 +112,8 @@ namespace RPG.Stats
     private void UpdateMaxHealth(CharacterStats stats)
     {
       maxHealth.value = stats.GetStat(Stat.Health);
+      string sceneName = SceneManager.GetActiveScene().name;
+      if (sceneName == "TransitionRoom" || sceneName == "Village") currentHealth.value = maxHealth.value;
       valueChange.Invoke(this);
     }
 
