@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: leatherHelmet_I
   m_EditorClassIdentifier: 
   itemID: 60328d52-9628-4d69-a8d9-eae5ffe9603e
-  name: Leather Helmet
-  icon: {fileID: 21300000, guid: 8689f8f5c819f4143a179c0961a1b021, type: 3}
+  name: Mirka Leather Helmet
+  icon: {fileID: 21300000, guid: bda92c5033930114aadf9cc8f99ac99e, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 2
   baseValue: 1

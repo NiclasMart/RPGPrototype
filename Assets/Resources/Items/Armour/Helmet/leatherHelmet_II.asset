@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: leatherHelmet_II
   m_EditorClassIdentifier: 
   itemID: 6a5147c9-5865-4d98-b59f-73decaa0f879
-  name: Leather Helmet
-  icon: {fileID: 21300000, guid: 8689f8f5c819f4143a179c0961a1b021, type: 3}
+  name: Kantor Leather Helmet
+  icon: {fileID: 21300000, guid: c2e82458eebd4124f9c3f6f9d452c9fa, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 2
-  baseValue: 1
+  baseValue: 1.2
   itemType: 3
   modifiable: 1
   maxModifierCount: 2

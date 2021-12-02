@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: leatherGloves_II
   m_EditorClassIdentifier: 
   itemID: baed6ff8-a6a9-4418-9575-fbcd8c8dcd31
-  name: Leather Gloves
-  icon: {fileID: 21300000, guid: 416f1789eca1e7e4cb9e2a1d57f7ceff, type: 3}
+  name: Kantor Leather Gloves
+  icon: {fileID: 21300000, guid: 032dc7de273e8104eb0228201e1d5a27, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1
-  baseValue: 1
+  baseValue: 1.2
   itemType: 4
   modifiable: 1
   maxModifierCount: 2

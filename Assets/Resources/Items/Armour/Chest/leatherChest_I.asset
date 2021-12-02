@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: leatherChest_I
   m_EditorClassIdentifier: 
   itemID: 01fbddc4-49f2-435c-9c43-e547e37e37dc
-  name: Leather Chest
+  name: Mirka Leather Chest
   icon: {fileID: 21300000, guid: 5026f01778f1a17469db776ce28e3424, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 4

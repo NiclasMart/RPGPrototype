@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: leatherPants_I
   m_EditorClassIdentifier: 
   itemID: b99c4afa-723f-4fd8-9f22-26a3784cf745
-  name: Leather Pants
-  icon: {fileID: 21300000, guid: 95f6b4454d03c5649906cb0956cac137, type: 3}
+  name: Mirka Leather Pants
+  icon: {fileID: 21300000, guid: 30c9d36c28b808c4eb873ac585098a7b, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 3
   baseValue: 2

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: LightningStorm
+  m_Name: LightningStormI
   m_EditorClassIdentifier: 
   itemID: f31b3967-a9b7-48bc-95ad-5c6d3f8bd973
   name: LightningStorm

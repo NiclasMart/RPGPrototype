@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: Earthquake
+  m_Name: SplitArrowII
   m_EditorClassIdentifier: 
-  itemID: 71103ec7-4b42-4e4d-8523-f21fdae14c74
-  name: Earthquake
-  icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
-  itemObject: {fileID: 1496298310679528, guid: bc26352670c946d45843202b6b14d5e9, type: 3}
+  itemID: 7e21c06e-452f-4d78-99ff-50d83689b437
+  name: Multiarrow
+  icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
+  itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
   weight: 2
-  baseValue: 1
+  baseValue: 1.2
   itemType: 6
   modifiable: 0
   maxModifierCount: 3
-  modifierQuality: 0
+  modifierQuality: 0.15
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
-  abilityPrefab: {fileID: 6395940439820364721, guid: e2adfa19c35b3e24298d278f99547eaf, type: 3}
-  baseEffectValue: {x: 40, y: 80}
+  abilityPrefab: {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
+  baseEffectValue: {x: 10, y: 40}

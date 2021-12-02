@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
-  m_Name: leatherBoots_II
+  m_Name: leatherBoots_III
   m_EditorClassIdentifier: 
-  itemID: 81c1566d-3e63-4cbe-9153-1daca19532e5
-  name: Kantor Leather Boots
-  icon: {fileID: 21300000, guid: 6f4b1ba00dc8dfc46a6d78e8413601f5, type: 3}
+  itemID: 3c4354aa-d864-4f40-921e-042f977420a9
+  name: Cumit Leather Boots
+  icon: {fileID: 21300000, guid: 81894eaee2ad3a143885c0d63f1dfc7a, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1
-  baseValue: 1.2
+  baseValue: 1.4
   itemType: 2
   modifiable: 1
-  maxModifierCount: 2
-  modifierQuality: 0.1
+  maxModifierCount: 3
+  modifierQuality: 0.3
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}

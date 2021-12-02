@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3436c297022480a4b866b4fd4600301f, type: 3}
-  m_Name: leatherBoots_II
+  m_Name: leatherChest_III
   m_EditorClassIdentifier: 
-  itemID: 81c1566d-3e63-4cbe-9153-1daca19532e5
-  name: Kantor Leather Boots
-  icon: {fileID: 21300000, guid: 6f4b1ba00dc8dfc46a6d78e8413601f5, type: 3}
+  itemID: 2c4bbfb9-df6a-4d52-b47c-b5db47d35bea
+  name: Cumit Leather Chest
+  icon: {fileID: 21300000, guid: b87ab61b7d085d744a7420fd0326e6ff, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
-  weight: 1
-  baseValue: 1.2
-  itemType: 2
+  weight: 4
+  baseValue: 3.6
+  itemType: 1
   modifiable: 1
-  maxModifierCount: 2
-  modifierQuality: 0.1
+  maxModifierCount: 3
+  modifierQuality: 0.3
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
@@ -32,10 +32,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4b3bce114afad9e4ebc7af1cb8209beb, type: 2}
   - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
   epicModifiers:
-  - {fileID: 11400000, guid: 0d2b793bea115c748924802aa797aaac, type: 2}
+  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
+  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
   - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
-  - {fileID: 11400000, guid: c816e60a010578249b93c075e8912ba5, type: 2}
   - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
   legendaryModifiers: []
-  armour: {x: 1, y: 10}
-  magicResistance: {x: 2, y: 12}
+  armour: {x: 5, y: 25}
+  magicResistance: {x: 8, y: 28}

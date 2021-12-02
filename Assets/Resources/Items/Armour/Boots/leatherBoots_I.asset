@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: leatherBoots_I
   m_EditorClassIdentifier: 
   itemID: 4cb3f352-e300-4d0f-8093-83d289eb4762
-  name: Leather Boots
+  name: Mirka Leather Boots
   icon: {fileID: 21300000, guid: aafffac096dc8d4488bd6e2b38ebe950, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1
