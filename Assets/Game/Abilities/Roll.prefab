@@ -13,17 +13,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Roll
+  description: 
   damageType: 0
-  baseDamage: 0
-  cooldown: 0.4
+  baseEffectValue: 0
+  cooldown: 0.5
+  staminaConsumption: 15
   range: 0
   icon: {fileID: 21300000, guid: d625eb187a889044e985e8a84863b1d0, type: 3}
   animationClip: {fileID: 7400000, guid: 9b8a7fdff048e864bb2c9a3fa5728e22, type: 2}
+  shouldRotate: 1
   animationRotationOffset: 5
   castImmediately: 1
-  moveDistance: 12
+  hasUses: 0
+  useAmount: 0
+  remainingUses: 0
+  moveDistance: 9
   time: 0.5
-  staminaConsumption: 20
 --- !u!1001 &5412008089170994410
 PrefabInstance:
   m_ObjectHideFlags: 0

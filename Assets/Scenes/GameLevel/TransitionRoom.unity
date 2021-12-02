@@ -1679,7 +1679,6 @@ MonoBehaviour:
   tileSetTable: {fileID: 11400000, guid: ffbb4b2024074384db2bdc1306b66187, type: 2}
   generateCeiling: 0
   dungeonHeight: 1
-  debugCube: {fileID: 0}
 --- !u!4 &333698602
 Transform:
   m_ObjectHideFlags: 0
@@ -1858,25 +1857,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: LootTeleporter
       objectReference: {fileID: 0}
+    - target: {fileID: 8889778740562946898, guid: 399ad32b53380c448b254707a8385062, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8889778740562946899, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: connectedBank
       value: 
       objectReference: {fileID: 11400000, guid: 70a9c2ed8e09b7b42adbec366d4df56a, type: 2}
     - target: {fileID: 8889778740562946909, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8889778740562946909, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 8889778740562946909, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.34604737
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8889778740562946909, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 8889778740562946909, guid: 399ad32b53380c448b254707a8385062, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4187,7 +4190,7 @@ Transform:
   - {fileID: 623587672}
   - {fileID: 1451356854}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &898545087 stripped
 GameObject:
@@ -8558,7 +8561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1614890593
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8633,7 +8636,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1627270076 stripped
 Transform:

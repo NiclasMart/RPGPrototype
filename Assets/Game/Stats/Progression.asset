@@ -20,10 +20,10 @@ MonoBehaviour:
       increasement: 10
     - stat: 3
       startValue: 150
-      increasement: 80
+      increasement: 110
     - stat: 1
       startValue: 10
-      increasement: 2
+      increasement: 1
     - stat: 5
       startValue: 5
       increasement: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
       startValue: 100
       increasement: 2
     - stat: 10
-      startValue: 4
+      startValue: 3
       increasement: 0
     - stat: 14
       startValue: 10

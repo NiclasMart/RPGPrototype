@@ -125,14 +125,13 @@ namespace RPG.Items
 
       //epic+
       item.AddModifier(baseItem.GetRandomModifier(Rank.Epic), baseItem.modifierQuality);
-      if (rand < epicDropLimit)
+      if (rand < epicDropLimit || baseItem.legendaryModifiers.Count < 1)
       {
         item.rarity = Rank.Epic;
         return;
       }
 
       //unique
-      if (baseItem.legendaryModifiers.Count < 1) return;
       item.AddModifier(baseItem.GetRandomModifier(Rank.Legendary), baseItem.modifierQuality);
       item.rarity = Rank.Legendary;
     }
