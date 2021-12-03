@@ -73,8 +73,8 @@ MonoBehaviour:
   - charakterClass: 2
     stats:
     - stat: 0
-      startValue: 40
-      increasement: 10
+      startValue: 30
+      increasement: 8
     - stat: 2
       startValue: 2
       increasement: 2
@@ -83,7 +83,7 @@ MonoBehaviour:
       increasement: 2
     - stat: 1
       startValue: 10
-      increasement: 3
+      increasement: 2.5
     - stat: 3
       startValue: 20
       increasement: 4
