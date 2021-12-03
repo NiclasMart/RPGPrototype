@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4036f5942db446478eb4b874429482f, type: 3}
+  m_Name: _StageIII_Table
+  m_EditorClassIdentifier: 
+  roomSets:
+  - tileSet: {fileID: 11400000, guid: eae830199b3170345b6c016cd9c777a8, type: 2}
+    frequency: 1
+  - tileSet: {fileID: 11400000, guid: 11dc713b0002f7541b733e7811895837, type: 2}
+    frequency: 1
+  pathSets:
+  - tileSet: {fileID: 11400000, guid: 3b8296755e561c54d9827c340898167a, type: 2}
+    frequency: 1
+  - tileSet: {fileID: 11400000, guid: 132194cb3051e0a40863e7464bc95544, type: 2}
+    frequency: 1

@@ -156,27 +156,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: {x: 18, y: 20}
+  roomCount: {x: 28, y: 33}
   pathWidth: 2
-  compressFactor: 0.305
+  compressFactor: 0.662
   allowPathCrossings: 1
-  connectionDegree: 0.722
+  connectionDegree: 0.919
   shape: 0
-  dungeonShapeBlueprint: {fileID: 0}
-  roomDimensionX: {x: 5, y: 10}
-  roomDimensionY: {x: 5, y: 10}
-  roomDistance: {x: 5, y: 15}
+  dungeonShapeBlueprint: {fileID: 2800000, guid: fa76a7a2032c6ef4da26921bbfcbcf50, type: 3}
+  roomDimensionX: {x: 10, y: 12}
+  roomDimensionY: {x: 5, y: 8}
+  roomDistance: {x: 5, y: 10}
   useNormalRooms: 1
   normalRoomFrequency: 1
   useBlueprintRooms: 1
   roomBlueprints:
-  - roomBluePrint: {fileID: 2800000, guid: dbf313c893be7024ca988772f9bfb4d5, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 4c99b8e30f3c7af4eb512edca7602e81, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 93dfcbff485ae694eb7ee963338e75c8, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: fe5265377ff35ff41a76627454c8fbbf, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 4c2ea6514d422f44d8043f3389ec9927, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 469befbd209370342b0f1fb4c5064c4e, type: 3}
     frequency: 1
     randomRotaion: 1
   amount: 5
@@ -190,10 +190,9 @@ MonoBehaviour:
   columnProbability: 0.3
   columnBluePrint: {fileID: 2800000, guid: fd71474ada0eb5149aa62d5264838341, type: 3}
   generateColumns: 0
-  tileSetTable: {fileID: 11400000, guid: ee548d0efd72fa94e8f90ce15940ad3f, type: 2}
+  tileSetTable: {fileID: 11400000, guid: f1c681d9db134694cbf96236ac40e381, type: 2}
   generateCeiling: 0
   dungeonHeight: 1
-  debugCube: {fileID: 0}
 --- !u!4 &160245511
 Transform:
   m_ObjectHideFlags: 0
@@ -769,6 +768,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2383266103195810752, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

@@ -156,44 +156,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileSize: 2
   dungeonSize: 200
-  roomCount: {x: 18, y: 20}
-  pathWidth: 2
-  compressFactor: 0.305
+  roomCount: {x: 23, y: 28}
+  pathWidth: 3
+  compressFactor: 0.092
   allowPathCrossings: 1
-  connectionDegree: 0.722
+  connectionDegree: 0.898
   shape: 0
   dungeonShapeBlueprint: {fileID: 0}
-  roomDimensionX: {x: 5, y: 10}
-  roomDimensionY: {x: 5, y: 10}
-  roomDistance: {x: 5, y: 15}
+  roomDimensionX: {x: 8, y: 12}
+  roomDimensionY: {x: 2, y: 6}
+  roomDistance: {x: 10, y: 15}
   useNormalRooms: 1
   normalRoomFrequency: 1
   useBlueprintRooms: 1
   roomBlueprints:
-  - roomBluePrint: {fileID: 2800000, guid: dbf313c893be7024ca988772f9bfb4d5, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 667c5e5e94b95d34d85e606f39562e12, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 93dfcbff485ae694eb7ee963338e75c8, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 74f14c38d044b4843bb4ad9c9fd238eb, type: 3}
     frequency: 1
     randomRotaion: 1
-  - roomBluePrint: {fileID: 2800000, guid: 4c2ea6514d422f44d8043f3389ec9927, type: 3}
+  - roomBluePrint: {fileID: 2800000, guid: 29e3683414baf8b4d9e9509b5a9a17aa, type: 3}
+    frequency: 1
+    randomRotaion: 1
+  - roomBluePrint: {fileID: 2800000, guid: 38d23fbbdbf7f044e852f88fc7cf87df, type: 3}
     frequency: 1
     randomRotaion: 1
   amount: 5
   minimalDistanceFromStartRoom: 3
-  startRoomPosition: 1
-  endRoomPosition: 2
+  startRoomPosition: 0
+  endRoomPosition: 1
   minPathLength: 8
   maxPathLength: 10
-  useFullDungeonSize: 1
+  useFullDungeonSize: 0
   minColumnRoomSize: 5
   columnProbability: 0.3
   columnBluePrint: {fileID: 2800000, guid: fd71474ada0eb5149aa62d5264838341, type: 3}
   generateColumns: 0
-  tileSetTable: {fileID: 11400000, guid: ee548d0efd72fa94e8f90ce15940ad3f, type: 2}
+  tileSetTable: {fileID: 11400000, guid: 82f8ac948b4298c469ca40fd06b1076f, type: 2}
   generateCeiling: 0
   dungeonHeight: 1
-  debugCube: {fileID: 0}
 --- !u!4 &160245511
 Transform:
   m_ObjectHideFlags: 0
@@ -220,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110a4085c4acab3409fa75193eebc7e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalEnemyAmount: 25
-  enemyGroupSize: {x: 2, y: 3}
+  totalEnemyAmount: 50
+  enemyGroupSize: {x: 3, y: 4}
   stageData: {fileID: 11400000, guid: 7457162848e8a034090b06e9ca6420b2, type: 2}
 --- !u!114 &160245513
 MonoBehaviour:
@@ -235,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41a59e194e9a524439b934294827d6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 0.2
+  dropChance: 0.05
   maxDropAmount: 2
   chanceReductionPerDrop: 0.8
   pickupPrefab: {fileID: 1988840735818592221, guid: fe16cb35dc811e2468ac4539de02ebb8, type: 3}
@@ -769,6 +771,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2383266103195810752, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2585266287561759210, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

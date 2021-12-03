@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99ce8fc5ab529d48ae43e3b77f74b38, type: 3}
+  m_Name: _StageIV_1_Path
+  m_EditorClassIdentifier: 
+  floorTiles:
+  - tile: {fileID: 6423763126935885540, guid: 3d8eecd0638eddf4ab0041a60183a49f, type: 3}
+    frequency: 1
+  wallTiles:
+  - tile: {fileID: 8423160197701886978, guid: 374285116b9d4e7458fc860e4e069b09, type: 3}
+    frequency: 1
+  ceilingTiles:
+  - tile: {fileID: 916917378494744782, guid: 98f5378049f9b5745a77677f581b32b1, type: 3}
+    frequency: 1
