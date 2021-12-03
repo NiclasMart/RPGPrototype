@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 71103ec7-4b42-4e4d-8523-f21fdae14c74
   name: Earthquake
-  icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
+  icon: {fileID: 21300000, guid: bfe5fe519881470408ddc244918b309d, type: 3}
   itemObject: {fileID: 1496298310679528, guid: bc26352670c946d45843202b6b14d5e9, type: 3}
   weight: 2
   baseValue: 1

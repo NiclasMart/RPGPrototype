@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
-  m_Name: BasicSickle
+  m_Name: Sickle
   m_EditorClassIdentifier: 
   itemID: 2761f153-d586-4f8a-bb82-58bb2d9e8726
   name: Sickle
   icon: {fileID: 21300000, guid: f9f0c605411a7e14dbcac5f4654327b5, type: 3}
   itemObject: {fileID: 668736306270028631, guid: 08df40d3c0c1b5f468bcb919d258d374, type: 3}
-  weight: 15
+  weight: 4
+  baseValue: 2
   itemType: 0
   modifiable: 1
+  maxModifierCount: 3
+  modifierQuality: 0.15
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
@@ -28,5 +31,4 @@ MonoBehaviour:
   weaponAttackSpeed: {x: 0.8, y: 1}
   weaponRange: 1.5
   hitArea: {fileID: 8652708663802559081, guid: 33403b14677ab6f4b89d27d8f96bba64, type: 3}
-  damageType: {fileID: 0}
   isRightHanded: 1

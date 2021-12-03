@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
-  m_Name: MagicBallCast
+  m_Name: MagicBallCastI
   m_EditorClassIdentifier: 
   itemID: dc3cfb3b-624e-422b-9ea1-174bf4f44fd8
   name: MagicBallCast
-  icon: {fileID: 21300000, guid: 0b5ba48a12ad309408b91848f5b82bf9, type: 3}
+  icon: {fileID: 21300000, guid: 19bee15775d85f24fa0d930a1c586297, type: 3}
   itemObject: {fileID: 1886286223317658, guid: 92ba3aef2b0d5fe48b9015441633a35b, type: 3}
   weight: 2
   baseValue: 1
   itemType: 6
   modifiable: 0
   maxModifierCount: 3
-  modifierQuality: 0
+  modifierQuality: 0.1
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []
