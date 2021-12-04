@@ -42,7 +42,6 @@ namespace RPG.Combat
 
     private void OnTriggerEnter(Collider other)
     {
-      Debug.Log("Collider: " + other.name);
       if (other.CompareTag(avoidTag)) return;
 
       Health target = other.GetComponent<Health>();

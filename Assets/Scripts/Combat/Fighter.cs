@@ -81,12 +81,12 @@ namespace RPG.Combat
     {
       if (!target) return;
 
-      float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), equipedWeapon.GetDamage());
+      //float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), equipedWeapon.GetDamage());
 
       //if deleted change damage in weapon to private
-      Debug.Log("Enemy Dealt " + damage + " Damage. (Plain Weapon Damage: " + equipedWeapon.baseItem.damage);
+      //Debug.Log("Enemy Dealt " + damage + " Damage. (Plain Weapon Damage: " + equipedWeapon.baseItem.damage);
 
-      equipedWeapon.WeaponAction(target, gameObject, collisionLayer, damage);
+      equipedWeapon.WeaponAction(target, gameObject, collisionLayer, equipedWeapon.GetDamage());
     }
 
     void FinishedAttack() { }
