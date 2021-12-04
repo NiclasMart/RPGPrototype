@@ -104,6 +104,14 @@ MonoBehaviour:
   - stageNumber: 10
     DungeonBlueprints: []
     RoomBlueprints: []
-    enemyPool: []
+    enemyPool:
+    - enemy: {fileID: 0}
+      frequency: 0
+    - enemy: {fileID: 0}
+      frequency: 0
+    - enemy: {fileID: 0}
+      frequency: 0
+    - enemy: {fileID: 0}
+      frequency: 0
     levelRange: {x: 0, y: 0}
     maxSoulEnergyKills: 0

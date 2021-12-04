@@ -7,7 +7,8 @@ namespace RPG.Items
   [CreateAssetMenu(fileName = "Item", menuName = "Items/Create New GenericItem", order = 0)]
   public abstract class GenericItem : ScriptableObject
   {
-    [ScriptableObjectIdAttribute] public string itemID = null;
+    //[ScriptableObjectIdAttribute] 
+    public string itemID = null;
     public string name;
     public Sprite icon;
     public GameObject itemObject;
