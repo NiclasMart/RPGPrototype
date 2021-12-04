@@ -738,7 +738,10 @@ namespace RPG.Dungeon
       }
     }
 
-
+    public bool CheckValidPosition(Room room, int spawnOffsetX, int spawnOffsetY)
+    {
+      return roomMatrix.GetValue(room.position.x + spawnOffsetX, room.position.y + spawnOffsetY);
+    }
 
     private void GenerateColumns()
     {

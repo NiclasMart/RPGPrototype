@@ -88,7 +88,7 @@ namespace RPG.Dungeon
       {
         spawnOffsetX = Random.Range(0, room.size.x);
         spawnOffsetY = Random.Range(0, room.size.y);
-        if (room is BluePrintRoom) validPosition = (room as BluePrintRoom).GetBlueprintPixel(spawnOffsetX, spawnOffsetY);
+        if (room is BluePrintRoom) validPosition = dungeonGenerator.CheckValidPosition(room, spawnOffsetX, spawnOffsetY);
       } while (!validPosition);
 
       return new Vector3(room.position.y + spawnOffsetY, 0, room.position.x + spawnOffsetX) * dungeonGenerator.tileSize;
