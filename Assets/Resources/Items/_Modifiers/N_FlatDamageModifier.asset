@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: N_FlatDamageModifier
   m_EditorClassIdentifier: 
   rank: 0
-  displayText: '+ * phsical damage '
+  displayText: '+ * physical damage '
   min: 2
   max: 30
   effect:

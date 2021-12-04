@@ -11,13 +11,13 @@ namespace RPG.Combat
 
       //armour calculation
       float armour = defender.GetStat(Stat.Armour);
-      //float damageReduction = Mathf.Min(0.05f * Mathf.Pow(armour, 0.5f), 0.9f);
       float damageReduction = Mathf.Min(armour * 0.003f, 0.8f);
       Debug.Log("Base Damage: " + baseDamage);
       float damage = baseDamage * (1 - damageReduction);
       Debug.Log("Damage after armour: " + damage + " (Reduction: " + damageReduction + ")");
 
       damage *= LevelMultiplier(attacker.Level - defender.Level);
+      Debug.Log("Damage after level: " + damage);
 
       return damage;
     }
@@ -41,7 +41,6 @@ namespace RPG.Combat
 
       //armour calculation
       float magicResi = defender.GetStat(Stat.MagicResi);
-      //float damageReduction = Mathf.Min(0.05f * Mathf.Pow(magicResi, 0.5f), 0.9f);
       float damageReduction = Mathf.Min(magicResi * 0.003f, 0.8f);
       Debug.Log("Base Magic Damage: " + baseDamage);
       float damage = baseDamage * (1 - damageReduction);
@@ -55,12 +54,12 @@ namespace RPG.Combat
     private static float LevelMultiplier(float levelDifference)
     {
       // float levelDamageMultiplier = 0.002f * Mathf.Pow(levelDifference, 3) + 0.09f*levelDifference + 1f;
-      float levelDamageMultiplier = 0.075f * levelDifference * levelDifference + 1f;
+      float levelDamageMultiplier = 0.05f * levelDifference * levelDifference + 1f;
 
-      // float multiplierForLog = levelDifference < 0 ? 1 / levelDamageMultiplier : levelDamageMultiplier;
-      // Debug.Log("Damage after level: " + damage + " (Multiplier: " + multiplierForLog + ")");
+      float multiplierForLog = levelDifference < 0 ? 1 / levelDamageMultiplier : levelDamageMultiplier - ((levelDifference - 1) * 0.1f);
+      Debug.Log("Damage Multiplier after level: " + multiplierForLog + ")");
 
-      return levelDifference < 0 ? 1 / levelDamageMultiplier : levelDamageMultiplier;
+      return multiplierForLog;
     }
 
 
