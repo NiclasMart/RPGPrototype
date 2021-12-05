@@ -29,6 +29,6 @@ MonoBehaviour:
   weaponDamage: {x: 5, y: 5}
   weaponStaminaConsumption: 0
   weaponAttackSpeed: {x: 1, y: 1.4}
-  weaponRange: 1
+  weaponRange: 1.5
   hitArea: {fileID: 6398649753869941678, guid: ae2a01a6ee06668489e8da797a7517eb, type: 3}
   isRightHanded: 1

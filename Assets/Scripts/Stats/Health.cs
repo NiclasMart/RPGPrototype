@@ -7,6 +7,7 @@ using RPG.Items;
 using RPG.Saving;
 using Display;
 using UnityEngine.SceneManagement;
+using RPG.Interaction;
 
 namespace RPG.Stats
 {
@@ -62,6 +63,7 @@ namespace RPG.Stats
         HandleDeath();
         if (PlayerInfo.GetPlayer() == gameObject)
         {
+          GetComponent<Interacter>().inventory.DeleteAllItems();
           FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
           FindObjectOfType<DeathScreen>().Show();
         }
