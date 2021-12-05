@@ -136,10 +136,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownDisplay: {fileID: 576772180530974803}
-  iconDisplay: {fileID: 7810497968910347886}
+  index: 0
   activationKey: 119
+  iconDisplay: {fileID: 7810497968910347886}
+  usesCountDisplay: {fileID: 0}
   ability: {fileID: 0}
-  lastCastTime: 0
+  nextCastTime: 0
 --- !u!1 &6340205550697883350
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6313726}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.92941177}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

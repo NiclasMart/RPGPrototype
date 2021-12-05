@@ -32,7 +32,7 @@ namespace RPG.Combat
     {
       detectorInstance.transform.position = PlayerInfo.GetPlayerCursor().Position;
       detectorInstance.gameObject.SetActive(true);
-
+      yield return new WaitForSeconds(0.1f);
       foreach (var enemy in detectorInstance.TargetsInArea)
       {
         enemy.ApplyDamage(data.source, damage);

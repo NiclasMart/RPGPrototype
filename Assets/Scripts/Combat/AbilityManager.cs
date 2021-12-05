@@ -120,8 +120,8 @@ namespace RPG.Combat
       for (int i = 0; i < startAbilities.Count; i++)
       {
         Ability abilityInstance = InstanciateAbility(startAbilities[i]);
-        slots[i].SetAbility(abilityInstance);
         if (!abilityInstance) continue;
+        slots[i].SetAbility(abilityInstance);
         if (abilityInstance.hasUses && abilityInstance.remainingUses == -1) slots[i].ability.remainingUses = abilityInstance.useAmount;
       }
     }

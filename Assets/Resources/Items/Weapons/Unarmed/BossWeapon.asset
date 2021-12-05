@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: BossWeapon
   m_EditorClassIdentifier: 
-  itemID: 
+  itemID: a87879e0-5553-4fa5-bb0d-4cfbfb6c2221
   name: 
   icon: {fileID: 0}
   itemObject: {fileID: 8094434287657265975, guid: 9015ba6e3ff1cbb4d87865a5e2c69355, type: 3}
