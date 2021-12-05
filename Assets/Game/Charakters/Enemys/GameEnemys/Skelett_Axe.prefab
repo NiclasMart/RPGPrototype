@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: visionRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4403653594452838460, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6193364346553392840, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_RootOrder
       value: 0

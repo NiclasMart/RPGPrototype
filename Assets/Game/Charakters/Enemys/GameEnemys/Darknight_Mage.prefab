@@ -282,6 +282,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1890292499544524900, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3168102149349945162, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
       propertyPath: chaseSpeed
       value: 5
@@ -292,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 299bfecb075c2b74a82a3ceb7326d78d, type: 2}
     - target: {fileID: 5941795045827790089, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
       propertyPath: m_Name
-      value: Mage
+      value: Darknight_Mage
       objectReference: {fileID: 0}
     - target: {fileID: 7134725910400732373, guid: b31f13452db08ae41803fa73c41bc403, type: 3}
       propertyPath: m_LocalPosition.y

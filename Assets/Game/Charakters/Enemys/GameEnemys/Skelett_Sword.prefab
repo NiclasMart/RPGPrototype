@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: visionRange
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 4403653594452838460, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6193364346553392840, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -86,6 +90,10 @@ PrefabInstance:
     - target: {fileID: 8036915302850426212, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: attackSpeedMuliplier
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8401835359768568092, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
+      propertyPath: level
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8453889284370974033, guid: 69aab4ae899838d4891aee5535e980bf, type: 3}
       propertyPath: m_Name
