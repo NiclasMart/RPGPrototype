@@ -19,7 +19,7 @@ MonoBehaviour:
   weight: 1
   baseValue: 1.5
   itemType: 0
-  modifiable: 0
+  modifiable: 1
   maxModifierCount: 3
   modifierQuality: 0.3
   normalModifiers:
