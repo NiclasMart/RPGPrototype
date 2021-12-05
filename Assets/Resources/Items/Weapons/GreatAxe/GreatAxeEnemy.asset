@@ -15,7 +15,7 @@ MonoBehaviour:
   itemID: 8255a693-79df-4aab-9a4e-eef470024783
   name: 
   icon: {fileID: 0}
-  itemObject: {fileID: 8642829691525252339, guid: dbd424949d78d754aa4726f7905a8fcb, type: 3}
+  itemObject: {fileID: 8642829691525252339, guid: 2254a1643ab3f344bbd2e81f2331820f, type: 3}
   weight: 0
   baseValue: 0
   itemType: 0
