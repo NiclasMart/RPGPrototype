@@ -22,11 +22,13 @@ MonoBehaviour:
   modifiable: 1
   maxModifierCount: 3
   modifierQuality: 0
-  normalModifiers: []
-  epicModifiers: []
+  normalModifiers:
+  - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
+  epicModifiers:
+  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: 9129b86089ea3e948b8b45da54e6eaf6, type: 2}
-  weaponDamage: {x: 15, y: 20}
+  weaponDamage: {x: 15, y: 55}
   weaponStaminaConsumption: 10
   weaponAttackSpeed: {x: 0.4, y: 0.7}
   weaponRange: 2

@@ -24,9 +24,9 @@ namespace RPG.Items
 
     private GameObject InstanciateDropedItem(Item item)
     {
-      bool hasChild = item.itemObject.transform.childCount != 0;
-      GameObject itemObject = hasChild ? item.itemObject.transform.GetChild(0).gameObject : item.itemObject;
-      GameObject dropedItem = Instantiate(itemObject, transform);
+      // bool hasChild = item.itemObject.transform.childCount != 0;
+      // GameObject itemObject = hasChild ? item.itemObject.transform.GetChild(0).gameObject : item.itemObject;
+      GameObject dropedItem = Instantiate(item.itemObject, transform);
       return dropedItem;
     }
 

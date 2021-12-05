@@ -33,7 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d8913a200518d844b710aca9cf6c837, type: 2}
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: a70d055f9bf70614188c2e5540e0f39e, type: 2}
-  weaponDamage: {x: 8, y: 50}
+  weaponDamage: {x: 10, y: 40}
   weaponStaminaConsumption: 10
   weaponAttackSpeed: {x: 0.8, y: 1}
   weaponRange: 1.5

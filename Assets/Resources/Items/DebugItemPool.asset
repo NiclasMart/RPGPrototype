@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c185077c6668284c9162f187b02cec6, type: 3}
+  m_Name: DebugItemPool
+  m_EditorClassIdentifier: 
+  drops:
+  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 49cfebbb7d4c91740ada7f8ceef77941, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: d2fe97856c6407e4bb30430acfa4f5ab, type: 2}
+    probability: 1
+  items:
+  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
+    probability: 0.25
+  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 49cfebbb7d4c91740ada7f8ceef77941, type: 2}
+    probability: 0.75
+  - item: {fileID: 11400000, guid: d2fe97856c6407e4bb30430acfa4f5ab, type: 2}
+    probability: 1
