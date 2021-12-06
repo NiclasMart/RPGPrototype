@@ -16,7 +16,7 @@ namespace RPG.Combat
       float damage = baseDamage * (1 - damageReduction);
       Debug.Log("Damage after armour: " + damage + " (Reduction: " + damageReduction + ")");
 
-      damage *= LevelMultiplier(attacker.Level - defender.Level);
+      //damage *= LevelMultiplier(attacker.Level - defender.Level);
       Debug.Log("Damage after level: " + damage);
 
       return damage;
@@ -46,7 +46,7 @@ namespace RPG.Combat
       float damage = baseDamage * (1 - damageReduction);
       Debug.Log("Damage after magic Resi: " + damage + " (Reduction: " + damageReduction + ")");
 
-      damage *= LevelMultiplier(attacker.Level - defender.Level);
+      //damage *= LevelMultiplier(attacker.Level - defender.Level);
 
       return damage;
     }

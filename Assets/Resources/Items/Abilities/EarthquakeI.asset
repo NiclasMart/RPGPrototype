@@ -26,4 +26,4 @@ MonoBehaviour:
   epicModifiers: []
   legendaryModifiers: []
   abilityPrefab: {fileID: 6395940439820364721, guid: e2adfa19c35b3e24298d278f99547eaf, type: 3}
-  baseEffectValue: {x: 40, y: 80}
+  baseEffectValue: {x: 70, y: 120}

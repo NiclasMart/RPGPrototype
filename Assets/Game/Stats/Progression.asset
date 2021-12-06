@@ -17,13 +17,13 @@ MonoBehaviour:
     stats:
     - stat: 0
       startValue: 200
-      increasement: 10
+      increasement: 25
     - stat: 3
       startValue: 200
-      increasement: 175
+      increasement: 170
     - stat: 1
-      startValue: 12
-      increasement: 2
+      startValue: 15
+      increasement: 2.5
     - stat: 5
       startValue: 5
       increasement: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
       startValue: 2
       increasement: 2
     - stat: 1
-      startValue: 10
+      startValue: 5
       increasement: 2.5
     - stat: 3
       startValue: 20
