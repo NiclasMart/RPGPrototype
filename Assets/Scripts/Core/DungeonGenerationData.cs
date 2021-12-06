@@ -21,11 +21,12 @@ namespace RPG.Core
       public int stageNumber;
       [Header("DungeonData")]
       public List<Texture2D> DungeonBlueprints = new List<Texture2D>();
-      public List<Texture2D> RoomBlueprints = new List<Texture2D>();
       [Header("EnemyData")]
       public List<SpawnableEnemy> enemyPool = new List<SpawnableEnemy>();
       public Vector2Int levelRange;
       public int maxSoulEnergyKills;
+      [Header("LootChest")]
+      public Vector2Int lootChestAmount;
     }
 
     public int currentStage;
@@ -73,13 +74,19 @@ namespace RPG.Core
       return GetCurrentStagesData().maxSoulEnergyKills;
     }
 
+    public int GetLootChestAmount()
+    {
+      GeneratorParameters stageParameters = GetCurrentStagesData();
+      return Random.Range(stageParameters.lootChestAmount.x, stageParameters.lootChestAmount.y + 1);
+    }
+
     private int helpFunction(int levelCount, int i)
     {
       float x = Mathf.InverseLerp(1, levelCount, i + 1);
       float y = -25 * Mathf.Pow(x - depthLevelMultiplicator[currentDepth - 1], 2) + 10;
       if (y <= 1) y = 2;
       return Mathf.CeilToInt(y);
-    } 
+    }
 
     private GeneratorParameters GetCurrentStagesData()
     {

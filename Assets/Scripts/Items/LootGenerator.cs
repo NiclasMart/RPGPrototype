@@ -28,25 +28,31 @@ namespace RPG.Items
 
     public void DropLoot(Vector3 dropPosition, float soulEnergyLevel)
     {
-      List<Item> drops = GenerateLoot(soulEnergyLevel);
+      List<Item> drops = GenerateLoot(dropChance, chanceReductionPerDrop, maxDropAmount, soulEnergyLevel);
       EjectLoot(drops, dropPosition);
     }
 
-    private List<Item> GenerateLoot(float soulEnergyLevel)
+    public void DropLoot(float chance, float chanceReduction, int maxAmount, Vector3 dropPosition, float soulEnergyLevel)
+    {
+      List<Item> drops = GenerateLoot(chance, chanceReduction, maxAmount, soulEnergyLevel);
+      EjectLoot(drops, dropPosition);
+    }
+
+    private List<Item> GenerateLoot(float chance, float chanceReduction, int maxAmount, float soulEnergyLevel)
     {
       List<Item> drops = new List<Item>();
 
-      if (maxDropAmount == 0) return drops;
+      if (maxAmount == 0) return drops;
 
-      float dropProb = dropChance * (1 + soulEnergyLevel);
-      for (int i = 0; i < maxDropAmount; i++)
+      float dropProb = chance * (1 + soulEnergyLevel);
+      for (int i = 0; i < maxAmount; i++)
       {
         if (Random.Range(0, 1f) >= dropProb) continue;
 
         Item item = GenerateItem(soulEnergyLevel);
         if (item != null) drops.Add(item);
 
-        dropProb -= (chanceReductionPerDrop * dropProb);
+        dropProb -= (chanceReduction * dropProb);
       }
       return drops;
     }
