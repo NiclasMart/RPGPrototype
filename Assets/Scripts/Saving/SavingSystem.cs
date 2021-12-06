@@ -7,6 +7,7 @@ namespace RPG.Saving
 {
   public class SavingSystem : MonoBehaviour
   {
+    [SerializeField] bool debugMode = false;
     public void Save(string saveFile, SaveType saveType)
     {
       Dictionary<string, object> data = new Dictionary<string, object>();
@@ -16,6 +17,7 @@ namespace RPG.Saving
 
     public void Load(string saveFile)
     {
+      if (debugMode) return;
       Dictionary<string, object> data = LoadFile(saveFile);
       RestoreSaveData(data);
     }

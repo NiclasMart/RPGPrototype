@@ -8,6 +8,7 @@ using RPG.Saving;
 using Display;
 using UnityEngine.SceneManagement;
 using RPG.Interaction;
+using UltEvents;
 
 namespace RPG.Stats
 {
@@ -26,6 +27,7 @@ namespace RPG.Stats
 
     public ValueChangeEvent valueChange;
     public AlterValue<float> onTakeDamage;
+    public UltEvent onDeath;
 
     private void Awake()
     {
@@ -138,6 +140,7 @@ namespace RPG.Stats
       GetComponent<ActionScheduler>().CancelCurrentAction();
       DisableComponents();
       isDead = true;
+      onDeath.Invoke();
     }
 
     private void DisableComponents()
