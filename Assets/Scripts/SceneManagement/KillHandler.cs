@@ -3,37 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Dungeon;
-using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class KillHandler : MonoBehaviour, ISaveable
+public class KillHandler : StoryScreenDisplay
 {
-  [SerializeField] bool hasBeenKilled;
-  [SerializeField] GameObject enemyHolder, exitPortal;
-  [SerializeField] CanvasGroup endScreen;
 
+  [SerializeField] GameObject enemyHolder, exitPortal;
 
   public void HandleDeath()
   {
     PlayerInfo.GetPlayer().GetComponent<Health>().HealPercentageMax(1);
-    hasBeenKilled = true;
 
     DisableenemySpawner();
     KillAllEnemies();
     EndableExitPortal();
-    StartCoroutine(ShowingEndscreen());
+
+    DisplayStoryScreen();
   }
 
   private void EndableExitPortal()
   {
     exitPortal.SetActive(true);
-  }
-
-  public void DisableEndScreen()
-  {
-    endScreen.gameObject.SetActive(false);
   }
 
   private void KillAllEnemies()
@@ -51,26 +42,5 @@ public class KillHandler : MonoBehaviour, ISaveable
     {
       spawner.active = false;
     }
-  }
-
-  IEnumerator ShowingEndscreen()
-  {
-    endScreen.gameObject.SetActive(true);
-
-    while (endScreen.alpha <= 1)
-    {
-      endScreen.alpha += 0.01f;
-      yield return new WaitForSeconds(0.04f);
-    }
-  }
-
-  public object CaptureSaveData(SaveType saveType)
-  {
-    return hasBeenKilled;
-  }
-
-  public void RestoreSaveData(object data)
-  {
-    hasBeenKilled = (bool)data;
   }
 }

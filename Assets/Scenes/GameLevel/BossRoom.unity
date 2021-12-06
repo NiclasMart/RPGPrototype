@@ -6095,10 +6095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f357e3b9175f5df40af8490f67585142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenKilled: 0
+  hasTriggert: 0
+  endScreen: {fileID: 641079749}
+  triggerOnStart: 0
+  displayTime: 4
   enemyHolder: {fileID: 1855899777}
   exitPortal: {fileID: 1666547485}
-  endScreen: {fileID: 641079749}
 --- !u!1001 &702886015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11866,7 +11868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3177942721054510925, guid: 40e6c264b6b68384ab0e706351111f35, type: 3}
       propertyPath: level
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3177942721054510925, guid: 40e6c264b6b68384ab0e706351111f35, type: 3}
       propertyPath: charakterClass
@@ -13562,7 +13564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2003759369974496656, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_text
-      value: Azmodier the Slaughterer
+      value: Azmodir the Slaughterer
       objectReference: {fileID: 0}
     - target: {fileID: 2060186250774404239, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -14082,7 +14084,11 @@ PrefabInstance:
       objectReference: {fileID: 698315639}
     - target: {fileID: 5904733266069208444, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisableEndScreen
+      value: DisableStoryScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904733266069208444, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StoryScreenDisplay, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5965243393211077850, guid: 0a534dd1b4445ea468a9e744567694ac, type: 3}
       propertyPath: m_AnchorMax.y
