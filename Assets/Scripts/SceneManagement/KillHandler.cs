@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Core;
 using RPG.Dungeon;
 using RPG.Saving;
 using RPG.Stats;
@@ -16,6 +17,9 @@ public class KillHandler : MonoBehaviour, ISaveable
 
   public void HandleDeath()
   {
+    PlayerInfo.GetPlayer().GetComponent<Health>().HealPercentageMax(1);
+    hasBeenKilled = true;
+
     DisableenemySpawner();
     KillAllEnemies();
     EndableExitPortal();
@@ -31,8 +35,6 @@ public class KillHandler : MonoBehaviour, ISaveable
   {
     endScreen.gameObject.SetActive(false);
   }
-
-
 
   private void KillAllEnemies()
   {
