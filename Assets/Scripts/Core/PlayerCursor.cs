@@ -10,9 +10,11 @@ namespace RPG.Core
     public enum CursorType
     {
       COMBAT,
-      INTERACT,
+      LOOT,
       STANDARD,
-      UI
+      UI,
+      ENTER,
+      USE
     }
 
     [System.Serializable]

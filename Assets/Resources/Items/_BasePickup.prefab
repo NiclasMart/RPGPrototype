@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bee19bad2c0557448776a6820020651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactionType: 1
   gradients:
   - serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}

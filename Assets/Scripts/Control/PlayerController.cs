@@ -84,7 +84,7 @@ namespace RPG.Control
       if (interactionTarget)
       {
         if (Input.GetMouseButtonDown(0)) interacter.SetInteractionTarget(target);
-        playerCursor.SetCursor(PlayerCursor.CursorType.INTERACT);
+        playerCursor.SetCursor(interactionTarget.interactionType);
         return true;
       }
       return false;
