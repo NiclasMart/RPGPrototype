@@ -58,6 +58,7 @@ namespace RPG.Stats
 
     private bool CheckForDeath(GameObject instigator)
     {
+
       if (currentHealth.value == 0 && !isDead)
       {
         HandleDeath();
@@ -69,6 +70,7 @@ namespace RPG.Stats
         }
         else
         {
+          if (instigator == null) return true;
           SoulEnergy energy = instigator.GetComponent<SoulEnergy>();
           EmitLoot(energy.GetSoulEnergyLevel());
           EmitExperience(instigator, energy.GetSoulEnergyLevel());
@@ -104,6 +106,7 @@ namespace RPG.Stats
       valueChange.Invoke(this);
     }
 
+    //percent range 0 - 1
     public void HealPercentageMax(float percent)
     {
       percent = Mathf.Abs(percent);
