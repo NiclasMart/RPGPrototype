@@ -12,8 +12,8 @@ public class StoryScreenDisplay : MonoBehaviour, ISaveable
 
   private void Start()
   {
-    Debug.Log("Show Screen");
     if (triggerOnStart) DisplayStoryScreen();
+    
   }
 
   public void DisableStoryScreen()
