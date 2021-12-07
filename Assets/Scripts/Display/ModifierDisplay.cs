@@ -30,7 +30,7 @@ namespace RPG.Display
 
     private void Update()
     {
-      if (Input.GetKeyDown(KeyCode.Tab)) SetCompareMode();
+      if (Input.GetKeyDown(KeyCode.LeftControl)) SetCompareMode();
     }
 
     private void SetCompareMode()

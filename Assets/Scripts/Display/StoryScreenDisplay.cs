@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using RPG.Saving;
 using UnityEngine;
 
-public class StoryScreenDisplay : MonoBehaviour, ISaveable
+public class StoryScreenDisplay : MonoBehaviour
 {
+  [SerializeField] string saveFileName;
   [SerializeField] bool hasTriggert = false;
   [SerializeField] protected CanvasGroup endScreen;
   [SerializeField] bool triggerOnStart = false;
   [SerializeField] float displayTime;
+
+  private void Awake() 
+  {
+    object data = GetComponent<SavingSystem>().LoadDataOfSingleObject(saveFileName);
+    if (data != null) hasTriggert = (bool)data;
+  }
 
   private void Start()
   {
@@ -25,6 +32,7 @@ public class StoryScreenDisplay : MonoBehaviour, ISaveable
   {
     if (hasTriggert) return;
     hasTriggert = true;
+    GetComponent<SavingSystem>().SaveDataOfSingleObject(hasTriggert, saveFileName);
     StartCoroutine(ShowingEndscreen());
   }
 
@@ -37,16 +45,5 @@ public class StoryScreenDisplay : MonoBehaviour, ISaveable
       endScreen.alpha += 0.01f;
       yield return new WaitForSeconds(displayTime / 100f);
     }
-  }
-
-  public object CaptureSaveData(SaveType saveType)
-  {
-    return hasTriggert;
-  }
-
-  public void RestoreSaveData(object data)
-  {
-    Debug.Log("Load screen");
-    hasTriggert = (bool)data;
   }
 }

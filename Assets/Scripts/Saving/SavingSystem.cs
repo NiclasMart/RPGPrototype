@@ -18,8 +18,19 @@ namespace RPG.Saving
     public void Load(string saveFile)
     {
       if (debugMode) return;
-      Dictionary<string, object> data = LoadFile(saveFile);
-      RestoreSaveData(data);
+      object data = LoadFile(saveFile);
+      if (data != null && data is Dictionary<string, object>) RestoreSaveData((Dictionary<string, object>)data);
+    }
+
+    public void SaveDataOfSingleObject(object data, string fileName)
+    {
+      SaveFile(fileName, data);
+    }
+
+    public object LoadDataOfSingleObject(string fileName)
+    {
+
+      return LoadFile(fileName);
     }
 
     private string GetPathFromSaveFile(string saveFile)
@@ -39,18 +50,18 @@ namespace RPG.Saving
       }
     }
 
-    private Dictionary<string, object> LoadFile(string saveFile)
+    private object LoadFile(string saveFile)
     {
       string path = GetPathFromSaveFile(saveFile);
       Debug.Log("Loading from " + path);
       if (!File.Exists(path))
       {
-        return new Dictionary<string, object>();
+        return null;
       }
       using (FileStream stream = File.Open(path, FileMode.Open))
       {
         BinaryFormatter formatter = new BinaryFormatter();
-        return (Dictionary<string, object>)formatter.Deserialize(stream);
+        return formatter.Deserialize(stream);
       }
     }
 
