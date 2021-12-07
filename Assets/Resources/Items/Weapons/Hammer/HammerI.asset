@@ -35,7 +35,7 @@ MonoBehaviour:
   animation: {fileID: 7400000, guid: b4c2ac2c3e0e30e42a056d63650f8d37, type: 2}
   weaponDamage: {x: 20, y: 60}
   weaponStaminaConsumption: 12
-  weaponAttackSpeed: {x: 0.3, y: 0.6}
+  weaponAttackSpeed: {x: 0.42, y: 0.6}
   weaponRange: 2
   hitArea: {fileID: 5199433533471232790, guid: 7b0f6dbadac010444a148723a95669cc, type: 3}
   isRightHanded: 1

@@ -109,7 +109,7 @@ namespace RPG.Items
     private void SetItemRarity(GenericItem baseItem, ModifiableItem item, float soulEnergyLevel)
     {
       float rand = Random.Range(0, 1f);
-      rand += Mathf.Lerp(0, 0.15f, soulEnergyLevel);
+      rand = Mathf.Min(rand * Mathf.Lerp(0, 0.15f, soulEnergyLevel), 1);
       //normal 
       if (rand < normalDropLimit)
       {

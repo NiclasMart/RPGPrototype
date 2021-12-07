@@ -17,7 +17,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 194708c7da9140c478de72fb2ce14969, type: 3}
   itemObject: {fileID: 7932699682225420012, guid: c33d2afdc84d0734594b57f317bdafe7, type: 3}
   weight: 10
-  baseValue: 0
+  baseValue: 2
   itemType: 0
   modifiable: 1
   maxModifierCount: 3
@@ -30,7 +30,7 @@ MonoBehaviour:
   animation: {fileID: 7400000, guid: 75b73281330bb534685d92383d896d03, type: 2}
   weaponDamage: {x: 12, y: 50}
   weaponStaminaConsumption: 15
-  weaponAttackSpeed: {x: 0.6, y: 0.8}
+  weaponAttackSpeed: {x: 0.7, y: 0.9}
   weaponRange: 3
   hitArea: {fileID: 5397705185221227659, guid: 6dc901d2c0b4f924694ee302e031fec7, type: 3}
   isRightHanded: 1

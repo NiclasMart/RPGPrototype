@@ -13,14 +13,11 @@ namespace RPG.Interaction
   public class SimpleInventory : Inventory, ISaveable
   {
     [SerializeField] SaveType saveRestriction;
-    [SerializeField] float capacity = 100f;
 
     [Header("UI Specifications")]
     [SerializeField] ItemSlot itemSlot;
     [SerializeField] RectTransform list;
-    [SerializeField] TextMeshProUGUI capacityDisplay;
 
-    float currentCapacity;
     [HideInInspector] public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public Action<ItemSlot> onRightClick = (itemSlot) => { };
@@ -53,7 +50,6 @@ namespace RPG.Interaction
       ItemSlot slot = Instantiate(itemSlot, list);
       slot.Initialize(item, this);
       itemSlots.Add(slot);
-      RecalculateCapacity(item.weight);
     }
 
     public void AddItems(List<Item> items)
@@ -66,7 +62,6 @@ namespace RPG.Interaction
 
     public void DeleteItemSlot(ItemSlot slot)
     {
-      RecalculateCapacity(-slot.item.weight);
       slot.ToggleItemModifiers(false);
       itemSlots.Remove(slot);
       if (selectedSlot == slot) selectedSlot = null;
@@ -75,7 +70,6 @@ namespace RPG.Interaction
 
     public void DeleteItem(Item item)
     {
-      RecalculateCapacity(-item.weight);
       ItemSlot slot = itemSlots.Find(x => x.item == item);
       if (slot)
       {
@@ -107,40 +101,16 @@ namespace RPG.Interaction
       selectedSlot = slot;
     }
 
-    public bool CheckCapacity(float weight)
-    {
-      return currentCapacity + weight <= capacity;
-    }
-
     void Clear()
     {
       foreach (var slot in itemSlots)
       {
         Destroy(slot.gameObject);
-        //??? itemSlots.Remove(selectedSlot);
       }
       itemSlots = new List<ItemSlot>();
-      ResetCapacity();
     }
 
-    void RecalculateCapacity(float weight)
-    {
-      currentCapacity += weight;
-      UpdateCapacityDisplay(currentCapacity, capacity);
-    }
-
-    void ResetCapacity()
-    {
-      currentCapacity = 0;
-      UpdateCapacityDisplay(currentCapacity, capacity);
-    }
-
-    void UpdateCapacityDisplay(float currentValue, float maxValue)
-    {
-      if (!capacityDisplay) return;
-      string value = string.Concat(currentValue + "/" + maxValue);
-      capacityDisplay.text = value;
-    }
+  
 
     public object CaptureSaveData(SaveType saveType)
     {

@@ -59,15 +59,8 @@ namespace RPG.Items
       SimpleInventory inventory = interacter.GetComponent<Interacter>().inventory;
       if (!inventory) return;
 
-      if (inventory.CheckCapacity(item.weight))
-      {
-        inventory.AddItem(item);
-        Take();
-      }
-      else
-      {
-        //show full effect
-      }
+      inventory.AddItem(item);
+      Take();
     }
 
     IEnumerator EnableOutline()
