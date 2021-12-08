@@ -31,6 +31,10 @@ namespace RPG.Combat
     {
       graphicComponent.enabled = show;
     }
+    public void Toggle()
+    {
+      graphicComponent.enabled = !graphicComponent.enabled;
+    }
 
     public void AdjustDirection(Vector3 lookDirection)
     {
