@@ -24,15 +24,24 @@ MonoBehaviour:
   modifierQuality: 0
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
+  - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
   - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
+  - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  - {fileID: 11400000, guid: ff6d9713209058b4491938d9e025f030, type: 2}
+  - {fileID: 11400000, guid: ab52140fddbb24a4780c603c87619f2c, type: 2}
   - {fileID: 11400000, guid: 4b3bce114afad9e4ebc7af1cb8209beb, type: 2}
   - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
-  - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
   epicModifiers:
+  - {fileID: 11400000, guid: 8d8913a200518d844b710aca9cf6c837, type: 2}
+  - {fileID: 11400000, guid: b3477fa014061d446b904454ddde967d, type: 2}
   - {fileID: 11400000, guid: 2602e8b81bc526545a18d1bc329ed3dd, type: 2}
   - {fileID: 11400000, guid: 111e0eeb6daf2e241a63868b64dbbdf8, type: 2}
   - {fileID: 11400000, guid: 0d2b793bea115c748924802aa797aaac, type: 2}
+  - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
   - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
+  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
+  - {fileID: 11400000, guid: 240e9915fb354734a8c197f3b89a7224, type: 2}
+  - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
   - {fileID: 11400000, guid: c816e60a010578249b93c075e8912ba5, type: 2}
   legendaryModifiers: []
   animation: {fileID: 7400000, guid: b07272b9f28a23244a1a8921901648e7, type: 2}

@@ -15,7 +15,7 @@ MonoBehaviour:
   drops:
   - item: {fileID: 11400000, guid: 3bfcb47e22e0f4549a6562c538b6135e, type: 2}
     probability: 2
-  - item: {fileID: 11400000, guid: d89ddddae1e57ca4b9dc9099772062c6, type: 2}
+  - item: {fileID: 11400000, guid: bb409c1387ff4d04aaee6487ee6ab1bd, type: 2}
     probability: 1
   - item: {fileID: 11400000, guid: ca0287f30abcbe742a208671117ca6f1, type: 2}
     probability: 2
@@ -37,7 +37,7 @@ MonoBehaviour:
     probability: 2
   - item: {fileID: 11400000, guid: 119c837a498dea548866eecd04121462, type: 2}
     probability: 2
-  - item: {fileID: 11400000, guid: f62ec46e4e5fd7f49b02139d1c5b3cef, type: 2}
+  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
     probability: 2
   - item: {fileID: 11400000, guid: 69dda3543efd4ae4f8455a577499e2a7, type: 2}
     probability: 1
@@ -50,7 +50,7 @@ MonoBehaviour:
   items:
   - item: {fileID: 11400000, guid: 3bfcb47e22e0f4549a6562c538b6135e, type: 2}
     probability: 0.06896552
-  - item: {fileID: 11400000, guid: d89ddddae1e57ca4b9dc9099772062c6, type: 2}
+  - item: {fileID: 0}
     probability: 0.10344827
   - item: {fileID: 11400000, guid: ca0287f30abcbe742a208671117ca6f1, type: 2}
     probability: 0.1724138
@@ -72,7 +72,7 @@ MonoBehaviour:
     probability: 0.58620685
   - item: {fileID: 11400000, guid: 119c837a498dea548866eecd04121462, type: 2}
     probability: 0.65517235
-  - item: {fileID: 11400000, guid: f62ec46e4e5fd7f49b02139d1c5b3cef, type: 2}
+  - item: {fileID: 0}
     probability: 0.72413784
   - item: {fileID: 11400000, guid: 69dda3543efd4ae4f8455a577499e2a7, type: 2}
     probability: 0.79310334

@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: DebugItemPool
   m_EditorClassIdentifier: 
   drops:
-  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
-    probability: 1
-  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
-    probability: 1
   - item: {fileID: 11400000, guid: 49cfebbb7d4c91740ada7f8ceef77941, type: 2}
     probability: 1
-  - item: {fileID: 11400000, guid: d2fe97856c6407e4bb30430acfa4f5ab, type: 2}
+  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 50617453137368e4eaa990326c692ee8, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
     probability: 1
   items:
-  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
-    probability: 0.25
-  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
-    probability: 0.5
   - item: {fileID: 11400000, guid: 49cfebbb7d4c91740ada7f8ceef77941, type: 2}
+    probability: 0.25
+  - item: {fileID: 11400000, guid: f29a526150019a544bab40cff263a17c, type: 2}
+    probability: 0.5
+  - item: {fileID: 11400000, guid: 50617453137368e4eaa990326c692ee8, type: 2}
     probability: 0.75
-  - item: {fileID: 11400000, guid: d2fe97856c6407e4bb30430acfa4f5ab, type: 2}
+  - item: {fileID: 11400000, guid: 2530f508e235fd14b90f24e9f84b2638, type: 2}
     probability: 1

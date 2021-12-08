@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
+  m_Name: SickleIII
+  m_EditorClassIdentifier: 
+  itemID: 2f285e51-cb2e-4952-854b-2aac31809612
+  name: SickleIII
+  icon: {fileID: 21300000, guid: f9f0c605411a7e14dbcac5f4654327b5, type: 3}
+  itemObject: {fileID: 668736306270028631, guid: 08df40d3c0c1b5f468bcb919d258d374, type: 3}
+  weight: 4
+  baseValue: 25
+  itemType: 0
+  modifiable: 1
+  maxModifierCount: 3
+  modifierQuality: 0.5
+  normalModifiers:
+  - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
+  - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
+  - {fileID: 11400000, guid: fc51aaa53dfec4b41b68ed096e305cb8, type: 2}
+  - {fileID: 11400000, guid: 3949769475f31064f8b20d6e2f0d1374, type: 2}
+  - {fileID: 11400000, guid: ff6d9713209058b4491938d9e025f030, type: 2}
+  - {fileID: 11400000, guid: ab52140fddbb24a4780c603c87619f2c, type: 2}
+  - {fileID: 11400000, guid: 4b3bce114afad9e4ebc7af1cb8209beb, type: 2}
+  - {fileID: 11400000, guid: de728f3d004dcc74eb9f333dd6ff1065, type: 2}
+  epicModifiers:
+  - {fileID: 11400000, guid: b3477fa014061d446b904454ddde967d, type: 2}
+  - {fileID: 11400000, guid: 2602e8b81bc526545a18d1bc329ed3dd, type: 2}
+  - {fileID: 11400000, guid: 111e0eeb6daf2e241a63868b64dbbdf8, type: 2}
+  - {fileID: 11400000, guid: 0d2b793bea115c748924802aa797aaac, type: 2}
+  - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
+  - {fileID: 11400000, guid: f752ab8d415b05949bf8f8053c0b8489, type: 2}
+  - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
+  - {fileID: 11400000, guid: 240e9915fb354734a8c197f3b89a7224, type: 2}
+  - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
+  - {fileID: 11400000, guid: c816e60a010578249b93c075e8912ba5, type: 2}
+  - {fileID: 11400000, guid: 8d8913a200518d844b710aca9cf6c837, type: 2}
+  legendaryModifiers:
+  - {fileID: 11400000, guid: 248cf38e2c9529a4196eb6253a693be2, type: 2}
+  - {fileID: 11400000, guid: afbe05d3b5d4ae14e96bbb9f20e3e5cd, type: 2}
+  animation: {fileID: 7400000, guid: 29ade94d287400e4ca86040fa8bebf24, type: 2}
+  weaponDamage: {x: 10, y: 40}
+  weaponStaminaConsumption: 10
+  weaponAttackSpeed: {x: 0.8, y: 1}
+  weaponRange: 1.5
+  hitArea: {fileID: 8652708663802559081, guid: 33403b14677ab6f4b89d27d8f96bba64, type: 3}
+  isRightHanded: 1

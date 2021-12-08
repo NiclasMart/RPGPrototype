@@ -30,6 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevel/Dungeon_Stage4.unity
     guid: 585329af0a7173f47a0e9146c30cb0ff
   - enabled: 1
-    path: Assets/Scenes/GameLevel/Dungeon_Stage5.unity
+    path: Assets/Scenes/GameLevel/Dungeon_Stage6.unity
     guid: 8cc2a104290f91048870c2185ff581a8
   m_configObjects: {}
