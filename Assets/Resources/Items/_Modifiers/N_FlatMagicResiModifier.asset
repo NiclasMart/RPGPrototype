@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 0
   displayText: + * magic resistance
-  min: 2
+  min: 5
   max: 30
   effect:
     _PersistentCalls:

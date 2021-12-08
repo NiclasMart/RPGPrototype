@@ -40,13 +40,45 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: f62ec46e4e5fd7f49b02139d1c5b3cef, type: 2}
     probability: 2
   - item: {fileID: 11400000, guid: 69dda3543efd4ae4f8455a577499e2a7, type: 2}
-    probability: 2
-  - item: {fileID: 11400000, guid: 5b3b83aeecf60734d80990086a9a7b5c, type: 2}
-    probability: 2
-  - item: {fileID: 11400000, guid: 6039f4716499c8940af3382f2a6818c2, type: 2}
-    probability: 2
-  - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
-    probability: 2
-  items:
-  - item: {fileID: 11400000, guid: af7b4fd9c7bd4f84bb3491bcac1bcea6, type: 2}
     probability: 1
+  - item: {fileID: 11400000, guid: 5b3b83aeecf60734d80990086a9a7b5c, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: 6039f4716499c8940af3382f2a6818c2, type: 2}
+    probability: 1
+  - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
+    probability: 1
+  items:
+  - item: {fileID: 11400000, guid: 3bfcb47e22e0f4549a6562c538b6135e, type: 2}
+    probability: 0.06896552
+  - item: {fileID: 11400000, guid: d89ddddae1e57ca4b9dc9099772062c6, type: 2}
+    probability: 0.10344827
+  - item: {fileID: 11400000, guid: ca0287f30abcbe742a208671117ca6f1, type: 2}
+    probability: 0.1724138
+  - item: {fileID: 11400000, guid: afb71a7f379b6cf40bf2bc5c697739ac, type: 2}
+    probability: 0.20689656
+  - item: {fileID: 11400000, guid: 0400bfa0268ddd74abfb78ba56fe7845, type: 2}
+    probability: 0.27586207
+  - item: {fileID: 11400000, guid: ad36791cb8992de478f28890d26b537e, type: 2}
+    probability: 0.31034482
+  - item: {fileID: 11400000, guid: 17e1c7961001a0348b240948a37f6d5c, type: 2}
+    probability: 0.37931034
+  - item: {fileID: 11400000, guid: fc8fccd02aebc3a44bd80edd944587e3, type: 2}
+    probability: 0.4137931
+  - item: {fileID: 11400000, guid: 224d3aa24f540754d969ec5b8416328d, type: 2}
+    probability: 0.4827586
+  - item: {fileID: 11400000, guid: cefee16a57ff93c40b0b7fadc3120e3c, type: 2}
+    probability: 0.51724136
+  - item: {fileID: 11400000, guid: bfa909688548e774a933148a722ff86f, type: 2}
+    probability: 0.58620685
+  - item: {fileID: 11400000, guid: 119c837a498dea548866eecd04121462, type: 2}
+    probability: 0.65517235
+  - item: {fileID: 11400000, guid: f62ec46e4e5fd7f49b02139d1c5b3cef, type: 2}
+    probability: 0.72413784
+  - item: {fileID: 11400000, guid: 69dda3543efd4ae4f8455a577499e2a7, type: 2}
+    probability: 0.79310334
+  - item: {fileID: 11400000, guid: 5b3b83aeecf60734d80990086a9a7b5c, type: 2}
+    probability: 0.86206883
+  - item: {fileID: 11400000, guid: 6039f4716499c8940af3382f2a6818c2, type: 2}
+    probability: 0.9310343
+  - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
+    probability: 0.9999998

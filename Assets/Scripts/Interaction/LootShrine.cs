@@ -9,7 +9,6 @@ namespace RPG.Interaction
 {
   public class LootShrine : Interactable, ISaveable
   {
-    [SerializeField] Gradient colorSchema = new Gradient();
     [SerializeField] LootBank connectedBank;
     Light showLight;
 
@@ -17,7 +16,6 @@ namespace RPG.Interaction
     {
       SetLight();
     }
-
 
     public override void Interact(GameObject interacter)
     {
@@ -52,8 +50,6 @@ namespace RPG.Interaction
     private void SetLight()
     {
       showLight = GetComponentInChildren<Light>();
-      float capacityLevel = connectedBank.GetCapacityLevel();
-      showLight.color = colorSchema.Evaluate(capacityLevel);
       showLight.enabled = !connectedBank.Empty;
     }
   }

@@ -5,6 +5,7 @@ using RPG.Display;
 using RPG.Core;
 using RPG.Stats;
 using RPG.Saving;
+using RPG.Items;
 
 namespace RPG.Interaction
 {
@@ -12,6 +13,7 @@ namespace RPG.Interaction
   {
     [SerializeField] StageSelector selector;
     [SerializeField] DungeonGenerationData data;
+    [SerializeField] LootBank lootBank;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ namespace RPG.Interaction
     {
       data.currentStage = stage;
       data.currentDepth = 1;
+      lootBank.ClearLoot();
     }
 
     IEnumerator Teleport()

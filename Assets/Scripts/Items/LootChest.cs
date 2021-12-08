@@ -12,9 +12,8 @@ public class LootChest : Interactable
 
   public override void Interact(GameObject interacter)
   {
-    LootGenerator.instance.DropLoot(1f, 0.5f, 3, transform.position, interacter.GetComponent<SoulEnergy>().GetSoulEnergyLevel());
+    LootGenerator.instance.DropLoot(1f, 0.75f, 3, transform.position, interacter.GetComponent<SoulEnergy>().GetSoulEnergyLevel());
     float healAmountPercent = Random.Range(healAmount.x, healAmount.y);
-    Debug.Log("Heal " + healAmountPercent);
     interacter.GetComponent<Health>().HealPercentageMax(healAmountPercent);
 
     gameObject.SetActive(false);

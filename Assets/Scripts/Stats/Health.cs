@@ -66,8 +66,7 @@ namespace RPG.Stats
         HandleDeath();
         if (PlayerInfo.GetPlayer() == gameObject)
         {
-          GetComponent<Interacter>().inventory.DeleteAllItems();
-          FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.All);
+          FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
           FindObjectOfType<DeathScreen>().Show();
         }
         else

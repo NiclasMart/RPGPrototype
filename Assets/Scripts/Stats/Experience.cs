@@ -61,7 +61,7 @@ namespace RPG.Stats
           currentExperiencePoints = levelUpXP;
           return;
         }
-        Instantiate(levelUpParticlePrefab, transform.position, Quaternion.identity);
+        Instantiate(levelUpParticlePrefab, transform.position, Quaternion.identity, transform);
         float remainingXP = newXPBalance - levelUpXP;
         currentExperiencePoints = 0;
         CalculateNewXPBalance(stats, remainingXP);

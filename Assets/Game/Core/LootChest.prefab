@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionType: 1
-  healAmount: {x: 0.1, y: 0.15}
+  healAmount: {x: 0.05, y: 0.1}
 --- !u!1001 &4213137598516190290
 PrefabInstance:
   m_ObjectHideFlags: 0
