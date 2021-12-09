@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8ced6b9fece334592e4be57c5dbb88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: You gain *% additional percentual physical damage increasement for
+  name: Berserker
+  description: You gain *% additional percentage increase in physical damage for
     the next 8 seconds.
   damageType: 0
   baseEffectValue: 0
-  cooldown: 3
-  staminaConsumption: 20
+  cooldown: 20
+  staminaConsumption: 15
   range: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: a7b33bdfe6132954ba0c69d666606366, type: 3}
   animationClip: {fileID: 7400000, guid: f34593a481cfdcc448619f52fbc2757a, type: 2}
+  shouldRotate: 1
   animationRotationOffset: 0
   castImmediately: 0
+  hasUses: 0
+  useAmount: 0
+  remainingUses: 0
   duration: 8
   effect: {fileID: 1067152240470389725, guid: edb407abd208b0e4a8fc85c973fe92c5, type: 3}
 --- !u!1001 &2396571310056724169

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce01b674490607a4ba7cfc8aebc0f7ff, type: 3}
+  m_Name: SplitArrowIV
+  m_EditorClassIdentifier: 
+  itemID: 5226d2f1-690e-459b-829c-8ef1c00a4177
+  name: Multiarrow
+  icon: {fileID: 21300000, guid: 8a1680ec09858bc4aa7b4e3ad474dd89, type: 3}
+  itemObject: {fileID: 1008586630702814, guid: 3b7094afd86aee946be89c83abf1797c, type: 3}
+  weight: 2
+  baseValue: 1.2
+  itemType: 6
+  modifiable: 0
+  maxModifierCount: 3
+  modifierQuality: 0.5
+  normalModifiers: []
+  epicModifiers: []
+  legendaryModifiers: []
+  abilityPrefab: {fileID: -7445379525506200165, guid: a0c1ccca9102ba643a862f19a26ec2e7, type: 3}
+  baseEffectValue: {x: 5, y: 15}

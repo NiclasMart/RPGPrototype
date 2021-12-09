@@ -21,7 +21,7 @@ MonoBehaviour:
   itemType: 6
   modifiable: 0
   maxModifierCount: 3
-  modifierQuality: 0.2
+  modifierQuality: 0.3
   normalModifiers: []
   epicModifiers: []
   legendaryModifiers: []

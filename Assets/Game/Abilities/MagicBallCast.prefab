@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722617e4a23507745bc74984e6b79131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: MagicBallCast
   description: Casts 3 electric spheres, which penetrate enemies. Each sphere deals
-    * magic damage.
+    * magic damage + 50% of zour magic damage.
   damageType: 1
   baseEffectValue: 0
   cooldown: 12
   staminaConsumption: 0
   range: 5
-  icon: {fileID: 21300000, guid: 0b5ba48a12ad309408b91848f5b82bf9, type: 3}
+  icon: {fileID: 21300000, guid: 19bee15775d85f24fa0d930a1c586297, type: 3}
   animationClip: {fileID: 7400000, guid: 1d64096945c46c644b96b1570a0663fe, type: 2}
+  shouldRotate: 1
   animationRotationOffset: 60
   castImmediately: 0
+  hasUses: 0
+  useAmount: 0
+  remainingUses: 0
   projectilePrefab: {fileID: 158369935145786950, guid: 6201f1448d71b494c93cb58a7f93ad0a, type: 3}
   projectileAmount: 3
   degrees: 120

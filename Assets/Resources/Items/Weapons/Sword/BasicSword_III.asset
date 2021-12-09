@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc481f14bfad45743bcecaae7b3ad2cd, type: 3}
   m_Name: BasicSword_III
   m_EditorClassIdentifier: 
-  itemID: 53813d2e-479c-4841-8eb0-b12f242290d2
-  name: SwordIV
-  icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
+  itemID: 4120b059-9e45-4b75-bdd1-28f36b692013
+  name: Korum Sword
+  icon: {fileID: 21300000, guid: e1a7f4d9a5aa8b04b80eb6447de09c4f, type: 3}
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 3
-  baseValue: 2.8
+  baseValue: 2.6
   itemType: 0
   modifiable: 1
-  maxModifierCount: 2
-  modifierQuality: 0.4
+  maxModifierCount: 3
+  modifierQuality: 0.25
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}

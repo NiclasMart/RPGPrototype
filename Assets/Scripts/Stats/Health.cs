@@ -66,6 +66,7 @@ namespace RPG.Stats
         HandleDeath();
         if (PlayerInfo.GetPlayer() == gameObject)
         {
+          FindObjectOfType<LootTeleporter>().TeleportPortionOfItems(PlayerInfo.GetPlayer(), 3);
           FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
           FindObjectOfType<DeathScreen>().Show();
         }

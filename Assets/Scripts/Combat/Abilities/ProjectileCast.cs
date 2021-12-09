@@ -54,19 +54,19 @@ namespace RPG.Combat
       projectile.Initialize(direction, source, this, castPosition.position, damage, base.range, base.damageType, layer);
     }
 
-    CharacterStats stats;
-    private float CalculateDamage()
-    {
-      if (stats == null) stats = data.source.GetComponent<CharacterStats>();
+    // CharacterStats stats;
+    // private float CalculateDamage()
+    // {
+    //   if (stats == null) stats = data.source.GetComponent<CharacterStats>();
 
-      float damage;
-      if (damageType == DamageType.physicalDamage)
-        damage = (baseEffectValue + stats.GetStat(Stat.DamageFlat)) * (1 + stats.GetStat(Stat.DamagePercent) / 100f);
-      else
-        damage = (baseEffectValue + stats.GetStat(Stat.MagicDamageFlat)) * (1 + stats.GetStat(Stat.MagicDamagePercent) / 100f);
+    //   float damage;
+    //   if (damageType == DamageType.physicalDamage)
+    //     damage = (baseEffectValue + stats.GetStat(Stat.DamageFlat)) * (1 + stats.GetStat(Stat.DamagePercent) / 100f);
+    //   else
+    //     damage = (baseEffectValue + stats.GetStat(Stat.MagicDamageFlat)) * (1 + stats.GetStat(Stat.MagicDamagePercent) / 100f);
 
-      return damage;
-    }
+    //   return damage;
+    // }
 
     Projectile GetProjectile()
     {

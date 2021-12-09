@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: SickleIII
   m_EditorClassIdentifier: 
   itemID: 2f285e51-cb2e-4952-854b-2aac31809612
-  name: SickleIII
-  icon: {fileID: 21300000, guid: f9f0c605411a7e14dbcac5f4654327b5, type: 3}
+  name: Hemdal Sickle
+  icon: {fileID: 21300000, guid: b5e4aeac968704943ac7b07f70c49a19, type: 3}
   itemObject: {fileID: 668736306270028631, guid: 08df40d3c0c1b5f468bcb919d258d374, type: 3}
   weight: 4
-  baseValue: 25
+  baseValue: 3
   itemType: 0
   modifiable: 1
   maxModifierCount: 3
-  modifierQuality: 0.5
+  modifierQuality: 0.85
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}

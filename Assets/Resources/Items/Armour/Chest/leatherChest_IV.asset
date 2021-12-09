@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: leatherChest_IV
   m_EditorClassIdentifier: 
   itemID: 3059b7a8-cefe-43b8-ab13-edd0570c2e98
-  name: Malstroph Light Iron Chest
+  name: Light Iron Chest
   icon: {fileID: 21300000, guid: 5ba1aea3745b86442a0026e10b8ca244, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 4
-  baseValue: 3.8
+  baseValue: 3
   itemType: 1
   modifiable: 1
   maxModifierCount: 3

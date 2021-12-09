@@ -10,7 +10,7 @@ namespace RPG.Items
     public static LootGenerator instance;
 
     [Header("Parameter")]
-    [SerializeField, Range(0, 1f)] float dropChance = 0.3f;
+    [Range(0, 1f)] public float dropChance = 0.3f;
     [SerializeField, Min(0)] int maxDropAmount = 1;
     [SerializeField, Range(0, 1)] float chanceReductionPerDrop = 0;
     [SerializeField] Pickup pickupPrefab;
@@ -109,9 +109,9 @@ namespace RPG.Items
     private void SetItemRarity(GenericItem baseItem, ModifiableItem item, float soulEnergyLevel)
     {
       float rand = Random.Range(0, 1f);
-      rand = Mathf.Min(rand * Mathf.Lerp(0, 0.15f, soulEnergyLevel), 1);
+      rand = Mathf.Min(rand * (1 + Mathf.Lerp(0, 0.15f, soulEnergyLevel)), 1);
       //normal 
-      if (rand < normalDropLimit)
+      if (rand <= normalDropLimit)
       {
         item.rarity = Rank.Normal;
         return;
@@ -123,7 +123,7 @@ namespace RPG.Items
         modifier.value *= 1 + PlayerInfo.GetGlobalParameters().rareValueImprovement;
         modifier.rarity = Rank.Rare;
       }
-      if (rand < rareDropLimit)
+      if (rand <= rareDropLimit)
       {
         item.rarity = Rank.Rare;
         return;
@@ -131,7 +131,7 @@ namespace RPG.Items
 
       //epic+
       item.AddModifier(baseItem.GetRandomModifier(Rank.Epic), baseItem.modifierQuality);
-      if (rand < epicDropLimit || baseItem.legendaryModifiers.Count < 1)
+      if (rand <= epicDropLimit || baseItem.legendaryModifiers.Count < 1)
       {
         item.rarity = Rank.Epic;
         return;
@@ -161,11 +161,10 @@ namespace RPG.Items
     private int CalculateAmountOfModifiers(float maxCount)
     {
       float rand = Random.Range(0, 1f);
-      float amount;
+      float amount = 1;
 
       if (rand < (modifierProbability * modifierProbability)) amount = 3;
-      if (rand < modifierProbability) amount = 2;
-      amount = 1;
+      else if (rand < modifierProbability) amount = 2;
 
       return (int)Mathf.Min(amount, maxCount);
     }

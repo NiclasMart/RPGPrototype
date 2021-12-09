@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 8336217731010153080}
   - component: {fileID: 8336217731010153077}
   - component: {fileID: 6016185490730588802}
+  - component: {fileID: 9104819208676100491}
   m_Layer: 0
   m_Name: LootShrine
   m_TagString: Untagged
@@ -206,35 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6f093408de2054895dc65d317d2f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorSchema:
-    serializedVersion: 2
-    key0: {r: 0.112679005, g: 1, b: 0, a: 1}
-    key1: {r: 1, g: 0.85496867, b: 0, a: 1}
-    key2: {r: 1, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 32768
-    ctime1: 55705
-    ctime2: 65535
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 1
-    m_NumColorKeys: 3
-    m_NumAlphaKeys: 2
+  interactionType: 0
   connectedBank: {fileID: 11400000, guid: 70a9c2ed8e09b7b42adbec366d4df56a, type: 2}
 --- !u!114 &8336217731010153077
 MonoBehaviour:
@@ -267,6 +240,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: a61a4d2d-5e3c-4b9d-b084-e837766b6545
+--- !u!114 &9104819208676100491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337644565830771379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 499b6e253c6dbf3428aab474521d18be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: 0
+  connectedBank: {fileID: 11400000, guid: 70a9c2ed8e09b7b42adbec366d4df56a, type: 2}
 --- !u!1001 &8336217730772723299
 PrefabInstance:
   m_ObjectHideFlags: 0

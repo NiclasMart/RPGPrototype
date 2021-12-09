@@ -11,6 +11,7 @@ namespace RPG.Combat
   {
     [SerializeField] Ability ability;
     [SerializeField] Transform castPosition;
+    Ability abilityReference;
 
     private void Start()
     {
@@ -19,8 +20,8 @@ namespace RPG.Combat
 
     protected override void Initialize()
     {
-      Ability baseAbility = Instantiate(ability, transform);
-      CalculateInitialStats(baseAbility);
+      abilityReference = Instantiate(ability, transform);
+      CalculateInitialStats(abilityReference);
     }
 
     private void CalculateInitialStats(Ability ability)
@@ -36,8 +37,8 @@ namespace RPG.Combat
       animator.speed = animationSpeed;
       animator.ResetTrigger("cancelAttack");
       animator.SetTrigger("attack");
-      ability.PrepareCast(target.transform.position - transform.position, gameObject, castPosition, collisionLayer);
-      yield return new WaitForSeconds(ability.animationClip.length * (1 / animationSpeed));
+      abilityReference.PrepareCast(target.transform.position, gameObject, castPosition, collisionLayer);
+      yield return new WaitForSeconds(abilityReference.animationClip.length * (1 / animationSpeed));
       animator.speed = 1f;
       isAttacking = false;
       scheduler.CancelCurrentAction();
@@ -45,7 +46,7 @@ namespace RPG.Combat
 
     void CastAction()
     {
-      ability.CastAction();
+      abilityReference.CastAction();
     }
 
     void FinishedCast()

@@ -5,9 +5,10 @@ namespace RPG.Combat
 {
   class DamageCalculator
   {
-    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage)
+    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage, float damageModifier)
     {
-      float baseDamage = (attacker.GetStat(Stat.DamageFlat) + weaponDamage) * (1 + attacker.GetStat(Stat.DamagePercent) / 100f);
+      float baseDamage = attacker.GetStat(Stat.DamageFlat) * (1 + attacker.GetStat(Stat.DamagePercent) / 100f) * damageModifier;
+      baseDamage += (weaponDamage * (1 + attacker.GetStat(Stat.DamagePercent) / 100f));
 
       //armour calculation
       float armour = defender.GetStat(Stat.Armour);
@@ -22,9 +23,9 @@ namespace RPG.Combat
       return damage;
     }
 
-    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage, ref bool isCrit)
+    public static float CalculatePhysicalDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage, float damageModifier, ref bool isCrit)
     {
-      float damage = CalculatePhysicalDamage(attacker, defender, weaponDamage);
+      float damage = CalculatePhysicalDamage(attacker, defender, weaponDamage, damageModifier);
 
       //crit calculation
       if (!isCrit) isCrit = (attacker.GetStat(Stat.CritChance) / 100f) > Random.value;
@@ -35,9 +36,10 @@ namespace RPG.Combat
       return damage;
     }
 
-    public static float CalculateMagicDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage)
+    public static float CalculateMagicDamage(CharacterStats attacker, CharacterStats defender, float weaponDamage, float damageModifier)
     {
-      float baseDamage = (attacker.GetStat(Stat.MagicDamageFlat) + weaponDamage) * (1 + attacker.GetStat(Stat.MagicDamagePercent) / 100f);
+      float baseDamage = attacker.GetStat(Stat.MagicDamageFlat) * (1 + attacker.GetStat(Stat.MagicDamagePercent) / 100f) * damageModifier;
+      baseDamage += (weaponDamage * (1 + attacker.GetStat(Stat.MagicDamagePercent) / 100f));
 
       //armour calculation
       float magicResi = defender.GetStat(Stat.MagicResi);

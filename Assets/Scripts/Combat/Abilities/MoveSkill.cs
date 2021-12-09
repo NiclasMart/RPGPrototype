@@ -10,12 +10,15 @@ namespace RPG.Combat
   {
     public float moveDistance;
     public float time;
+    Health playerHealth;
+    Stamina playerStamina;
 
     public AlterValue<float> alterStamina;
 
     public override bool CastIsValid(GameObject player)
     {
       Stamina stamina = player.GetComponent<Stamina>();
+      if (playerHealth == null) playerHealth = player.GetComponent<Health>();
       float usedStamina = staminaConsumption;
       alterStamina?.Invoke(ref usedStamina);
       return stamina.UseStamina(usedStamina);
@@ -23,6 +26,7 @@ namespace RPG.Combat
 
     public override void CastAction()
     {
+      
       StartCoroutine(Dash());
     }
 
@@ -38,6 +42,7 @@ namespace RPG.Combat
 
       while (Time.time < startTime + time)
       {
+        if (playerHealth.IsDead) yield break;
         agent.Move(direction * Time.deltaTime * moveDistance);
         yield return new WaitForEndOfFrame();
       }

@@ -48,6 +48,7 @@ MonoBehaviour:
   speed: 0.1
   destroyDelay: 0.1
   maxTravelDistance: 13
+  baseDamageModifier: 0.5
   homing: 0
   penetrating: 1
   graphicComponent: {fileID: 5223809076999773424}
@@ -62,7 +63,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.43
+  m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7305329740683527008
 PrefabInstance:

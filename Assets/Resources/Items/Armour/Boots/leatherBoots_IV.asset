@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: leatherBoots_IV
   m_EditorClassIdentifier: 
   itemID: 995fbc1b-7b31-4581-9314-8d0f3aba878b
-  name: Malstroph Light Iron Boots
+  name: Light Iron Boots
   icon: {fileID: 21300000, guid: 0b44f2d1fbe83574aa9efba14b4450ef, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 1

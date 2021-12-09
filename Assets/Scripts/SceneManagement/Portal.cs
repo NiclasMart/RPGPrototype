@@ -62,7 +62,7 @@ namespace RPG.SceneManagement
 
       if (homeTeleporter)
       {
-        FindObjectOfType<LootTeleporter>().TeleportItems(PlayerInfo.GetPlayer());
+        FindObjectOfType<LootTeleporter>().TeleportAllItems(PlayerInfo.GetPlayer());
         FindObjectOfType<SavingSystem>().Save("PlayerData", SaveType.PlayerSpecific);
         yield return SceneManager.LoadSceneAsync("Village");
       }

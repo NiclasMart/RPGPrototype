@@ -10,6 +10,7 @@ namespace RPG.Combat
     [SerializeField] float speed = 1f;
     [SerializeField] float destroyDelay = 0.1f;
     [SerializeField] float maxTravelDistance = 10f;
+    [SerializeField] float baseDamageModifier = 1f;
     [SerializeField] bool homing = true;
     [SerializeField] bool penetrating = false;
     [SerializeField] GameObject graphicComponent;
@@ -94,8 +95,8 @@ namespace RPG.Combat
     {
       bool isCrit = false;
       float finalDamage = (damageType == DamageType.physicalDamage)
-        ? DamageCalculator.CalculatePhysicalDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage, ref isCrit)
-        : DamageCalculator.CalculateMagicDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage);
+        ? DamageCalculator.CalculatePhysicalDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage, baseDamageModifier, ref isCrit)
+        : DamageCalculator.CalculateMagicDamage(source.GetComponent<CharacterStats>(), target.GetComponent<CharacterStats>(), baseDamage, baseDamageModifier);
 
       target.ApplyDamage(source, finalDamage);
     }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicSword_I
   m_EditorClassIdentifier: 
   itemID: 3d9590de-08f8-4439-b06f-b3a3618e9f48
-  name: SwordI
-  icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
+  name: Kanari Sword
+  icon: {fileID: 21300000, guid: 1de7ef9d24ca99f40a4be648e04daff3, type: 3}
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 3
   baseValue: 2

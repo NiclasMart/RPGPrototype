@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0d1fc4f2d53f904282544b7bf1312ae, type: 3}
   m_Name: DungeonData
   m_EditorClassIdentifier: 
-  currentStage: 1
+  currentStage: 5
   currentDepth: 2
   stageData:
   - stageNumber: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
       frequency: 2
     - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
       frequency: 1
-    - enemy: {fileID: 4480122857357601484, guid: f00cf918116796d4c907de775ea7c0eb, type: 3}
+    - enemy: {fileID: 2196699075679132240, guid: e739c75c2cb24074082eda33d7eba0f5, type: 3}
       frequency: 1
     levelRange: {x: 10, y: 13}
     maxSoulEnergyKills: 150
@@ -74,7 +74,7 @@ MonoBehaviour:
       frequency: 2
     - enemy: {fileID: 7023376372750676172, guid: 671f02ca941c3bf489343966d3b7b2cc, type: 3}
       frequency: 1
-    - enemy: {fileID: 4480122857357601484, guid: f00cf918116796d4c907de775ea7c0eb, type: 3}
+    - enemy: {fileID: 2196699075679132240, guid: e739c75c2cb24074082eda33d7eba0f5, type: 3}
       frequency: 1
     levelRange: {x: 14, y: 18}
     maxSoulEnergyKills: 195

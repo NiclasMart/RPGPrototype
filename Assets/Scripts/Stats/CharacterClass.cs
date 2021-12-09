@@ -9,6 +9,7 @@ namespace RPG.Stats
     UNARMED,
     AXE,
     DARK_AXE,
-    DARK_MAGE
+    DARK_MAGE,
+    BOSS
   }
 }

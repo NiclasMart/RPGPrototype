@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: leatherPants_IV
   m_EditorClassIdentifier: 
   itemID: 814cfedd-a3e6-4712-b2e4-9a3adff26e43
-  name: Malstroph Light Iron Pants
+  name: Light Iron Pants
   icon: {fileID: 21300000, guid: 51e9026e2a0d6894396aad24d67c9c34, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 3

@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: GreataxeIII
   m_EditorClassIdentifier: 
   itemID: 1d2240ec-dd9c-4b9a-909d-ca07da2731ff
-  name: GreataxeIII
-  icon: {fileID: 21300000, guid: 5eb423312d4ce804d8855a445b645932, type: 3}
+  name: Hemdal Greataxe
+  icon: {fileID: 21300000, guid: 041a86fa2fbe1164ebe658085fc3f8e4, type: 3}
   itemObject: {fileID: 8642829691525252339, guid: 2254a1643ab3f344bbd2e81f2331820f, type: 3}
   weight: 15
-  baseValue: 2.6
+  baseValue: 2.8
   itemType: 0
   modifiable: 1
   maxModifierCount: 3
-  modifierQuality: 0.45
+  modifierQuality: 0.8
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
@@ -45,6 +45,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d8913a200518d844b710aca9cf6c837, type: 2}
   legendaryModifiers:
   - {fileID: 11400000, guid: 248cf38e2c9529a4196eb6253a693be2, type: 2}
+  - {fileID: 11400000, guid: afbe05d3b5d4ae14e96bbb9f20e3e5cd, type: 2}
   animation: {fileID: 7400000, guid: 9129b86089ea3e948b8b45da54e6eaf6, type: 2}
   weaponDamage: {x: 15, y: 55}
   weaponStaminaConsumption: 10

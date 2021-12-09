@@ -17,10 +17,10 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b87ab61b7d085d744a7420fd0326e6ff, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 4
-  baseValue: 3.6
+  baseValue: 2.8
   itemType: 1
   modifiable: 1
-  maxModifierCount: 3
+  maxModifierCount: 2
   modifierQuality: 0.3
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}

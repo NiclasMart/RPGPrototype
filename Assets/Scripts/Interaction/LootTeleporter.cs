@@ -11,14 +11,29 @@ namespace RPG.Interaction
     [SerializeField] LootBank connectedBank;
     public override void Interact(GameObject interacter)
     {
-      TeleportItems(interacter);
+      TeleportAllItems(interacter);
     }
 
-    public void TeleportItems(GameObject interacter)
+    public void TeleportAllItems(GameObject interacter)
     {
       SimpleInventory playerInventory = interacter.GetComponent<Interacter>().inventory;
-      interacter.GetComponent<SoulEnergy>().Reset();
       connectedBank.AddLoot(playerInventory.GetItemList());
+      playerInventory.DeleteAllItems();
+    }
+
+    //n -> every n'th item is teleportet
+    public void TeleportPortionOfItems(GameObject interacter, float n)
+    {
+      SimpleInventory playerInventory = interacter.GetComponent<Interacter>().inventory;
+      List<Item> savedLoot = new List<Item>();
+      int count = 0;
+      foreach (var item in playerInventory.GetItemList())
+      {
+        count++;
+        if (count % n == 0) savedLoot.Add(item);
+      }
+      
+      connectedBank.AddLoot(savedLoot);
       playerInventory.DeleteAllItems();
     }
   }

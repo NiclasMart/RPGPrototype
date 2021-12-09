@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using RPG.Dungeon;
+using RPG.Items;
 using RPG.Stats;
 using UnityEngine;
 
 public class KillHandler : StoryScreenDisplay
 {
 
-  [SerializeField] GameObject enemyHolder, exitPortal;
+  [SerializeField] GameObject enemyHolder, exitPortal, killedUnit;
 
   public void HandleDeath()
   {
@@ -17,9 +18,18 @@ public class KillHandler : StoryScreenDisplay
 
     DisableenemySpawner();
     KillAllEnemies();
+    DebugDropLoot();
     EndableExitPortal();
 
     DisplayStoryScreen();
+  }
+
+  private void DebugDropLoot()
+  {
+    LootGenerator lootGen = FindObjectOfType<LootGenerator>();
+    lootGen.dropChance = 1;
+    lootGen.DropLoot(killedUnit.transform.position, 1);
+
   }
 
   private void EndableExitPortal()

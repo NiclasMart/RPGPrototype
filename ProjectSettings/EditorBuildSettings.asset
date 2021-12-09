@@ -8,12 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevel/Village.unity
     guid: 252bfa41218daf148aa0eff6a55b8d21
-  - enabled: 0
-    path: Assets/Scenes/BaseScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/SecondScene.unity
-    guid: b2e2b862a4630c44cb813888046c5a4e
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/TransitionRoom.unity
+    guid: adec66e95e5c95542ab7a1c6bfb0d25f
   - enabled: 1
     path: Assets/Scenes/GameLevel/Dungeon_Stage1.unity
     guid: 43648a3beea152741ab3e2ef99e69f87
@@ -21,15 +18,27 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevel/Dungeon_Stage2.unity
     guid: ea6f9c300dfe43e41aa187bb18a5fe95
   - enabled: 1
-    path: Assets/Scenes/GameLevel/TransitionRoom.unity
-    guid: adec66e95e5c95542ab7a1c6bfb0d25f
-  - enabled: 1
     path: Assets/Scenes/GameLevel/Dungeon_Stage3.unity
     guid: e378b02e7baf24b4291599e86fc7cced
   - enabled: 1
     path: Assets/Scenes/GameLevel/Dungeon_Stage4.unity
     guid: 585329af0a7173f47a0e9146c30cb0ff
   - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage5.unity
+    guid: 2ff8465c3310b864b87b6597f923a816
+  - enabled: 1
     path: Assets/Scenes/GameLevel/Dungeon_Stage6.unity
     guid: 8cc2a104290f91048870c2185ff581a8
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage7.unity
+    guid: 5e8a3ebbc5719604a858d36c159f4d32
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage8.unity
+    guid: f932179621a10ce44a47d6ab74e04d29
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/Dungeon_Stage9.unity
+    guid: 8aca1587f86e53d45b836ad315990b52
+  - enabled: 1
+    path: Assets/Scenes/GameLevel/DungeonStage10.unity
+    guid: 9d31fefd87330d2408bc3d98bf99a7ea
   m_configObjects: {}

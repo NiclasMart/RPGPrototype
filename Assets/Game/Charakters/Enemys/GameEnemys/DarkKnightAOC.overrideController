@@ -9,5 +9,5 @@ AnimatorOverrideController:
   m_Name: DarkKnightAOC
   m_Controller: {fileID: 9100000, guid: db49f0fdd9de034479bcf77070f1e56e, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 9a26352c93a81e947b73b8e47cc931bb, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 1bb67d8474cb59c409646a0a5c7b263a, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: c49072e736133254bb6cb0de2205cf45, type: 2}

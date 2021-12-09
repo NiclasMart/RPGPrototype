@@ -46,7 +46,9 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 6039f4716499c8940af3382f2a6818c2, type: 2}
     probability: 1
   - item: {fileID: 11400000, guid: fd04489827b8a1545838ded185b43a96, type: 2}
-    probability: 1
+    probability: 2
+  - item: {fileID: 11400000, guid: 50617453137368e4eaa990326c692ee8, type: 2}
+    probability: 2
   items:
   - item: {fileID: 11400000, guid: 3bfcb47e22e0f4549a6562c538b6135e, type: 2}
     probability: 0.06896552

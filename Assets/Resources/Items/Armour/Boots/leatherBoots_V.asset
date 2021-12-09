@@ -21,7 +21,7 @@ MonoBehaviour:
   itemType: 2
   modifiable: 1
   maxModifierCount: 3
-  modifierQuality: 0.55
+  modifierQuality: 0.65
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
@@ -38,5 +38,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
   legendaryModifiers:
   - {fileID: 11400000, guid: 622e4d1bda44f98468248db5d4c22c80, type: 2}
+  - {fileID: 11400000, guid: d776d0151a8a1f645b2cf9bfe478f12a, type: 2}
   armour: {x: 1, y: 10}
   magicResistance: {x: 2, y: 12}

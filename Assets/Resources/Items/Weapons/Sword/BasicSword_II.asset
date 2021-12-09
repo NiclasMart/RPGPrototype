@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicSword_II
   m_EditorClassIdentifier: 
   itemID: c7dd920e-2893-47e9-ab7d-cd5af5285456
-  name: SwordII
-  icon: {fileID: 21300000, guid: dc30c23f45d76d341adc0e7f75c16c08, type: 3}
+  name: Sulmit Sword
+  icon: {fileID: 21300000, guid: 12bbb7cc0385faa489372a06e4578719, type: 3}
   itemObject: {fileID: 1021723482937742340, guid: 4d4b855659008ab4381fb7567a7363e6, type: 3}
   weight: 3
   baseValue: 2.3

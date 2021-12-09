@@ -31,7 +31,7 @@ MonoBehaviour:
       startValue: 100
       increasement: 2
     - stat: 10
-      startValue: 3
+      startValue: 4
       increasement: 0
     - stat: 14
       startValue: 10
@@ -97,7 +97,7 @@ MonoBehaviour:
     stats:
     - stat: 0
       startValue: 40
-      increasement: 10
+      increasement: 9
     - stat: 2
       startValue: 5
       increasement: 2
@@ -114,7 +114,7 @@ MonoBehaviour:
     stats:
     - stat: 0
       startValue: 60
-      increasement: 10
+      increasement: 11
     - stat: 2
       startValue: 10
       increasement: 2
@@ -130,34 +130,51 @@ MonoBehaviour:
   - charakterClass: 6
     stats:
     - stat: 0
-      startValue: 0
-      increasement: 0
+      startValue: 130
+      increasement: 13
     - stat: 2
-      startValue: 0
-      increasement: 0
+      startValue: 10
+      increasement: 1.5
     - stat: 11
-      startValue: 0
-      increasement: 0
+      startValue: 10
+      increasement: 1.5
     - stat: 1
-      startValue: 0
-      increasement: 0
+      startValue: 15
+      increasement: 2.5
     - stat: 3
-      startValue: 0
-      increasement: 0
+      startValue: 50
+      increasement: 4
   - charakterClass: 7
     stats:
     - stat: 0
-      startValue: 0
+      startValue: 100
+      increasement: 12
+    - stat: 2
+      startValue: 10
+      increasement: 1
+    - stat: 11
+      startValue: 10
+      increasement: 1
+    - stat: 14
+      startValue: 20
+      increasement: 1.5
+    - stat: 3
+      startValue: 50
+      increasement: 4
+  - charakterClass: 8
+    stats:
+    - stat: 0
+      startValue: 2000
       increasement: 0
     - stat: 2
-      startValue: 0
+      startValue: 100
       increasement: 0
     - stat: 11
-      startValue: 0
+      startValue: 100
       increasement: 0
-    - stat: 14
-      startValue: 0
+    - stat: 15
+      startValue: 180
       increasement: 0
     - stat: 3
-      startValue: 0
+      startValue: 750
       increasement: 0

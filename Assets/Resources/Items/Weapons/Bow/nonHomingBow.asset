@@ -32,4 +32,4 @@ MonoBehaviour:
   weaponRange: 9
   hitArea: {fileID: 0}
   isRightHanded: 0
-  projectilePrefab: {fileID: 7179671380791354574, guid: 8099bc36d97299445ab6e3234ae27f82, type: 3}
+  projectilePrefab: {fileID: 7179671380791354574, guid: ea58f62812c40e24090c950f292da7ea, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HammerI
   m_EditorClassIdentifier: 
   itemID: affeec99-0918-4846-b35d-983d1385b03c
-  name: War-HammerI
-  icon: {fileID: 21300000, guid: 2fa066f3d3017294db55d66ba056afc6, type: 3}
+  name: Kanari War-Hammer
+  icon: {fileID: 21300000, guid: 6547aabe8d6d1b049a891395d513fd7f, type: 3}
   itemObject: {fileID: 6032763338291004813, guid: 7998e5016618e384aa54b66da389a356, type: 3}
   weight: 6
   baseValue: 2

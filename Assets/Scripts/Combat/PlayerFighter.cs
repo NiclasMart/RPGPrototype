@@ -79,7 +79,7 @@ namespace RPG.Combat
         Debug.Log("----------------");
         bool isCrit = false;
         onBeforeAttack?.Invoke(ref isCrit);
-        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), currentWeapon.GetDamage(), ref isCrit);
+        float damage = DamageCalculator.CalculatePhysicalDamage(stats, target.GetComponent<CharacterStats>(), currentWeapon.GetDamage(), 1, ref isCrit);
         onDealDamage?.Invoke(ref damage);
         isCrit = false;
 

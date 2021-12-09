@@ -21,7 +21,7 @@ MonoBehaviour:
   itemType: 3
   modifiable: 1
   maxModifierCount: 3
-  modifierQuality: 0.55
+  modifierQuality: 0.65
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}

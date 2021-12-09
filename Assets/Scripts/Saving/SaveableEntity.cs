@@ -35,6 +35,7 @@ namespace RPG.Saving
 
     private void Update()
     {
+#if UNITY_EDITOR      
       if (Application.IsPlaying(this)) return;
       if (string.IsNullOrEmpty(gameObject.scene.path)) return;  //checks if gameObject is within a prefab szene
 
@@ -46,6 +47,7 @@ namespace RPG.Saving
         property.stringValue = System.Guid.NewGuid().ToString();
         serializedObject.ApplyModifiedProperties();
       }
-    }
+#endif
+    }  
   }
 }

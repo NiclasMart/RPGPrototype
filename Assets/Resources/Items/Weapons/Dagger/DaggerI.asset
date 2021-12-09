@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DaggerI
   m_EditorClassIdentifier: 
   itemID: 08bb6dfe-54ea-461f-b590-b485380ac621
-  name: DaggerI
-  icon: {fileID: 21300000, guid: 5fd4d70743bae604cb2a806ebfab38ba, type: 3}
+  name: Kanari Dagger
+  icon: {fileID: 21300000, guid: 36ef8a8f25a82c143af662ce026ff471, type: 3}
   itemObject: {fileID: 7855749314461686537, guid: e690660a79075a343b261d896a89b397, type: 3}
   weight: 1
   baseValue: 1
   itemType: 0
   modifiable: 1
-  maxModifierCount: 2
+  maxModifierCount: 1
   modifierQuality: 0
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}

@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: DaggerII
   m_EditorClassIdentifier: 
   itemID: f1b51782-3e74-4738-bf56-7cca7459257d
-  name: DaggerII
-  icon: {fileID: 21300000, guid: 5fd4d70743bae604cb2a806ebfab38ba, type: 3}
+  name: Sulmit Dagger
+  icon: {fileID: 21300000, guid: 9e272d887de25ab49a4be48fc9d33f1f, type: 3}
   itemObject: {fileID: 7855749314461686537, guid: e690660a79075a343b261d896a89b397, type: 3}
   weight: 1
   baseValue: 1.2
   itemType: 0
   modifiable: 1
-  maxModifierCount: 3
+  maxModifierCount: 2
   modifierQuality: 0.1
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}

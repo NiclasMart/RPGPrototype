@@ -17,11 +17,11 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e72b854916191114a8ab3c11f75d432f, type: 3}
   itemObject: {fileID: 2459032154167850221, guid: b3a4e6e9f82c26748b3032ab4f1a38e7, type: 3}
   weight: 4
-  baseValue: 4
+  baseValue: 3.3
   itemType: 1
   modifiable: 1
   maxModifierCount: 3
-  modifierQuality: 0.55
+  modifierQuality: 0.6
   normalModifiers:
   - {fileID: 11400000, guid: 6f34694340ebde34f8222d4a17064e28, type: 2}
   - {fileID: 11400000, guid: 3adc1c70b0823664d87c97eb99d36632, type: 2}
@@ -36,6 +36,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5f058e4134d8ba145a17fd60bf7fc682, type: 2}
   - {fileID: 11400000, guid: e115ec490dfe2494eb9391aba5fcdfd1, type: 2}
   - {fileID: 11400000, guid: 3840ffc95de6f244caad5f18cd0155f1, type: 2}
-  legendaryModifiers: []
+  legendaryModifiers:
+  - {fileID: 11400000, guid: 911f2aada318bc947bcd39eebdcb163f, type: 2}
+  - {fileID: 11400000, guid: 0cbf6610123ca6746b4bacd896fc2d11, type: 2}
   armour: {x: 5, y: 25}
   magicResistance: {x: 8, y: 28}
